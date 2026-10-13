@@ -178,18 +178,18 @@ func Generate(flags []Flag, o Options) []*spec.Case {
 			if f.Value == "" {
 				for _, in := range richInputs {
 					args := append(flagArgs(f, ""), pos(a)...)
-					g.add(join("flag", f.Name(), "arg", a, "stdin", in.Name), args, in.Data, nil, "flag")
+					g.add(join("flag", f.Name(), "arg", a, "stdin", in.Name), args, in.Data, nil, "flag", "flag:"+f.Name())
 				}
 			} else {
 				in := richInputs[0]
 				for _, v := range badValues {
 					args := append(flagArgs(f, v), pos(a)...)
-					g.add(join("flag", f.Name(), "value", v, "arg", a), args, in.Data, nil, "flag-value")
+					g.add(join("flag", f.Name(), "value", v, "arg", a), args, in.Data, nil, "flag-value", "flag:"+f.Name())
 				}
 				if f.Optional {
-					g.add(join("flag", f.Name(), "arg", a, "stdin", in.Name), append(flagArgs(f, ""), pos(a)...), in.Data, nil, "flag")
+					g.add(join("flag", f.Name(), "arg", a, "stdin", in.Name), append(flagArgs(f, ""), pos(a)...), in.Data, nil, "flag", "flag:"+f.Name())
 				} else {
-					g.add(join("flag", f.Name(), "missing value"), flagArgs(f, "")[:1], in.Data, nil, "error")
+					g.add(join("flag", f.Name(), "missing value"), flagArgs(f, "")[:1], in.Data, nil, "error", "flag:"+f.Name())
 				}
 			}
 		}
@@ -199,13 +199,13 @@ func Generate(flags []Flag, o Options) []*spec.Case {
 	for i := 0; i < len(boolFlags); i++ {
 		for j := i + 1; j < len(boolFlags); j++ {
 			args := append(append(flagArgs(boolFlags[i], ""), flagArgs(boolFlags[j], "")...), pos(o.Args[0])...)
-			g.add(join("pair", boolFlags[i].Name(), boolFlags[j].Name()), args, in.Data, nil, "pair")
+			g.add(join("pair", boolFlags[i].Name(), boolFlags[j].Name()), args, in.Data, nil, "pair", "flag:"+boolFlags[i].Name(), "flag:"+boolFlags[j].Name())
 		}
 	}
 	// 6. short flag spelling equivalence and "--" handling
 	for _, f := range boolFlags {
 		if f.Short != "" && f.Long != "" {
-			g.add(join("short", f.Short), append([]string{f.Short}, pos(o.Args[0])...), in.Data, nil, "alias")
+			g.add(join("short", f.Short), append([]string{f.Short}, pos(o.Args[0])...), in.Data, nil, "alias", "flag:"+f.Name())
 		}
 	}
 	g.add("double dash", append([]string{"--"}, pos(o.Args[0])...), in.Data, nil, "basic")
@@ -218,7 +218,7 @@ type gen struct {
 	cases []*spec.Case
 }
 
-func (g *gen) add(name string, args []string, stdin string, files map[string]string, tag string) {
+func (g *gen) add(name string, args []string, stdin string, files map[string]string, tags ...string) {
 	if len(g.cases) >= g.max {
 		return
 	}
@@ -227,7 +227,7 @@ func (g *gen) add(name string, args []string, stdin string, files map[string]str
 		return
 	}
 	g.seen[key] = true
-	c := &spec.Case{Name: name, Args: args, Files: files, Tags: []string{tag}}
+	c := &spec.Case{Name: name, Args: args, Files: files, Tags: tags}
 	if args == nil {
 		c.Args = []string{}
 	}
