@@ -229,7 +229,8 @@ func cmdRun(args []string, needImpl bool) (int, error) {
 	impl := fs.String("impl", "", "implementation to test (default: the recorded command)")
 	ignStderr := fs.Bool("ignore-stderr", false, "do not compare stderr (error message wording)")
 	ignExit := fs.Bool("ignore-exit", false, "do not compare exit codes")
-	verbose := fs.Bool("v", false, "show every failing case (default: first 10)")
+	verbose := fs.Bool("v", false, "show every failing case")
+	maxFail := fs.Int("max-failures", 10, "failing cases to show in detail")
 	asJSON := fs.Bool("json", false, "print a JSON report")
 	var tags, skipTags multi
 	fs.Var(&tags, "tag", "only run cases with this tag, repeatable")
@@ -279,7 +280,7 @@ func cmdRun(args []string, needImpl bool) (int, error) {
 	if *asJSON {
 		printJSON(rep)
 	} else {
-		printReport(s, rep, *verbose)
+		printReport(s, rep, *verbose, *maxFail)
 	}
 	if rep.Fail+rep.Error > 0 {
 		return 1, nil
@@ -306,13 +307,13 @@ func color(code, s string) string {
 	return "\x1b[" + code + "m" + s + "\x1b[0m"
 }
 
-func printReport(s *spec.Spec, rep *engine.Report, verbose bool) {
+func printReport(s *spec.Spec, rep *engine.Report, verbose bool, maxFail int) {
 	shown := 0
 	for _, r := range rep.Results {
 		if r.Err == nil && len(r.Mismatches) == 0 {
 			continue
 		}
-		if !verbose && shown == 10 {
+		if !verbose && shown == maxFail {
 			fmt.Printf("… %d more failing cases (use -v)\n\n", rep.Fail+rep.Error-shown)
 			break
 		}
