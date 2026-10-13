@@ -13,7 +13,7 @@ Use it when you are:
 - refactoring or upgrading a CLI and want a regression net in a few seconds,
 - comparing two implementations of the same tool.
 
-> Status: early (v0.1 in progress). The CLI works; the MCP server is next.
+> Status: early (v0.1). CLI and MCP server work; feedback welcome.
 
 ## Quick start
 
@@ -74,6 +74,27 @@ Run on this machine against real tools, generated cases only, `--help`/`--versio
 
 Many of these are deliberate design choices, not bugs. behave just makes them visible.
 
+## MCP server
+
+`behave mcp` serves the same features over stdio, so a coding assistant can explore the
+original tool, grow the spec while it works, and check its port after every change.
+
+```json
+{
+  "mcpServers": {
+    "behave": { "command": "behave", "args": ["mcp"] }
+  }
+}
+```
+
+| tool | what it does |
+|---|---|
+| `behave_exec` | run a command once in a temp dir, return exit/stdout/stderr (exploration) |
+| `behave_probe` | generate and record a spec from `--help` |
+| `behave_add_case` | add a case and record the original's behavior |
+| `behave_list_cases` | list cases, optionally by tag (`flag:--sort`, `manual`) |
+| `behave_diff` | replay against an implementation, return failing cases with diffs |
+
 ## Spec format
 
 A spec is a directory you can commit and review:
@@ -128,7 +149,6 @@ Add your own with `behave add behave-cut --stdin 'a,b' -- -d, -f2`.
 
 ## Roadmap
 
-- MCP server (`behave mcp`) so coding assistants can explore a tool and add cases while porting it
 - JUnit output, coverage of flags seen in help vs exercised
 - smarter value generation from help text (`WHEN can be: auto, always, never`)
 - prebuilt binaries
