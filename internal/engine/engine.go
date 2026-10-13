@@ -56,10 +56,14 @@ func each(cases []*spec.Case, f func(int, *spec.Case)) {
 	wg.Wait()
 }
 
+// RecordRuns is how many times each case runs while recording; any
+// difference between runs marks the case flaky (excluded from diffs).
+var RecordRuns = 3
+
 // RecordStats summarizes a record pass.
 type RecordStats struct{ Recorded, Flaky, TimedOut int }
 
-// Record runs every case twice against the spec's command and stores the
+// Record runs every case RecordRuns times against the spec's command and stores the
 // normalized result; cases whose two runs differ are marked flaky.
 func Record(s *spec.Spec, onlyMissing bool) (RecordStats, error) {
 	var st RecordStats
@@ -77,9 +81,12 @@ func Record(s *spec.Spec, onlyMissing bool) (RecordStats, error) {
 			return
 		}
 		r1, _, err := Exec(s, n, s.Meta.Command, c)
-		var r2 *spec.Result
-		if err == nil {
-			r2, _, err = Exec(s, n, s.Meta.Command, c)
+		flaky := false
+		for k := 1; k < RecordRuns && err == nil && !flaky; k++ {
+			var r2 *spec.Result
+			if r2, _, err = Exec(s, n, s.Meta.Command, c); err == nil {
+				flaky = diff.Compare(r1, r2, diff.Options{}) != nil
+			}
 		}
 		mu.Lock()
 		defer mu.Unlock()
@@ -90,7 +97,7 @@ func Record(s *spec.Spec, onlyMissing bool) (RecordStats, error) {
 			return
 		}
 		c.Expect = r1
-		c.Flaky = diff.Compare(r1, r2, diff.Options{}) != nil
+		c.Flaky = flaky
 		if c.Flaky {
 			st.Flaky++
 		}
@@ -122,11 +129,11 @@ type CaseResult struct {
 
 // Report is the outcome of a replay.
 type Report struct {
-	Command string
-	Results []CaseResult
+	Command                 string
+	Results                 []CaseResult
 	Pass, Fail, Skip, Error int
-	ByField map[string]int
-	Elapsed time.Duration
+	ByField                 map[string]int
+	Elapsed                 time.Duration
 }
 
 // Replay runs all cases against command (the spec's own command if empty).
