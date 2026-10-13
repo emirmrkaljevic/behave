@@ -63,3 +63,13 @@ func TestLowercaseValue(t *testing.T) {
 		t.Fatalf("%+v", fs)
 	}
 }
+
+func TestOptionalValue(t *testing.T) {
+	fs := ParseHelp("  -D, --all-repeated[=METHOD]  like -d\n      --color[=WHEN]   colorize\n")
+	if len(fs) != 2 || !fs[0].Optional || fs[0].Value != "METHOD" || !fs[1].Optional {
+		t.Fatalf("%+v", fs)
+	}
+	if a := flagArgs(fs[0], "x"); len(a) != 1 || a[0] != "--all-repeated=x" {
+		t.Fatal(a)
+	}
+}

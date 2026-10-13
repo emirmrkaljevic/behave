@@ -16,6 +16,7 @@ import (
 type Flag struct {
 	Short, Long string // "-n", "--number" (either may be empty)
 	Value       string // value placeholder; empty for boolean flags
+	Optional    bool   // value is optional (--flag[=VALUE]); must be attached with '='
 }
 
 // Name is the preferred spelling (long if available).
@@ -56,8 +57,8 @@ func ParseHelp(help string) []Flag {
 			f.Value = val
 		}
 		// Short flag followed directly by description text: "-n  number lines" -> no value
-		if f.Long == "" && f.Value == "" && m[3] != "" {
-			f.Value = ""
+		if f.Value != "" && strings.HasPrefix(raw, "[=") && f.Long != "" {
+			f.Optional = true
 		}
 		if f.Name() == "--" || seen[f.Name()] {
 			continue
@@ -132,7 +133,7 @@ func Generate(flags []Flag, o Options) []*spec.Case {
 			continue
 		}
 		usable = append(usable, f)
-		if f.Value == "" {
+		if f.Value == "" || f.Optional {
 			boolFlags = append(boolFlags, f)
 		}
 	}
@@ -185,7 +186,11 @@ func Generate(flags []Flag, o Options) []*spec.Case {
 					args := append(flagArgs(f, v), pos(a)...)
 					g.add(join("flag", f.Name(), "value", v, "arg", a), args, in.Data, nil, "flag-value")
 				}
-				g.add(join("flag", f.Name(), "missing value"), flagArgs(f, "")[:1], in.Data, nil, "error")
+				if f.Optional {
+					g.add(join("flag", f.Name(), "arg", a, "stdin", in.Name), append(flagArgs(f, ""), pos(a)...), in.Data, nil, "flag")
+				} else {
+					g.add(join("flag", f.Name(), "missing value"), flagArgs(f, "")[:1], in.Data, nil, "error")
+				}
 			}
 		}
 	}
@@ -234,8 +239,11 @@ func (g *gen) add(name string, args []string, stdin string, files map[string]str
 
 func flagArgs(f Flag, v string) []string {
 	name := f.Name()
-	if f.Value == "" {
+	if f.Value == "" || (f.Optional && v == "") {
 		return []string{name}
+	}
+	if f.Optional {
+		return []string{name + "=" + v}
 	}
 	return []string{name, v}
 }
