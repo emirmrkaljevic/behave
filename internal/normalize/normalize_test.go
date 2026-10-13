@@ -31,3 +31,11 @@ func TestBuiltins(t *testing.T) {
 		t.Fatal("want error")
 	}
 }
+
+func TestCmdBareName(t *testing.T) {
+	n, _ := New([]string{"cmd"}, nil)
+	got := string(n.Apply([]byte("sort: option '--sort' requires an argument; resort"), Context{Command: "sort"}))
+	if got != "$CMD: option '--sort' requires an argument; resort" {
+		t.Fatal(got)
+	}
+}

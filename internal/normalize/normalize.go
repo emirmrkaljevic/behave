@@ -115,7 +115,10 @@ func cmdName(b []byte, ctx Context) []byte {
 		return b
 	}
 	// Replace full path first, then the base name as a whole word.
-	s := strings.ReplaceAll(string(b), ctx.Command, "$CMD")
+	s := string(b)
+	if strings.Contains(ctx.Command, "/") {
+		s = strings.ReplaceAll(s, ctx.Command, "$CMD")
+	}
 	base := filepath.Base(ctx.Command)
 	re := regexp.MustCompile(`(^|[\s'"(\[/])` + regexp.QuoteMeta(base) + `\b`)
 	return re.ReplaceAll([]byte(s), []byte("${1}$$CMD"))
