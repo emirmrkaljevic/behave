@@ -31,6 +31,10 @@ var (
 	optLine = regexp.MustCompile(`^\s{1,12}(-[A-Za-z0-9?](?:,\s*|\s*[/|]\s*)?)?(--[A-Za-z0-9][\w-]*)?(\[?[ =][<\[]?[A-Za-z][\w.|-]*[>\]]?\]?)?`)
 )
 
+// valueTail matches what may follow a lowercase value placeholder: more
+// placeholders, then a column gap or end of line ("--arg name value   Set ...").
+var valueTail = regexp.MustCompile(`^(\s[<\[]?[a-z][\w-]*[>\]]?)*(\s{2,}|$)`)
+
 // ParseHelp extracts flags from help text. It is heuristic but conservative.
 func ParseHelp(help string) []Flag {
 	seen := map[string]bool{}
@@ -46,7 +50,9 @@ func ParseHelp(help string) []Flag {
 		val = strings.Trim(val, "[]<> =")
 		// a value placeholder is UPPER, <angled>, or after '='
 		raw := m[3]
-		if val != "" && (strings.ContainsAny(raw, "=<") || val == strings.ToUpper(val)) {
+		rest := line[len(m[0]):]
+		sep := valueTail.MatchString(rest)
+		if val != "" && (strings.ContainsAny(raw, "=<") || val == strings.ToUpper(val) || sep) {
 			f.Value = val
 		}
 		// Short flag followed directly by description text: "-n  number lines" -> no value

@@ -50,3 +50,16 @@ func TestGenerate(t *testing.T) {
 		t.Fatalf("max not applied: %d", n)
 	}
 }
+
+func TestLowercaseValue(t *testing.T) {
+	fs := ParseHelp("  --indent n         Use n spaces\n  --tab              Use tabs\n  --arg name value   Set $name\n  -s, --slurp        Read all\n")
+	want := map[string]string{"--indent": "n", "--tab": "", "--arg": "name", "--slurp": ""}
+	for _, f := range fs {
+		if w, ok := want[f.Name()]; ok && f.Value != w {
+			t.Errorf("%s value %q want %q", f.Name(), f.Value, w)
+		}
+	}
+	if len(fs) != 4 {
+		t.Fatalf("%+v", fs)
+	}
+}
