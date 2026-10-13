@@ -4,6 +4,7 @@ on:
     tags: ["v*"]
 permissions:
   contents: write
+  id-token: write # MCP Registry login via GitHub OIDC
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
@@ -21,3 +22,15 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build MCPB bundles and server.json
+        run: scripts/mcpb.sh "${GITHUB_REF_NAME#v}" dist mcpb
+      - name: Attach MCPB bundles to the release
+        run: gh release upload "$GITHUB_REF_NAME" mcpb/*.mcpb --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to the MCP Registry
+        run: |
+          curl -sL "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+          ./mcp-publisher login github-oidc
+          cp mcpb/server.json server.json
+          ./mcp-publisher publish

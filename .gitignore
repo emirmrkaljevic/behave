@@ -1,3 +1,5 @@
 *.test
 /behave
 /dist/
+mcpb/
+server.json
