@@ -3,6 +3,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"flag"
@@ -14,6 +15,7 @@ import (
 
 	"github.com/emirmrkaljevic/behave/internal/diff"
 	"github.com/emirmrkaljevic/behave/internal/engine"
+	behavemcp "github.com/emirmrkaljevic/behave/internal/mcp"
 	"github.com/emirmrkaljevic/behave/internal/normalize"
 	"github.com/emirmrkaljevic/behave/internal/probe"
 	"github.com/emirmrkaljevic/behave/internal/spec"
@@ -29,6 +31,7 @@ Usage:
   behave record <spec-dir>              (re)record expectations from the original
   behave run <spec-dir>                 replay against the original (regression check)
   behave diff <spec-dir> --impl <bin>   replay against another implementation
+  behave mcp                            serve the MCP tools over stdio
   behave normalizers                    list built-in output normalizers
   behave version
 
@@ -59,6 +62,8 @@ func main() {
 		code, err = cmdRun(args, false)
 	case "diff":
 		code, err = cmdRun(args, true)
+	case "mcp":
+		err = behavemcp.Run(context.Background(), version)
 	case "normalizers":
 		for _, n := range normalize.Names() {
 			fmt.Println(n)
