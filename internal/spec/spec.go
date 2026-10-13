@@ -70,7 +70,7 @@ func (b *Blob) MarshalYAML() (any, error) {
 	}
 	if utf8.Valid(b.Data) && !strings.ContainsRune(string(b.Data), 0) {
 		n := &yaml.Node{Kind: yaml.ScalarNode, Value: string(b.Data)}
-		if strings.Contains(n.Value, "\n") && !strings.HasSuffix(n.Value, " ") {
+		if literalSafe(n.Value) {
 			n.Style = yaml.LiteralStyle
 		} else {
 			n.Style = yaml.DoubleQuotedStyle
@@ -174,4 +174,18 @@ func Slug(s string) string {
 		}
 	}
 	return strings.Trim(b.String(), "-")
+}
+
+// literalSafe reports whether s survives a YAML literal block (|) round trip.
+// Leading newlines/spaces and trailing spaces/blank lines are not preserved
+// reliably, so such values are written double-quoted instead.
+func literalSafe(s string) bool {
+	if !strings.Contains(s, "\n") || strings.TrimSpace(s) == "" {
+		return false
+	}
+	if strings.HasPrefix(s, "\n") || strings.HasPrefix(s, " ") || strings.HasPrefix(s, "\t") ||
+		strings.ContainsAny(s, "\r\t") || strings.Contains(s, " \n") || strings.HasSuffix(s, " ") {
+		return false
+	}
+	return true
 }

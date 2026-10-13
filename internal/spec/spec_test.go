@@ -33,3 +33,26 @@ func TestRoundTrip(t *testing.T) {
 		t.Fatal(Slug("Binary & text!"))
 	}
 }
+
+func TestBlobEdgeRoundTrip(t *testing.T) {
+	dir := t.TempDir()
+	s := &Spec{Dir: dir, Meta: Meta{Command: "x"}}
+	s.SaveMeta()
+	vals := []string{"\n", "\n\n", "\na\n", "a\n\n\n", "a\n", "a", "", "  a\n", "a \nb\n", "a\r\n", "x\ty\n", "a\nb", "a\n\n"}
+	for i, v := range vals {
+		c := &Case{Name: "v", Expect: &Result{Stdout: NewBlob([]byte(v)), Stderr: NewBlob(nil)}}
+		c.File = dir + "/cases/" + string(rune('a'+i)) + ".yaml"
+		if err := s.SaveCase(c); err != nil {
+			t.Fatal(err)
+		}
+	}
+	got, err := Load(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for i, c := range got.Cases {
+		if string(c.Expect.Stdout.Bytes()) != vals[i] {
+			t.Errorf("%q round-tripped to %q", vals[i], c.Expect.Stdout.Bytes())
+		}
+	}
+}
