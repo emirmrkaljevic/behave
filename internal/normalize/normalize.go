@@ -33,13 +33,15 @@ var (
 )
 
 var builtins = map[string]builtin{
-	"ansi":      {"strip ANSI color/escape sequences", func(b []byte, _ Context) []byte { return ansiRe.ReplaceAll(b, nil) }},
-	"workdir":   {"replace the case's temp work dir with $WORKDIR", workdir},
-	"cmd":       {"replace the program name (e.g. 'jq:' vs 'gojq:') with $CMD", cmdName},
-	"timestamp": {"replace ISO dates and HH:MM:SS times with $TIME", func(b []byte, _ Context) []byte { return timeRe.ReplaceAll(isoRe.ReplaceAll(b, []byte("$$TIME")), []byte("$$TIME")) }},
-	"hexaddr":   {"replace 0x… addresses with $ADDR", func(b []byte, _ Context) []byte { return hexRe.ReplaceAll(b, []byte("$$ADDR")) }},
-	"duration":  {"replace durations like 12ms with $DURATION", func(b []byte, _ Context) []byte { return durRe.ReplaceAll(b, []byte("$$DURATION")) }},
-	"pid":       {"replace 'pid 1234' with pid $PID", func(b []byte, _ Context) []byte { return pidRe.ReplaceAll(b, []byte("pid $$PID")) }},
+	"ansi":    {"strip ANSI color/escape sequences", func(b []byte, _ Context) []byte { return ansiRe.ReplaceAll(b, nil) }},
+	"workdir": {"replace the case's temp work dir with $WORKDIR", workdir},
+	"cmd":     {"replace the program name (e.g. 'jq:' vs 'gojq:') with $CMD", cmdName},
+	"timestamp": {"replace ISO dates and HH:MM:SS times with $TIME", func(b []byte, _ Context) []byte {
+		return timeRe.ReplaceAll(isoRe.ReplaceAll(b, []byte("$$TIME")), []byte("$$TIME"))
+	}},
+	"hexaddr":  {"replace 0x… addresses with $ADDR", func(b []byte, _ Context) []byte { return hexRe.ReplaceAll(b, []byte("$$ADDR")) }},
+	"duration": {"replace durations like 12ms with $DURATION", func(b []byte, _ Context) []byte { return durRe.ReplaceAll(b, []byte("$$DURATION")) }},
+	"pid":      {"replace 'pid 1234' with pid $PID", func(b []byte, _ Context) []byte { return pidRe.ReplaceAll(b, []byte("pid $$PID")) }},
 }
 
 // Default is the normalizer set used for new specs.
