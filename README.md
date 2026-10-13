@@ -7,6 +7,8 @@ generates hundreds of test cases (every flag, flag pairs, edge-case stdin, file 
 bad values, missing files), records what the tool actually does (stdout, stderr, exit code),
 and replays those cases against another implementation.
 
+![behave recording jq and checking gojq against it](docs/demo.gif)
+
 Use it when you are:
 
 - porting a tool to Rust or Go and want proof that the port is compatible,
