@@ -8,7 +8,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -124,38 +123,11 @@ func cmdProbe(args []string) error {
 	if _, err := engine.Resolve(command); err != nil {
 		return err
 	}
-	if len(helpArgs) == 0 {
-		helpArgs = multi{"--help", "-h"}
-	}
-	var help string
-	for _, h := range helpArgs {
-		b, _ := exec.Command(command, h).CombinedOutput()
-		if len(probe.ParseHelp(string(b))) > 0 {
-			help = string(b)
-			break
-		}
-	}
-	if man, err := exec.Command("man", "-P", "cat", filepath.Base(command)).Output(); err == nil {
-		help += "\n" + string(man)
-	}
+	help := probe.HelpText(command, helpArgs)
 	flags := probe.ParseHelp(help)
-	var ins []probe.Input
-	mode := *inputs
-	if mode == "auto" {
-		mode = "text"
-		if strings.Contains(strings.ToLower(help), "json") {
-			mode = "json"
-		}
-	}
-	switch mode {
-	case "text":
-		ins = probe.TextInputs
-	case "json":
-		ins = probe.JSONInputs
-	case "both":
-		ins = append(append([]probe.Input{}, probe.TextInputs...), probe.JSONInputs...)
-	default:
-		return fmt.Errorf("--inputs: unknown value %q", *inputs)
+	ins, mode, err := probe.InputsFor(*inputs, help)
+	if err != nil {
+		return err
 	}
 	cases := probe.Generate(flags, probe.Options{Args: argSamples, Inputs: ins, Skip: skip, Max: *max, FileInput: !*noFile})
 	fmt.Printf("discovered %d flags, generated %d cases (%s inputs)\n", len(flags), len(cases), mode)
@@ -169,28 +141,11 @@ func cmdProbe(args []string) error {
 	if dir == "" {
 		dir = "behave-" + spec.Slug(filepath.Base(command))
 	}
-	if _, err := os.Stat(filepath.Join(dir, "behave.yaml")); err == nil {
-		return fmt.Errorf("%s already contains a spec; use 'behave record' or another --out", dir)
-	}
-	s := &spec.Spec{Dir: dir, Meta: spec.Meta{Command: command, TimeoutMS: *timeout, Normalize: normalize.Default,
-		RecordedBy: "behave " + version}}
-	if err := s.SaveMeta(); err != nil {
-		return err
-	}
-	for _, c := range cases {
-		if err := s.SaveCase(c); err != nil {
-			return err
-		}
-	}
-	return record(s)
-}
-
-func record(s *spec.Spec) error {
-	st, err := engine.Record(s, false)
+	sp, st, err := engine.Create(dir, command, *timeout, "behave "+version, cases)
 	if err != nil {
 		return err
 	}
-	fmt.Printf("recorded %d cases from %s into %s (%d flaky, %d timed out)\n", st.Recorded, s.Meta.Command, s.Dir, st.Flaky, st.TimedOut)
+	fmt.Printf("recorded %d cases from %s into %s (%d flaky, %d timed out)\n", st.Recorded, command, sp.Dir, st.Flaky, st.TimedOut)
 	return nil
 }
 
