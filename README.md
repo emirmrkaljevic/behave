@@ -162,6 +162,10 @@ behave only runs the binaries you point it at, in a temp directory. Don't probe 
 change things outside their working directory (package managers, `rm -rf`-style tools)
 without `--skip-flag` and a sandbox.
 
+## Links
+
+- MCP Registry name: `io.github.emirmrkaljevic/behave`
+
 ## License
 
 MIT
