@@ -271,8 +271,9 @@ func cmdRun(args []string, needImpl bool) (int, error) {
 	ignExit := fs.Bool("ignore-exit", false, "do not compare exit codes")
 	verbose := fs.Bool("v", false, "show every failing case (default: first 10)")
 	asJSON := fs.Bool("json", false, "print a JSON report")
-	var tags multi
+	var tags, skipTags multi
 	fs.Var(&tags, "tag", "only run cases with this tag, repeatable")
+	fs.Var(&skipTags, "skip-tag", "skip cases with this tag, repeatable (e.g. meta for --help/--version)")
 	jobs := fs.Int("jobs", engine.Jobs, "parallel jobs")
 	pos, err := parse(fs, args)
 	if err != nil {
@@ -285,6 +286,19 @@ func cmdRun(args []string, needImpl bool) (int, error) {
 	s, err := spec.Load(pos[0])
 	if err != nil {
 		return 2, err
+	}
+	if len(skipTags) > 0 {
+		var keep []*spec.Case
+		for _, c := range s.Cases {
+			hit := false
+			for _, t := range c.Tags {
+				hit = hit || contains(skipTags, t)
+			}
+			if !hit {
+				keep = append(keep, c)
+			}
+		}
+		s.Cases = keep
 	}
 	if len(tags) > 0 {
 		var keep []*spec.Case
