@@ -19,6 +19,8 @@ Use it when you are:
 
 ## Quick start
 
+Download a binary for Linux or macOS from [Releases](https://github.com/emirmrkaljevic/behave/releases), or:
+
 ```sh
 go install github.com/emirmrkaljevic/behave/cmd/behave@latest
 
@@ -153,7 +155,6 @@ Add your own with `behave add behave-cut --stdin 'a,b' -- -d, -f2`.
 
 - JUnit output, coverage of flags seen in help vs exercised
 - smarter value generation from help text (`WHEN can be: auto, always, never`)
-- prebuilt binaries
 
 ## Safety
 
