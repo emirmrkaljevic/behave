@@ -66,10 +66,11 @@ Run on this machine against real tools, generated cases only, `--help`/`--versio
 | GNU tr | uutils tr | 63 | 63 | none |
 | GNU cut | uutils cut | 175 | 172 | `--output-delimiter -1` rejected (value starting with `-`) |
 | GNU base64 | uutils base64 | 36 | 31 | `-d` on invalid input: GNU prints the bytes decoded so far, uutils prints nothing |
-| GNU sort | uutils sort | 290 | 260 | usage errors exit 1 instead of 2; `--debug` underline width; `--check --merge` |
-| jq 1.7 | gojq | 596 | 331* | unsupported flags (`--seq`, `--ascii-output`, …), key order, big-number formatting |
+| GNU sort | uutils sort | 290 | ~260† | usage errors exit 1 instead of 2; `--debug` underline width; `--check --merge` |
+| jq 1.7 | gojq 0.12.19 | 596 | 331* | unsupported flags (`--seq`, `--ascii-output`, …), key order, big-number formatting |
 
 \* with `--ignore-stderr`; error message wording differs almost everywhere.
+† varies by one or two: some `--random-sort` cases are only sometimes detected as flaky with tiny inputs.
 
 Many of these are deliberate design choices, not bugs. behave just makes them visible.
 
