@@ -376,6 +376,7 @@ func printReport(s *spec.Spec, rep *engine.Report, verbose bool) {
 		}
 		fmt.Println()
 	}
+	printFlagTable(rep)
 	total := len(rep.Results)
 	var fields []string
 	for f, n := range rep.ByField {
@@ -436,4 +437,55 @@ func printJSON(rep *engine.Report) {
 	enc := json.NewEncoder(os.Stdout)
 	enc.SetIndent("", "  ")
 	enc.Encode(out)
+}
+
+// printFlagTable lists the flags whose cases fail most, using "flag:" tags.
+func printFlagTable(rep *engine.Report) {
+	type st struct {
+		name        string
+		fail, total int
+	}
+	m := map[string]*st{}
+	for _, r := range rep.Results {
+		if r.Skipped != "" || contains(r.Case.Tags, "pair") {
+			continue // pairs would blame a flag for its partner's difference
+		}
+		for _, t := range r.Case.Tags {
+			name, ok := strings.CutPrefix(t, "flag:")
+			if !ok {
+				continue
+			}
+			if m[name] == nil {
+				m[name] = &st{name: name}
+			}
+			m[name].total++
+			if r.Err != nil || len(r.Mismatches) > 0 {
+				m[name].fail++
+			}
+		}
+	}
+	var rows []*st
+	for _, v := range m {
+		if v.fail > 0 {
+			rows = append(rows, v)
+		}
+	}
+	if len(rows) == 0 {
+		return
+	}
+	sort.Slice(rows, func(i, j int) bool {
+		if rows[i].fail*rows[j].total != rows[j].fail*rows[i].total {
+			return rows[i].fail*rows[j].total > rows[j].fail*rows[i].total
+		}
+		return rows[i].name < rows[j].name
+	})
+	fmt.Println("flags with differences:")
+	for i, r := range rows {
+		if i == 12 {
+			fmt.Printf("  … %d more\n", len(rows)-i)
+			break
+		}
+		fmt.Printf("  %-28s %3d/%-3d cases differ\n", r.name, r.fail, r.total)
+	}
+	fmt.Printf("flags fully compatible: %d of %d\n\n", len(m)-len(rows), len(m))
 }
