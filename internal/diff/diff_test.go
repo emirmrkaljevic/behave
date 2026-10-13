@@ -26,3 +26,10 @@ func TestCompare(t *testing.T) {
 		t.Fatal("trailing newline not marked")
 	}
 }
+
+func TestBinaryRendering(t *testing.T) {
+	got := Lines("ok\n", "ok\n\xff\x00\r\n")
+	if !strings.Contains(got, `+ \xff\x00\r`) {
+		t.Fatal(got)
+	}
+}

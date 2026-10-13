@@ -4,7 +4,9 @@ package diff
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
+	"unicode/utf8"
 
 	"github.com/emirmrkaljevic/behave/internal/spec"
 )
@@ -117,6 +119,13 @@ func split(s string) []string {
 		lines = lines[:len(lines)-1]
 	}
 	for i, l := range lines {
+		if !utf8.ValidString(l) || strings.ContainsAny(l, "\x00\r") {
+			q := strconv.Quote(l)
+			l = q[1 : len(q)-1]
+			if strings.HasSuffix(l, `\n`) {
+				l = strings.TrimSuffix(l, `\n`) + "\n"
+			}
+		}
 		if strings.HasSuffix(l, "\n") {
 			lines[i] = strings.TrimSuffix(l, "\n")
 		} else {
