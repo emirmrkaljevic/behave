@@ -19,3 +19,4 @@ jobs:
           ./behave probe wc --out /tmp/spec-wc
           ./behave run /tmp/spec-wc
           ./behave run examples/cut
+          ./behave run examples/paste

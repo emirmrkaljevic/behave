@@ -1,0 +1,21 @@
+name: 'parallel: three files'
+args:
+  - a.txt
+  - b.txt
+  - c.txt
+files:
+  a.txt: |
+    a
+    b
+  b.txt: |
+    1
+    2
+  c.txt: |
+    x
+    y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\t1\tx\nb\t2\ty\n"
+  stderr: ""

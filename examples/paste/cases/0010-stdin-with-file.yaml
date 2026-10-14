@@ -1,0 +1,17 @@
+name: 'stdin: with file'
+args:
+  - a.txt
+  - '-'
+stdin: |
+  a
+  b
+files:
+  a.txt: |
+    1
+    2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "1\ta\n2\tb\n"
+  stderr: ""

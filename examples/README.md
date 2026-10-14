@@ -50,6 +50,26 @@ Add `--ignore-stderr` if you only care about output and exit codes (26/27 here).
 On macOS the system `cut` is BSD, so `behave run` will show real differences there;
 with Homebrew coreutils use `behave diff examples/cut --impl gcut`.
 
+
+## `paste/` — 18 recorded cases for GNU `paste`
+
+Parallel and serial paste, custom delimiter lists (including empty and cycling),
+stdin with files, empty inputs, `-z`, and error paths. Recorded with GNU coreutils 9.7.
+
+```sh
+behave run examples/paste
+# paste vs paste: 18/18 passed, 0 failed, 0 skipped
+```
+
+Against uutils 0.12.0 (stderr wording differs on errors; output and exits match):
+
+```sh
+behave diff examples/paste --impl ./coreutils-0.12.0/paste
+# 16/18 — both failures are stderr only
+behave diff examples/paste --impl ./coreutils-0.12.0/paste --ignore-stderr
+# 18/18
+```
+
 ## Grow it
 
 ```sh

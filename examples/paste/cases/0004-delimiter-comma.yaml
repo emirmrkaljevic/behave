@@ -1,0 +1,20 @@
+name: 'delimiter: comma'
+args:
+  - -d,
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    a
+    b
+  b.txt: |
+    1
+    2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a,1
+    b,2
+  stderr: ""

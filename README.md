@@ -34,8 +34,8 @@ behave run behave-sort
 behave diff behave-sort --impl ./target/release/sort --skip-tag meta
 ```
 
-Or try the committed example first: `behave run examples/cut` replays 27 recorded GNU `cut`
-cases (see [examples/](examples/)).
+Or try the committed examples first: `behave run examples/cut` (27 GNU `cut` cases) or
+`behave run examples/paste` (18 GNU `paste` cases); see [examples/](examples/).
 
 For tools that need a positional argument (a filter, a pattern, a field list), give samples:
 

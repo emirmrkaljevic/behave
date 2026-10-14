@@ -1,0 +1,24 @@
+name: 'delimiter: list cycles'
+args:
+  - '-d,:'
+  - a.txt
+  - b.txt
+  - c.txt
+files:
+  a.txt: |
+    a
+    b
+  b.txt: |
+    1
+    2
+  c.txt: |
+    x
+    y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a,1:x
+    b,2:y
+  stderr: ""

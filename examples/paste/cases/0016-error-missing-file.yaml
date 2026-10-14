@@ -1,0 +1,10 @@
+name: 'error: missing file'
+args:
+  - nosuch-paste-file-xyz
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: nosuch-paste-file-xyz: No such file or directory

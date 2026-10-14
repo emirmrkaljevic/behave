@@ -1,0 +1,15 @@
+name: single file passthrough
+args:
+  - a.txt
+files:
+  a.txt: |
+    a
+    b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+  stderr: ""

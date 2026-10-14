@@ -1,0 +1,21 @@
+name: delimiter backslash-zero
+args:
+  - -d
+  - \0
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    a
+    b
+  b.txt: |
+    1
+    2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a1
+    b2
+  stderr: ""

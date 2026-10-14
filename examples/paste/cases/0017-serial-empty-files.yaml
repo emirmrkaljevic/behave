@@ -1,0 +1,14 @@
+name: serial empty files
+args:
+  - -s
+  - a.txt
+  - b.txt
+files:
+  a.txt: ""
+  b.txt: ""
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\n\n"
+  stderr: ""

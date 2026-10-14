@@ -1,0 +1,14 @@
+name: empty file
+args:
+  - a.txt
+  - b.txt
+files:
+  a.txt: ""
+  b.txt: |
+    1
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\t1\n"
+  stderr: ""

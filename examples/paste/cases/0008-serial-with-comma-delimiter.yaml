@@ -1,0 +1,21 @@
+name: 'serial: with comma delimiter'
+args:
+  - -s
+  - -d,
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    a
+    b
+  b.txt: |
+    1
+    2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a,b
+    1,2
+  stderr: ""
