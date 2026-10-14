@@ -86,8 +86,10 @@ func main() {
 	os.Exit(code)
 }
 
-// parse lets flags appear after positional arguments.
+// parse lets flags appear after positional arguments. Everything from the
+// first "--" in flag position on is returned unparsed, "--" included.
 func parse(fs *flag.FlagSet, args []string) ([]string, error) {
+	args, rest := splitDashDash(fs, args)
 	var pos []string
 	for {
 		if err := fs.Parse(args); err != nil {
@@ -95,14 +97,33 @@ func parse(fs *flag.FlagSet, args []string) ([]string, error) {
 		}
 		args = fs.Args()
 		if len(args) == 0 {
-			return pos, nil
-		}
-		if args[0] == "--" {
-			return append(pos, args...), nil
+			return append(pos, rest...), nil
 		}
 		pos = append(pos, args[0])
 		args = args[1:]
 	}
+}
+
+// splitDashDash splits args at the first "--" that is not the value of a flag.
+func splitDashDash(fs *flag.FlagSet, args []string) (before, rest []string) {
+	for i := 0; i < len(args); i++ {
+		a := args[i]
+		if a == "--" {
+			return args[:i], args[i:]
+		}
+		if len(a) < 2 || a[0] != '-' || strings.Contains(a, "=") {
+			continue
+		}
+		f := fs.Lookup(strings.TrimLeft(a, "-"))
+		if f == nil {
+			continue
+		}
+		if b, ok := f.Value.(interface{ IsBoolFlag() bool }); ok && b.IsBoolFlag() {
+			continue
+		}
+		i++ // skip the flag's value
+	}
+	return args, nil
 }
 
 func cmdProbe(args []string) error {
@@ -182,11 +203,11 @@ func cmdAdd(args []string) error {
 	stdin := fs.String("stdin", "", "stdin content")
 	var files multi
 	fs.Var(&files, "file", "input file NAME=CONTENT, repeatable")
-	if err := fs.Parse(args); err != nil {
+	rest, err := parse(fs, args)
+	if err != nil {
 		return err
 	}
-	rest := fs.Args()
-	if len(rest) < 1 {
+	if len(rest) < 1 || rest[0] == "--" {
 		return errors.New("usage: behave add <spec-dir> [--name N] [--stdin S] [--file N=C] -- ARGS...")
 	}
 	s, err := spec.Load(rest[0])
