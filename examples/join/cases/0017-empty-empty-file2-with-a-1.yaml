@@ -1,0 +1,19 @@
+name: 'empty: empty file2 with -a 1'
+args:
+  - -a
+  - "1"
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1 a
+    2 b
+  b.txt: ""
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1 a
+    2 b
+  stderr: ""

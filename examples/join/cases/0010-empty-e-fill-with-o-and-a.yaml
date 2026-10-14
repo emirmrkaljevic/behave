@@ -1,0 +1,32 @@
+name: 'empty: -e fill with -o and -a'
+args:
+  - -t,
+  - -a
+  - "1"
+  - -a
+  - "2"
+  - -e
+  - MISSING
+  - -o
+  - 0,1.2,1.3,2.2,2.3
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1,a,aa
+    2,b,bb
+    4,d,dd
+  b.txt: |
+    1,x,xx
+    2,y,yy
+    3,z,zz
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1,a,aa,x,xx
+    2,b,bb,y,yy
+    3,MISSING,MISSING,z,zz
+    4,d,dd,MISSING,MISSING
+  stderr: ""

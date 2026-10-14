@@ -1,0 +1,24 @@
+name: 'key: -j join on field 2'
+args:
+  - -j
+  - "2"
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    a 1
+    b 2
+    c 3
+  b.txt: |
+    x 1
+    y 2
+    z 3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1 a x
+    2 b y
+    3 c z
+  stderr: ""

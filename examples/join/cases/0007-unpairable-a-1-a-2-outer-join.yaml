@@ -1,0 +1,27 @@
+name: 'unpairable: -a 1 -a 2 outer join'
+args:
+  - -a
+  - "1"
+  - -a
+  - "2"
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1 a
+    2 b
+    4 d
+  b.txt: |
+    1 x
+    2 y
+    3 z
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1 a x
+    2 b y
+    3 z
+    4 d
+  stderr: ""

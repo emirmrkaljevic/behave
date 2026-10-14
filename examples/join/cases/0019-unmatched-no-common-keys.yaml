@@ -1,0 +1,17 @@
+name: 'unmatched: no common keys'
+args:
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1 a
+    2 b
+  b.txt: |
+    3 x
+    4 y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

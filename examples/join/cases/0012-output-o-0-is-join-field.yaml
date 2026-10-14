@@ -1,0 +1,21 @@
+name: 'output: -o 0 is join field'
+args:
+  - -o
+  - 0,1.2,2.2
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1 a extra
+    2 b more
+  b.txt: |
+    1 x
+    2 y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1 a x
+    2 b y
+  stderr: ""

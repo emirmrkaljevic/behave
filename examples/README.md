@@ -70,6 +70,28 @@ behave diff examples/paste --impl ./coreutils-0.12.0/paste --ignore-stderr
 # 18/18
 ```
 
+
+
+## `join/` — 26 recorded cases for GNU `join`
+
+Join keys (`-1`/`-2`/`-j`), `-a`/`-v` unpairable lines, `-e` empty fills with `-o`,
+`-t` delimiters, `-i`, `--header`, stdin as a file, empty inputs, `-z`, and error paths.
+Recorded with GNU coreutils 9.7.
+
+```sh
+behave run examples/join
+# join vs join: 26/26 passed, 0 failed, 0 skipped
+```
+
+Against uutils 0.12.0:
+
+```sh
+behave diff examples/join --impl ./coreutils-0.12.0/join
+# 23/26 — two stderr-only usage errors, plus -o fields as separate operands (exit/stdout)
+behave diff examples/join --impl ./coreutils-0.12.0/join --ignore-stderr
+# 25/26 — remaining miss is GNU accepting `join -o 1.1 1.2 2.2 …` (uutils rejects)
+```
+
 ## Grow it
 
 ```sh

@@ -1,0 +1,19 @@
+name: 'delimiter: tab separator'
+args:
+  - -t
+  - "\t"
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1	a
+    2	b
+  b.txt: |
+    1	x
+    2	y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "1\ta\tx\n2\tb\ty\n"
+  stderr: ""

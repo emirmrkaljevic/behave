@@ -1,0 +1,14 @@
+name: 'error: only one file'
+args:
+  - a.txt
+files:
+  a.txt: |
+    1 a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: missing operand after ‘a.txt’
+    Try '$CMD --help' for more information.

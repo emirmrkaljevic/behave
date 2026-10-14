@@ -1,0 +1,22 @@
+name: 'unpairable: -v 1 suppress joined'
+args:
+  - -v
+  - "1"
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1 a
+    2 b
+    4 d
+  b.txt: |
+    1 x
+    2 y
+    3 z
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    4 d
+  stderr: ""

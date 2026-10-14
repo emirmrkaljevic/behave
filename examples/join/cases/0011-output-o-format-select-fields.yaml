@@ -1,0 +1,22 @@
+name: 'output: -o format select fields'
+args:
+  - -t,
+  - -o
+  - 1.1,1.3,2.3
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1,a,aa
+    2,b,bb
+  b.txt: |
+    1,x,xx
+    2,y,yy
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1,aa,xx
+    2,bb,yy
+  stderr: ""

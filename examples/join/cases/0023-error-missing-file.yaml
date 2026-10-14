@@ -1,0 +1,14 @@
+name: 'error: missing file'
+args:
+  - a.txt
+  - nosuch-join-file-xyz
+files:
+  a.txt: |
+    1 a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: nosuch-join-file-xyz: No such file or directory

@@ -1,0 +1,24 @@
+name: 'unpairable: -a 1 also print from file1'
+args:
+  - -a
+  - "1"
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1 a
+    2 b
+    4 d
+  b.txt: |
+    1 x
+    2 y
+    3 z
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1 a x
+    2 b y
+    4 d
+  stderr: ""

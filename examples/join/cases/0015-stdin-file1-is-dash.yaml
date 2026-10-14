@@ -1,0 +1,22 @@
+name: 'stdin: file1 is dash'
+args:
+  - '-'
+  - b.txt
+stdin: |
+  1 a
+  2 b
+  3 c
+files:
+  b.txt: |
+    1 x
+    2 y
+    3 z
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1 a x
+    2 b y
+    3 c z
+  stderr: ""

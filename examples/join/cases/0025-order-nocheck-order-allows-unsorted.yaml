@@ -1,0 +1,19 @@
+name: 'order: --nocheck-order allows unsorted'
+args:
+  - --nocheck-order
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    2 b
+    1 a
+  b.txt: |
+    1 x
+    2 y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2 b y
+  stderr: ""

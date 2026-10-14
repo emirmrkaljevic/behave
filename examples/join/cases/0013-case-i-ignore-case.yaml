@@ -1,0 +1,21 @@
+name: 'case: -i ignore case'
+args:
+  - -t,
+  - -i
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    A,a
+    B,b
+  b.txt: |
+    a,x
+    b,y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A,a,x
+    B,b,y
+  stderr: ""

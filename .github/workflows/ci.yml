@@ -20,3 +20,4 @@ jobs:
           ./behave run /tmp/spec-wc
           ./behave run examples/cut
           ./behave run examples/paste
+          ./behave run examples/join

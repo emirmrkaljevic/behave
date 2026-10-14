@@ -1,0 +1,24 @@
+name: 'header: --header prints first lines unpaired'
+args:
+  - -t,
+  - --header
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    id,name
+    1,alice
+    2,bob
+  b.txt: |
+    id,role
+    1,admin
+    2,user
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    id,name,role
+    1,alice,admin
+    2,bob,user
+  stderr: ""

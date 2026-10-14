@@ -1,0 +1,15 @@
+name: 'zero: -z NUL line delimiter'
+args:
+  - -z
+  - a.txt
+  - b.txt
+files:
+  a.txt: 1 a
+  b.txt: 1 x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: MSBhIHgA
+  stderr: ""
