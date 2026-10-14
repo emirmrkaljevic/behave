@@ -1,0 +1,15 @@
+name: 'fields: line without delimiter is printed as is'
+args:
+  - -d,
+  - -f2
+stdin: |
+  a,b
+  nodelim
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+    nodelim
+  stderr: ""

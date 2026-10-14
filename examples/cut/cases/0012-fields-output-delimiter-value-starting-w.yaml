@@ -1,0 +1,17 @@
+name: 'fields: --output-delimiter value starting with -'
+args:
+  - -d,
+  - -f1,2
+  - --output-delimiter
+  - "-1"
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a-1b
+    1-12
+  stderr: ""

@@ -1,0 +1,12 @@
+name: 'characters: -c2-'
+args:
+  - -c2-
+stdin: |
+  hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ello
+  stderr: ""

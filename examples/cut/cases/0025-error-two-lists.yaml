@@ -1,0 +1,15 @@
+name: 'error: two lists'
+args:
+  - -b1
+  - -f1
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: only one list may be specified
+    Try '$CMD --help' for more information.

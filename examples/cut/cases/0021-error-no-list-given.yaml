@@ -1,0 +1,13 @@
+name: 'error: no list given'
+args: []
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: you must specify a list of bytes, characters, or fields
+    Try '$CMD --help' for more information.

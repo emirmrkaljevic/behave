@@ -1,0 +1,15 @@
+name: 'fields: up to field 2 (-2)'
+args:
+  - -d,
+  - -f-2
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a,b
+    1,2
+  stderr: ""

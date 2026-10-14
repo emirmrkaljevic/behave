@@ -1,0 +1,12 @@
+name: 'fields: last line without newline'
+args:
+  - -d,
+  - -f2
+stdin: "a,b"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+  stderr: ""

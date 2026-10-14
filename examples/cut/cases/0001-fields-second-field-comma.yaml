@@ -1,0 +1,15 @@
+name: 'fields: second field, comma'
+args:
+  - -d,
+  - -f2
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+    2
+  stderr: ""

@@ -1,0 +1,11 @@
+name: 'error: missing file'
+args:
+  - -f1
+  - missing.txt
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: missing.txt: No such file or directory

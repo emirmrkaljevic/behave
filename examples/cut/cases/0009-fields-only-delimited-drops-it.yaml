@@ -1,0 +1,15 @@
+name: 'fields: --only-delimited drops it'
+args:
+  - -s
+  - -d,
+  - -f2
+stdin: |
+  a,b
+  nodelim
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+  stderr: ""

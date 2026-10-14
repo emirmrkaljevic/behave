@@ -1,0 +1,14 @@
+name: 'bytes: range 1-3'
+args:
+  - -b1-3
+stdin: |
+  hello
+  world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hel
+    wor
+  stderr: ""

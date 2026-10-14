@@ -1,0 +1,13 @@
+name: 'fields: space delimiter'
+args:
+  - '-d '
+  - -f2
+stdin: |
+  one two three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    two
+  stderr: ""

@@ -1,0 +1,12 @@
+name: 'bytes: list 1,5'
+args:
+  - -b1,5
+stdin: |
+  hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ho
+  stderr: ""

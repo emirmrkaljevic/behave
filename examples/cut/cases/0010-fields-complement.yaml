@@ -1,0 +1,16 @@
+name: 'fields: --complement'
+args:
+  - --complement
+  - -d,
+  - -f2
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a,c
+    1,3
+  stderr: ""

@@ -1,0 +1,13 @@
+name: 'fields: past the last field'
+args:
+  - -d,
+  - -f5
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\n\n"
+  stderr: ""

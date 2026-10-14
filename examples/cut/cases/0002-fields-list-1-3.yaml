@@ -1,0 +1,15 @@
+name: 'fields: list 1,3'
+args:
+  - -d,
+  - -f1,3
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a,c
+    1,3
+  stderr: ""

@@ -1,0 +1,11 @@
+name: 'fields: default delimiter is TAB'
+args:
+  - -f2
+stdin: "a\tb\tc\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+  stderr: ""

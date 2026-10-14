@@ -1,0 +1,14 @@
+name: 'error: field 0'
+args:
+  - -f0
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: fields are numbered from 1
+    Try '$CMD --help' for more information.

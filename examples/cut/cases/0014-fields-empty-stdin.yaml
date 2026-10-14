@@ -1,0 +1,9 @@
+name: 'fields: empty stdin'
+args:
+  - -f1
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

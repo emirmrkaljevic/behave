@@ -1,0 +1,14 @@
+name: 'error: decreasing range'
+args:
+  - -f3-1
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid decreasing range
+    Try '$CMD --help' for more information.

@@ -1,0 +1,19 @@
+name: 'fields: file and stdin (-)'
+args:
+  - -d,
+  - -f1
+  - a.txt
+  - '-'
+stdin: |
+  x,y
+files:
+  a.txt: |
+    1,2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+    x
+  stderr: ""

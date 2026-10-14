@@ -1,0 +1,17 @@
+name: 'fields: from a file'
+args:
+  - '-d:'
+  - -f1,7
+  - users.txt
+files:
+  users.txt: |
+    root:x:0:0:root:/root:/bin/bash
+    alice:x:1000:1000::/home/alice:/bin/sh
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    root:/bin/bash
+    alice:/bin/sh
+  stderr: ""

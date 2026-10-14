@@ -1,0 +1,16 @@
+name: 'error: delimiter longer than one character'
+args:
+  - -d
+  - ab
+  - -f1
+stdin: |
+  a,b,c
+  1,2,3
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: the delimiter must be a single character
+    Try '$CMD --help' for more information.

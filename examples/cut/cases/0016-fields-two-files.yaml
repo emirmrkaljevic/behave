@@ -1,0 +1,19 @@
+name: 'fields: two files'
+args:
+  - -d,
+  - -f2
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1,2
+  b.txt: |
+    3,4
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2
+    4
+  stderr: ""
