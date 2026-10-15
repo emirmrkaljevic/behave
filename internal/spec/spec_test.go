@@ -2,6 +2,8 @@ package spec
 
 import (
 	"bytes"
+	"os"
+	"path/filepath"
 	"testing"
 )
 
@@ -54,5 +56,31 @@ func TestBlobEdgeRoundTrip(t *testing.T) {
 		if string(c.Expect.Stdout.Bytes()) != vals[i] {
 			t.Errorf("%q round-tripped to %q", vals[i], c.Expect.Stdout.Bytes())
 		}
+	}
+}
+
+func TestSaveCaseCreatesCasesDir(t *testing.T) {
+	dir := t.TempDir()
+	// behave.yaml present, but no cases/ yet — mirrors hand-written bootstrap for `behave add`
+	if err := os.WriteFile(filepath.Join(dir, "behave.yaml"), []byte("command: fold\ntimeout_ms: 5000\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	s, err := Load(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	c := &Case{Name: "basic", Args: []string{"-w", "10"}, Tags: []string{"manual"}, Expect: &Result{Exit: 0, Stdout: NewBlob([]byte("hi\n")), Stderr: NewBlob(nil)}}
+	if err := s.SaveCase(c); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(filepath.Join(dir, "cases")); err != nil {
+		t.Fatalf("cases/ not created: %v", err)
+	}
+	got, err := Load(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(got.Cases) != 1 || got.Cases[0].Name != "basic" {
+		t.Fatalf("reload: %+v", got.Cases)
 	}
 }

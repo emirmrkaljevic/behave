@@ -136,6 +136,9 @@ func (s *Spec) SaveMeta() error {
 
 // SaveCase writes c to its file, assigning a file name if it has none.
 func (s *Spec) SaveCase(c *Case) error {
+	if err := os.MkdirAll(filepath.Join(s.Dir, "cases"), 0o755); err != nil {
+		return err
+	}
 	if c.File == "" {
 		c.File = filepath.Join(s.Dir, "cases", fmt.Sprintf("%04d-%s.yaml", len(s.Cases)+1, Slug(c.Name)))
 		s.Cases = append(s.Cases, c)
