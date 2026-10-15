@@ -1,0 +1,8 @@
+command: fold
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+  - timestamp
+recorded_by: behave 0.1.2

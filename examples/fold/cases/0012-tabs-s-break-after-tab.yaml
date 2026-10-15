@@ -1,0 +1,12 @@
+name: 'tabs: -s break after tab'
+args:
+  - -s
+  - -w
+  - "12"
+stdin: "word\tword\tword\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "word\t\nword\tword\n"
+  stderr: ""

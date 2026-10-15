@@ -1,0 +1,11 @@
+name: 'cr: carriage return resets column'
+args:
+  - -w
+  - "4"
+stdin: "abcdef\rghijkl\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "abcd\nef\rghij\nkl\n"
+  stderr: ""

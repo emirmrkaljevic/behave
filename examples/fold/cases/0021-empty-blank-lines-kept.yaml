@@ -1,0 +1,11 @@
+name: 'empty: blank lines kept'
+args:
+  - -w
+  - "3"
+stdin: "\n\nabcdefg\n\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\n\nabc\ndef\ng\n\n"
+  stderr: ""

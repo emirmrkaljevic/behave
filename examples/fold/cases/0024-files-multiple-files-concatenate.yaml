@@ -1,0 +1,22 @@
+name: 'files: multiple files concatenate'
+args:
+  - -w
+  - "3"
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    abcdefg
+  b.txt: hijklmn
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |-
+    abc
+    def
+    g
+    hij
+    klm
+    n
+  stderr: ""

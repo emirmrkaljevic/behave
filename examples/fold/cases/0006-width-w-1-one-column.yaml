@@ -1,0 +1,15 @@
+name: 'width: -w 1 one column'
+args:
+  - -w
+  - "1"
+stdin: |
+  abc
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+    c
+  stderr: ""

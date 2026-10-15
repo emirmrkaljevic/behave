@@ -1,0 +1,12 @@
+name: 'bytes: -b counts tabs as one byte'
+args:
+  - -b
+  - -w
+  - "4"
+stdin: "a\tb\tc\td\te\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\tb\t\nc\td\t\ne\n"
+  stderr: ""

@@ -1,0 +1,13 @@
+name: 'spaces: -s trailing spaces kept'
+args:
+  - -s
+  - -w
+  - "8"
+stdin: |
+  aaa bbb    ccc ddd
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "aaa bbb \n   ccc \nddd\n"
+  stderr: ""

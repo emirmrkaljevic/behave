@@ -1,0 +1,15 @@
+name: 'width: --width=5 long form'
+args:
+  - --width=5
+stdin: |
+  abcdefghijklmnop
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    abcde
+    fghij
+    klmno
+    p
+  stderr: ""

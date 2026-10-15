@@ -1,0 +1,13 @@
+name: 'spaces: -s break at blanks'
+args:
+  - -s
+  - -w
+  - "10"
+stdin: |
+  the quick brown fox jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "the quick \nbrown fox \njumps \nover the \nlazy dog\n"
+  stderr: ""

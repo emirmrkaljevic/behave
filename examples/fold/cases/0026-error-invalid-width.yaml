@@ -1,0 +1,13 @@
+name: 'error: invalid width'
+args:
+  - -w
+  - abc
+stdin: |
+  abc
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid number of columns: ‘abc’

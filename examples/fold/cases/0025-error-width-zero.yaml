@@ -1,0 +1,13 @@
+name: 'error: width zero'
+args:
+  - -w
+  - "0"
+stdin: |
+  abc
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid number of columns: ‘0’: Numerical result out of range

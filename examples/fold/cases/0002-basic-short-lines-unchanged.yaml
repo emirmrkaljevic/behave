@@ -1,0 +1,13 @@
+name: 'basic: short lines unchanged'
+args: []
+stdin: |
+  hello
+  world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hello
+    world
+  stderr: ""

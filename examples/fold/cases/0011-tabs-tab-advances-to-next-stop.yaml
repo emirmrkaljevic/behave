@@ -1,0 +1,11 @@
+name: 'tabs: tab advances to next stop'
+args:
+  - -w
+  - "10"
+stdin: "a\tb\tc\td\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\tb\n\tc\n\td\n"
+  stderr: ""

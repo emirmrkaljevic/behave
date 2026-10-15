@@ -1,0 +1,12 @@
+name: 'backspace: -b counts backspace as byte'
+args:
+  - -b
+  - -w
+  - "4"
+stdin: "abc\bdefgh\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "abc\b\ndefg\nh\n"
+  stderr: ""

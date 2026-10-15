@@ -1,0 +1,12 @@
+name: 'width: -w 10 hard wrap'
+args:
+  - -w
+  - "10"
+stdin: |
+  the quick brown fox jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "the quick \nbrown fox \njumps over\n the lazy \ndog\n"
+  stderr: ""

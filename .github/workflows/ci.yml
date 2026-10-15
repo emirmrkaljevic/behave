@@ -22,3 +22,4 @@ jobs:
           ./behave run examples/paste
           ./behave run examples/join
           ./behave run examples/nl
+          ./behave run examples/fold

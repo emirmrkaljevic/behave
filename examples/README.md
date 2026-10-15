@@ -114,6 +114,26 @@ behave diff examples/nl --impl ./coreutils-0.12.0/nl --ignore-stderr
 # 26/26
 ```
 
+## `fold/` — 28 recorded cases for GNU `fold`
+
+`-w` widths (default 80, obsolete `-5`, width 1), `-s` breaking at blanks, `-b` bytes,
+tabs, backspace and carriage return, multibyte input, stdin/files, empty input, and errors.
+Recorded with GNU coreutils 9.7.
+
+```sh
+behave run examples/fold
+# fold vs fold: 28/28 passed, 0 failed, 0 skipped
+```
+
+Against uutils 0.12.0:
+
+```sh
+behave diff examples/fold --impl ./coreutils-0.12.0/fold
+# 24/28 — three stderr-only errors, plus multibyte input (stdout)
+behave diff examples/fold --impl ./coreutils-0.12.0/fold --ignore-stderr
+# 27/28 — GNU 9.7 wraps UTF-8 by bytes; 9.8+ (and uutils) wrap by column
+```
+
 ## Grow it
 
 ```sh

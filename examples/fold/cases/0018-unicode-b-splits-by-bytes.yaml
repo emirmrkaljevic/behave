@@ -1,0 +1,16 @@
+name: 'unicode: -b splits by bytes'
+args:
+  - -b
+  - -w
+  - "4"
+stdin: |
+  čćžšđ
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    čć
+    žš
+    đ
+  stderr: ""

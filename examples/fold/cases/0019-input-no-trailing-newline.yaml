@@ -1,0 +1,15 @@
+name: 'input: no trailing newline'
+args:
+  - -w
+  - "3"
+stdin: "abcdefghij"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |-
+    abc
+    def
+    ghi
+    j
+  stderr: ""

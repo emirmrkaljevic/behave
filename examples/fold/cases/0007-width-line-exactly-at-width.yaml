@@ -1,0 +1,16 @@
+name: 'width: line exactly at width'
+args:
+  - -w
+  - "5"
+stdin: |
+  abcde
+  abcdef
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    abcde
+    abcde
+    f
+  stderr: ""

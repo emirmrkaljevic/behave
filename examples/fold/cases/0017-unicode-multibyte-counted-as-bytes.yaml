@@ -1,0 +1,17 @@
+name: 'unicode: multibyte counted as bytes (GNU 9.7)'
+args:
+  - -w
+  - "4"
+stdin: |
+  čćžšđčćžšđ
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    čć
+    žš
+    đč
+    ćž
+    šđ
+  stderr: ""

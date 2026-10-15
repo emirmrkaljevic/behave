@@ -1,0 +1,14 @@
+name: 'width: -5 obsolete numeric option'
+args:
+  - "-5"
+stdin: |
+  abcdefghijkl
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    abcde
+    fghij
+    kl
+  stderr: ""

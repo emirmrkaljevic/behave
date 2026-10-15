@@ -1,0 +1,15 @@
+name: 'file: fold a file'
+args:
+  - -s
+  - -w
+  - "12"
+  - t.txt
+files:
+  t.txt: |
+    lorem ipsum dolor sit amet
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "lorem ipsum \ndolor sit \namet\n"
+  stderr: ""

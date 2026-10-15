@@ -1,0 +1,11 @@
+name: 'backspace: column moves back'
+args:
+  - -w
+  - "4"
+stdin: "abc\bdefgh\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "abc\bde\nfgh\n"
+  stderr: ""

@@ -1,0 +1,13 @@
+name: 'spaces: --spaces word longer than width'
+args:
+  - --spaces
+  - -w
+  - "6"
+stdin: |
+  a verylongwordhere b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a \nverylo\nngword\nhere b\n"
+  stderr: ""
