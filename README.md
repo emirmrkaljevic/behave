@@ -149,10 +149,12 @@ Add your own with `behave add behave-cut --stdin 'a,b' -- -d, -f2`.
 | `behave record <spec>` | re-record expectations from the original |
 | `behave add <spec> -- ARGS` | add one hand-written case |
 | `behave run <spec>` | replay against the original |
-| `behave diff <spec> --impl <bin>` | replay against another implementation (`--ignore-stderr`, `--ignore-exit`, `--tag`, `--skip-tag`, `--json`, `-v`) |
+| `behave diff <spec> --impl <bin>` | replay against another implementation (`--ignore-stderr`, `--ignore-exit`, `--tag`, `--skip-tag`, `--json`, `--junit file`, `-v`) |
 | `behave normalizers` | list built-in normalizers |
 
-`run` and `diff` exit with 1 when any case fails, so they drop straight into CI.
+`run` and `diff` exit with 1 when any case fails, so they drop straight into CI. Pass `--junit report.xml` to write a JUnit XML report for CI dashboards (GitHub Actions, Jenkins, etc.).
+
+The repo ships a multi-stage `Dockerfile` that builds the binary and starts `behave mcp` on stdio (for Glama and other MCP registries that build from a Dockerfile).
 
 ## Roadmap
 

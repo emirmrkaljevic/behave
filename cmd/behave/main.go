@@ -15,6 +15,7 @@ import (
 
 	"github.com/emirmrkaljevic/behave/internal/diff"
 	"github.com/emirmrkaljevic/behave/internal/engine"
+	"github.com/emirmrkaljevic/behave/internal/junit"
 	behavemcp "github.com/emirmrkaljevic/behave/internal/mcp"
 	"github.com/emirmrkaljevic/behave/internal/normalize"
 	"github.com/emirmrkaljevic/behave/internal/probe"
@@ -253,6 +254,7 @@ func cmdRun(args []string, needImpl bool) (int, error) {
 	verbose := fs.Bool("v", false, "show every failing case")
 	maxFail := fs.Int("max-failures", 10, "failing cases to show in detail")
 	asJSON := fs.Bool("json", false, "print a JSON report")
+	junitPath := fs.String("junit", "", "write a JUnit XML report to this file")
 	var tags, skipTags multi
 	fs.Var(&tags, "tag", "only run cases with this tag, repeatable")
 	fs.Var(&skipTags, "skip-tag", "skip cases with this tag, repeatable (e.g. meta for --help/--version)")
@@ -302,6 +304,20 @@ func cmdRun(args []string, needImpl bool) (int, error) {
 		printJSON(rep)
 	} else {
 		printReport(s, rep, *verbose, *maxFail)
+	}
+	if *junitPath != "" {
+		f, err := os.Create(*junitPath)
+		if err != nil {
+			return 2, err
+		}
+		err = junit.Write(f, rep)
+		closeErr := f.Close()
+		if err != nil {
+			return 2, err
+		}
+		if closeErr != nil {
+			return 2, closeErr
+		}
 	}
 	if rep.Fail+rep.Error > 0 {
 		return 1, nil
