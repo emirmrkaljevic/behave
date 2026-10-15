@@ -1,0 +1,15 @@
+name: 'file: number lines from file'
+args:
+  - t.txt
+files:
+  t.txt: |
+    alpha
+    beta
+
+    gamma
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\talpha\n     2\tbeta\n       \n     3\tgamma\n"
+  stderr: ""

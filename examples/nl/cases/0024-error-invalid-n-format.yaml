@@ -1,0 +1,14 @@
+name: 'error: invalid -n format'
+args:
+  - -n
+  - xx
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid line numbering format: ‘xx’
+    Try '$CMD --help' for more information.

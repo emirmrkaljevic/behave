@@ -1,0 +1,14 @@
+name: 'format: -n ln left justified'
+args:
+  - -n
+  - ln
+  - -w4
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "1   \ta\n2   \tb\n"
+  stderr: ""

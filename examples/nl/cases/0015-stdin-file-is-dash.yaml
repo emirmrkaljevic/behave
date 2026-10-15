@@ -1,0 +1,12 @@
+name: 'stdin: file is dash'
+args:
+  - '-'
+stdin: |
+  x
+  y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\tx\n     2\ty\n"
+  stderr: ""

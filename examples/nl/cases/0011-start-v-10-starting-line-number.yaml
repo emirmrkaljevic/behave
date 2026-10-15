@@ -1,0 +1,13 @@
+name: 'start: -v 10 starting line number'
+args:
+  - -v
+  - "10"
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "    10\ta\n    11\tb\n"
+  stderr: ""

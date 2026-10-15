@@ -1,0 +1,14 @@
+name: 'section: -p no-renumber across sections'
+args:
+  - -p
+stdin: |
+  a
+  b
+  \:
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\ta\n     2\tb\n\n       c\n"
+  stderr: ""

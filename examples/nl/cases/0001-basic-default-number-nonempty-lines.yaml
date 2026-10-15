@@ -1,0 +1,13 @@
+name: 'basic: default number nonempty lines'
+args: []
+stdin: |
+  a
+
+  b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\ta\n       \n     2\tb\n     3\tc\n"
+  stderr: ""

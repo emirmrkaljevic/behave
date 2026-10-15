@@ -1,0 +1,15 @@
+name: 'files: multiple files concatenate'
+args:
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    one
+  b.txt: |
+    two
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\tone\n     2\ttwo\n"
+  stderr: ""

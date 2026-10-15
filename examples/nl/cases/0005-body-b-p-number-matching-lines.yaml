@@ -1,0 +1,14 @@
+name: 'body: -b p number matching lines'
+args:
+  - -b
+  - p^foo
+stdin: |
+  foo
+  bar
+  foo2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\tfoo\n       bar\n     2\tfoo2\n"
+  stderr: ""

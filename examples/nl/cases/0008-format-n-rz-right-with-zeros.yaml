@@ -1,0 +1,14 @@
+name: 'format: -n rz right with zeros'
+args:
+  - -n
+  - rz
+  - -w4
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "0001\ta\n0002\tb\n"
+  stderr: ""

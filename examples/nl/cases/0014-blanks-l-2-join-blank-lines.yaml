@@ -1,0 +1,15 @@
+name: 'blanks: -l 2 join blank lines'
+args:
+  - -l
+  - "2"
+stdin: |
+  a
+
+
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\ta\n       \n       \n     2\tb\n"
+  stderr: ""

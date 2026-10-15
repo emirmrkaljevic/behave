@@ -1,0 +1,11 @@
+name: 'blanks: only blank lines -b a'
+args:
+  - -b
+  - a
+stdin: "\n\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\t\n     2\t\n"
+  stderr: ""

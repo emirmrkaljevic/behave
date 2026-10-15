@@ -1,0 +1,14 @@
+name: 'body: -b a number all lines'
+args:
+  - -b
+  - a
+stdin: |
+  a
+
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\ta\n     2\t\n     3\tb\n"
+  stderr: ""

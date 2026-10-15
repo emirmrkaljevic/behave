@@ -1,0 +1,14 @@
+name: 'format: -n rn right justified'
+args:
+  - -n
+  - rn
+  - -w4
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "   1\ta\n   2\tb\n"
+  stderr: ""

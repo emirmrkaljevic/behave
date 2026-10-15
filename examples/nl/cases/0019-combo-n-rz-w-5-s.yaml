@@ -1,0 +1,19 @@
+name: 'combo: -n rz -w 5 -s "|"'
+args:
+  - -n
+  - rz
+  - -w
+  - "5"
+  - -s
+  - '|'
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    00001|a
+    00002|b
+  stderr: ""

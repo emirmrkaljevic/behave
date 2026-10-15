@@ -1,0 +1,8 @@
+name: 'empty: empty stdin'
+args: []
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

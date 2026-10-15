@@ -1,0 +1,13 @@
+name: 'width: -w 3 narrow numbers'
+args:
+  - -w
+  - "3"
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "  1\ta\n  2\tb\n"
+  stderr: ""

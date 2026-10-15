@@ -1,0 +1,14 @@
+name: 'body: -b t number nonempty only'
+args:
+  - -b
+  - t
+stdin: |
+  a
+
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\ta\n       \n     2\tb\n"
+  stderr: ""

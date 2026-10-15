@@ -1,0 +1,13 @@
+name: 'body: -b n number no lines'
+args:
+  - -b
+  - "n"
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "       a\n       b\n"
+  stderr: ""

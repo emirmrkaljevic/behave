@@ -35,7 +35,7 @@ behave diff behave-sort --impl ./target/release/sort --skip-tag meta
 ```
 
 Or try the committed examples first: `behave run examples/cut` (27 GNU `cut` cases),
-`behave run examples/paste` (18 GNU `paste` cases), or `behave run examples/join` (26 GNU `join` cases); see [examples/](examples/).
+`behave run examples/paste` (18 GNU `paste` cases), `behave run examples/join` (26 GNU `join` cases), or `behave run examples/nl` (26 GNU `nl` cases); see [examples/](examples/).
 
 For tools that need a positional argument (a filter, a pattern, a field list), give samples:
 

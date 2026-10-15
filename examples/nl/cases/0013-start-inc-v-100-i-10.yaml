@@ -1,0 +1,15 @@
+name: 'start+inc: -v 100 -i 10'
+args:
+  - -v
+  - "100"
+  - -i
+  - "10"
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "   100\ta\n   110\tb\n"
+  stderr: ""
