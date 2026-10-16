@@ -73,3 +73,30 @@ func TestOptionalValue(t *testing.T) {
 		t.Fatal(a)
 	}
 }
+
+func TestRangeListNotFlags(t *testing.T) {
+	h := `  -f, --fields=LIST       select only these fields
+  -s, --only-delimited     do not print lines not containing delimiters
+
+Each range is one of:
+
+  N     N'th byte, character or field, counted from 1
+  N-    from N'th byte, character or field, to end of line
+  N-M   from N'th to M'th (included) byte, character or field
+  -M    from first to M'th (included) byte, character or field
+
+  -z    after the range list, a real short flag
+`
+	got := map[string]bool{}
+	for _, f := range ParseHelp(h) {
+		got[f.Name()] = true
+	}
+	if got["-M"] {
+		t.Errorf("-M from a range list parsed as a flag")
+	}
+	for _, n := range []string{"--fields", "--only-delimited", "-z"} {
+		if !got[n] {
+			t.Errorf("missing %s", n)
+		}
+	}
+}

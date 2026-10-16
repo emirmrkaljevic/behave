@@ -80,6 +80,10 @@ Run on this machine against real tools, generated cases only, `--help`/`--versio
 † varies by one or two: some `--random-sort` cases are only sometimes detected as flaky with tiny inputs.
 
 Many of these are deliberate design choices, not bugs. behave just makes them visible.
+Some were real bugs and are now fixed upstream:
+
+- uutils `cut --output-delimiter -x` ([uutils/coreutils#15341](https://github.com/uutils/coreutils/issues/15341), fixed in #15345)
+- uutils `sort --check --merge` ignored the check ([uutils/coreutils#15380](https://github.com/uutils/coreutils/issues/15380), fixed in [#15381](https://github.com/uutils/coreutils/pull/15381))
 
 ## MCP server
 

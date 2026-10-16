@@ -36,16 +36,36 @@ var (
 // placeholders, then a column gap or end of line ("--arg name value   Set ...").
 var valueTail = regexp.MustCompile(`^(\s[<\[]?[a-z][\w-]*[>\]]?)*(\s{2,}|$)`)
 
+// termLine is an indented definition-list entry that is not an option, such
+// as cut's range syntax ("  N-M   from N'th to M'th ...").
+var termLine = regexp.MustCompile(`^\s{1,12}[A-Z0-9][\w'-]*\s{2,}\S`)
+
+// shortDigit is a negative number, not a flag ("-1").
+var shortDigit = regexp.MustCompile(`^-\d$`)
+
 // ParseHelp extracts flags from help text. It is heuristic but conservative.
 func ParseHelp(help string) []Flag {
 	seen := map[string]bool{}
 	var out []Flag
+	inTerms := false // inside a list of non-option terms
 	for _, line := range strings.Split(help, "\n") {
 		line = strings.ReplaceAll(line, "\t", "    ")
-		m := optLine.FindStringSubmatch(line)
-		if m == nil || (m[1] == "" && m[2] == "") {
+		if termLine.MatchString(line) {
+			inTerms = true
 			continue
 		}
+		m := optLine.FindStringSubmatch(line)
+		if m == nil || (m[1] == "" && m[2] == "") {
+			if strings.TrimSpace(line) == "" || !strings.HasPrefix(line, " ") {
+				inTerms = false
+			}
+			continue
+		}
+		// "-M" right after "N-M" in a range list is syntax, not an option.
+		if inTerms && m[2] == "" {
+			continue
+		}
+		inTerms = false
 		f := Flag{Short: strings.Trim(m[1], " ,/|"), Long: m[2]}
 		val := strings.TrimSpace(strings.Trim(m[3], "[]= <>"))
 		val = strings.Trim(val, "[]<> =")
@@ -64,7 +84,7 @@ func ParseHelp(help string) []Flag {
 			continue
 		}
 		// avoid parsing prose like "  -- end of options" or negative numbers
-		if f.Short != "" && regexp.MustCompile(`^-\d$`).MatchString(f.Short) && f.Long == "" {
+		if f.Short != "" && shortDigit.MatchString(f.Short) && f.Long == "" {
 			continue
 		}
 		seen[f.Name()] = true
