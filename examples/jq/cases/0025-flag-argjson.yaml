@@ -1,0 +1,16 @@
+name: 'flag: argjson'
+args:
+  - --argjson
+  - "n"
+  - "42"
+  - -n
+  - $n
+stdin: |
+  {}
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    42
+  stderr: ""

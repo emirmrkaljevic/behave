@@ -1,0 +1,13 @@
+name: 'flag: raw output -r'
+args:
+  - -r
+  - .
+stdin: |
+  "hello"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hello
+  stderr: ""

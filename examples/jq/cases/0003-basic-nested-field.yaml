@@ -1,0 +1,12 @@
+name: 'basic: nested field'
+args:
+  - .a.b
+stdin: |
+  {"a":{"b":3}}
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3
+  stderr: ""

@@ -1,0 +1,16 @@
+name: 'builtin: map add one'
+args:
+  - map(.+1)
+stdin: |
+  [1,2,3]
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    [
+      2,
+      3,
+      4
+    ]
+  stderr: ""

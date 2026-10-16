@@ -1,0 +1,12 @@
+name: 'error: division by zero'
+args:
+  - ./0
+stdin: |
+  1
+tags:
+  - manual
+expect:
+  exit: 5
+  stdout: ""
+  stderr: |
+    $CMD: error (at <stdin>:1): number (1) and number (0) cannot be divided because the divisor is zero

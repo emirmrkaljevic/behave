@@ -1,0 +1,16 @@
+name: 'builtin: sort'
+args:
+  - sort
+stdin: |
+  [3,1,2]
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    [
+      1,
+      2,
+      3
+    ]
+  stderr: ""

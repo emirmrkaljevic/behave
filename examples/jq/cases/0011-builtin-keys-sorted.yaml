@@ -1,0 +1,15 @@
+name: 'builtin: keys sorted'
+args:
+  - keys
+stdin: |
+  {"b":1,"a":2}
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    [
+      "a",
+      "b"
+    ]
+  stderr: ""

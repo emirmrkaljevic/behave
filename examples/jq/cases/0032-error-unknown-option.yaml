@@ -1,0 +1,15 @@
+name: 'error: unknown option'
+args:
+  - --no-such-flag
+  - .
+stdin: |
+  1
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: Unknown option --no-such-flag
+    Use $CMD --help for help with command-line options,
+    or see the $CMD manpage, or online docs  at https://jqlang.github.io/$CMD

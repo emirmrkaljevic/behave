@@ -1,0 +1,12 @@
+name: 'basic: field access'
+args:
+  - .a
+stdin: |
+  {"a":1,"b":2}
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+  stderr: ""

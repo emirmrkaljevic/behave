@@ -1,0 +1,11 @@
+name: 'input: whitespace only object'
+args:
+  - .a
+stdin: "  { \"a\" : 1 }  \n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+  stderr: ""

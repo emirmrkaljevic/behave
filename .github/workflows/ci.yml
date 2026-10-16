@@ -23,3 +23,4 @@ jobs:
           ./behave run examples/join
           ./behave run examples/nl
           ./behave run examples/fold
+          ./behave run examples/jq

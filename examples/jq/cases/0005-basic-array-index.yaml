@@ -1,0 +1,12 @@
+name: 'basic: array index'
+args:
+  - .[1]
+stdin: |
+  [10,20,30]
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    20
+  stderr: ""

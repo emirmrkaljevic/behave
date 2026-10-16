@@ -1,0 +1,13 @@
+name: 'flag: exit status -e true'
+args:
+  - -e
+  - .
+stdin: |
+  true
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    true
+  stderr: ""

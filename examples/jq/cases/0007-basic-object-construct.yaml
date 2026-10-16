@@ -1,0 +1,14 @@
+name: 'basic: object construct'
+args:
+  - '{y:.x}'
+stdin: |
+  {"x":1}
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    {
+      "y": 1
+    }
+  stderr: ""

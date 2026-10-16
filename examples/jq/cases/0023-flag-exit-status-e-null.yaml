@@ -1,0 +1,13 @@
+name: 'flag: exit status -e null'
+args:
+  - -e
+  - .
+stdin: |
+  null
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    null
+  stderr: ""

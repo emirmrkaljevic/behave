@@ -1,0 +1,11 @@
+name: 'error: bad filter syntax'
+args:
+  - '[[[)'
+stdin: |
+  1
+tags:
+  - manual
+expect:
+  exit: 3
+  stdout: ""
+  stderr: "$CMD: error: syntax error, unexpected INVALID_CHARACTER (Unix shell quoting issues?) at <top-level>, line 1:\n[[[)   \n$CMD: 1 compile error\n"

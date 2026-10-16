@@ -1,0 +1,15 @@
+name: 'builtin: select even'
+args:
+  - map(select(. % 2 == 0))
+stdin: |
+  [1,2,3,4]
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    [
+      2,
+      4
+    ]
+  stderr: ""

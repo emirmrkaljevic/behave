@@ -1,0 +1,11 @@
+name: 'flag: null input -n'
+args:
+  - -n
+  - 1+2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3
+  stderr: ""

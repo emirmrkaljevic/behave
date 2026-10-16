@@ -1,0 +1,14 @@
+name: 'input: multiple JSON values'
+args:
+  - .
+stdin: |
+  1
+  2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+    2
+  stderr: ""

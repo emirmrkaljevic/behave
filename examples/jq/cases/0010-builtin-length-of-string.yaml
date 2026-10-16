@@ -1,0 +1,12 @@
+name: 'builtin: length of string'
+args:
+  - length
+stdin: |
+  "hi"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2
+  stderr: ""

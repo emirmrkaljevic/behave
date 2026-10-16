@@ -1,0 +1,14 @@
+name: 'file: read JSON file'
+args:
+  - -r
+  - .name
+  - data.json
+files:
+  data.json: '{"name":"behave","n":2}'
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    behave
+  stderr: ""

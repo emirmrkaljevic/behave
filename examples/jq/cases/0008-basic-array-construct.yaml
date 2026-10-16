@@ -1,0 +1,15 @@
+name: 'basic: array construct'
+args:
+  - '[., .+1]'
+stdin: |
+  1
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    [
+      1,
+      2
+    ]
+  stderr: ""

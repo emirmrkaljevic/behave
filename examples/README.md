@@ -134,6 +134,33 @@ behave diff examples/fold --impl ./coreutils-0.12.0/fold --ignore-stderr
 # 27/28 — GNU 9.7 wraps UTF-8 by bytes; 9.8+ (and uutils) wrap by column
 ```
 
+
+## `jq/` — 33 recorded cases for GNU/`jq`
+
+Filters, builtins, common flags (`-r`/`-c`/`-n`/`-s`/`-e`/`--arg`), stdin/file input,
+and error paths. Recorded with jq 1.7.
+
+```sh
+behave run examples/jq
+# jq vs jq: 33/33 passed, 0 failed, 0 skipped
+```
+
+Against gojq 0.12.19 (stderr wording differs on errors; output and exits match):
+
+```sh
+behave diff examples/jq --impl gojq
+# 29/33 — stderr only
+behave diff examples/jq --impl gojq --ignore-stderr
+# 33/33
+```
+
+Against jaq 3.1.1 (`1/0` → `Infinity` is intentional; see jaq#230):
+
+```sh
+behave diff examples/jq --impl jaq --ignore-stderr
+# 32/33
+```
+
 ## Grow it
 
 ```sh

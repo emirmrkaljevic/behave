@@ -1,0 +1,14 @@
+name: 'basic: identity filter'
+args:
+  - .
+stdin: |
+  {"a":1}
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    {
+      "a": 1
+    }
+  stderr: ""

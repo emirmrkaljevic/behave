@@ -1,0 +1,12 @@
+name: 'builtin: add numbers'
+args:
+  - add
+stdin: |
+  [1,2,3]
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    6
+  stderr: ""

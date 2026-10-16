@@ -1,0 +1,12 @@
+name: 'error: invalid JSON'
+args:
+  - .
+stdin: |
+  {bad}
+tags:
+  - manual
+expect:
+  exit: 5
+  stdout: ""
+  stderr: |
+    $CMD: parse error: Invalid numeric literal at line 1, column 5

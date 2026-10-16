@@ -1,0 +1,13 @@
+name: 'flag: compact -c'
+args:
+  - -c
+  - .
+stdin: |
+  {"a":1,"b":2}
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    {"a":1,"b":2}
+  stderr: ""

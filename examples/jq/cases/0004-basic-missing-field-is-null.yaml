@@ -1,0 +1,12 @@
+name: 'basic: missing field is null'
+args:
+  - .missing
+stdin: |
+  {"a":1}
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    null
+  stderr: ""

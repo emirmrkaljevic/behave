@@ -1,0 +1,12 @@
+name: 'builtin: type'
+args:
+  - type
+stdin: |
+  [1]
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    "array"
+  stderr: ""

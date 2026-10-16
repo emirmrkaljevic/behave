@@ -1,0 +1,16 @@
+name: 'flag: arg --arg'
+args:
+  - --arg
+  - name
+  - world
+  - -n
+  - $name
+stdin: |
+  {}
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    "world"
+  stderr: ""
