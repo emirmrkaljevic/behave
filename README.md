@@ -150,15 +150,26 @@ Add your own with `behave add behave-cut --stdin 'a,b' -- -d, -f2`.
 | `behave add <spec> -- ARGS` | add one hand-written case |
 | `behave run <spec>` | replay against the original |
 | `behave diff <spec> --impl <bin>` | replay against another implementation (`--ignore-stderr`, `--ignore-exit`, `--tag`, `--skip-tag`, `--json`, `--junit file`, `-v`) |
+| `behave coverage <spec>` | which documented flags (from `--help`/man) the cases exercise (`--min PCT`, `--all`, `--json`) |
 | `behave normalizers` | list built-in normalizers |
 
 `run` and `diff` exit with 1 when any case fails, so they drop straight into CI. Pass `--junit report.xml` to write a JUnit XML report for CI dashboards (GitHub Actions, Jenkins, etc.).
+
+`coverage` tells you what a spec doesn't test yet. On the hand-picked `cut` example:
+
+```
+$ behave coverage examples/cut
+cut: 27 cases exercise 7 of 12 documented flags (58%)
+not exercised (5): -n --zero-terminated --help --version -M
+used but not in help: --no-such-flag
+```
+
+It reads flags the same way `probe` does, understands `--long=value`, unambiguous long prefixes and clustered short flags (`-sf1`), and exits 1 with `--min 80` when coverage drops below 80%.
 
 The repo ships a multi-stage `Dockerfile` that builds the binary and starts `behave mcp` on stdio (for Glama and other MCP registries that build from a Dockerfile).
 
 ## Roadmap
 
-- JUnit output, coverage of flags seen in help vs exercised
 - smarter value generation from help text (`WHEN can be: auto, always, never`)
 
 ## Safety

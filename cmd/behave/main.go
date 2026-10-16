@@ -32,6 +32,7 @@ Usage:
   behave record <spec-dir>              (re)record expectations from the original
   behave run <spec-dir>                 replay against the original (regression check)
   behave diff <spec-dir> --impl <bin>   replay against another implementation
+  behave coverage <spec-dir>            which documented flags the cases exercise
   behave mcp                            serve the MCP tools over stdio
   behave normalizers                    list built-in output normalizers
   behave version
@@ -63,6 +64,8 @@ func main() {
 		code, err = cmdRun(args, false)
 	case "diff":
 		code, err = cmdRun(args, true)
+	case "coverage":
+		code, err = cmdCoverage(args)
 	case "mcp":
 		err = behavemcp.Run(context.Background(), version)
 	case "normalizers":
@@ -486,4 +489,81 @@ func printFlagTable(rep *engine.Report) {
 		fmt.Printf("  %-28s %3d/%-3d cases differ\n", r.name, r.fail, r.total)
 	}
 	fmt.Printf("flags fully compatible: %d of %d\n\n", len(m)-len(rows), len(m))
+}
+
+func cmdCoverage(args []string) (int, error) {
+	fs := flag.NewFlagSet("coverage", flag.ContinueOnError)
+	var helpArgs multi
+	fs.Var(&helpArgs, "help-arg", "argument that prints help (default --help, then -h)")
+	min := fs.Float64("min", 0, "exit 1 if fewer than this percent of flags are covered")
+	asJSON := fs.Bool("json", false, "print the report as JSON")
+	all := fs.Bool("all", false, "list covered flags too, not just the missing ones")
+	pos, err := parse(fs, args)
+	if err != nil {
+		return 0, err
+	}
+	if len(pos) != 1 {
+		return 0, errors.New("usage: behave coverage <spec-dir> [--min PCT] [--json]")
+	}
+	sp, err := spec.Load(pos[0])
+	if err != nil {
+		return 0, err
+	}
+	if _, err := engine.Resolve(sp.Meta.Command); err != nil {
+		return 0, err
+	}
+	flags := probe.ParseHelp(probe.HelpText(sp.Meta.Command, helpArgs))
+	if len(flags) == 0 {
+		return 0, fmt.Errorf("no flags found in %s help output (try --help-arg)", sp.Meta.Command)
+	}
+	var lists [][]string
+	for _, c := range sp.Cases {
+		lists = append(lists, c.Args)
+	}
+	cov := probe.MeasureCoverage(flags, lists)
+	pct := 100 * float64(cov.Covered()) / float64(len(flags))
+	if *asJSON {
+		type row struct {
+			Flag  string `json:"flag"`
+			Short string `json:"short,omitempty"`
+			Cases int    `json:"cases"`
+		}
+		out := struct {
+			Command      string   `json:"command"`
+			Cases        int      `json:"cases"`
+			Flags        int      `json:"flags"`
+			Covered      int      `json:"covered"`
+			Percent      float64  `json:"percent"`
+			PerFlag      []row    `json:"per_flag"`
+			Undocumented []string `json:"undocumented,omitempty"`
+		}{sp.Meta.Command, len(sp.Cases), len(flags), cov.Covered(), pct, nil, cov.Unknown}
+		for _, u := range cov.Flags {
+			out.PerFlag = append(out.PerFlag, row{u.Flag.Name(), u.Flag.Short, u.Cases})
+		}
+		b, _ := json.MarshalIndent(out, "", "  ")
+		fmt.Println(string(b))
+	} else {
+		fmt.Printf("%s: %d cases exercise %d of %d documented flags (%.0f%%)\n", sp.Meta.Command, len(sp.Cases), cov.Covered(), len(flags), pct)
+		var missing []string
+		for _, u := range cov.Flags {
+			if u.Cases == 0 {
+				missing = append(missing, u.Flag.Name())
+			} else if *all {
+				fmt.Printf("  %-28s %d cases\n", u.Flag.Name(), u.Cases)
+			}
+		}
+		if len(missing) > 0 {
+			fmt.Printf("not exercised (%d): %s\n", len(missing), strings.Join(missing, " "))
+		}
+		if len(cov.Unknown) > 0 {
+			fmt.Printf("used but not in help: %s\n", strings.Join(cov.Unknown, " "))
+		}
+	}
+	if pct < *min {
+		if !*asJSON {
+			fmt.Printf("coverage %.0f%% is below --min %.0f%%\n", pct, *min)
+		}
+		return 1, nil
+	}
+	return 0, nil
 }
