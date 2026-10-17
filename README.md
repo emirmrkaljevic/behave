@@ -1,5 +1,7 @@
 # behave
 
+<p align="center"><a href="https://skintoscan.com/#packages"><img src="https://img.shields.io/badge/%E2%98%95_Support_me-Get_a_SkinToScan_pack-ff5f5f?style=for-the-badge" alt="Support me: get a SkinToScan pack"></a><br><sub>If you find this useful, you can support me by getting a SkinToScan pack, my other project. It's a one-time purchase that directly funds my open-source work.</sub></p>
+
 **Record how any CLI behaves. Prove your rewrite behaves the same.**
 
 `behave` treats a command-line tool as a black box. It reads `--help` (and the man page),
@@ -198,12 +200,6 @@ without `--skip-flag` and a sandbox.
 ## Links
 
 - MCP Registry name: `io.github.emirmrkaljevic/behave`
-
-## Support my work
-
-[![Get a SkinToScan pack](https://img.shields.io/badge/%E2%98%95_Support_me-Get_a_SkinToScan_pack-ff5f5f?style=for-the-badge)](https://skintoscan.com/#packages)
-
-If you find this useful, you can support me by getting a SkinToScan pack, my other project. It's a one-time purchase that directly funds my open-source work.
 
 ## License
 
