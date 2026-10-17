@@ -199,6 +199,12 @@ without `--skip-flag` and a sandbox.
 
 - MCP Registry name: `io.github.emirmrkaljevic/behave`
 
+## Support my work
+
+[![Get a SkinToScan pack](https://img.shields.io/badge/%E2%98%95_Support_me-Get_a_SkinToScan_pack-ff5f5f?style=for-the-badge)](https://skintoscan.com/#packages)
+
+If you find this useful, you can support me by getting a SkinToScan pack, my other project. It's a one-time purchase that directly funds my open-source work.
+
 ## License
 
 MIT
