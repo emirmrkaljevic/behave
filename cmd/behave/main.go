@@ -163,7 +163,11 @@ func cmdProbe(args []string) error {
 	fmt.Printf("discovered %d flags, generated %d cases (%s inputs)\n", len(flags), len(cases), mode)
 	if *dry {
 		for _, f := range flags {
-			fmt.Printf("  %-4s %-28s %s\n", f.Short, f.Long, f.Value)
+			vals := ""
+			if len(f.Values) > 0 {
+				vals = "  {" + strings.Join(f.Values, ",") + "}"
+			}
+			fmt.Printf("  %-4s %-28s %s%s\n", f.Short, f.Long, f.Value, vals)
 		}
 		return nil
 	}

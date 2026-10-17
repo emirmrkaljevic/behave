@@ -3,8 +3,8 @@
 **Record how any CLI behaves. Prove your rewrite behaves the same.**
 
 `behave` treats a command-line tool as a black box. It reads `--help` (and the man page),
-generates hundreds of test cases (every flag, flag pairs, edge-case stdin, file arguments,
-bad values, missing files), records what the tool actually does (stdout, stderr, exit code),
+generates hundreds of test cases (every flag, flag pairs, every value the help lists for a flag,
+edge-case stdin, file arguments, bad values, missing files), records what the tool actually does (stdout, stderr, exit code),
 and replays those cases against another implementation.
 
 ![behave recording jq and checking gojq against it](docs/demo.gif)
@@ -42,6 +42,18 @@ For tools that need a positional argument (a filter, a pattern, a field list), g
 ```sh
 behave probe jq --arg . --arg '.a' --arg '.[]' --arg 'map(.+1)' --arg keys
 behave diff behave-jq --impl gojq --ignore-stderr
+```
+
+When the help text lists the values a flag accepts, `probe` adds one case per value next to the
+invalid-value cases. It understands GNU style (`WHEN can be: auto, always, never`,
+`--sort=WORD ... to WORD: none (-U), size (-S), ...`, `The WHEN argument defaults to 'always' and can
+also be 'auto' or 'never'.`), clap's `[possible values: ...]`, argparse's `{json,yaml}` and
+`<fast|safe>`. It only keeps plain lowercase lists it can tie to that flag. `--dry-run` shows what it found:
+
+```
+$ behave probe ls --dry-run
+       --color                      WHEN  {always,auto,never}
+       --sort                       WORD  {none,size,time,version,extension,name,width}
 ```
 
 Example output (abridged):
@@ -174,7 +186,8 @@ The repo ships a multi-stage `Dockerfile` that builds the binary and starts `beh
 
 ## Roadmap
 
-- smarter value generation from help text (`WHEN can be: auto, always, never`)
+- more committed example specs (`head`, `tail`, `wc`, a `grep` subset vs ripgrep)
+- Homebrew tap
 
 ## Safety
 

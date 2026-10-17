@@ -14,9 +14,10 @@ import (
 
 // Flag is an option found in help output.
 type Flag struct {
-	Short, Long string // "-n", "--number" (either may be empty)
-	Value       string // value placeholder; empty for boolean flags
-	Optional    bool   // value is optional (--flag[=VALUE]); must be attached with '='
+	Short, Long string   // "-n", "--number" (either may be empty)
+	Value       string   // value placeholder; empty for boolean flags
+	Optional    bool     // value is optional (--flag[=VALUE]); must be attached with '='
+	Values      []string // values the help text enumerates for this flag, in order
 }
 
 // Name is the preferred spelling (long if available).
@@ -44,25 +45,68 @@ var termLine = regexp.MustCompile(`^\s{1,12}[A-Z0-9][\w'-]*\s{2,}\S`)
 var shortDigit = regexp.MustCompile(`^-\d$`)
 
 // ParseHelp extracts flags from help text. It is heuristic but conservative.
+// Values a flag documents as a closed list ("WHEN can be: auto, always,
+// never", clap's "[possible values: ...]", argparse's "{a,b,c}") are kept in
+// Flag.Values in the order the help text lists them.
 func ParseHelp(help string) []Flag {
-	seen := map[string]bool{}
+	seen := map[string]int{}
 	var out []Flag
+	descs := map[int][]string{} // flag index -> description lines ("" = paragraph break)
+	choices := map[int][]string{}
+	cur, curIndent, gap := -1, 0, false
+	var prose [][]string // paragraphs of lines outside option descriptions
+	var para []string
+	endPara := func() {
+		if len(para) > 0 {
+			prose = append(prose, para)
+			para = nil
+		}
+	}
+	// continues reports whether an indented, non-option line belongs to the
+	// current option's description.
+	continues := func(indent int) bool { return cur >= 0 && indent > curIndent }
 	inTerms := false // inside a list of non-option terms
 	for _, line := range strings.Split(help, "\n") {
 		line = strings.ReplaceAll(line, "\t", "    ")
-		if termLine.MatchString(line) {
-			inTerms = true
+		indent := len(line) - len(strings.TrimLeft(line, " "))
+		if strings.TrimSpace(line) == "" {
+			gap = cur >= 0
+			endPara()
+			inTerms = false
 			continue
 		}
-		m := optLine.FindStringSubmatch(line)
+		desc := func() {
+			if gap {
+				descs[cur] = append(descs[cur], "")
+				gap = false
+			}
+			descs[cur] = append(descs[cur], strings.TrimSpace(line))
+		}
+		other := func() {
+			if continues(indent) {
+				desc()
+				return
+			}
+			cur, gap = -1, false
+			para = append(para, line)
+		}
+		if termLine.MatchString(line) {
+			inTerms = true
+			other()
+			continue
+		}
+		norm, ch := normalizeOptLine(line)
+		m := optLine.FindStringSubmatch(norm)
 		if m == nil || (m[1] == "" && m[2] == "") {
-			if strings.TrimSpace(line) == "" || !strings.HasPrefix(line, " ") {
+			if !strings.HasPrefix(line, " ") {
 				inTerms = false
 			}
+			other()
 			continue
 		}
 		// "-M" right after "N-M" in a range list is syntax, not an option.
 		if inTerms && m[2] == "" {
+			other()
 			continue
 		}
 		inTerms = false
@@ -71,7 +115,7 @@ func ParseHelp(help string) []Flag {
 		val = strings.Trim(val, "[]<> =")
 		// a value placeholder is UPPER, <angled>, or after '='
 		raw := m[3]
-		rest := line[len(m[0]):]
+		rest := norm[len(m[0]):]
 		sep := valueTail.MatchString(rest)
 		if val != "" && (strings.ContainsAny(raw, "=<") || val == strings.ToUpper(val) || sep) {
 			f.Value = val
@@ -80,15 +124,55 @@ func ParseHelp(help string) []Flag {
 		if f.Value != "" && strings.HasPrefix(raw, "[=") && f.Long != "" {
 			f.Optional = true
 		}
-		if f.Name() == "--" || seen[f.Name()] {
+		if f.Name() == "--" {
+			other()
+			continue
+		}
+		if i, dup := seen[f.Name()]; dup {
+			// a flag mentioned again inside a description, or the man page
+			// repeating it: keep reading its text for values
+			if continues(indent) {
+				desc()
+				continue
+			}
+			// GNU du lists "--time" and "--time=WORD": the value is optional
+			if out[i].Value == "" && f.Value != "" && f.Value == strings.ToUpper(f.Value) && f.Long != "" && strings.HasPrefix(raw, "=") {
+				out[i].Value, out[i].Optional = f.Value, true
+			}
+			cur, curIndent, gap = i, indent, false
+			descs[i] = append(descs[i], "")
+			descs[i] = append(descs[i], strings.TrimSpace(rest))
 			continue
 		}
 		// avoid parsing prose like "  -- end of options" or negative numbers
 		if f.Short != "" && shortDigit.MatchString(f.Short) && f.Long == "" {
+			other()
 			continue
 		}
-		seen[f.Name()] = true
+		seen[f.Name()] = len(out)
+		cur, curIndent, gap = len(out), indent, false
+		descs[cur] = []string{strings.TrimSpace(rest)}
+		choices[cur] = append(ch, pipeChoices(f.Value)...)
 		out = append(out, f)
+	}
+	endPara()
+
+	for i := range out {
+		addValues(&out[i], choices[i])
+		addValues(&out[i], linesValues(descs[i]))
+		addValues(&out[i], descValues(out[i].Value, joinDesc(descs[i])))
+	}
+	byPlaceholder := map[string][]string{}
+	for _, p := range prose {
+		for k, v := range sectionValues(p) {
+			byPlaceholder[k] = append(byPlaceholder[k], v...)
+		}
+		for k, v := range proseValues(joinDesc(p)) {
+			byPlaceholder[k] = append(byPlaceholder[k], v...)
+		}
+	}
+	for i := range out {
+		addValues(&out[i], byPlaceholder[out[i].Value])
 	}
 	return out
 }
@@ -202,6 +286,14 @@ func Generate(flags []Flag, o Options) []*spec.Case {
 				}
 			} else {
 				in := richInputs[0]
+				// every value the help text lists (on a multi-line sample, so
+				// e.g. sort --sort=month has something to order), then the
+				// invalid ones
+				enumIn := richInputs[min(1, len(richInputs)-1)]
+				for _, v := range f.Values {
+					args := append(flagArgs(f, v), pos(a)...)
+					g.add(join("flag", f.Name(), "value", v, "arg", a), args, enumIn.Data, nil, "flag-enum", "flag:"+f.Name())
+				}
 				for _, v := range badValues {
 					args := append(flagArgs(f, v), pos(a)...)
 					g.add(join("flag", f.Name(), "value", v, "arg", a), args, in.Data, nil, "flag-value", "flag:"+f.Name())

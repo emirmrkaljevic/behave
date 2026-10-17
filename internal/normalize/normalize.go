@@ -25,7 +25,9 @@ type builtin struct {
 
 var (
 	ansiRe = regexp.MustCompile(`\x1b\[[0-9;?]*[ -/]*[@-~]|\x1b\][^\x07]*\x07`)
-	isoRe  = regexp.MustCompile(`\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:?\d{2})?`)
+	isoRe  = regexp.MustCompile(`\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:?\d{2})?`)
+	// ls -l / du --time style: "Oct 17 08:18", "Oct  7  2025"
+	monRe  = regexp.MustCompile(`\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [ \d]\d (\d{2}:\d{2}|\s?\d{4})\b`)
 	timeRe = regexp.MustCompile(`\b\d{2}:\d{2}:\d{2}(\.\d+)?\b`)
 	hexRe  = regexp.MustCompile(`\b0x[0-9a-fA-F]{6,16}\b`)
 	durRe  = regexp.MustCompile(`\b\d+(\.\d+)?\s?(ns|µs|us|ms|s)\b`)
@@ -36,8 +38,9 @@ var builtins = map[string]builtin{
 	"ansi":    {"strip ANSI color/escape sequences", func(b []byte, _ Context) []byte { return ansiRe.ReplaceAll(b, nil) }},
 	"workdir": {"replace the case's temp work dir with $WORKDIR", workdir},
 	"cmd":     {"replace the program name (e.g. 'jq:' vs 'gojq:') with $CMD", cmdName},
-	"timestamp": {"replace ISO dates and HH:MM:SS times with $TIME", func(b []byte, _ Context) []byte {
-		return timeRe.ReplaceAll(isoRe.ReplaceAll(b, []byte("$$TIME")), []byte("$$TIME"))
+	"timestamp": {"replace ISO dates, HH:MM:SS times and ls-style dates with $TIME", func(b []byte, _ Context) []byte {
+		b = monRe.ReplaceAll(isoRe.ReplaceAll(b, []byte("$$TIME")), []byte("$$TIME"))
+		return timeRe.ReplaceAll(b, []byte("$$TIME"))
 	}},
 	"hexaddr":  {"replace 0x… addresses with $ADDR", func(b []byte, _ Context) []byte { return hexRe.ReplaceAll(b, []byte("$$ADDR")) }},
 	"duration": {"replace durations like 12ms with $DURATION", func(b []byte, _ Context) []byte { return durRe.ReplaceAll(b, []byte("$$DURATION")) }},
