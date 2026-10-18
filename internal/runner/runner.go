@@ -8,6 +8,8 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"sort"
+	"strings"
 	"syscall"
 	"time"
 
@@ -29,17 +31,22 @@ type Output struct {
 
 // Run executes command with the case's args/stdin/env/files.
 func Run(command string, c *spec.Case, defTimeout time.Duration) (*Output, error) {
-	wd, err := os.MkdirTemp("", "behave-")
+	// The work dir sits inside a private parent so "ls -a" sees a ".." that
+	// does not change with whatever else lives in the system temp dir.
+	root, err := os.MkdirTemp("", "behave-")
 	if err != nil {
 		return nil, err
 	}
-	defer os.RemoveAll(wd)
-	for name, content := range c.Files {
-		p := filepath.Join(wd, filepath.FromSlash(name))
-		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
-			return nil, err
-		}
-		if err := os.WriteFile(p, []byte(content), 0o644); err != nil {
+	defer os.RemoveAll(root)
+	wd := filepath.Join(root, "work")
+	if err := os.Mkdir(wd, 0o755); err != nil {
+		return nil, err
+	}
+	if err := writeFiles(wd, c.Files); err != nil {
+		return nil, err
+	}
+	for _, d := range []string{wd, root} {
+		if err := os.Chtimes(d, FileTime, FileTime); err != nil {
 			return nil, err
 		}
 	}
@@ -89,6 +96,64 @@ func Run(command string, c *spec.Case, defTimeout time.Duration) (*Output, error
 }
 
 // baseEnv is a small, deterministic environment.
+// FileTime is the mtime of the first input file (in name order); each next
+// file is one hour newer and directories get FileTime. Fixed times keep
+// ls -l, ls -t, du --time and find -newer output identical between runs
+// (including the work dir itself and its parent).
+var FileTime = time.Date(2024, 3, 1, 12, 0, 0, 0, time.UTC)
+
+// writeFiles creates files in reverse name order and touches each directory
+// as soon as its last entry is written. ctime and birth time cannot be set,
+// so this makes "newest first" equal name order: ls -c and ls --time=birth
+// then print the same listing whether or not the files share a clock tick.
+func writeFiles(wd string, files map[string]string) error {
+	names := make([]string, 0, len(files))
+	for name := range files {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	parents := func(name string) []string {
+		var ds []string
+		for d := filepath.Dir(filepath.Join(wd, filepath.FromSlash(name))); d != wd && strings.HasPrefix(d, wd+string(filepath.Separator)); d = filepath.Dir(d) {
+			ds = append(ds, d)
+		}
+		return ds
+	}
+	pending := map[string]bool{}
+	for i := len(names) - 1; i >= 0; i-- {
+		name := names[i]
+		p := filepath.Join(wd, filepath.FromSlash(name))
+		if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+			return err
+		}
+		if err := os.WriteFile(p, []byte(files[name]), 0o644); err != nil {
+			return err
+		}
+		t := FileTime.Add(time.Duration(i) * time.Hour)
+		if err := os.Chtimes(p, t, t); err != nil {
+			return err
+		}
+		for _, d := range parents(name) {
+			pending[d] = true
+		}
+		next := map[string]bool{}
+		if i > 0 {
+			for _, d := range parents(names[i-1]) {
+				next[d] = true
+			}
+		}
+		for d := range pending {
+			if !next[d] {
+				if err := os.Chtimes(d, FileTime, FileTime); err != nil {
+					return err
+				}
+				delete(pending, d)
+			}
+		}
+	}
+	return nil
+}
+
 func baseEnv(wd string) []string {
 	env := []string{"HOME=" + wd, "TMPDIR=" + wd, "LANG=C.UTF-8", "LC_ALL=C.UTF-8", "TZ=UTC",
 		"NO_COLOR=1", "TERM=dumb", "COLUMNS=80"}

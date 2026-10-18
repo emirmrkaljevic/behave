@@ -100,3 +100,40 @@ Each range is one of:
 		}
 	}
 }
+
+func TestSampleDir(t *testing.T) {
+	if !WantsSampleDir("List information about the FILEs (the current directory by default).") ||
+		!WantsSampleDir("  -r, --recursive  read all files under each directory") {
+		t.Error("ls/grep style help should want a sample dir")
+	}
+	if WantsSampleDir(help) {
+		t.Error("wc help should not want a sample dir")
+	}
+	flags := ParseHelp(help)
+	cases := Generate(flags, Options{SampleFiles: SampleDir, FileInput: true})
+	withSample, own := 0, 0
+	for _, c := range cases {
+		switch {
+		case c.Files["sub/nested.txt"] != "":
+			withSample++
+		case len(c.Files) > 0:
+			own++
+		}
+	}
+	if withSample == 0 || own == 0 {
+		t.Fatalf("sample dir in %d cases, own files in %d", withSample, own)
+	}
+	for _, c := range Generate(flags, Options{}) {
+		if c.Files["a.txt"] == "alpha\n" {
+			t.Fatalf("sample files without SampleFiles: %s", c.Name)
+		}
+	}
+	got := Generate(flags, Options{Args: []string{"PAT"}, SampleFiles: SampleDir})
+	found := false
+	for _, c := range got {
+		found = found || c.Name == "positional only"
+	}
+	if !found {
+		t.Error("missing 'positional only' case for sample dir with an argument")
+	}
+}

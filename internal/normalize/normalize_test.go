@@ -42,3 +42,17 @@ func TestCmdBareName(t *testing.T) {
 		t.Fatal(got)
 	}
 }
+
+func TestANSIStripsOSC8BothTerminators(t *testing.T) {
+	n, err := New([]string{"ansi"}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	bel := "\x1b]8;;file://h/x/a.txt\x07a.txt\x1b]8;;\x07\n"
+	st := "\x1b]8;;file://h/x/a.txt\x1b\\a.txt\x1b]8;;\x1b\\\n"
+	for _, in := range []string{bel, st} {
+		if got := string(n.Apply([]byte(in), Context{})); got != "a.txt\n" {
+			t.Errorf("%q -> %q", in, got)
+		}
+	}
+}

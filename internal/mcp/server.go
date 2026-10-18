@@ -85,6 +85,7 @@ type ProbeIn struct {
 	Inputs    string   `json:"inputs,omitempty" jsonschema:"stdin samples: text, json, both or auto (default)"`
 	SkipFlags []string `json:"skip_flags,omitempty" jsonschema:"flags never to use"`
 	Max       int      `json:"max,omitempty" jsonschema:"maximum number of cases (default 500)"`
+	Sample    string   `json:"sample_files,omitempty" jsonschema:"create a small sample directory tree in each work dir: auto (default; on when help mentions the current directory or recursion), on, off"`
 }
 
 type ProbeOut struct {
@@ -109,7 +110,11 @@ func probeTool(version string) mcp.ToolHandlerFor[ProbeIn, ProbeOut] {
 		if err != nil {
 			return nil, ProbeOut{}, err
 		}
-		cases := probe.Generate(flags, probe.Options{Args: in.Args, Inputs: ins, Skip: in.SkipFlags, Max: in.Max, FileInput: true})
+		opts := probe.Options{Args: in.Args, Inputs: ins, Skip: in.SkipFlags, Max: in.Max, FileInput: true}
+		if in.Sample == "on" || (in.Sample != "off" && probe.WantsSampleDir(help)) {
+			opts.SampleFiles = probe.SampleDir
+		}
+		cases := probe.Generate(flags, opts)
 		sp, st, err := engine.Create(in.Dir, in.Command, 5000, "behave "+version, cases)
 		if err != nil {
 			return nil, ProbeOut{}, err

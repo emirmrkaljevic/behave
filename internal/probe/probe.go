@@ -184,6 +184,10 @@ type Options struct {
 	Skip      []string // flags never to use
 	Max       int      // cap on number of cases
 	FileInput bool     // also pass samples as a file argument
+	// SampleFiles, when set, are created in the work dir of every case that
+	// has no files of its own, so tools that look at the current directory
+	// (ls, du, rg, find) have something to list, sort and recurse into.
+	SampleFiles map[string]string
 }
 
 // Input is a named stdin sample.
@@ -216,6 +220,25 @@ var JSONInputs = []Input{
 
 var badValues = []string{"0", "1", "-1", "abc", ""}
 
+// SampleDir is a small directory tree whose names, sizes and extensions differ
+// enough for sort orders (name, size, version, extension, time) to disagree.
+// The runner gives files fixed mtimes in name order, so time sorts are stable.
+var SampleDir = map[string]string{
+	".hidden":        "hidden\n",
+	"README.md":      "# sample\n",
+	"a.txt":          "alpha\n",
+	"data.csv":       "id,name\n1,x\n2,y\n",
+	"file10.log":     strings.Repeat("ten\n", 40),
+	"file2.log":      "two\n",
+	"sub/nested.txt": "nested\n",
+}
+
+var dirToolRe = regexp.MustCompile(`(?i)current (working )?directory|recursive`)
+
+// WantsSampleDir reports whether help text suggests the tool reads the
+// current directory or recurses into directories (ls, du, rg, grep -r).
+func WantsSampleDir(help string) bool { return dirToolRe.MatchString(help) }
+
 // Generate builds cases (without expectations).
 func Generate(flags []Flag, o Options) []*spec.Case {
 	if o.Max <= 0 {
@@ -242,7 +265,7 @@ func Generate(flags []Flag, o Options) []*spec.Case {
 		}
 	}
 
-	g := &gen{max: o.Max, seen: map[string]bool{}}
+	g := &gen{max: o.Max, seen: map[string]bool{}, sample: o.SampleFiles}
 	pos := func(a string) []string {
 		if a == "" {
 			return nil
@@ -254,6 +277,9 @@ func Generate(flags []Flag, o Options) []*spec.Case {
 	g.add("short help", []string{"-h"}, "", nil, "meta")
 	g.add("version", []string{"--version"}, "", nil, "meta")
 	g.add("no args no input", nil, "", nil, "meta")
+	if o.SampleFiles != nil && o.Args[0] != "" {
+		g.add("positional only", pos(o.Args[0]), "", nil, "basic")
+	}
 	g.add("unknown long flag", []string{"--behave-unknown-flag"}, "", nil, "error")
 	g.add("unknown short flag", []string{"-\u00a7"}, "", nil, "error")
 	g.add("missing file", append(pos(o.Args[0]), "does-not-exist.txt"), "", nil, "error")
@@ -325,9 +351,10 @@ func Generate(flags []Flag, o Options) []*spec.Case {
 }
 
 type gen struct {
-	max   int
-	seen  map[string]bool
-	cases []*spec.Case
+	max    int
+	seen   map[string]bool
+	cases  []*spec.Case
+	sample map[string]string
 }
 
 func (g *gen) add(name string, args []string, stdin string, files map[string]string, tags ...string) {
@@ -339,6 +366,12 @@ func (g *gen) add(name string, args []string, stdin string, files map[string]str
 		return
 	}
 	g.seen[key] = true
+	if files == nil && len(g.sample) > 0 {
+		files = make(map[string]string, len(g.sample))
+		for k, v := range g.sample {
+			files[k] = v
+		}
+	}
 	c := &spec.Case{Name: name, Args: args, Files: files, Tags: tags}
 	if args == nil {
 		c.Args = []string{}

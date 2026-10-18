@@ -141,6 +141,7 @@ func cmdProbe(args []string) error {
 	max := fs.Int("max", 500, "maximum number of cases")
 	timeout := fs.Int("timeout", 5000, "per-case timeout in ms")
 	noFile := fs.Bool("no-file-input", false, "do not pass samples as file arguments")
+	sample := fs.String("sample-files", "auto", "create a small sample directory tree in each case's work dir: auto, on, off")
 	dry := fs.Bool("dry-run", false, "print discovered flags and case count, write nothing")
 	pos, err := parse(fs, args)
 	if err != nil {
@@ -159,8 +160,24 @@ func cmdProbe(args []string) error {
 	if err != nil {
 		return err
 	}
-	cases := probe.Generate(flags, probe.Options{Args: argSamples, Inputs: ins, Skip: skip, Max: *max, FileInput: !*noFile})
-	fmt.Printf("discovered %d flags, generated %d cases (%s inputs)\n", len(flags), len(cases), mode)
+	opts := probe.Options{Args: argSamples, Inputs: ins, Skip: skip, Max: *max, FileInput: !*noFile}
+	switch *sample {
+	case "on":
+		opts.SampleFiles = probe.SampleDir
+	case "auto":
+		if probe.WantsSampleDir(help) {
+			opts.SampleFiles = probe.SampleDir
+		}
+	case "off":
+	default:
+		return fmt.Errorf("--sample-files must be auto, on or off, got %q", *sample)
+	}
+	cases := probe.Generate(flags, opts)
+	extra := ""
+	if opts.SampleFiles != nil {
+		extra = ", sample files in work dir"
+	}
+	fmt.Printf("discovered %d flags, generated %d cases (%s inputs%s)\n", len(flags), len(cases), mode, extra)
 	if *dry {
 		for _, f := range flags {
 			vals := ""

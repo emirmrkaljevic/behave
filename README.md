@@ -154,6 +154,10 @@ Add your own with `behave add behave-cut --stdin 'a,b' -- -d, -f2`.
 
 - every case runs in a new temp directory with a fixed environment
   (`LC_ALL=C.UTF-8`, `TZ=UTC`, `NO_COLOR=1`, `HOME`=temp dir)
+- input files get fixed modification times, and tools that read the current directory
+  (`ls`, `du`, `rg`; help text mentions "current directory" or recursion) get a small sample
+  tree (`--sample-files auto|on|off`) whose names, sizes and extensions sort differently,
+  so `ls --sort=size`, `ls -t`, `du --time` and `du -S` produce output worth comparing
 - each case is recorded 3 times; anything that changes between runs is marked `flaky`
   and skipped (e.g. `sort --random-sort`)
 - normalizers remove noise before comparing: `ansi`, `workdir`, `cmd` (`jq:` vs `gojq:`),
@@ -164,7 +168,7 @@ Add your own with `behave add behave-cut --stdin 'a,b' -- -d, -f2`.
 
 | command | what it does |
 |---|---|
-| `behave probe <cmd>` | discover flags, generate and record cases (`--arg`, `--inputs text\|json\|both`, `--max`, `--skip-flag`, `--dry-run`) |
+| `behave probe <cmd>` | discover flags, generate and record cases (`--arg`, `--inputs text\|json\|both`, `--max`, `--skip-flag`, `--sample-files`, `--dry-run`) |
 | `behave record <spec>` | re-record expectations from the original |
 | `behave add <spec> -- ARGS` | add one hand-written case |
 | `behave run <spec>` | replay against the original |

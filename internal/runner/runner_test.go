@@ -1,6 +1,7 @@
 package runner
 
 import (
+	"fmt"
 	"testing"
 	"time"
 
@@ -35,5 +36,19 @@ func TestTimeout(t *testing.T) {
 func TestMissingBinary(t *testing.T) {
 	if _, err := Run("behave-no-such-binary", &spec.Case{}, time.Second); err == nil {
 		t.Fatal("want error")
+	}
+}
+
+func TestFilesGetFixedTimes(t *testing.T) {
+	c := &spec.Case{Args: []string{"-c", `for f in b.txt a.txt d/c.txt d; do stat -c '%n %Y' "$f"; done`},
+		Files: map[string]string{"b.txt": "b", "a.txt": "a", "d/c.txt": "c"}}
+	out, err := Run("sh", c, 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	base := FileTime.Unix()
+	want := fmt.Sprintf("b.txt %d\na.txt %d\nd/c.txt %d\nd %d\n", base+3600, base, base+7200, base)
+	if got := string(out.Result.Stdout.Bytes()); got != want {
+		t.Fatalf("got %q want %q", got, want)
 	}
 }
