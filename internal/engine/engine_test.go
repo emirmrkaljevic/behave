@@ -64,3 +64,34 @@ func TestRecordAndDiff(t *testing.T) {
 		t.Fatalf("%+v", rep)
 	}
 }
+
+func TestRecordStoresVersionLine(t *testing.T) {
+	dir := t.TempDir()
+	v1 := script(t, dir, "tool", `if [ "$1" = "--version" ]; then printf '\ntool (demo) 1.2\nmore text\n'; exit 0; fi; cat`+"\n")
+	v2 := script(t, dir, "tool2", `if [ "$1" = "--version" ]; then echo "tool (rewrite) 0.1"; exit 0; fi; cat`+"\n")
+	none := script(t, dir, "plain", `[ "$1" = "--version" ] && exit 1; cat`+"\n")
+
+	if got := VersionLine(v1); got != "tool (demo) 1.2" {
+		t.Fatalf("VersionLine = %q", got)
+	}
+	if got := VersionLine(none); got != "" {
+		t.Fatalf("no --version should give empty, got %q", got)
+	}
+
+	s := &spec.Spec{Dir: filepath.Join(dir, "spec"), Meta: spec.Meta{Command: v1}}
+	if err := s.SaveMeta(); err != nil {
+		t.Fatal(err)
+	}
+	s.SaveCase(&spec.Case{Name: "echo", Args: []string{}, Stdin: spec.NewBlob([]byte("x\n"))})
+	if _, err := Record(s, false); err != nil {
+		t.Fatal(err)
+	}
+	s, _ = spec.Load(s.Dir)
+	if s.Meta.RecordedFrom != "tool (demo) 1.2" {
+		t.Fatalf("recorded_from = %q", s.Meta.RecordedFrom)
+	}
+	rep, err := Replay(s, v2, diff.Options{})
+	if err != nil || rep.RecordedFrom != "tool (demo) 1.2" || rep.Version != "tool (rewrite) 0.1" || rep.Pass != 1 {
+		t.Fatalf("%+v %v", rep, err)
+	}
+}

@@ -2,9 +2,11 @@
 package engine
 
 import (
+	"context"
 	"fmt"
 	"os/exec"
 	"runtime"
+	"strings"
 	"sync"
 	"time"
 
@@ -114,7 +116,38 @@ func Record(s *spec.Spec, onlyMissing bool) (RecordStats, error) {
 			return st, err
 		}
 	}
+	if v := VersionLine(s.Meta.Command); v != "" && (!onlyMissing || s.Meta.RecordedFrom == "") && v != s.Meta.RecordedFrom {
+		s.Meta.RecordedFrom = v
+		if err := s.SaveMeta(); err != nil {
+			return st, err
+		}
+	}
 	return st, nil
+}
+
+// VersionLine returns the first non-empty line that `command --version` prints,
+// or "" if the command has no working --version.
+func VersionLine(command string) string {
+	path, err := Resolve(command)
+	if err != nil {
+		return ""
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, path, "--version")
+	out, err := cmd.Output()
+	if err != nil {
+		return ""
+	}
+	for _, l := range strings.Split(string(out), "\n") {
+		if l = strings.TrimSpace(l); l != "" {
+			if len(l) > 120 {
+				l = l[:120]
+			}
+			return l
+		}
+	}
+	return ""
 }
 
 // CaseResult is the outcome of replaying one case.
@@ -130,6 +163,8 @@ type CaseResult struct {
 // Report is the outcome of a replay.
 type Report struct {
 	Command                 string
+	RecordedFrom            string // version line the expectations were recorded from
+	Version                 string // version line of the command replayed now
 	Results                 []CaseResult
 	Pass, Fail, Skip, Error int
 	ByField                 map[string]int
@@ -150,7 +185,8 @@ func Replay(s *spec.Spec, command string, o diff.Options) (*Report, error) {
 	if err != nil {
 		return nil, err
 	}
-	rep := &Report{Command: command, Results: make([]CaseResult, len(s.Cases)), ByField: map[string]int{}}
+	rep := &Report{Command: command, Results: make([]CaseResult, len(s.Cases)), ByField: map[string]int{},
+		RecordedFrom: s.Meta.RecordedFrom, Version: VersionLine(command)}
 	start := time.Now()
 	each(s.Cases, func(i int, c *spec.Case) {
 		cr := CaseResult{Case: c}

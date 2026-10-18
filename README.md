@@ -87,6 +87,7 @@ Run on this machine against real tools, generated cases only, `--help`/`--versio
 | GNU head | uutils head | 51 | 51 | none |
 | GNU uniq | uutils uniq | 100 | 100 | none |
 | GNU tr | uutils tr | 63 | 63 | none |
+| GNU tac 9.12 | uutils tac (main) | 36 | 35 | `-s -1` rejected (value starting with `-`, [#15497](https://github.com/uutils/coreutils/issues/15497)) |
 | GNU cut | uutils cut | 175 | 172 | `--output-delimiter -1` rejected (value starting with `-`) |
 | GNU base64 | uutils base64 | 36 | 31 | `-d` on invalid input: GNU prints the bytes decoded so far, uutils prints nothing |
 | GNU sort | uutils sort | 290 | ~260† | usage errors exit 1 instead of 2; `--debug` underline width; `--check --merge` |
@@ -96,6 +97,11 @@ Run on this machine against real tools, generated cases only, `--help`/`--versio
 † varies by one or two: some `--random-sort` cases are only sometimes detected as flaky with tiny inputs.
 
 Many of these are deliberate design choices, not bugs. behave just makes them visible.
+Record from the release the rewrite actually targets. uutils follows the newest GNU release, and
+GNU 9.12 prints `==> 'standard input' <==` in `tail -v` headers where 9.7 prints no quotes, so a
+spec recorded from an older GNU reports differences that are really GNU changes. `behave.yaml`
+keeps the `--version` line of the recorded tool, and `run`/`diff` print it next to the version
+being replayed.
 Some were real bugs and are now fixed upstream:
 
 - uutils `cut --output-delimiter -x` ([uutils/coreutils#15341](https://github.com/uutils/coreutils/issues/15341), fixed in #15345)
@@ -128,7 +134,7 @@ A spec is a directory you can commit and review:
 
 ```
 behave-cut/
-  behave.yaml           # command, timeout, normalizers
+  behave.yaml           # command, timeout, normalizers, recorded_from (--version line)
   cases/
     0001-help.yaml
     0135-flag-output-delimiter-value-1-arg-f1.yaml

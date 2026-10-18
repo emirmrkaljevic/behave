@@ -21,6 +21,10 @@ type Meta struct {
 	Normalize  []string `yaml:"normalize,omitempty"`  // built-in normalizers to apply
 	Replace    []Rule   `yaml:"replace,omitempty"`    // extra regex replacements
 	RecordedBy string   `yaml:"recorded_by,omitempty"`
+	// RecordedFrom is the first line of `<command> --version` at record time,
+	// e.g. "tail (GNU coreutils) 9.7", so a reader knows which release the
+	// expectations describe.
+	RecordedFrom string `yaml:"recorded_from,omitempty"`
 }
 
 // Rule is a user-defined regex replacement applied to stdout/stderr.

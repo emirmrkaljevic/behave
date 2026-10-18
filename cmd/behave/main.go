@@ -405,6 +405,7 @@ func printReport(s *spec.Spec, rep *engine.Report, verbose bool, maxFail int) {
 		fields = append(fields, fmt.Sprintf("%s %d", f, n))
 	}
 	sort.Strings(fields)
+	printVersions(s, rep)
 	fmt.Printf("%s vs %s: %s, %s, %d skipped", s.Meta.Command, rep.Command,
 		color("32", fmt.Sprintf("%d/%d passed", rep.Pass, total)), color("31", fmt.Sprintf("%d failed", rep.Fail)), rep.Skip)
 	if rep.Error > 0 {
@@ -414,6 +415,23 @@ func printReport(s *spec.Spec, rep *engine.Report, verbose bool, maxFail int) {
 		fmt.Printf("  (differs in: %s)", strings.Join(fields, ", "))
 	}
 	fmt.Printf("  [%.1fs]\n", rep.Elapsed.Seconds())
+}
+
+// printVersions says which release the expectations come from and what was
+// replayed, and warns when a failing plain run hits a different version of the original.
+func printVersions(s *spec.Spec, rep *engine.Report) {
+	if rep.RecordedFrom == "" {
+		return
+	}
+	now := rep.Version
+	if now == "" {
+		now = "unknown version"
+	}
+	fmt.Println(color("2", fmt.Sprintf("recorded from: %s, replayed on: %s", rep.RecordedFrom, now)))
+	if rep.Command == s.Meta.Command && rep.Fail+rep.Error > 0 && rep.Version != "" && rep.Version != rep.RecordedFrom {
+		fmt.Println(color("33", "note: the original is now a different version than the one recorded;"+
+			" differences may come from that upgrade (re-record with 'behave record' to accept them)"))
+	}
 }
 
 func quoteArgs(args []string) string {
@@ -436,14 +454,16 @@ func printJSON(rep *engine.Report) {
 		Error      string          `json:"error,omitempty"`
 	}
 	out := struct {
-		Command string         `json:"command"`
-		Pass    int            `json:"pass"`
-		Fail    int            `json:"fail"`
-		Skip    int            `json:"skip"`
-		Error   int            `json:"error"`
-		ByField map[string]int `json:"by_field"`
-		Cases   []jcase        `json:"cases"`
-	}{Command: rep.Command, Pass: rep.Pass, Fail: rep.Fail, Skip: rep.Skip, Error: rep.Error, ByField: rep.ByField}
+		Command      string         `json:"command"`
+		RecordedFrom string         `json:"recorded_from,omitempty"`
+		Version      string         `json:"version,omitempty"`
+		Pass         int            `json:"pass"`
+		Fail         int            `json:"fail"`
+		Skip         int            `json:"skip"`
+		Error        int            `json:"error"`
+		ByField      map[string]int `json:"by_field"`
+		Cases        []jcase        `json:"cases"`
+	}{Command: rep.Command, RecordedFrom: rep.RecordedFrom, Version: rep.Version, Pass: rep.Pass, Fail: rep.Fail, Skip: rep.Skip, Error: rep.Error, ByField: rep.ByField}
 	for _, r := range rep.Results {
 		j := jcase{Name: r.Case.Name, File: r.Case.File, Status: "pass", Mismatches: r.Mismatches}
 		switch {
