@@ -22,10 +22,11 @@ Use it when you are:
 
 ## Quick start
 
-Download a binary for Linux or macOS from [Releases](https://github.com/emirmrkaljevic/behave/releases), or:
+Install with Homebrew (macOS and Linux), download a binary from [Releases](https://github.com/emirmrkaljevic/behave/releases), or use `go install`:
 
 ```sh
-go install github.com/emirmrkaljevic/behave/cmd/behave@latest
+brew install emirmrkaljevic/tap/behave
+# or: go install github.com/emirmrkaljevic/behave/cmd/behave@latest
 
 # 1. record how GNU sort behaves (writes ./behave-sort/)
 behave probe sort
