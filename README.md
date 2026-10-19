@@ -88,7 +88,7 @@ Run on this machine against real tools, generated cases only, `--help`/`--versio
 | GNU uniq | uutils uniq | 100 | 100 | none |
 | GNU tr | uutils tr | 63 | 63 | none |
 | GNU tac 9.12 | uutils tac (main) | 36 | 35 | `-s -1` rejected (value starting with `-`, [#15497](https://github.com/uutils/coreutils/issues/15497), now fixed) |
-| GNU tail 9.12 | uutils tail (main) | 59 | 58 | `-c` with no count accepted; a hand-added `-cf FILE` case is rejected ([#15517](https://github.com/uutils/coreutils/issues/15517)) |
+| GNU tail 9.12 | uutils tail (main) | 59 | 58 | `-c` with no count accepted ([#15528](https://github.com/uutils/coreutils/issues/15528)); a hand-added `-cf FILE` case is rejected ([#15517](https://github.com/uutils/coreutils/issues/15517)) |
 | GNU cut | uutils cut | 175 | 172 | `--output-delimiter -1` rejected (value starting with `-`) |
 | GNU base64 | uutils base64 | 36 | 31 | `-d` on invalid input: GNU prints the bytes decoded so far, uutils prints nothing |
 | GNU sort | uutils sort | 290 | ~260† | usage errors exit 1 instead of 2; `--debug` underline width; `--check --merge` |
