@@ -283,6 +283,9 @@ func Generate(flags []Flag, o Options) []*spec.Case {
 	g.add("unknown long flag", []string{"--behave-unknown-flag"}, "", nil, "error")
 	g.add("unknown short flag", []string{"-\u00a7"}, "", nil, "error")
 	g.add("missing file", append(pos(o.Args[0]), "does-not-exist.txt"), "", nil, "error")
+	// Names that look like numbers must come back as typed in error
+	// messages; a port that formats them ("007" -> "7") shows up here.
+	g.add("missing file named like a number", append(pos(o.Args[0]), "007", "1e3"), "", nil, "error")
 	g.add("directory as file", append(pos(o.Args[0]), "."), "", nil, "error")
 
 	// 2. every positional × every input

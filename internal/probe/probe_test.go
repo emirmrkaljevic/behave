@@ -46,6 +46,15 @@ func TestGenerate(t *testing.T) {
 		}
 		seen[c.Name] = true
 	}
+	numeric := false
+	for _, c := range cs {
+		if c.Name == "missing file named like a number" {
+			numeric = len(c.Args) == 2 && c.Args[0] == "007" && c.Args[1] == "1e3"
+		}
+	}
+	if !numeric {
+		t.Error("no missing-file case with numeric-looking names")
+	}
 	if n := len(Generate(ParseHelp(help), Options{Max: 10})); n != 10 {
 		t.Fatalf("max not applied: %d", n)
 	}
