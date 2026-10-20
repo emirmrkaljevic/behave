@@ -88,7 +88,7 @@ Run on this machine against real tools, generated cases only, `--help`/`--versio
 | GNU uniq | uutils uniq | 100 | 100 | none |
 | GNU tr | uutils tr | 63 | 63 | none |
 | GNU tac 9.12 | uutils tac (main) | 36 | 35 | `-s -1` rejected (value starting with `-`, [#15497](https://github.com/uutils/coreutils/issues/15497), now fixed) |
-| GNU tail 9.12 | uutils tail (main) | 60 | 58 | `-c` with no count accepted ([#15528](https://github.com/uutils/coreutils/issues/15528)); file names like `007` printed as `7` ([#15533](https://github.com/uutils/coreutils/issues/15533)); a hand-added `-cf FILE` case is rejected ([#15517](https://github.com/uutils/coreutils/issues/15517)) |
+| GNU tail 9.12 | uutils tail (main) | 60 | 58 | `-c` with no count accepted ([#15528](https://github.com/uutils/coreutils/issues/15528)); file names like `007` printed as `7` ([#15533](https://github.com/uutils/coreutils/issues/15533), now fixed in tail); a hand-added `-cf FILE` case is rejected ([#15517](https://github.com/uutils/coreutils/issues/15517)) |
 | GNU cut | uutils cut | 175 | 172 | `--output-delimiter -1` rejected (value starting with `-`) |
 | GNU base64 | uutils base64 | 36 | 31 | `-d` on invalid input: GNU prints the bytes decoded so far, uutils prints nothing |
 | GNU sort | uutils sort | 290 | ~260† | usage errors exit 1 instead of 2; `--debug` underline width; `--check --merge` |
@@ -108,6 +108,7 @@ Some were real bugs and are now fixed upstream:
 - uutils `cut --output-delimiter -x` ([uutils/coreutils#15341](https://github.com/uutils/coreutils/issues/15341), fixed in #15345)
 - uutils `sort --check --merge` ignored the check ([uutils/coreutils#15380](https://github.com/uutils/coreutils/issues/15380), fixed in [#15381](https://github.com/uutils/coreutils/pull/15381))
 - uutils `tac -s -1` rejected a separator starting with `-` ([uutils/coreutils#15497](https://github.com/uutils/coreutils/issues/15497), fixed in [#15498](https://github.com/uutils/coreutils/pull/15498))
+- uutils `tail 007` printed the missing file as `'7'` ([uutils/coreutils#15533](https://github.com/uutils/coreutils/issues/15533), fixed for tail in [#15534](https://github.com/uutils/coreutils/pull/15534); the same bug in `tac` and other utilities is being fixed one by one)
 
 ## MCP server
 
