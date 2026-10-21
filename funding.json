@@ -1,0 +1,73 @@
+{
+  "version": "v1.1.0",
+  "entity": {
+    "type": "individual",
+    "role": "maintainer",
+    "name": "Emir Mrkaljević",
+    "email": "info@hatt.at",
+    "description": "Independent software developer in Sarajevo, Bosnia and Herzegovina. I build and maintain small open-source developer tools: behave (CLI behavioural conformance testing), usb-rea (USB protocol reverse engineering) and mesh2cad.",
+    "webpageUrl": {
+      "url": "https://github.com/emirmrkaljevic"
+    }
+  },
+  "projects": [
+    {
+      "guid": "behave",
+      "name": "behave",
+      "description": "behave records how a command-line tool behaves (flags, stdin, files, exit codes, stdout/stderr, edge cases) by generating test cases from its --help and man page, stores them as readable YAML, and replays them against another implementation to show, per flag, where a rewrite differs. It is aimed at memory-safe rewrites of core tools (e.g. uutils coreutils, gojq) and at regression testing of CLIs. Status: early (v0.1.x). Results so far include compatibility bugs reported to uutils/coreutils with fixes merged upstream (#15345, #15381).",
+      "webpageUrl": {
+        "url": "https://github.com/emirmrkaljevic/behave"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/emirmrkaljevic/behave"
+      },
+      "licenses": [
+        "spdx:MIT"
+      ],
+      "tags": [
+        "testing",
+        "cli",
+        "conformance",
+        "coreutils",
+        "rust",
+        "go",
+        "developer-tools",
+        "software-quality"
+      ]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "bank-transfer",
+        "type": "bank",
+        "address": "",
+        "description": "International bank transfer (SWIFT) to my account in Bosnia and Herzegovina. Details are provided on request."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "behave-1-0",
+        "status": "active",
+        "name": "behave 1.0: maintenance and stabilisation",
+        "description": "One-time grant for about 330 hours of work at EUR 30/hour, toward behave 1.0: hermetic, reproducible recordings (fixed env/locale/time, isolated filesystem, flake detection); better case generation and shrinking of failing cases; a versioned public corpus of recordings for GNU coreutils and jq; stable JSON/JUnit output and CI integration; packaging and docs. This overlaps with a pending NLnet (NGI Zero Restack) proposal submitted in October 2026 (ref 2026-11-2f4, EUR 24,000). If NLnet funds the same milestones, this request will be reduced or withdrawn to avoid double funding.",
+        "amount": 10000,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": [
+          "bank-transfer"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "year": 2026,
+        "income": 0,
+        "expenses": 0,
+        "taxes": 0,
+        "currency": "USD",
+        "description": "No funding received so far. NLnet application pending."
+      }
+    ]
+  }
+}
