@@ -50,7 +50,7 @@
         "guid": "behave-1-0",
         "status": "active",
         "name": "behave 1.0: maintenance and stabilisation",
-        "description": "One-time grant for about 330 hours of work at EUR 30/hour, toward behave 1.0: hermetic, reproducible recordings (fixed env/locale/time, isolated filesystem, flake detection); better case generation and shrinking of failing cases; a versioned public corpus of recordings for GNU coreutils and jq; stable JSON/JUnit output and CI integration; packaging and docs. This overlaps with a pending NLnet (NGI Zero Restack) proposal submitted in October 2026 (ref 2026-11-2f4, EUR 24,000). If NLnet funds the same milestones, this request will be reduced or withdrawn to avoid double funding.",
+        "description": "One-time grant for ~330 hours at EUR 30/hour toward behave 1.0: hermetic, reproducible recordings (fixed env/locale/time, isolated filesystem, flake detection); better case generation and shrinking; a public corpus of recordings for GNU coreutils and jq; stable JSON/JUnit output, CI integration, packaging and docs. Overlaps a pending NLnet NGI Zero Restack proposal (ref 2026-11-2f4, EUR 24,000); if NLnet funds the same milestones, this request will be reduced or withdrawn.",
         "amount": 10000,
         "currency": "USD",
         "frequency": "one-time",
