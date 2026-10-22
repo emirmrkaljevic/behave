@@ -287,6 +287,11 @@ func Generate(flags []Flag, o Options) []*spec.Case {
 	// messages; a port that formats them ("007" -> "7") shows up here.
 	g.add("missing file named like a number", append(pos(o.Args[0]), "007", "1e3"), "", nil, "error")
 	g.add("directory as file", append(pos(o.Args[0]), "."), "", nil, "error")
+	// "input.txt/" names a regular file as if it were a directory: the open
+	// fails with ENOTDIR, a path ports often report without the file name.
+	if o.FileInput {
+		g.add("file with trailing slash", append(pos(o.Args[0]), "input.txt/"), "", map[string]string{"input.txt": o.Inputs[0].Data}, "error")
+	}
 
 	// 2. every positional × every input
 	for _, a := range o.Args {

@@ -55,6 +55,16 @@ func TestGenerate(t *testing.T) {
 	if !numeric {
 		t.Error("no missing-file case with numeric-looking names")
 	}
+	slash := false
+	for _, c := range cs {
+		if c.Name == "file with trailing slash" {
+			_, ok := c.Files["input.txt"]
+			slash = len(c.Args) == 1 && c.Args[0] == "input.txt/" && ok
+		}
+	}
+	if !slash {
+		t.Error("no case naming a regular file with a trailing slash")
+	}
 	if n := len(Generate(ParseHelp(help), Options{Max: 10})); n != 10 {
 		t.Fatalf("max not applied: %d", n)
 	}
