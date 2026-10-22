@@ -108,8 +108,10 @@ Some were real bugs and are now fixed upstream:
 - uutils `cut --output-delimiter -x` ([uutils/coreutils#15341](https://github.com/uutils/coreutils/issues/15341), fixed in #15345)
 - uutils `sort --check --merge` ignored the check ([uutils/coreutils#15380](https://github.com/uutils/coreutils/issues/15380), fixed in [#15381](https://github.com/uutils/coreutils/pull/15381))
 - uutils `tac -s -1` rejected a separator starting with `-` ([uutils/coreutils#15497](https://github.com/uutils/coreutils/issues/15497), fixed in [#15498](https://github.com/uutils/coreutils/pull/15498))
-- uutils `tail 007` printed the missing file as `'7'` ([uutils/coreutils#15533](https://github.com/uutils/coreutils/issues/15533), fixed for tail in [#15534](https://github.com/uutils/coreutils/pull/15534); the same bug in other utilities is being fixed one by one: `tac` in [#15541](https://github.com/uutils/coreutils/pull/15541) (merged), `nl` in [#15544](https://github.com/uutils/coreutils/pull/15544) (merged), `md5sum`/`cksum` in [#15548](https://github.com/uutils/coreutils/pull/15548) (merged), `sort` in [#15565](https://github.com/uutils/coreutils/pull/15565))
+- uutils `tail 007` printed the missing file as `'7'` ([uutils/coreutils#15533](https://github.com/uutils/coreutils/issues/15533), fixed for tail in [#15534](https://github.com/uutils/coreutils/pull/15534); the same bug in other utilities is being fixed one by one: `tac` in [#15541](https://github.com/uutils/coreutils/pull/15541) (merged), `nl` in [#15544](https://github.com/uutils/coreutils/pull/15544) (merged), `md5sum`/`cksum` in [#15548](https://github.com/uutils/coreutils/pull/15548) (merged), `sort` in [#15565](https://github.com/uutils/coreutils/pull/15565) (merged), `shred` in [#15604](https://github.com/uutils/coreutils/pull/15604) (merged))
 - uutils bare `tail -c` and `tail +NUM` ignored `_POSIX2_VERSION` ([uutils/coreutils#15528](https://github.com/uutils/coreutils/issues/15528), fixed in [#15529](https://github.com/uutils/coreutils/pull/15529))
+
+Still open: uutils `sort -c dir` exits 0 without a message instead of reporting the read error ([uutils/coreutils#15615](https://github.com/uutils/coreutils/issues/15615), fix in [#15616](https://github.com/uutils/coreutils/pull/15616)).
 
 ## MCP server
 
