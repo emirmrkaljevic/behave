@@ -31,6 +31,13 @@ type Output struct {
 
 // Run executes command with the case's args/stdin/env/files.
 func Run(command string, c *spec.Case, defTimeout time.Duration) (*Output, error) {
+	// The case runs in its own work dir, so a relative path like ./mytool
+	// has to be pinned to the caller's directory first.
+	if strings.ContainsRune(command, filepath.Separator) && !filepath.IsAbs(command) {
+		if abs, err := filepath.Abs(command); err == nil {
+			command = abs
+		}
+	}
 	// The work dir sits inside a private parent so "ls -a" sees a ".." that
 	// does not change with whatever else lives in the system temp dir.
 	root, err := os.MkdirTemp("", "behave-")

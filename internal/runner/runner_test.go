@@ -2,6 +2,8 @@ package runner
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 	"testing"
 	"time"
 
@@ -50,5 +52,20 @@ func TestFilesGetFixedTimes(t *testing.T) {
 	want := fmt.Sprintf("b.txt %d\na.txt %d\nd/c.txt %d\nd %d\n", base+3600, base, base+7200, base)
 	if got := string(out.Result.Stdout.Bytes()); got != want {
 		t.Fatalf("got %q want %q", got, want)
+	}
+}
+
+func TestRelativeCommandPath(t *testing.T) {
+	dir := t.TempDir()
+	if err := os.WriteFile(filepath.Join(dir, "tool"), []byte("#!/bin/sh\necho ok\n"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	t.Chdir(dir)
+	o, err := Run("./tool", &spec.Case{}, time.Second)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got := string(o.Result.Stdout.Bytes()); got != "ok\n" {
+		t.Fatalf("stdout %q", got)
 	}
 }
