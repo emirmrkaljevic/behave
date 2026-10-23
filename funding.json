@@ -5,7 +5,7 @@
     "role": "maintainer",
     "name": "Emir Mrkaljević",
     "email": "info@hatt.at",
-    "description": "Independent software developer in Sarajevo, Bosnia and Herzegovina. I build and maintain small open-source developer tools: behave (CLI behavioural conformance testing), usb-rea (USB protocol reverse engineering) and mesh2cad.",
+    "description": "Independent software developer. I build and maintain small open-source developer tools: behave (CLI behavioural conformance testing), usb-rea (USB protocol reverse engineering) and mesh2cad.",
     "webpageUrl": {
       "url": "https://github.com/emirmrkaljevic"
     }
@@ -42,7 +42,7 @@
         "guid": "bank-transfer",
         "type": "bank",
         "address": "",
-        "description": "International bank transfer (SWIFT) to my account in Bosnia and Herzegovina. Details are provided on request."
+        "description": "International bank transfer (SWIFT/IBAN). Details are provided on request."
       }
     ],
     "plans": [
