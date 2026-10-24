@@ -117,6 +117,7 @@ Still open: uutils `sort -c dir` exits 0 without a message instead of reporting 
 - `paste` open and read errors without the file name ([#15254](https://github.com/uutils/coreutils/issues/15254), fix in [#15642](https://github.com/uutils/coreutils/pull/15642))
 - `shred dir` says `Not a file` instead of `failed to open for writing: Is a directory` ([#15630](https://github.com/uutils/coreutils/issues/15630), fix in [#15631](https://github.com/uutils/coreutils/pull/15631))
 - `mv missing/ g` says `Not a directory` and `mv d/f g` with an unsearchable `d` says `No such file or directory`, where GNU gives the real reason ([#15704](https://github.com/uutils/coreutils/issues/15704), fix in [#15705](https://github.com/uutils/coreutils/pull/15705))
+- `ln f/ link` and `ln missing link` say `failed to create hard link 'link' => ...` instead of naming the source with `failed to access 'f/'` ([#15713](https://github.com/uutils/coreutils/issues/15713), fix in [#15714](https://github.com/uutils/coreutils/pull/15714))
 
 ## MCP server
 
