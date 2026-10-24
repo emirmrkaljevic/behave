@@ -110,14 +110,16 @@ Some were real bugs and are now fixed upstream:
 - uutils `tac -s -1` rejected a separator starting with `-` ([uutils/coreutils#15497](https://github.com/uutils/coreutils/issues/15497), fixed in [#15498](https://github.com/uutils/coreutils/pull/15498))
 - uutils `tail 007` printed the missing file as `'7'` ([uutils/coreutils#15533](https://github.com/uutils/coreutils/issues/15533), fixed for tail in [#15534](https://github.com/uutils/coreutils/pull/15534); the same bug in other utilities is being fixed one by one: `tac` in [#15541](https://github.com/uutils/coreutils/pull/15541) (merged), `nl` in [#15544](https://github.com/uutils/coreutils/pull/15544) (merged), `md5sum`/`cksum` in [#15548](https://github.com/uutils/coreutils/pull/15548) (merged), `sort` in [#15565](https://github.com/uutils/coreutils/pull/15565) (merged), `shred` in [#15604](https://github.com/uutils/coreutils/pull/15604) (merged))
 - uutils bare `tail -c` and `tail +NUM` ignored `_POSIX2_VERSION` ([uutils/coreutils#15528](https://github.com/uutils/coreutils/issues/15528), fixed in [#15529](https://github.com/uutils/coreutils/pull/15529))
+- uutils `sort -c dir` exited 0 without a message instead of reporting the read error ([uutils/coreutils#15615](https://github.com/uutils/coreutils/issues/15615), fixed in [#15616](https://github.com/uutils/coreutils/pull/15616))
 
-Still open: uutils `sort -c dir` exits 0 without a message instead of reporting the read error ([uutils/coreutils#15615](https://github.com/uutils/coreutils/issues/15615), fix in [#15616](https://github.com/uutils/coreutils/pull/15616)), and a few error messages that lose the file name, mostly caught by the "file with trailing slash" probe case added in v0.1.7:
+Still open: a few error messages that lose the file name, mostly caught by the "file with trailing slash" probe case added in v0.1.7:
 
 - `cp f/ dest` prints `Not a directory (os error 20)` instead of `cannot stat 'f/': Not a directory` ([#15691](https://github.com/uutils/coreutils/issues/15691), fix in [#15692](https://github.com/uutils/coreutils/pull/15692))
 - `paste` open and read errors without the file name ([#15254](https://github.com/uutils/coreutils/issues/15254), fix in [#15642](https://github.com/uutils/coreutils/pull/15642))
 - `shred dir` says `Not a file` instead of `failed to open for writing: Is a directory` ([#15630](https://github.com/uutils/coreutils/issues/15630), fix in [#15631](https://github.com/uutils/coreutils/pull/15631))
 - `mv missing/ g` says `Not a directory` and `mv d/f g` with an unsearchable `d` says `No such file or directory`, where GNU gives the real reason ([#15704](https://github.com/uutils/coreutils/issues/15704), fix in [#15705](https://github.com/uutils/coreutils/pull/15705))
 - `ln f/ link` and `ln missing link` say `failed to create hard link 'link' => ...` instead of naming the source with `failed to access 'f/'` ([#15713](https://github.com/uutils/coreutils/issues/15713), fix in [#15714](https://github.com/uutils/coreutils/pull/15714))
+- `mv a missing/b` and `mv a ro/b` print only `No such file or directory (os error 2)` or `Permission denied (os error 13)`, where GNU says `cannot move 'a' to 'missing/b': ...` ([#15721](https://github.com/uutils/coreutils/issues/15721), fix in [#15722](https://github.com/uutils/coreutils/pull/15722))
 
 ## MCP server
 
