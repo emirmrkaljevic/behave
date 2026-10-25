@@ -1,0 +1,8 @@
+command: behave
+timeout_ms: 10000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+  - duration
+recorded_from: behave 0.1.0-dev

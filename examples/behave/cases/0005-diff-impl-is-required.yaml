@@ -1,0 +1,11 @@
+name: 'diff: --impl is required'
+args:
+  - diff
+  - spec
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: usage: $CMD diff <spec-dir> --impl <bin>  |  $CMD run <spec-dir>

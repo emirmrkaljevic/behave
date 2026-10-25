@@ -24,3 +24,4 @@ jobs:
           ./behave run examples/nl
           ./behave run examples/fold
           ./behave run examples/jq
+          PATH="$PWD:$PATH" ./behave run examples/behave

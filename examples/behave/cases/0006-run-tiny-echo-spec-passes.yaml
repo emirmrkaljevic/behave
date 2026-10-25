@@ -1,0 +1,22 @@
+name: 'run: tiny echo spec passes'
+args:
+  - run
+  - spec
+files:
+  spec/behave.yaml: |
+    command: echo
+  spec/cases/0001-hi.yaml: |
+    name: hi
+    args: [hi]
+    expect:
+      exit: 0
+      stdout: |
+        hi
+      stderr: ""
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    echo vs echo: 1/1 passed, 0 failed, 0 skipped  [$DURATION]
+  stderr: ""

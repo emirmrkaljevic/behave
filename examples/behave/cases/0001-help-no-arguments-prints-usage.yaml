@@ -1,0 +1,22 @@
+name: 'help: no arguments prints usage'
+args: []
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD - record how a CLI behaves, prove a rewrite behaves the same
+
+    Usage:
+      $CMD probe <cmd> [flags]            discover flags, generate and record cases
+      $CMD add <spec-dir> [flags] -- ARGS  add (and record) one hand-written case
+      $CMD record <spec-dir>              (re)record expectations from the original
+      $CMD run <spec-dir>                 replay against the original (regression check)
+      $CMD diff <spec-dir> --impl <bin>   replay against another implementation
+      $CMD coverage <spec-dir>            which documented flags the cases exercise
+      $CMD mcp                            serve the MCP tools over stdio
+      $CMD normalizers                    list built-in output normalizers
+      $CMD version
+
+    Run '$CMD <command> -h' for flags.

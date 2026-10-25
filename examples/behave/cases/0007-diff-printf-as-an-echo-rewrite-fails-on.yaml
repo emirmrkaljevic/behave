@@ -1,0 +1,30 @@
+name: 'diff: printf as an echo rewrite fails on missing newline'
+args:
+  - diff
+  - spec
+  - --impl
+  - printf
+files:
+  spec/behave.yaml: |
+    command: echo
+  spec/cases/0001-hi.yaml: |
+    name: hi
+    args: [hi]
+    expect:
+      exit: 0
+      stdout: |
+        hi
+      stderr: ""
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    ✗ hi  0001-hi.yaml
+      $ printf hi
+      stdout:
+        - hi
+        + hi⏎̸
+
+    echo vs printf: 0/1 passed, 1 failed, 0 skipped  (differs in: stdout 1)  [$DURATION]
+  stderr: ""

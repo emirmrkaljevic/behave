@@ -1,0 +1,16 @@
+name: 'normalizers: lists built-in normalizers'
+args:
+  - normalizers
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ansi       strip ANSI color/escape sequences
+    cmd        replace the program name (e.g. 'jq:' vs 'gojq:') with $CMD
+    duration   replace durations like $DURATION with $DURATION
+    hexaddr    replace 0x… addresses with $ADDR
+    pid        replace 'pid 1234' with pid $PID
+    timestamp  replace ISO dates, HH:MM:SS times and ls-style dates with $TIME
+    workdir    replace the case's temp work dir with $WORKDIR
+  stderr: ""

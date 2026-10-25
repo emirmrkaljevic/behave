@@ -170,3 +170,17 @@ behave run examples/cut
 
 `behave add` runs the original right away and stores what it did. To record a much
 bigger spec automatically from `--help`, use `behave probe cut` (about 175 cases).
+
+
+## `behave/`: behave's own CLI, recorded with behave
+
+behave tests itself the same way it tests other tools: usage and unknown-command errors,
+`behave normalizers`, missing spec dirs, and two end-to-end cases that write a tiny spec
+for `echo` into the work dir and replay it (once with `run`, once with `diff --impl printf`,
+which fails because `printf` drops the trailing newline). CI replays these on every push,
+so a change to messages or exit codes shows up as a diff.
+
+```sh
+behave run examples/behave
+# behave vs behave: 7/7 passed, 0 failed, 0 skipped
+```

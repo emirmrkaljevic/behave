@@ -1,0 +1,11 @@
+name: 'run: missing spec dir'
+args:
+  - run
+  - does-not-exist
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: not a $CMD spec (open does-not-exist/$CMD.yaml: no such file or directory)
