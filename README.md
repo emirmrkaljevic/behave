@@ -121,6 +121,7 @@ Still open: a few error messages that lose the file name, mostly caught by the "
 - `ln f/ link` and `ln missing link` say `failed to create hard link 'link' => ...` instead of naming the source with `failed to access 'f/'` ([#15713](https://github.com/uutils/coreutils/issues/15713), fix in [#15714](https://github.com/uutils/coreutils/pull/15714))
 - `mv a missing/b` and `mv a ro/b` print only `No such file or directory (os error 2)` or `Permission denied (os error 13)`, where GNU says `cannot move 'a' to 'missing/b': ...` ([#15721](https://github.com/uutils/coreutils/issues/15721), fix in [#15722](https://github.com/uutils/coreutils/pull/15722))
 - `mv -T f d` (file onto an existing directory) prints `cannot overwrite directory 'd' with non-directory` without the source, where GNU adds `'f'` ([#15724](https://github.com/uutils/coreutils/issues/15724), fix in [#15725](https://github.com/uutils/coreutils/pull/15725))
+- `mv -n z z` (and `--update=none`) fails with `'z' and 'z' are the same file`, where GNU skips the move and exits 0 ([#15824](https://github.com/uutils/coreutils/issues/15824), fix in [#15825](https://github.com/uutils/coreutils/pull/15825))
 
 ## MCP server
 
