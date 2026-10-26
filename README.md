@@ -122,6 +122,7 @@ Still open: a few error messages that lose the file name, mostly caught by the "
 - `mv a missing/b` and `mv a ro/b` print only `No such file or directory (os error 2)` or `Permission denied (os error 13)`, where GNU says `cannot move 'a' to 'missing/b': ...` ([#15721](https://github.com/uutils/coreutils/issues/15721), fix in [#15722](https://github.com/uutils/coreutils/pull/15722))
 - `mv -T f d` (file onto an existing directory) prints `cannot overwrite directory 'd' with non-directory` without the source, where GNU adds `'f'` ([#15724](https://github.com/uutils/coreutils/issues/15724), fix in [#15725](https://github.com/uutils/coreutils/pull/15725))
 - `mv -n z z` (and `--update=none`) fails with `'z' and 'z' are the same file`, where GNU skips the move and exits 0 ([#15824](https://github.com/uutils/coreutils/issues/15824), fix in [#15825](https://github.com/uutils/coreutils/pull/15825))
+- `chown 1000 f/` and `chgrp 1000 missing` say `cannot dereference 'f/'`, where GNU says `cannot access` and keeps `cannot dereference` for dangling symlinks ([#15867](https://github.com/uutils/coreutils/issues/15867), fix in [#15868](https://github.com/uutils/coreutils/pull/15868))
 
 ## MCP server
 
