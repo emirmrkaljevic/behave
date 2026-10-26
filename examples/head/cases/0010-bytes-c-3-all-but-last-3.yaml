@@ -1,0 +1,11 @@
+name: 'bytes: -c -3 all but last 3'
+args:
+  - -c
+  - "-3"
+stdin: "abcdef"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "abc"
+  stderr: ""

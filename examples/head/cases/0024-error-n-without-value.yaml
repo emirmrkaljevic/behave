@@ -1,0 +1,11 @@
+name: 'error: -n without value'
+args:
+  - -n
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: option requires an argument -- 'n'
+    Try '$CMD --help' for more information.

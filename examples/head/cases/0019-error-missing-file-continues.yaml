@@ -1,0 +1,18 @@
+name: 'error: missing file continues'
+args:
+  - -n
+  - "1"
+  - missing
+  - a
+files:
+  a: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    ==> a <==
+    x
+  stderr: |
+    $CMD: cannot open 'missing' for reading: No such file or directory

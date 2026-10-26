@@ -161,6 +161,28 @@ behave diff examples/jq --impl jaq --ignore-stderr
 # 32/33
 ```
 
+## `head/`: 24 recorded cases for GNU `head`
+
+`-n` and `-c` counts (including negative "all but the last N", `0`, and the `k` suffix),
+obsolete `-5`, `-z`, headers with several files, `-q`/`-v`, `-` for stdin, empty files,
+and error paths. Recorded with GNU coreutils 9.12.
+
+```sh
+behave run examples/head
+# head vs head: 24/24 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils built from main (0.13.0), output and exit codes match; the four
+failures are error wording only (quote style in invalid-count messages, and the clap
+usage errors for an unknown option and a missing `-n` value):
+
+```sh
+behave diff examples/head --impl ./coreutils-main/head
+# 20/24, all stderr
+behave diff examples/head --impl ./coreutils-main/head --ignore-stderr
+# 24/24
+```
+
 ## Grow it
 
 ```sh

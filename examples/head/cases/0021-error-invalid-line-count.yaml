@@ -1,0 +1,24 @@
+name: 'error: invalid line count'
+args:
+  - -n
+  - abc
+stdin: |
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+  11
+  12
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid number of lines: ‘abc’

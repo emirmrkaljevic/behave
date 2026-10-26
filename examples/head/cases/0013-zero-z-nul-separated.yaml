@@ -1,0 +1,12 @@
+name: 'zero: -z NUL separated'
+args:
+  - -z
+  - -n
+  - "2"
+stdin: "a"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a"
+  stderr: ""

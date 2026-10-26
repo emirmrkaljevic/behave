@@ -1,0 +1,31 @@
+name: 'lines: default 10 from stdin'
+args: []
+stdin: |
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+  11
+  12
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+  stderr: ""

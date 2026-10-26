@@ -1,0 +1,21 @@
+name: 'files: -q suppresses headers'
+args:
+  - -q
+  - -n
+  - "1"
+  - a
+  - b
+files:
+  a: |
+    x
+    y
+  b: |
+    z
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    x
+    z
+  stderr: ""

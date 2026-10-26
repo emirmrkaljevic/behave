@@ -1,0 +1,23 @@
+name: 'files: two files get headers'
+args:
+  - -n
+  - "1"
+  - a
+  - b
+files:
+  a: |
+    x
+    y
+  b: |
+    z
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ==> a <==
+    x
+
+    ==> b <==
+    z
+  stderr: ""

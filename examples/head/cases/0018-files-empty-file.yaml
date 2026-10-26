@@ -1,0 +1,11 @@
+name: 'files: empty file'
+args:
+  - e
+files:
+  e: ""
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

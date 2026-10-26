@@ -1,0 +1,13 @@
+name: 'bytes: multibyte split'
+args:
+  - -c
+  - "3"
+stdin: |
+  éé
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: w6nD
+  stderr: ""
