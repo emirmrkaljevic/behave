@@ -123,6 +123,7 @@ Still open: a few error messages that lose the file name, mostly caught by the "
 - `mv -T f d` (file onto an existing directory) prints `cannot overwrite directory 'd' with non-directory` without the source, where GNU adds `'f'` ([#15724](https://github.com/uutils/coreutils/issues/15724), fix in [#15725](https://github.com/uutils/coreutils/pull/15725))
 - `mv -n z z` (and `--update=none`) fails with `'z' and 'z' are the same file`, where GNU skips the move and exits 0 ([#15824](https://github.com/uutils/coreutils/issues/15824), fix in [#15825](https://github.com/uutils/coreutils/pull/15825))
 - `chown 1000 f/` and `chgrp 1000 missing` say `cannot dereference 'f/'`, where GNU says `cannot access` and keeps `cannot dereference` for dangling symlinks ([#15867](https://github.com/uutils/coreutils/issues/15867), fix in [#15868](https://github.com/uutils/coreutils/pull/15868))
+- `chmod -v 644 missing` prints nothing on stdout, and for a dangling symlink a made-up `from 0000 (---------) to 1500 (r-x-----T)` line, where GNU prints `'missing' could not be accessed` ([#15883](https://github.com/uutils/coreutils/issues/15883), fix in [#15884](https://github.com/uutils/coreutils/pull/15884))
 
 ## MCP server
 
