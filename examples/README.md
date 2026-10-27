@@ -183,15 +183,17 @@ behave diff examples/head --impl ./coreutils-main/head --ignore-stderr
 # 24/24
 ```
 
-## `expand/`: 22 recorded cases for GNU `expand`
+## `expand/`: 21 recorded cases for GNU `expand`
 
 Default and `-t` tab stops, obsolete `-4`, tab lists with commas or spaces, the `/N` and
-`+N` extensions, `-i`, backspace, UTF-8 before a tab, several files with `-` for stdin,
-and error paths. Recorded with GNU coreutils 9.12.
+`+N` extensions, `-i`, backspace, several files with `-` for stdin, and error paths.
+Recorded with GNU coreutils 9.12. There is no multibyte case on purpose: GNU 9.12 counts
+`é` as one column, while 9.4 (still the Ubuntu 24.04 default) counts its two bytes, so
+the spec would fail on older systems for a reason unrelated to the tool under test.
 
 ```sh
 behave run examples/expand
-# expand vs expand: 22/22 passed, 0 failed, 0 skipped
+# expand vs expand: 21/21 passed, 0 failed, 0 skipped
 ```
 
 Against uutils coreutils built from main (0.13.0), one output difference: a bare `-`
@@ -201,7 +203,7 @@ The other two are error wording (quote style, and the clap message for an unknow
 
 ```sh
 behave diff examples/expand --impl ./coreutils-main/expand
-# 19/22 (stdout 1, stderr 2)
+# 18/21 (stdout 1, stderr 2)
 ```
 
 ## Grow it
