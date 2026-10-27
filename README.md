@@ -5,6 +5,8 @@
 
 **Record how any CLI behaves. Prove your rewrite behaves the same.**
 
+Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) found 17 real compatibility bugs so far, 6 of them already fixed upstream. See [what it found](#what-it-found-on-day-one).
+
 `behave` treats a command-line tool as a black box. It reads `--help` (and the man page),
 generates hundreds of test cases (every flag, flag pairs, every value the help lists for a flag,
 edge-case stdin, file arguments, bad values, missing files), records what the tool actually does (stdout, stderr, exit code),
