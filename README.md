@@ -124,6 +124,7 @@ Still open: a few error messages that lose the file name, mostly caught by the "
 - `mv -n z z` (and `--update=none`) fails with `'z' and 'z' are the same file`, where GNU skips the move and exits 0 ([#15824](https://github.com/uutils/coreutils/issues/15824), fix in [#15825](https://github.com/uutils/coreutils/pull/15825))
 - `chown 1000 f/` and `chgrp 1000 missing` say `cannot dereference 'f/'`, where GNU says `cannot access` and keeps `cannot dereference` for dangling symlinks ([#15867](https://github.com/uutils/coreutils/issues/15867), fix in [#15868](https://github.com/uutils/coreutils/pull/15868))
 - `chmod -v 644 missing` prints nothing on stdout, and for a dangling symlink a made-up `from 0000 (---------) to 1500 (r-x-----T)` line, where GNU prints `'missing' could not be accessed` ([#15883](https://github.com/uutils/coreutils/issues/15883), fix in [#15884](https://github.com/uutils/coreutils/pull/15884))
+- `fmt d a.txt` stops at the directory with a bare `read error` and never formats `a.txt` (same for a missing file), where GNU says `error reading 'd': Is a directory` and goes on ([#15922](https://github.com/uutils/coreutils/issues/15922), fix in [#15923](https://github.com/uutils/coreutils/pull/15923))
 
 ## MCP server
 
