@@ -1,0 +1,11 @@
+name: 'tabs: list with spaces -t "2 5"'
+args:
+  - -t
+  - 2 5
+stdin: "\ta\tb\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "  a  b\n"
+  stderr: ""

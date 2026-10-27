@@ -1,0 +1,15 @@
+name: 'files: two files'
+args:
+  - f
+  - g
+files:
+  f: "a\tb\n"
+  g: "\tc\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a       b
+            c
+  stderr: ""

@@ -1,0 +1,9 @@
+name: backspace moves column back
+args: []
+stdin: "ab\bc\td\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "ab\bc      d\n"
+  stderr: ""

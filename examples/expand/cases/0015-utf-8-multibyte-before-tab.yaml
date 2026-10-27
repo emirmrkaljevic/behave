@@ -1,0 +1,10 @@
+name: utf-8 multibyte before tab
+args: []
+stdin: "é\tx\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    é       x
+  stderr: ""

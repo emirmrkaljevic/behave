@@ -183,6 +183,27 @@ behave diff examples/head --impl ./coreutils-main/head --ignore-stderr
 # 24/24
 ```
 
+## `expand/`: 22 recorded cases for GNU `expand`
+
+Default and `-t` tab stops, obsolete `-4`, tab lists with commas or spaces, the `/N` and
+`+N` extensions, `-i`, backspace, UTF-8 before a tab, several files with `-` for stdin,
+and error paths. Recorded with GNU coreutils 9.12.
+
+```sh
+behave run examples/expand
+# expand vs expand: 22/22 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils built from main (0.13.0), one output difference: a bare `-`
+after a file name is dropped, so `expand f - f` never reads stdin (already fixed in
+[uutils/coreutils#15716](https://github.com/uutils/coreutils/pull/15716), not merged yet).
+The other two are error wording (quote style, and the clap message for an unknown option):
+
+```sh
+behave diff examples/expand --impl ./coreutils-main/expand
+# 19/22 (stdout 1, stderr 2)
+```
+
 ## Grow it
 
 ```sh

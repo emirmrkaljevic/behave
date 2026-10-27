@@ -1,0 +1,17 @@
+name: 'files: dash means stdin'
+args:
+  - f
+  - '-'
+  - f
+stdin: "\ts\n"
+files:
+  f: "a\tb\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a       b
+            s
+    a       b
+  stderr: ""

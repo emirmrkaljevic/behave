@@ -1,0 +1,13 @@
+name: 'error: invalid tab size'
+args:
+  - -t
+  - x
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: tab size contains invalid character(s): ‘x’

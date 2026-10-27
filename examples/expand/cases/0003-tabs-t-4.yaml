@@ -1,0 +1,12 @@
+name: 'tabs: -t 4'
+args:
+  - -t
+  - "4"
+stdin: "a\tb\tc\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a   b   c
+  stderr: ""

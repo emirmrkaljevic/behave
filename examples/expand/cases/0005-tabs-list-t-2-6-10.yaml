@@ -1,0 +1,11 @@
+name: 'tabs: list -t 2,6,10'
+args:
+  - -t
+  - 2,6,10
+stdin: "\ta\tb\tc\td\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "  a   b   c d\n"
+  stderr: ""

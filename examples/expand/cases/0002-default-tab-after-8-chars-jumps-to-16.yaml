@@ -1,0 +1,10 @@
+name: 'default: tab after 8 chars jumps to 16'
+args: []
+stdin: "abcdefgh\tx\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    abcdefgh        x
+  stderr: ""

@@ -1,0 +1,10 @@
+name: 'initial: -i keeps tabs after first non-blank'
+args:
+  - -i
+stdin: "\ta\tb\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "        a\tb\n"
+  stderr: ""

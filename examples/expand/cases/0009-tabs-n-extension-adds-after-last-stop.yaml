@@ -1,0 +1,11 @@
+name: 'tabs: +N extension adds after last stop'
+args:
+  - -t
+  - 3,+5
+stdin: "\ta\tb\tc\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "   a    b    c\n"
+  stderr: ""

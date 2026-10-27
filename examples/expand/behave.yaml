@@ -1,0 +1,7 @@
+command: expand
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: expand (GNU coreutils) 9.12

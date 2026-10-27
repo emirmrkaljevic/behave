@@ -1,0 +1,12 @@
+name: 'initial: --initial with leading spaces and tabs'
+args:
+  - --initial
+  - -t
+  - "4"
+stdin: "  \tx\ty\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "    x\ty\n"
+  stderr: ""

@@ -1,0 +1,11 @@
+name: 'default: tab stops every 8'
+args: []
+stdin: "a\tb\n\tc\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a       b
+            c
+  stderr: ""
