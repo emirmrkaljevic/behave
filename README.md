@@ -20,6 +20,21 @@ Use it when you are:
 - refactoring or upgrading a CLI and want a regression net in a few seconds,
 - comparing two implementations of the same tool.
 
+## Porting a CLI?
+
+If you are rewriting an existing command-line tool in Rust or Go, behave gives you a compatibility
+suite without reading the original source. Three commands:
+
+```sh
+behave probe sort                      # record what the original does, case by case
+behave run behave-sort                 # make sure the recording is stable
+behave diff behave-sort --impl ./target/release/sort   # every place your port differs
+```
+
+This is how it found 17 compatibility bugs in uutils coreutils (6 already fixed upstream).
+A second, ready to run pair: `behave diff examples/jq --impl gojq` passes 29 of 33 jq 1.7 cases,
+and the 4 differences are all error wording on stderr (see [examples/jq](examples/jq/)).
+
 > Status: early (v0.1). CLI and MCP server work; feedback welcome.
 
 ## Quick start
