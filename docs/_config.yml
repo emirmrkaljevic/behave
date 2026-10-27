@@ -1,0 +1,6 @@
+title: behave
+description: Black-box compatibility tests for command-line tools. Record how a CLI behaves, then prove your rewrite behaves the same.
+theme: jekyll-theme-cayman
+url: https://emirmrkaljevic.github.io
+baseurl: /behave
+exclude: [demo.tape]
