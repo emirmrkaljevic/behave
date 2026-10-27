@@ -84,3 +84,23 @@ func TestSaveCaseCreatesCasesDir(t *testing.T) {
 		t.Fatalf("reload: %+v", got.Cases)
 	}
 }
+
+func TestFileContentsRoundTrip(t *testing.T) {
+	dir := t.TempDir()
+	s := &Spec{Dir: dir, Meta: Meta{Command: "x"}}
+	s.SaveMeta()
+	files := FileMap{"tab": "\tc\n", "mixed": "a\tb\n", "lead": "  x\ny\n", "crlf": "a\r\n", "plain": "a\nb\n", "empty": ""}
+	c := &Case{Name: "files", Files: files, Expect: &Result{Stdout: NewBlob(nil), Stderr: NewBlob(nil)}}
+	if err := s.SaveCase(c); err != nil {
+		t.Fatal(err)
+	}
+	got, err := Load(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for k, v := range files {
+		if got.Cases[0].Files[k] != v {
+			t.Errorf("%s: %q round-tripped to %q", k, v, got.Cases[0].Files[k])
+		}
+	}
+}

@@ -39,7 +39,7 @@ type Case struct {
 	Args      []string          `yaml:"args"`
 	Stdin     *Blob             `yaml:"stdin,omitempty"`
 	Env       map[string]string `yaml:"env,omitempty"`
-	Files     map[string]string `yaml:"files,omitempty"` // input files created in the work dir
+	Files     FileMap           `yaml:"files,omitempty"` // input files created in the work dir
 	TimeoutMS int               `yaml:"timeout_ms,omitempty"`
 	Tags      []string          `yaml:"tags,omitempty"`
 	Flaky     bool              `yaml:"flaky,omitempty"` // non-deterministic; skipped by diff
@@ -82,6 +82,30 @@ func (b *Blob) MarshalYAML() (any, error) {
 		return n, nil
 	}
 	return map[string]string{"base64": base64.StdEncoding.EncodeToString(b.Data)}, nil
+}
+
+// FileMap holds input files by name. It is written with the same quoting rules as
+// Blob, so contents with tabs, leading spaces or CR stay valid YAML.
+type FileMap map[string]string
+
+func (m FileMap) MarshalYAML() (any, error) {
+	n := &yaml.Node{Kind: yaml.MappingNode}
+	names := make([]string, 0, len(m))
+	for k := range m {
+		names = append(names, k)
+	}
+	sort.Strings(names)
+	for _, k := range names {
+		v := &yaml.Node{Kind: yaml.ScalarNode, Tag: "!!str", Value: m[k]}
+		switch {
+		case literalSafe(m[k]):
+			v.Style = yaml.LiteralStyle
+		case strings.ContainsAny(m[k], "\n\r\t"):
+			v.Style = yaml.DoubleQuotedStyle
+		}
+		n.Content = append(n.Content, &yaml.Node{Kind: yaml.ScalarNode, Value: k}, v)
+	}
+	return n, nil
 }
 
 func (b *Blob) UnmarshalYAML(n *yaml.Node) error {
