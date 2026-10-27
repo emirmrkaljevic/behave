@@ -5,7 +5,7 @@
 
 **Record how any CLI behaves. Prove your rewrite behaves the same.**
 
-Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) found 17 real compatibility bugs so far, 6 of them already fixed upstream. See [what it found](#what-it-found-on-day-one).
+Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) has so far led to 17 upstream bug reports and 24 fix PRs, 11 of them merged (as of Oct 27, 2026). See [what it found](#what-it-found-on-day-one).
 
 `behave` treats a command-line tool as a black box. It reads `--help` (and the man page),
 generates hundreds of test cases (every flag, flag pairs, every value the help lists for a flag,
@@ -31,7 +31,7 @@ behave run behave-sort                 # make sure the recording is stable
 behave diff behave-sort --impl ./target/release/sort   # every place your port differs
 ```
 
-This is how it found 17 compatibility bugs in uutils coreutils (6 already fixed upstream).
+This is how it led to 17 bug reports and 24 fix PRs in uutils coreutils (11 merged so far).
 A second, ready to run pair: `behave diff examples/jq --impl gojq` passes 29 of 33 jq 1.7 cases,
 and the 4 differences are all error wording on stderr (see [examples/jq](examples/jq/)).
 
