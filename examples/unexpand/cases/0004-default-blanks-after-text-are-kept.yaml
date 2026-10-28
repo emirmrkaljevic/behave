@@ -1,0 +1,9 @@
+name: 'default: blanks after text are kept'
+args: []
+stdin: "        a       b       c\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\ta       b       c\n"
+  stderr: ""

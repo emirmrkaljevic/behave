@@ -1,0 +1,12 @@
+name: 'all: single space before a tab stop stays'
+args:
+  - -a
+stdin: |
+  abcdefg h
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    abcdefg h
+  stderr: ""

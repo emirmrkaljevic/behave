@@ -206,6 +206,29 @@ behave diff examples/expand --impl ./coreutils-main/expand
 # 18/21 (stdout 1, stderr 2)
 ```
 
+## `unexpand/`: 26 recorded cases for GNU `unexpand`
+
+The reverse of `expand`: leading blanks only by default, `-a` for all blanks, `-t` (which
+implies `-a`) with `--first-only`, obsolete `-4`, tab lists, the `/N` and `+N` extensions,
+blanks past the last stop, a single space before a stop (kept), backspace, input without
+a trailing newline, several files with `-` for stdin, and error paths. Recorded with GNU
+coreutils 9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/unexpand
+# unexpand vs unexpand: 26/26 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils built from main (0.13.0) the result matches `expand`: `unexpand
+f - f` skips stdin (also covered by
+[uutils/coreutils#15716](https://github.com/uutils/coreutils/pull/15716)), plus the same
+two error wording differences:
+
+```sh
+behave diff examples/unexpand --impl ./coreutils-main/unexpand
+# 23/26 (stdout 1, stderr 2)
+```
+
 ## Grow it
 
 ```sh

@@ -1,0 +1,11 @@
+name: 'all: -a converts blanks after text'
+args:
+  - -a
+stdin: |
+  abc     def     g
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "abc\tdef\tg\n"
+  stderr: ""

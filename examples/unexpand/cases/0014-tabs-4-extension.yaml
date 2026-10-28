@@ -1,0 +1,12 @@
+name: 'tabs: /4 extension'
+args:
+  - -t
+  - 2,/4
+stdin: |
+  a b   c   d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a b\t  c\t  d\n"
+  stderr: ""

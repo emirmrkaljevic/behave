@@ -1,0 +1,10 @@
+name: 'error: missing file'
+args:
+  - missing
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: missing: No such file or directory

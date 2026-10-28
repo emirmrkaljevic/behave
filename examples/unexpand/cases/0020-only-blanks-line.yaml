@@ -1,0 +1,9 @@
+name: only blanks line
+args: []
+stdin: "                \n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\t\t\n"
+  stderr: ""

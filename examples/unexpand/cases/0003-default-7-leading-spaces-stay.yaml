@@ -1,0 +1,9 @@
+name: 'default: 7 leading spaces stay'
+args: []
+stdin: "       a\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "       a\n"
+  stderr: ""

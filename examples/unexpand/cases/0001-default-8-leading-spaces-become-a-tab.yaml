@@ -1,0 +1,9 @@
+name: 'default: 8 leading spaces become a tab'
+args: []
+stdin: "        a\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\ta\n"
+  stderr: ""

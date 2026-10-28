@@ -1,0 +1,11 @@
+name: 'tabs: blanks past last stop stay'
+args:
+  - -t
+  - 4,8
+stdin: "    a       b\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\ta\t    b\n"
+  stderr: ""

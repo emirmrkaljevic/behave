@@ -1,0 +1,14 @@
+name: file operand and stdin dash
+args:
+  - f
+  - '-'
+  - f
+stdin: "        s\n"
+files:
+  f: "        f\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\tf\n\ts\n\tf\n"
+  stderr: ""

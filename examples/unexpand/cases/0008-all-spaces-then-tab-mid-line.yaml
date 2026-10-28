@@ -1,0 +1,10 @@
+name: 'all: spaces then tab mid-line'
+args:
+  - -a
+stdin: "ab  \tcd\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "ab\tcd\n"
+  stderr: ""

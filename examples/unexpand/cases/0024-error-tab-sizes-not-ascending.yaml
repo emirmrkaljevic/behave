@@ -1,0 +1,12 @@
+name: 'error: tab sizes not ascending'
+args:
+  - -t
+  - 4,2
+stdin: "x"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: tab sizes must be ascending

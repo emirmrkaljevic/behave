@@ -1,0 +1,9 @@
+name: 'default: 16 leading spaces become two tabs'
+args: []
+stdin: "                a\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\t\ta\n"
+  stderr: ""

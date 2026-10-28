@@ -1,0 +1,9 @@
+name: no trailing newline
+args: []
+stdin: "        a"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\ta"
+  stderr: ""

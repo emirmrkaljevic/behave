@@ -1,0 +1,12 @@
+name: 'error: tab size 0'
+args:
+  - -t
+  - "0"
+stdin: "x"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: tab size cannot be 0

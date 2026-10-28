@@ -1,0 +1,9 @@
+name: 'default: leading spaces then tab'
+args: []
+stdin: "   \t a\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\t a\n"
+  stderr: ""

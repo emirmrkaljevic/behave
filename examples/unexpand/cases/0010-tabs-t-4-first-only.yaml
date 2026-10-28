@@ -1,0 +1,12 @@
+name: 'tabs: -t 4 --first-only'
+args:
+  - -t
+  - "4"
+  - --first-only
+stdin: "    a   b\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\ta   b\n"
+  stderr: ""
