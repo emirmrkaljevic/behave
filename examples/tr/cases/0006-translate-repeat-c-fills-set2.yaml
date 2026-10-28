@@ -1,0 +1,13 @@
+name: 'translate: repeat [c*] fills set2'
+args:
+  - a-f
+  - x[y*]
+stdin: |
+  abcdef
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    xyyyyy
+  stderr: ""

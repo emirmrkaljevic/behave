@@ -1,0 +1,11 @@
+name: 'class: [:space:] to x'
+args:
+  - '[:space:]'
+  - x
+stdin: "a\tb c\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "axbxcx"
+  stderr: ""

@@ -1,0 +1,14 @@
+name: 'complement: -c replaces non-alnum'
+args:
+  - -c
+  - '[:alnum:]\n'
+  - _
+stdin: |
+  a,b;c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a_b_c
+  stderr: ""

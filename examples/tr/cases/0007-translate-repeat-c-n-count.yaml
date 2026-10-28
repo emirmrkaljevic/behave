@@ -1,0 +1,13 @@
+name: 'translate: repeat [c*n] count'
+args:
+  - a-f
+  - '[x*2][y*4]'
+stdin: |
+  abcdef
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    xxyyyy
+  stderr: ""

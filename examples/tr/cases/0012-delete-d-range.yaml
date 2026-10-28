@@ -1,0 +1,13 @@
+name: 'delete: -d range'
+args:
+  - -d
+  - a-m
+stdin: |
+  hello world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    o wor
+  stderr: ""

@@ -1,0 +1,13 @@
+name: 'translate: lowercase to uppercase'
+args:
+  - a-z
+  - A-Z
+stdin: |
+  hello world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    HELLO WORLD
+  stderr: ""

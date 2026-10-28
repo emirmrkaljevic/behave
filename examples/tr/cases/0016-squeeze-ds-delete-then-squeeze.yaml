@@ -1,0 +1,14 @@
+name: 'squeeze: -ds delete then squeeze'
+args:
+  - -ds
+  - '[:digit:]'
+  - a-z
+stdin: |
+  aa11bb22
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ab
+  stderr: ""

@@ -1,0 +1,13 @@
+name: 'delete: -dc keep only listed'
+args:
+  - -dc
+  - '[:digit:]\n'
+stdin: |
+  a1b2c3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    123
+  stderr: ""

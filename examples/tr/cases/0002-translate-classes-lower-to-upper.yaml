@@ -1,0 +1,13 @@
+name: 'translate: classes lower to upper'
+args:
+  - '[:lower:]'
+  - '[:upper:]'
+stdin: |
+  Hello World
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    HELLO WORLD
+  stderr: ""

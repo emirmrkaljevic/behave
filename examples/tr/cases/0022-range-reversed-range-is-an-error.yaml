@@ -1,0 +1,13 @@
+name: 'range: reversed range is an error'
+args:
+  - z-a
+  - A
+stdin: |
+  x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: range-endpoints of 'z-a' are in reverse collating sequence order

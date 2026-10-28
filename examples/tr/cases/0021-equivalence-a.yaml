@@ -1,0 +1,13 @@
+name: 'equivalence: [=a=]'
+args:
+  - '[=a=]'
+  - o
+stdin: |
+  banana
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    bonono
+  stderr: ""

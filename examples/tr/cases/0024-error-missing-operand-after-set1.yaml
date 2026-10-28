@@ -1,0 +1,14 @@
+name: 'error: missing operand after set1'
+args:
+  - abc
+stdin: |
+  x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: missing operand after ‘abc’
+    Two strings must be given when translating.
+    Try '$CMD --help' for more information.

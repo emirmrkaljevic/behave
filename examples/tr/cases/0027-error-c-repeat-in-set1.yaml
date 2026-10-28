@@ -1,0 +1,13 @@
+name: 'error: [c*] repeat in set1'
+args:
+  - '[a*]'
+  - b
+stdin: |
+  x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: the [c*] repeat construct may not appear in string1

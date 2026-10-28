@@ -1,0 +1,16 @@
+name: 'error: extra operand with -d'
+args:
+  - -d
+  - a
+  - b
+stdin: |
+  x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: extra operand ‘b’
+    Only one string may be given when deleting without squeezing repeats.
+    Try '$CMD --help' for more information.

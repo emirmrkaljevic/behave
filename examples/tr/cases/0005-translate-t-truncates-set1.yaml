@@ -1,0 +1,14 @@
+name: 'translate: -t truncates set1'
+args:
+  - -t
+  - abcdef
+  - xy
+stdin: |
+  abcdef
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    xycdef
+  stderr: ""

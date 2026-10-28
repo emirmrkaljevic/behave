@@ -1,0 +1,14 @@
+name: 'error: set2 class other than upper/lower'
+args:
+  - a
+  - '[:digit:]'
+stdin: |
+  x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: when translating, the only character classes that may appear in
+    string2 are 'upper' and 'lower'

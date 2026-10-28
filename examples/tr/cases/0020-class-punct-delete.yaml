@@ -1,0 +1,13 @@
+name: 'class: [:punct:] delete'
+args:
+  - -d
+  - '[:punct:]'
+stdin: |
+  a.b,c!d?
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    abcd
+  stderr: ""

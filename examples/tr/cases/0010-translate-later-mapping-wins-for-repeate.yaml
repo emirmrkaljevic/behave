@@ -1,0 +1,13 @@
+name: 'translate: later mapping wins for repeated set1 char'
+args:
+  - aa
+  - xy
+stdin: |
+  aaa
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    yyy
+  stderr: ""

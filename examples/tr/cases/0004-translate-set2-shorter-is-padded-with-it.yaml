@@ -1,0 +1,13 @@
+name: 'translate: set2 shorter is padded with its last char'
+args:
+  - abcdef
+  - xy
+stdin: |
+  abcdef
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    xyyyyy
+  stderr: ""

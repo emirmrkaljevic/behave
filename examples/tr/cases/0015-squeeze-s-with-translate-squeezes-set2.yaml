@@ -1,0 +1,14 @@
+name: 'squeeze: -s with translate squeezes set2'
+args:
+  - -s
+  - ab
+  - xy
+stdin: |
+  aabbcc
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    xycc
+  stderr: ""

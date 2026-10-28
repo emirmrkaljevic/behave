@@ -1,0 +1,16 @@
+name: 'complement: -cs words per line'
+args:
+  - -cs
+  - '[:alpha:]'
+  - \n
+stdin: |
+  one, two;  three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    one
+    two
+    three
+  stderr: ""

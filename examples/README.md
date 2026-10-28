@@ -229,6 +229,29 @@ behave diff examples/unexpand --impl ./coreutils-main/unexpand
 # 23/26 (stdout 1, stderr 2)
 ```
 
+## `tr/`: 29 recorded cases for GNU `tr`
+
+Translate with ranges and character classes, set2 padding versus `-t`, the `[c*]` and
+`[c*n]` repeat constructs, octal and `\n` escapes, `-d`, `-s`, `-c` and their
+combinations, `[=a=]`, and the error paths (reverse range, missing or extra operand,
+classes in set2, `[c*]` in set1, unknown class or option). Recorded with GNU coreutils
+9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/tr
+# tr vs tr: 29/29 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0 every stdout and exit code matches; the 6 failures are
+error wording only (quote style, the set2 class message split over two lines in GNU,
+tracked in [uutils/coreutils#15948](https://github.com/uutils/coreutils/issues/15948),
+and the clap message for an unknown option):
+
+```sh
+behave diff examples/tr --impl ./uutils/tr
+# 23/29 (stderr 6)
+```
+
 ## Grow it
 
 ```sh

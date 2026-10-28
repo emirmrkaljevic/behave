@@ -1,0 +1,13 @@
+name: 'error: unknown class'
+args:
+  - '[:foo:]'
+  - x
+stdin: |
+  x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid character class ‘foo’

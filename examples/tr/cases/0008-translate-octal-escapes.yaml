@@ -1,0 +1,13 @@
+name: 'translate: octal escapes'
+args:
+  - ' '
+  - \137
+stdin: |
+  a b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a_b
+  stderr: ""

@@ -1,0 +1,13 @@
+name: 'delete: -d digits'
+args:
+  - -d
+  - '[:digit:]'
+stdin: |
+  a1b2c3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    abc
+  stderr: ""
