@@ -1,0 +1,17 @@
+name: empty file 1
+args:
+  - e
+  - b
+files:
+  b: |
+    banana
+    cherry
+    fig
+    grape
+  e: ""
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\tbanana\n\tcherry\n\tfig\n\tgrape\n"
+  stderr: ""

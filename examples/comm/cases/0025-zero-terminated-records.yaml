@@ -1,0 +1,15 @@
+name: zero-terminated records
+args:
+  - -z
+  - a
+  - b
+files:
+  a: "a\0b\0c\0"
+  b: "b\0c\0d\0"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: YQAJCWIACQljAAlkAA==
+  stderr: ""

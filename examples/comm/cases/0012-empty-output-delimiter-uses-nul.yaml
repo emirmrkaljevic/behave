@@ -1,0 +1,23 @@
+name: empty output-delimiter uses NUL
+args:
+  - --output-delimiter=
+  - a
+  - b
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+  b: |
+    banana
+    cherry
+    fig
+    grape
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: YXBwbGUKAABiYW5hbmEKAABjaGVycnkKZGF0ZQoAZmlnCgBncmFwZQo=
+  stderr: ""

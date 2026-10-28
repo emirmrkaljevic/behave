@@ -1,0 +1,22 @@
+name: -123 prints nothing
+args:
+  - "-123"
+  - a
+  - b
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+  b: |
+    banana
+    cherry
+    fig
+    grape
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

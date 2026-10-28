@@ -1,0 +1,16 @@
+name: identical files are all common
+args:
+  - a
+  - a
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\t\tapple\n\t\tbanana\n\t\tcherry\n\t\tdate\n"
+  stderr: ""

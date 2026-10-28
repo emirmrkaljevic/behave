@@ -1,0 +1,20 @@
+name: duplicate lines pair up one by one
+args:
+  - a
+  - b
+files:
+  a: |
+    a
+    a
+    a
+    b
+  b: |
+    a
+    b
+    b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\t\ta\na\na\n\t\tb\n\tb\n"
+  stderr: ""

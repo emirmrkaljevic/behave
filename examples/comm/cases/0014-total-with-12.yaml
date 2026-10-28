@@ -1,0 +1,23 @@
+name: total with -12
+args:
+  - --total
+  - "-12"
+  - a
+  - b
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+  b: |
+    banana
+    cherry
+    fig
+    grape
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "banana\ncherry\n2\t2\t2\ttotal\n"
+  stderr: ""

@@ -252,6 +252,28 @@ behave diff examples/tr --impl ./uutils/tr
 # 23/29 (stderr 6)
 ```
 
+## `comm/`: 30 recorded cases for GNU `comm`
+
+The three-column layout and every `-1`/`-2`/`-3` combination, `--output-delimiter`
+(including the empty delimiter, which writes NUL), `--total`, `-` for stdin on either
+side, duplicate lines, a missing final newline, `-z` records, sort-order checking
+(default warning, `--check-order`, `--nocheck-order`) and the error paths (missing,
+single or extra operand, missing file, unknown option). Recorded with GNU coreutils
+9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/comm
+# comm vs comm: 30/30 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0 all output, ordering checks and exit codes match; the 4
+failures are the clap usage messages for operand and option errors:
+
+```sh
+behave diff examples/comm --impl ./uutils/comm
+# 26/30 (stderr 4)
+```
+
 ## Grow it
 
 ```sh

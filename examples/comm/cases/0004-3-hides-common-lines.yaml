@@ -1,0 +1,22 @@
+name: -3 hides common lines
+args:
+  - "-3"
+  - a
+  - b
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+  b: |
+    banana
+    cherry
+    fig
+    grape
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "apple\ndate\n\tfig\n\tgrape\n"
+  stderr: ""

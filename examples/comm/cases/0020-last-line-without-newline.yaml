@@ -1,0 +1,17 @@
+name: last line without newline
+args:
+  - a
+  - b
+files:
+  a: |-
+    x
+    y
+  b: |-
+    y
+    z
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "x\n\t\ty\n\tz\n"
+  stderr: ""

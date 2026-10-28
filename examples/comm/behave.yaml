@@ -1,0 +1,7 @@
+command: comm
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: comm (GNU coreutils) 9.12

@@ -1,0 +1,22 @@
+name: -1 hides lines only in file 1
+args:
+  - "-1"
+  - a
+  - b
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+  b: |
+    banana
+    cherry
+    fig
+    grape
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\tbanana\n\tcherry\nfig\ngrape\n"
+  stderr: ""

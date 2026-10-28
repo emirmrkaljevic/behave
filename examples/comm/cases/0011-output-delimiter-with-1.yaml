@@ -1,0 +1,27 @@
+name: output-delimiter with -1
+args:
+  - "-1"
+  - --output-delimiter=,
+  - a
+  - b
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+  b: |
+    banana
+    cherry
+    fig
+    grape
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ,banana
+    ,cherry
+    fig
+    grape
+  stderr: ""

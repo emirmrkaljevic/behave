@@ -1,0 +1,17 @@
+name: one operand only
+args:
+  - a
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: missing operand after ‘a’
+    Try '$CMD --help' for more information.

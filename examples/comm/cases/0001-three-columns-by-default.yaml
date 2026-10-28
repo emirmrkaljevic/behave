@@ -1,0 +1,21 @@
+name: three columns by default
+args:
+  - a
+  - b
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+  b: |
+    banana
+    cherry
+    fig
+    grape
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "apple\n\t\tbanana\n\t\tcherry\ndate\n\tfig\n\tgrape\n"
+  stderr: ""

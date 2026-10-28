@@ -1,0 +1,19 @@
+name: unsorted file 1 warns and exits 1
+args:
+  - a
+  - b
+files:
+  a: |
+    b
+    a
+  b: |
+    a
+    b
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "\ta\n\t\tb\na\n"
+  stderr: |
+    $CMD: file 1 is not in sorted order
+    $CMD: input is not in sorted order

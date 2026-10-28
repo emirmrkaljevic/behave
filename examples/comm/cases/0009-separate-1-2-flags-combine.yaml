@@ -1,0 +1,25 @@
+name: separate -1 -2 flags combine
+args:
+  - "-1"
+  - "-2"
+  - a
+  - b
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+  b: |
+    banana
+    cherry
+    fig
+    grape
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    banana
+    cherry
+  stderr: ""

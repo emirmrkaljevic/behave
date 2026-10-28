@@ -1,0 +1,13 @@
+name: both files empty
+args:
+  - e
+  - f
+files:
+  e: ""
+  f: ""
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

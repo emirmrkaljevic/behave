@@ -1,0 +1,17 @@
+name: missing file
+args:
+  - a
+  - nope
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: nope: No such file or directory

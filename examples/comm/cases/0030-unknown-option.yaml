@@ -1,0 +1,19 @@
+name: unknown option
+args:
+  - --bogus
+  - a
+  - a
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: unrecognized option '--bogus'
+    Try '$CMD --help' for more information.

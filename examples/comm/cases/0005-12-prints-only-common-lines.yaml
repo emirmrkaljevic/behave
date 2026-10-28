@@ -1,0 +1,24 @@
+name: -12 prints only common lines
+args:
+  - "-12"
+  - a
+  - b
+files:
+  a: |
+    apple
+    banana
+    cherry
+    date
+  b: |
+    banana
+    cherry
+    fig
+    grape
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    banana
+    cherry
+  stderr: ""
