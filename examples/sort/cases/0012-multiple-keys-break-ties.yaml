@@ -1,0 +1,17 @@
+name: multiple keys break ties
+args:
+  - -k2,2n
+  - -k1,1
+stdin: |
+  b 1
+  a 1
+  c 0
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    c 0
+    a 1
+    b 1
+  stderr: ""

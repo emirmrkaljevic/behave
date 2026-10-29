@@ -1,0 +1,22 @@
+name: m merges already sorted files
+args:
+  - -m
+  - one
+  - two
+files:
+  one: |
+    a
+    c
+  two: |
+    b
+    d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+    c
+    d
+  stderr: ""

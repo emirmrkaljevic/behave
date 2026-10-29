@@ -1,0 +1,10 @@
+name: 'error: invalid key field zero'
+args:
+  - -k0
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: field number is zero: invalid field specification ‘0’

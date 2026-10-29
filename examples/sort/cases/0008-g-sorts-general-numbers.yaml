@@ -1,0 +1,18 @@
+name: g sorts general numbers
+args:
+  - -g
+stdin: |
+  1e3
+  2.5
+  -1e-2
+  10
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -1e-2
+    2.5
+    10
+    1e3
+  stderr: ""

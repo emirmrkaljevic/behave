@@ -1,0 +1,17 @@
+name: u drops duplicate lines
+args:
+  - -u
+stdin: |
+  banana
+  apple
+  cherry
+  apple
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    apple
+    banana
+    cherry
+  stderr: ""

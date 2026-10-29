@@ -1,0 +1,11 @@
+name: z uses NUL line endings
+args:
+  - -z
+stdin: "b"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: YgA=
+  stderr: ""

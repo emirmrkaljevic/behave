@@ -1,0 +1,16 @@
+name: k with n on a field
+args:
+  - -k2,2n
+stdin: |
+  x 10
+  y 9
+  z 100
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    y 9
+    x 10
+    z 100
+  stderr: ""

@@ -1,0 +1,11 @@
+name: 'error: multi-character separator'
+args:
+  - -t
+  - ab
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: multi-character tab ‘ab’

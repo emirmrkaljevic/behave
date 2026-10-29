@@ -1,0 +1,15 @@
+name: without n numbers sort as text
+args: []
+stdin: |
+  10
+  9
+  100
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    10
+    100
+    9
+  stderr: ""

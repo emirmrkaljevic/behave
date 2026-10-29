@@ -1,0 +1,17 @@
+name: b ignores leading blanks in keys
+args:
+  - -b
+  - -k2,2
+stdin: |
+  a   2
+  b 1
+  c  3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b 1
+    a   2
+    c  3
+  stderr: ""

@@ -1,0 +1,16 @@
+name: key with character offset
+args:
+  - -k1.2,1.2
+stdin: |
+  xb2
+  ya1
+  zc3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ya1
+    xb2
+    zc3
+  stderr: ""

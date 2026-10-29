@@ -1,0 +1,13 @@
+name: missing trailing newline is added
+args: []
+stdin: |-
+  b
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+  stderr: ""

@@ -1,0 +1,11 @@
+name: 'error: incompatible n and g'
+args:
+  - -n
+  - -g
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: options '-gn' are incompatible

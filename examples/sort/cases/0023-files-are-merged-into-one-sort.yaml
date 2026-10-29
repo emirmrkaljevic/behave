@@ -1,0 +1,21 @@
+name: files are merged into one sort
+args:
+  - one
+  - two
+files:
+  one: |
+    c
+    a
+  two: |
+    b
+    d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+    c
+    d
+  stderr: ""

@@ -1,0 +1,20 @@
+name: h sorts human sizes
+args:
+  - -h
+stdin: |
+  2K
+  1M
+  512
+  3G
+  1K
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    512
+    1K
+    2K
+    1M
+    3G
+  stderr: ""

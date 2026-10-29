@@ -1,0 +1,12 @@
+name: C checks quietly
+args:
+  - -C
+stdin: |
+  b
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

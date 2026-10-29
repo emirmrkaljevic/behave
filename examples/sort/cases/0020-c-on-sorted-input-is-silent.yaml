@@ -1,0 +1,13 @@
+name: c on sorted input is silent
+args:
+  - -c
+stdin: |
+  a
+  b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

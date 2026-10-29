@@ -1,0 +1,17 @@
+name: sorts lines
+args: []
+stdin: |
+  banana
+  apple
+  cherry
+  apple
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    apple
+    apple
+    banana
+    cherry
+  stderr: ""

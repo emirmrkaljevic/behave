@@ -1,0 +1,17 @@
+name: s keeps input order for equal keys
+args:
+  - -s
+  - -k2,2n
+stdin: |
+  b 1
+  a 1
+  c 0
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    c 0
+    b 1
+    a 1
+  stderr: ""

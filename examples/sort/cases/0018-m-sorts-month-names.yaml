@@ -1,0 +1,18 @@
+name: M sorts month names
+args:
+  - -M
+stdin: |
+  mar
+  jan
+  feb
+  dec
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    jan
+    feb
+    mar
+    dec
+  stderr: ""

@@ -1,0 +1,16 @@
+name: R with same key groups duplicates
+args:
+  - -R
+stdin: |
+  x
+  x
+  x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    x
+    x
+    x
+  stderr: ""

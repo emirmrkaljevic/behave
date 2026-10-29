@@ -1,0 +1,13 @@
+name: o writes to a file
+args:
+  - -o
+  - out
+stdin: |
+  b
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

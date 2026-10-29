@@ -1,0 +1,14 @@
+name: c reports first disorder
+args:
+  - -c
+stdin: |
+  a
+  c
+  b
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: -:3: disorder: b

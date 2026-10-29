@@ -1,0 +1,15 @@
+name: 'error: c with multiple files'
+args:
+  - -c
+  - a
+  - b
+files:
+  a: x
+  b: y
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: extra operand 'b' not allowed with -c

@@ -298,6 +298,30 @@ behave diff examples/uniq --impl ./uutils/uniq
 # 26/31 (stderr 5)
 ```
 
+## `sort/`: 35 recorded cases for GNU `sort`
+
+Plain, reverse and unique sorts, numeric (`-n`, `-g`, `-h`), version and month order,
+keys with `-k` (whole fields, character offsets, several keys breaking ties) and `-t`,
+`-s`, `-f`, `-b`, `-c`/`-C` checks, `-z`, `-m` merges, `-o`, several files and `-`,
+a missing final newline, empty input, and the error paths (bad key, incompatible modes,
+multi-character tab, `-c` with two files, missing file, unknown option). Inputs stay in
+plain ASCII so the order does not depend on the locale. Recorded with GNU coreutils
+9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/sort
+# sort vs sort: 35/35 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0 all output and exit codes match. The four failures are
+stderr only: a clap usage message, straight instead of curly quotes for `-k0`, and
+`-t ab` / `-c a b` errors that use different wording or add a usage hint:
+
+```sh
+behave diff examples/sort --impl ./uutils/sort
+# 31/35 (stderr 4)
+```
+
 ## Grow it
 
 ```sh

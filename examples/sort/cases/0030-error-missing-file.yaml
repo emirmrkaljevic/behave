@@ -1,0 +1,10 @@
+name: 'error: missing file'
+args:
+  - nope.txt
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: cannot read: nope.txt: No such file or directory

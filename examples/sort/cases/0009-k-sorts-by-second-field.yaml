@@ -1,0 +1,16 @@
+name: k sorts by second field
+args:
+  - -k2
+stdin: |
+  a 3
+  b 1
+  c 2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b 1
+    c 2
+    a 3
+  stderr: ""
