@@ -1,0 +1,17 @@
+name: group=both
+args:
+  - --group=both
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\na\na\n\nb\n\nc\nc\nc\n\na\n\n"
+  stderr: ""

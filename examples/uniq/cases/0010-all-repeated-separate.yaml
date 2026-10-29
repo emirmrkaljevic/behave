@@ -1,0 +1,23 @@
+name: all-repeated=separate
+args:
+  - --all-repeated=separate
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    a
+
+    c
+    c
+    c
+  stderr: ""

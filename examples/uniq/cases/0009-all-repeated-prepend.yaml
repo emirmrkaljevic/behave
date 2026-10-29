@@ -1,0 +1,17 @@
+name: all-repeated=prepend
+args:
+  - --all-repeated=prepend
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\na\na\n\nc\nc\nc\n"
+  stderr: ""

@@ -1,0 +1,23 @@
+name: 'error: invalid all-repeated method'
+args:
+  - --all-repeated=bogus
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid argument ‘bogus’ for ‘--all-repeated’
+    Valid arguments are:
+      - ‘none’
+      - ‘prepend’
+      - ‘separate’
+    Try '$CMD --help' for more information.

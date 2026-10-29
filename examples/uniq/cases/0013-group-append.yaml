@@ -1,0 +1,28 @@
+name: group=append
+args:
+  - --group=append
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |+
+    a
+    a
+
+    b
+
+    c
+    c
+    c
+
+    a
+
+  stderr: ""

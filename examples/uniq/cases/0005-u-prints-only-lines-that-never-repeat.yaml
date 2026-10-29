@@ -1,0 +1,19 @@
+name: u prints only lines that never repeat
+args:
+  - -u
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+    a
+  stderr: ""

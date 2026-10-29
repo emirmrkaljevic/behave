@@ -1,0 +1,17 @@
+name: cd counts repeated groups only
+args:
+  - -cd
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      2 a\n      3 c\n"
+  stderr: ""

@@ -1,0 +1,27 @@
+name: group separates every group
+args:
+  - --group
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    a
+
+    b
+
+    c
+    c
+    c
+
+    a
+  stderr: ""

@@ -1,0 +1,12 @@
+name: zero terminated records
+args:
+  - -z
+  - -c
+stdin: "a"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: ICAgICAgMSBhAA==
+  stderr: ""

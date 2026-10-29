@@ -1,0 +1,20 @@
+name: 'error: counts with all-repeated'
+args:
+  - -c
+  - -D
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: printing all duplicated lines and repeat counts is meaningless
+    Try '$CMD --help' for more information.

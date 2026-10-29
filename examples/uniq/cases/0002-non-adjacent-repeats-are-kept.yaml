@@ -1,0 +1,17 @@
+name: non adjacent repeats are kept
+args: []
+stdin: |
+  x
+  y
+  x
+  y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    x
+    y
+    x
+    y
+  stderr: ""

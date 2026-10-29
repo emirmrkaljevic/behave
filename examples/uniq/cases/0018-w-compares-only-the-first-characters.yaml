@@ -1,0 +1,15 @@
+name: w compares only the first characters
+args:
+  - -w
+  - "2"
+  - -c
+stdin: |
+  abc1
+  abc2
+  abd3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      3 abc1\n"
+  stderr: ""

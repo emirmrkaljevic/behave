@@ -1,0 +1,19 @@
+name: 'error: invalid number of fields'
+args:
+  - -f
+  - x
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: x: invalid number of fields to skip

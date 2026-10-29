@@ -1,0 +1,22 @@
+name: D prints every repeated line
+args:
+  - -D
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    a
+    c
+    c
+    c
+  stderr: ""

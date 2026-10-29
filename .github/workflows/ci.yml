@@ -28,5 +28,6 @@ jobs:
           ./behave run examples/unexpand
           ./behave run examples/tr
           ./behave run examples/comm
+          ./behave run examples/uniq
           ./behave run examples/jq
           PATH="$PWD:$PATH" ./behave run examples/behave

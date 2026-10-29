@@ -1,0 +1,19 @@
+name: d prints one copy of each repeated group
+args:
+  - -d
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    c
+  stderr: ""

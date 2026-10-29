@@ -1,0 +1,16 @@
+name: s skips leading characters
+args:
+  - -s
+  - "2"
+stdin: |
+  xxabc
+  yyabc
+  zzabd
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    xxabc
+    zzabd
+  stderr: ""

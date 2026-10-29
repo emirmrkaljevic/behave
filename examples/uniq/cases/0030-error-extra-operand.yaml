@@ -1,0 +1,16 @@
+name: 'error: extra operand'
+args:
+  - a
+  - b
+  - c
+files:
+  a: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: extra operand ‘c’
+    Try '$CMD --help' for more information.

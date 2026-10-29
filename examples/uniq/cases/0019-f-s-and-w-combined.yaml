@@ -1,0 +1,16 @@
+name: f s and w combined
+args:
+  - -f1
+  - -s2
+  - -w1
+  - -c
+stdin: |
+  k1 xab1
+  k2 yab2
+  k3 zac3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      3 k1 xab1\n"
+  stderr: ""

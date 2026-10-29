@@ -1,0 +1,15 @@
+name: i ignores case
+args:
+  - -i
+  - -c
+stdin: |
+  Apple
+  apple
+  APPLE
+  banana
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      3 Apple\n      1 banana\n"
+  stderr: ""

@@ -1,0 +1,16 @@
+name: reads the input file argument
+args:
+  - in
+files:
+  in: |
+    a
+    a
+    b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+  stderr: ""

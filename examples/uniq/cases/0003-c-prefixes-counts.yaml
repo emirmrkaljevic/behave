@@ -1,0 +1,17 @@
+name: c prefixes counts
+args:
+  - -c
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      2 a\n      1 b\n      3 c\n      1 a\n"
+  stderr: ""

@@ -1,0 +1,12 @@
+name: last line without newline still matches
+args:
+  - -c
+stdin: |-
+  a
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      2 a\n"
+  stderr: ""

@@ -1,6 +1,6 @@
 # Examples
 
-## `cut/` — 27 recorded cases for GNU `cut`
+## `cut/`: 27 recorded cases for GNU `cut`
 
 A small hand-written spec: fields, ranges, delimiters, `--complement`,
 `--only-delimited`, `--output-delimiter`, file arguments, and the usual error paths.
@@ -51,7 +51,7 @@ On macOS the system `cut` is BSD, so `behave run` will show real differences the
 with Homebrew coreutils use `behave diff examples/cut --impl gcut`.
 
 
-## `paste/` — 18 recorded cases for GNU `paste`
+## `paste/`: 18 recorded cases for GNU `paste`
 
 Parallel and serial paste, custom delimiter lists (including empty and cycling),
 stdin with files, empty inputs, `-z`, and error paths. Recorded with GNU coreutils 9.7.
@@ -65,14 +65,14 @@ Against uutils 0.12.0 (stderr wording differs on errors; output and exits match)
 
 ```sh
 behave diff examples/paste --impl ./coreutils-0.12.0/paste
-# 16/18 — both failures are stderr only
+# 16/18: both failures are stderr only
 behave diff examples/paste --impl ./coreutils-0.12.0/paste --ignore-stderr
 # 18/18
 ```
 
 
 
-## `join/` — 26 recorded cases for GNU `join`
+## `join/`: 26 recorded cases for GNU `join`
 
 Join keys (`-1`/`-2`/`-j`), `-a`/`-v` unpairable lines, `-e` empty fills with `-o`,
 `-t` delimiters, `-i`, `--header`, stdin as a file, empty inputs, `-z`, and error paths.
@@ -87,14 +87,14 @@ Against uutils 0.12.0:
 
 ```sh
 behave diff examples/join --impl ./coreutils-0.12.0/join
-# 23/26 — two stderr-only usage errors, plus -o fields as separate operands (exit/stdout)
+# 23/26: two stderr-only usage errors, plus -o fields as separate operands (exit/stdout)
 behave diff examples/join --impl ./coreutils-0.12.0/join --ignore-stderr
-# 25/26 — remaining miss is GNU accepting `join -o 1.1 1.2 2.2 …` (uutils rejects)
+# 25/26: remaining miss is GNU accepting `join -o 1.1 1.2 2.2 …` (uutils rejects)
 ```
 
 
 
-## `nl/` — 26 recorded cases for GNU `nl`
+## `nl/`: 26 recorded cases for GNU `nl`
 
 Body numbering (`-b a`/`t`/`n`/`pPATTERN`), formats (`-n ln`/`rn`/`rz`), `-w`, `-s`,
 `-v`, `-i`, `-l`, section delimiters (`-d`, `-p`), stdin/files, empty input, and errors.
@@ -109,12 +109,12 @@ Against uutils 0.12.0 (stderr wording differs on usage errors; output and exits 
 
 ```sh
 behave diff examples/nl --impl ./coreutils-0.12.0/nl
-# 24/26 — both failures are stderr only
+# 24/26: both failures are stderr only
 behave diff examples/nl --impl ./coreutils-0.12.0/nl --ignore-stderr
 # 26/26
 ```
 
-## `fold/` — 28 recorded cases for GNU `fold`
+## `fold/`: 28 recorded cases for GNU `fold`
 
 `-w` widths (default 80, obsolete `-5`, width 1), `-s` breaking at blanks, `-b` bytes,
 tabs, backspace and carriage return, multibyte input, stdin/files, empty input, and errors.
@@ -129,13 +129,13 @@ Against uutils 0.12.0:
 
 ```sh
 behave diff examples/fold --impl ./coreutils-0.12.0/fold
-# 24/28 — three stderr-only errors, plus multibyte input (stdout)
+# 24/28: three stderr-only errors, plus multibyte input (stdout)
 behave diff examples/fold --impl ./coreutils-0.12.0/fold --ignore-stderr
-# 27/28 — GNU 9.7 wraps UTF-8 by bytes; 9.8+ (and uutils) wrap by column
+# 27/28: GNU 9.7 wraps UTF-8 by bytes; 9.8+ (and uutils) wrap by column
 ```
 
 
-## `jq/` — 33 recorded cases for GNU/`jq`
+## `jq/`: 33 recorded cases for GNU/`jq`
 
 Filters, builtins, common flags (`-r`/`-c`/`-n`/`-s`/`-e`/`--arg`), stdin/file input,
 and error paths. Recorded with jq 1.7.
@@ -149,7 +149,7 @@ Against gojq 0.12.19 (stderr wording differs on errors; output and exits match):
 
 ```sh
 behave diff examples/jq --impl gojq
-# 29/33 — stderr only
+# 29/33: stderr only
 behave diff examples/jq --impl gojq --ignore-stderr
 # 33/33
 ```
@@ -272,6 +272,30 @@ failures are the clap usage messages for operand and option errors:
 ```sh
 behave diff examples/comm --impl ./uutils/comm
 # 26/30 (stderr 4)
+```
+
+## `uniq/`: 31 recorded cases for GNU `uniq`
+
+Adjacent-only collapsing, `-c`/`-d`/`-u`/`-D` and their combinations, `--all-repeated`
+and `--group` with every method, `-i`, field and character skipping (`-f`, `-s`, `-w`,
+alone and combined), `-z` records, file and `-` input, a missing final newline, empty
+input, and the error paths (meaningless option combos, bad method, bad number, missing
+file, extra operand, unknown option). Recorded with GNU coreutils 9.12, and it also
+passes on 9.7.
+
+```sh
+behave run examples/uniq
+# uniq vs uniq: 31/31 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0 all output and exit codes match. Four failures are clap
+usage messages; the fifth was a real wording difference for a bad `-f`/`-s`/`-w` value
+(`x: invalid number of fields to skip`), reported upstream as
+[uutils/coreutils#15970](https://github.com/uutils/coreutils/issues/15970):
+
+```sh
+behave diff examples/uniq --impl ./uutils/uniq
+# 26/31 (stderr 5)
 ```
 
 ## Grow it

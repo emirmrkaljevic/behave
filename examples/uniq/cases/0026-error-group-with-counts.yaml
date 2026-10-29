@@ -1,0 +1,20 @@
+name: 'error: group with counts'
+args:
+  - --group
+  - -c
+stdin: |
+  a
+  a
+  b
+  c
+  c
+  c
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: --group is mutually exclusive with -c/-d/-D/-u
+    Try '$CMD --help' for more information.
