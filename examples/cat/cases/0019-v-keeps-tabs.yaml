@@ -1,0 +1,10 @@
+name: v keeps tabs
+args:
+  - -v
+stdin: "a\tb\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\tb\n"
+  stderr: ""

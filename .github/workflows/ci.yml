@@ -30,5 +30,6 @@ jobs:
           ./behave run examples/comm
           ./behave run examples/uniq
           ./behave run examples/sort
+          ./behave run examples/cat
           ./behave run examples/jq
           PATH="$PWD:$PATH" ./behave run examples/behave

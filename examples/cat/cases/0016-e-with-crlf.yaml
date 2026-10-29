@@ -1,0 +1,12 @@
+name: E with CRLF
+args:
+  - -E
+stdin: "a\r\nb\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a^M$
+    b$
+  stderr: ""

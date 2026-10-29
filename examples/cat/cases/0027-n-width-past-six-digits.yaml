@@ -1,0 +1,13 @@
+name: n width past six digits
+args:
+  - -n
+stdin: |
+  1
+  2
+  3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\t1\n     2\t2\n     3\t3\n"
+  stderr: ""

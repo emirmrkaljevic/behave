@@ -1,0 +1,11 @@
+name: v shows meta control bytes
+args:
+  - -v
+stdin:
+  base64: m4mgCg==
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "M-^[M-^IM- \n"
+  stderr: ""

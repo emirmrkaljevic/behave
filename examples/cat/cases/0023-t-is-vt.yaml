@@ -1,0 +1,11 @@
+name: t is vT
+args:
+  - -t
+stdin: "a\tb\x01\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a^Ib^A
+  stderr: ""

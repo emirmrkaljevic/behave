@@ -1,0 +1,20 @@
+name: s squeezes blank lines
+args:
+  - -s
+stdin: |+
+  a
+
+
+
+  b
+
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |+
+    a
+
+    b
+
+  stderr: ""

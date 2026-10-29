@@ -1,0 +1,19 @@
+name: concatenates files
+args:
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    A1
+    A2
+  b.txt: |
+    B1
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A1
+    A2
+    B1
+  stderr: ""

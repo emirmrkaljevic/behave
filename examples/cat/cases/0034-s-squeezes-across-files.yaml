@@ -1,0 +1,19 @@
+name: s squeezes across files
+args:
+  - -s
+  - a.txt
+  - b.txt
+files:
+  a.txt: |+
+    a
+
+  b.txt: "\n\nb\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+
+    b
+  stderr: ""

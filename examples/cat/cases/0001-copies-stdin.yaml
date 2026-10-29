@@ -1,0 +1,13 @@
+name: copies stdin
+args: []
+stdin: |
+  one
+  two
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    one
+    two
+  stderr: ""

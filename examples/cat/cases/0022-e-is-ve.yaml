@@ -1,0 +1,10 @@
+name: e is vE
+args:
+  - -e
+stdin: "a\tb\x01\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\tb^A$\n"
+  stderr: ""

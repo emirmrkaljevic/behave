@@ -1,0 +1,21 @@
+name: dash reads stdin between files
+args:
+  - a.txt
+  - '-'
+  - b.txt
+stdin: |
+  S
+files:
+  a.txt: |
+    A
+  b.txt: |
+    B
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A
+    S
+    B
+  stderr: ""

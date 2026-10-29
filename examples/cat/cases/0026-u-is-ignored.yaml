@@ -1,0 +1,12 @@
+name: u is ignored
+args:
+  - -u
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+  stderr: ""

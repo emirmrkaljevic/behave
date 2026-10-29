@@ -1,0 +1,15 @@
+name: n across file without trailing newline
+args:
+  - -n
+  - a.txt
+  - b.txt
+files:
+  a.txt: x
+  b.txt: |
+    y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\txy\n"
+  stderr: ""

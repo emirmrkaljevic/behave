@@ -1,0 +1,16 @@
+name: E line end inside file without newline
+args:
+  - -E
+  - a.txt
+  - b.txt
+files:
+  a.txt: x
+  b.txt: |
+    y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    xy$
+  stderr: ""

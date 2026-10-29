@@ -1,0 +1,11 @@
+name: T shows tabs
+args:
+  - -T
+stdin: "a\tb\t\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a^Ib^I
+  stderr: ""

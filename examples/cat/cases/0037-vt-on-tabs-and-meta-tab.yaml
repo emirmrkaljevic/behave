@@ -1,0 +1,12 @@
+name: vT on tabs and meta tab
+args:
+  - -vT
+stdin:
+  base64: CYkK
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ^IM-^I
+  stderr: ""

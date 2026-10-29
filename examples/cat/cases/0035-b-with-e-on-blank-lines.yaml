@@ -1,0 +1,13 @@
+name: b with E on blank lines
+args:
+  - -bE
+stdin: |
+  a
+
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\ta$\n$\n     2\tb$\n"
+  stderr: ""

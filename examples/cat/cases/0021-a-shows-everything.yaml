@@ -1,0 +1,11 @@
+name: A shows everything
+args:
+  - -A
+stdin: "a\tb\x01\r\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a^Ib^A^M$
+  stderr: ""

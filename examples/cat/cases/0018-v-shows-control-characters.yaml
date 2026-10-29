@@ -1,0 +1,11 @@
+name: v shows control characters
+args:
+  - -v
+stdin: "a\x01b\x7F\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a^Ab^?
+  stderr: ""

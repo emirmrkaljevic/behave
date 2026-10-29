@@ -1,0 +1,14 @@
+name: double dash ends options
+args:
+  - --
+  - -n
+files:
+  -n: |
+    dash file
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    dash file
+  stderr: ""

@@ -1,0 +1,14 @@
+name: b overrides n
+args:
+  - -n
+  - -b
+stdin: |
+  a
+
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\ta\n\n     2\tb\n"
+  stderr: ""

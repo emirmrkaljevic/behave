@@ -1,0 +1,12 @@
+name: v shows high bytes
+args:
+  - -v
+stdin:
+  base64: 6f+ACg==
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    M-iM-^?M-^@
+  stderr: ""

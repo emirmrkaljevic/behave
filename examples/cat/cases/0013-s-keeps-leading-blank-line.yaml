@@ -1,0 +1,10 @@
+name: s keeps leading blank line
+args:
+  - -s
+stdin: "\n\n\na\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\na\n"
+  stderr: ""

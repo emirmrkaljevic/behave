@@ -1,0 +1,11 @@
+name: 'error: invalid short option'
+args:
+  - -z
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid option -- 'z'
+    Try '$CMD --help' for more information.

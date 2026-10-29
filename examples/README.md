@@ -322,6 +322,28 @@ behave diff examples/sort --impl ./uutils/sort
 # 31/35 (stderr 4)
 ```
 
+## `cat/`: 39 recorded cases for GNU `cat`
+
+Plain copies, empty input, a missing final newline, several files and `-` (also `- -`),
+numbering with `-n` and `-b` (and `-b` winning over `-n`, numbering that carries on across
+files, even when a file has no final newline), `-s` squeezing (also across files), `-E`,
+`-T`, `-v` on control, DEL and high bytes, `-A`/`-e`/`-t`, long options, `-u`, NUL bytes,
+a file called `-n` after `--`, and the error paths (missing file, directory operand,
+unknown option). Recorded with GNU coreutils 9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/cat
+# cat vs cat: 39/39 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0 everything matches except the two bad-option cases,
+where clap prints its own usage message:
+
+```sh
+behave diff examples/cat --impl ./uutils/cat
+# 37/39 (stderr 2)
+```
+
 ## Grow it
 
 ```sh

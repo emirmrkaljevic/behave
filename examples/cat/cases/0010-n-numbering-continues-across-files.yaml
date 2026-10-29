@@ -1,0 +1,17 @@
+name: n numbering continues across files
+args:
+  - -n
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    x
+    y
+  b.txt: |
+    z
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\tx\n     2\ty\n     3\tz\n"
+  stderr: ""

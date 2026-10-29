@@ -1,0 +1,13 @@
+name: long options
+args:
+  - --number
+  - --squeeze-blank
+  - --show-ends
+  - --show-tabs
+stdin: "a\n\n\n\tb\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     1\ta$\n     2\t$\n     3\t^Ib$\n"
+  stderr: ""

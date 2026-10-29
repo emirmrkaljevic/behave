@@ -1,0 +1,13 @@
+name: E marks line ends
+args:
+  - -E
+stdin: "a\nb \n\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a$
+    b $
+    $
+  stderr: ""
