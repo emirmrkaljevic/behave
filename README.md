@@ -5,7 +5,7 @@
 
 **Record how any CLI behaves. Prove your rewrite behaves the same.**
 
-Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) has so far led to 17 upstream bug reports and 24 fix PRs, 11 of them merged (as of Oct 27, 2026). See [what it found](#what-it-found-on-day-one).
+Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) has so far led to 19 upstream bug reports and 26 fix PRs, 11 of them merged (as of Oct 29, 2026). See [what it found](#what-it-found-on-day-one).
 
 `behave` treats a command-line tool as a black box. It reads `--help` (and the man page),
 generates hundreds of test cases (every flag, flag pairs, every value the help lists for a flag,
@@ -142,6 +142,8 @@ Still open: a few error messages that lose the file name, mostly caught by the "
 - `chown 1000 f/` and `chgrp 1000 missing` say `cannot dereference 'f/'`, where GNU says `cannot access` and keeps `cannot dereference` for dangling symlinks ([#15867](https://github.com/uutils/coreutils/issues/15867), fix in [#15868](https://github.com/uutils/coreutils/pull/15868))
 - `chmod -v 644 missing` prints nothing on stdout, and for a dangling symlink a made-up `from 0000 (---------) to 1500 (r-x-----T)` line, where GNU prints `'missing' could not be accessed` ([#15883](https://github.com/uutils/coreutils/issues/15883), fix in [#15884](https://github.com/uutils/coreutils/pull/15884))
 - `fmt d a.txt` stops at the directory with a bare `read error` and never formats `a.txt` (same for a missing file), where GNU says `error reading 'd': Is a directory` and goes on ([#15922](https://github.com/uutils/coreutils/issues/15922), fix in [#15923](https://github.com/uutils/coreutils/pull/15923))
+- `tr a '[:alpha:]'` prints the set2 class error on one line and says `set2`, where GNU splits it over two lines and says `string2` ([#15948](https://github.com/uutils/coreutils/issues/15948), fix in [#15949](https://github.com/uutils/coreutils/pull/15949))
+- `uniq -f x` says `Invalid argument for skip-fields: x`, where GNU says `x: invalid number of fields to skip` (same for `-s` and `-w`), caught by the new `examples/uniq` spec ([#15970](https://github.com/uutils/coreutils/issues/15970), fix in [#15971](https://github.com/uutils/coreutils/pull/15971))
 
 ## MCP server
 
