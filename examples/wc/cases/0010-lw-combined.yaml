@@ -1,0 +1,12 @@
+name: lw combined
+args:
+  - -lw
+stdin: |
+  one two
+  three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      2       3\n"
+  stderr: ""

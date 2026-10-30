@@ -1,0 +1,9 @@
+name: nul bytes
+args: []
+stdin: "a"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      0       1       1\n"
+  stderr: ""

@@ -1,0 +1,14 @@
+name: l counts newlines only
+args:
+  - -l
+stdin: |-
+  a
+  b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2
+  stderr: ""

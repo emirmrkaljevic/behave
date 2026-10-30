@@ -1,0 +1,13 @@
+name: c counts bytes
+args:
+  - -c
+stdin: |
+  one two
+  three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    14
+  stderr: ""

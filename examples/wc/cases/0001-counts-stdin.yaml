@@ -1,0 +1,11 @@
+name: counts stdin
+args: []
+stdin: |
+  one two
+  three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      2       3      14\n"
+  stderr: ""

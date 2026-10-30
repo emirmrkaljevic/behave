@@ -344,6 +344,29 @@ behave diff examples/cat --impl ./uutils/cat
 # 37/39 (stderr 2)
 ```
 
+## `wc/`: 38 recorded cases for GNU `wc`
+
+Default counts on stdin and files, empty input, a last line without a newline, each of
+`-l`, `-w`, `-c`, `-m`, `-L` (tabs counted to the next multiple of 8), combined flags and
+the fixed column order whatever order you pass them in, long options, several files with a
+total line, `-` between files, every `--total` mode, `--files0-from`, form feed and vertical
+tab as word separators, NUL bytes, a file name with spaces, and the error paths (missing
+file, directory operand, unknown option, bad `--total` value, `--files0-from` misuse).
+Recorded with GNU coreutils 9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/wc
+# wc vs wc: 38/38 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0 every count matches; only the two bad-option cases differ,
+where clap prints its own usage message:
+
+```sh
+behave diff examples/wc --impl ./uutils/wc
+# 36/38 (stderr 2)
+```
+
 ## Grow it
 
 ```sh

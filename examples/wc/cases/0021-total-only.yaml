@@ -1,0 +1,18 @@
+name: total only
+args:
+  - --total=only
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    one two
+    three
+  b.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3 4 16
+  stderr: ""

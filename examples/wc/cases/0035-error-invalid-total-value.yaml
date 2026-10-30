@@ -1,0 +1,20 @@
+name: 'error: invalid total value'
+args:
+  - --total=sometimes
+  - a.txt
+files:
+  a.txt: |
+    a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid argument ‘sometimes’ for ‘--total’
+    Valid arguments are:
+      - ‘auto’
+      - ‘always’
+      - ‘only’
+      - ‘never’
+    Try '$CMD --help' for more information.

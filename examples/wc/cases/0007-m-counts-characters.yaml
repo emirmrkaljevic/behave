@@ -1,0 +1,13 @@
+name: m counts characters
+args:
+  - -m
+stdin: |
+  one two
+  three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    14
+  stderr: ""

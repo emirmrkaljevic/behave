@@ -1,0 +1,11 @@
+name: w counts words
+args:
+  - -w
+stdin: "  a  b\t\tc\n\n d "
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    4
+  stderr: ""

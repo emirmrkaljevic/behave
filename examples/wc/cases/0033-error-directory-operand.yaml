@@ -1,0 +1,13 @@
+name: 'error: directory operand'
+args:
+  - d
+files:
+  d/x: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "      0       0       0 d\n"
+  stderr: |
+    $CMD: d: Is a directory

@@ -1,0 +1,12 @@
+name: 'error: files0-from list names a missing file'
+args:
+  - --files0-from=list
+files:
+  list: nope
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: nope: No such file or directory

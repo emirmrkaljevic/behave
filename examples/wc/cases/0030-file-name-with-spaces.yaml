@@ -1,0 +1,13 @@
+name: file name with spaces
+args:
+  - my file.txt
+files:
+  my file.txt: |
+    x y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1 2 4 my file.txt
+  stderr: ""

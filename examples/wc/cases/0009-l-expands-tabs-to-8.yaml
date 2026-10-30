@@ -1,0 +1,11 @@
+name: L expands tabs to 8
+args:
+  - -L
+stdin: "a\tb\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    9
+  stderr: ""

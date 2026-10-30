@@ -1,0 +1,10 @@
+name: 'error: files0-from missing list'
+args:
+  - --files0-from=nope
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: cannot open 'nope' for reading: No such file or directory

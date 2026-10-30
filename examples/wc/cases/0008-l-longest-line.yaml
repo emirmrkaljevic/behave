@@ -1,0 +1,14 @@
+name: L longest line
+args:
+  - -L
+stdin: |
+  ab
+  abcdef
+  abc
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    6
+  stderr: ""

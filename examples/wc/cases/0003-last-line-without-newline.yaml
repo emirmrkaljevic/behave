@@ -1,0 +1,11 @@
+name: last line without newline
+args: []
+stdin: |-
+  a b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      1       3       5\n"
+  stderr: ""

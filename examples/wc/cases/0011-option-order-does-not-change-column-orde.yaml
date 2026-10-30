@@ -1,0 +1,14 @@
+name: option order does not change column order
+args:
+  - -c
+  - -l
+  - -w
+stdin: |
+  one two
+  three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      2       3      14\n"
+  stderr: ""

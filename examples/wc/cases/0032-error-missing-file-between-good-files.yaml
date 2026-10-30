@@ -1,0 +1,18 @@
+name: 'error: missing file between good files'
+args:
+  - a.txt
+  - missing.txt
+  - a.txt
+files:
+  a.txt: |
+    a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    1 1 2 a.txt
+    1 1 2 a.txt
+    2 2 4 total
+  stderr: |
+    $CMD: missing.txt: No such file or directory

@@ -1,0 +1,13 @@
+name: max-line-length long option
+args:
+  - --max-line-length
+stdin: |
+  xx
+  xxxx
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    4
+  stderr: ""

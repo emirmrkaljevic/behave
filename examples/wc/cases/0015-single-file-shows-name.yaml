@@ -1,0 +1,13 @@
+name: single file shows name
+args:
+  - a.txt
+files:
+  a.txt: |
+    one two
+    three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: " 2  3 14 a.txt\n"
+  stderr: ""

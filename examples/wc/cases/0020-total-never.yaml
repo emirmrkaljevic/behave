@@ -1,0 +1,17 @@
+name: total never
+args:
+  - --total=never
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    one two
+    three
+  b.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: " 2  3 14 a.txt\n 1  1  2 b.txt\n"
+  stderr: ""

@@ -1,0 +1,14 @@
+name: total always
+args:
+  - --total=always
+  - a.txt
+files:
+  a.txt: |
+    one two
+    three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: " 2  3 14 a.txt\n 2  3 14 total\n"
+  stderr: ""

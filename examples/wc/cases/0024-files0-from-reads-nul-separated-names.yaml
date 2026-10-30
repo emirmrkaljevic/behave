@@ -1,0 +1,16 @@
+name: files0-from reads NUL separated names
+args:
+  - --files0-from=list
+files:
+  a.txt: |
+    one two
+    three
+  b.txt: |
+    x
+  list: a.txt
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: " 2  3 14 a.txt\n"
+  stderr: ""

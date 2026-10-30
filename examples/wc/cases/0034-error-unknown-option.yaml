@@ -1,0 +1,11 @@
+name: 'error: unknown option'
+args:
+  - --no-such-flag
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: unrecognized option '--no-such-flag'
+    Try '$CMD --help' for more information.

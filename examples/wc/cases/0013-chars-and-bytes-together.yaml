@@ -1,0 +1,13 @@
+name: chars and bytes together
+args:
+  - --chars
+  - --bytes
+stdin: |
+  one two
+  three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "     14      14\n"
+  stderr: ""

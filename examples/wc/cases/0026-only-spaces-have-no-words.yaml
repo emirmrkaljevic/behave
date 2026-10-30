@@ -1,0 +1,9 @@
+name: only spaces have no words
+args: []
+stdin: "   \n\t\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      2       0       6\n"
+  stderr: ""

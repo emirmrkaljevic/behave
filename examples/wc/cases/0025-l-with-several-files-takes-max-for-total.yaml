@@ -1,0 +1,16 @@
+name: L with several files takes max for total
+args:
+  - -L
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    abc
+  b.txt: |
+    abcdefg
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: " 3 a.txt\n 7 b.txt\n 7 total\n"
+  stderr: ""
