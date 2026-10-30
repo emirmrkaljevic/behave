@@ -1,0 +1,17 @@
+name: invalid to value
+args:
+  - --to=foo
+  - "1"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid argument ‘foo’ for ‘--to’
+    Valid arguments are:
+      - ‘none’
+      - ‘si’
+      - ‘iec’
+      - ‘iec-i’
+    Try '$CMD --help' for more information.

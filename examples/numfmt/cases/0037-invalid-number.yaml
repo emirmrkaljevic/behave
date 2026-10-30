@@ -1,0 +1,10 @@
+name: invalid number
+args:
+  - abc
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: invalid number: ‘abc’

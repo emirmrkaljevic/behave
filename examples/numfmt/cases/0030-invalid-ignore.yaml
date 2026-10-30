@@ -1,0 +1,16 @@
+name: invalid ignore
+args:
+  - --invalid=ignore
+stdin: |
+  12
+  abc
+  34
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    12
+    abc
+    34
+  stderr: ""

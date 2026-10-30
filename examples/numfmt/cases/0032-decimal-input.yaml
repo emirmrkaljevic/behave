@@ -1,0 +1,11 @@
+name: decimal input
+args:
+  - --to=si
+  - "1234.5"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.3k
+  stderr: ""

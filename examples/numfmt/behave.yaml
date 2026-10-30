@@ -1,0 +1,7 @@
+command: numfmt
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: numfmt (GNU coreutils) 9.12

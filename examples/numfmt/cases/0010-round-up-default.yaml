@@ -1,0 +1,11 @@
+name: round up default
+args:
+  - --to=si
+  - "1001"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.1k
+  stderr: ""

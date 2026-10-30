@@ -1,0 +1,14 @@
+name: delimiter
+args:
+  - '-d:'
+  - --field=2
+  - --to=si
+stdin: |
+  x:5000:y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    x:5.0k:y
+  stderr: ""

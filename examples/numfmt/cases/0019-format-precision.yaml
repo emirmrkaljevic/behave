@@ -1,0 +1,12 @@
+name: format precision
+args:
+  - --to=si
+  - --format=%.3f
+  - "1234567"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.235M
+  stderr: ""

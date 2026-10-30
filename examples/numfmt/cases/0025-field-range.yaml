@@ -1,0 +1,13 @@
+name: field range
+args:
+  - --field=2-
+  - --to=si
+stdin: |
+  1000 2000 3000
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1000 2.0k 3.0k
+  stderr: ""

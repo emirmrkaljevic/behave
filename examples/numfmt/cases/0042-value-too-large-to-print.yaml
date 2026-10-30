@@ -1,0 +1,11 @@
+name: value too large to print
+args:
+  - --from=si
+  - 2000Y
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: value too large to be printed: '2e+27' (consider using --to)

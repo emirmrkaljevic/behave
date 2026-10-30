@@ -1,0 +1,13 @@
+name: round towards zero negative
+args:
+  - --to=si
+  - --round=towards-zero
+  - --
+  - "-1999"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -1.9k
+  stderr: ""

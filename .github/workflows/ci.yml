@@ -33,5 +33,6 @@ jobs:
           ./behave run examples/cat
           ./behave run examples/wc
           ./behave run examples/tac
+          ./behave run examples/numfmt
           ./behave run examples/jq
           PATH="$PWD:$PATH" ./behave run examples/behave

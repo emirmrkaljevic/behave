@@ -1,0 +1,12 @@
+name: suffix appended
+args:
+  - --suffix=B
+  - --to=iec
+  - "2048"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2.0KB
+  stderr: ""

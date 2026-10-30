@@ -1,0 +1,12 @@
+name: round nearest
+args:
+  - --to=si
+  - --round=nearest
+  - "1450"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.5k
+  stderr: ""

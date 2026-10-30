@@ -1,0 +1,11 @@
+name: invalid suffix
+args:
+  - --from=si
+  - 1X
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: invalid suffix in input: ‘1X’

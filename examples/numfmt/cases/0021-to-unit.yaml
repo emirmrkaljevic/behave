@@ -1,0 +1,11 @@
+name: to unit
+args:
+  - --to-unit=1024
+  - "1048576"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1024
+  stderr: ""

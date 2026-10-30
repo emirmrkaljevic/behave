@@ -1,0 +1,11 @@
+name: from iec-i
+args:
+  - --from=iec-i
+  - 2Mi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2097152
+  stderr: ""

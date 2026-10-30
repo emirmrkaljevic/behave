@@ -391,6 +391,31 @@ behave diff examples/tac --impl ./uutils/tac
 # 30/33 (stderr 3)
 ```
 
+## `numfmt/`: 41 recorded cases for GNU `numfmt`
+
+`--to` and `--from` with `si`, `iec`, `iec-i` and `auto`, the four `--round` modes,
+`--suffix`, `--padding` both ways, `--format` width and precision, `--grouping`,
+`--from-unit`/`--to-unit`, several arguments, stdin, `--field` (one field and a range),
+`--header`, `-d`, `-z`, the three `--invalid` modes, negative and decimal input, and the
+error paths (invalid number, invalid or rejected suffix, a value too large to print,
+unknown option, bad `--to` value, bad `--format`). Recorded with GNU coreutils 9.12, and it
+also passes on 9.7.
+
+```sh
+behave run examples/numfmt
+# numfmt vs numfmt: 41/41 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0, 32/41 match. Most differences are quoting and clap
+wording on stderr, but one is real: `numfmt --from=si 2000Y` prints
+`2000000000000000026575110144` and exits 0, where GNU refuses any value it cannot print
+exactly (`value too large to be printed: '2e+27'`, exit 2):
+
+```sh
+behave diff examples/numfmt --impl ./uutils/numfmt
+# 32/41 (stderr 9, stdout 1, exit 1)
+```
+
 ## Grow it
 
 ```sh

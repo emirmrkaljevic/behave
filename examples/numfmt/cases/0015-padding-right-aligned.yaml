@@ -1,0 +1,10 @@
+name: padding right aligned
+args:
+  - --padding=8
+  - "42"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "      42\n"
+  stderr: ""

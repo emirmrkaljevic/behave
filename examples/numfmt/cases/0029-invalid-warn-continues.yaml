@@ -1,0 +1,17 @@
+name: invalid warn continues
+args:
+  - --invalid=warn
+stdin: |
+  12
+  abc
+  34
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    12
+    abc
+    34
+  stderr: |
+    $CMD: invalid number: ‘abc’

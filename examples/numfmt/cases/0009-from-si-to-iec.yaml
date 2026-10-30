@@ -1,0 +1,12 @@
+name: from si to iec
+args:
+  - --from=si
+  - --to=iec
+  - 1G
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    954M
+  stderr: ""

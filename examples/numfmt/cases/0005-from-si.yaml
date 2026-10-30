@@ -1,0 +1,11 @@
+name: from si
+args:
+  - --from=si
+  - 1K
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1000
+  stderr: ""

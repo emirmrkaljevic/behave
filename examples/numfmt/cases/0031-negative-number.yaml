@@ -1,0 +1,12 @@
+name: negative number
+args:
+  - --to=si
+  - --
+  - "-1500000"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -1.5M
+  stderr: ""

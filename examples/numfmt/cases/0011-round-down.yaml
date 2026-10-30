@@ -1,0 +1,12 @@
+name: round down
+args:
+  - --to=si
+  - --round=down
+  - "1999"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.9k
+  stderr: ""

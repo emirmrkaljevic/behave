@@ -1,0 +1,11 @@
+name: format grouping
+args:
+  - --grouping
+  - "1234567"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1234567
+  stderr: ""

@@ -1,0 +1,10 @@
+name: suffix without from
+args:
+  - 1K
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: rejecting suffix in input: ‘1K’ (consider using --from)

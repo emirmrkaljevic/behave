@@ -1,0 +1,10 @@
+name: format width
+args:
+  - --format=%10f
+  - "123"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "       123\n"
+  stderr: ""

@@ -1,0 +1,11 @@
+name: large exponent
+args:
+  - --to=si
+  - "1000000000000000000000"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.0Z
+  stderr: ""

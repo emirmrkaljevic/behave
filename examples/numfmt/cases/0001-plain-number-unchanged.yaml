@@ -1,0 +1,10 @@
+name: plain number unchanged
+args:
+  - "1000"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1000
+  stderr: ""

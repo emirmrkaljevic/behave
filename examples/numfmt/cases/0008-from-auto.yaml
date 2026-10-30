@@ -1,0 +1,13 @@
+name: from auto
+args:
+  - --from=auto
+  - 3Ki
+  - 3K
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3072
+    3000
+  stderr: ""

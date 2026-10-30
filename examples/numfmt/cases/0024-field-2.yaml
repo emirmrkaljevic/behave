@@ -1,0 +1,15 @@
+name: field 2
+args:
+  - --field=2
+  - --to=si
+stdin: |
+  a 2000 b
+  c 3000 d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a 2.0k b
+    c 3.0k d
+  stderr: ""

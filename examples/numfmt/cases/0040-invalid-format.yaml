@@ -1,0 +1,11 @@
+name: invalid format
+args:
+  - --format=%d
+  - "1"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid format ‘%d’, directive must be %[0]['][-][N][.][N]f

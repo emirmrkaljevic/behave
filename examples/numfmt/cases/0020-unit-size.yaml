@@ -1,0 +1,12 @@
+name: unit size
+args:
+  - --from-unit=512
+  - --to=iec
+  - "4"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2.0K
+  stderr: ""

@@ -1,0 +1,15 @@
+name: several arguments
+args:
+  - --to=si
+  - "1000"
+  - "2000000"
+  - "3000000000"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.0k
+    2.0M
+    3.0G
+  stderr: ""

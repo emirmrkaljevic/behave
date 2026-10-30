@@ -1,0 +1,14 @@
+name: invalid default aborts
+args: []
+stdin: |
+  12
+  abc
+  34
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: |
+    12
+  stderr: |
+    $CMD: invalid number: ‘abc’

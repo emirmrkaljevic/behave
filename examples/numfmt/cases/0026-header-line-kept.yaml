@@ -1,0 +1,15 @@
+name: header line kept
+args:
+  - --header
+  - --to=iec
+stdin: |
+  SIZE
+  4096
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    SIZE
+    4.0K
+  stderr: ""
