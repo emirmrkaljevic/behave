@@ -2,13 +2,13 @@ name: reads stdin lines
 args:
   - --to=si
 stdin: |
-  1000
-  2000000
+  1000000
+  2000000000
 tags:
   - manual
 expect:
   exit: 0
   stdout: |
-    1.0k
-    2.0M
+    1.0M
+    2.0G
   stderr: ""

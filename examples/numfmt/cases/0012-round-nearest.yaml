@@ -2,11 +2,11 @@ name: round nearest
 args:
   - --to=si
   - --round=nearest
-  - "1450"
+  - "1450000"
 tags:
   - manual
 expect:
   exit: 0
   stdout: |
-    1.5k
+    1.5M
   stderr: ""

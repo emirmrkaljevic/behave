@@ -2,11 +2,11 @@ name: zero terminated
 args:
   - -z
   - --to=si
-  - "1000"
+  - "1000000"
 tags:
   - manual
 expect:
   exit: 0
   stdout:
-    base64: MS4wawA=
+    base64: MS4wTQA=
   stderr: ""

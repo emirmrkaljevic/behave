@@ -4,11 +4,11 @@ args:
   - --field=2
   - --to=si
 stdin: |
-  x:5000:y
+  x:5000000:y
 tags:
   - manual
 expect:
   exit: 0
   stdout: |
-    x:5.0k:y
+    x:5.0M:y
   stderr: ""

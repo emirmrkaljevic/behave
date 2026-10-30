@@ -3,11 +3,11 @@ args:
   - --field=2-
   - --to=si
 stdin: |
-  1000 2000 3000
+  1000 2000000 3000000
 tags:
   - manual
 expect:
   exit: 0
   stdout: |
-    1000 2.0k 3.0k
+    1000    2.0M    3.0M
   stderr: ""
