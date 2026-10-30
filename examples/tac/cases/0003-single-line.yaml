@@ -1,0 +1,11 @@
+name: single line
+args: []
+stdin: |
+  only
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    only
+  stderr: ""

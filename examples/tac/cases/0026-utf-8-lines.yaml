@@ -1,0 +1,15 @@
+name: utf-8 lines
+args: []
+stdin: |
+  čaj
+  šljiva
+  žir
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    žir
+    šljiva
+    čaj
+  stderr: ""

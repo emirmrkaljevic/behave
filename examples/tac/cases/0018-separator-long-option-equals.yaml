@@ -1,0 +1,10 @@
+name: separator long option equals
+args:
+  - --separator=|
+stdin: "1|2|3|"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "3|2|1|"
+  stderr: ""

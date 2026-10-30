@@ -367,6 +367,30 @@ behave diff examples/wc --impl ./uutils/wc
 # 36/38 (stderr 2)
 ```
 
+## `tac/`: 33 recorded cases for GNU `tac`
+
+Reversing stdin and files, empty input, a last line without a newline, blank lines, files
+reversed one by one (and a file without a trailing newline running into the next), `-`
+between files, `-b`/`--before`, `-s`/`--separator` with one and several characters, an
+accepted empty separator, `-r`/`--regex` (including GNU's backward matching, where
+`-r -s '[0-9]+'` on `a1b22c333` prints `33c32b2a1`), NUL bytes, UTF-8, a long line, and
+the error paths (missing file, unknown option, `-s` without a value, invalid regex).
+Recorded with GNU coreutils 9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/tac
+# tac vs tac: 33/33 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0 every output matches, even the backward regex matching;
+the 3 differences are error wording on stderr (clap usage text and the regex parser's
+own message):
+
+```sh
+behave diff examples/tac --impl ./uutils/tac
+# 30/33 (stderr 3)
+```
+
 ## Grow it
 
 ```sh

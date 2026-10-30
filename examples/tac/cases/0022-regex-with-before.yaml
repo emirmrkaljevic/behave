@@ -1,0 +1,13 @@
+name: regex with before
+args:
+  - -r
+  - -b
+  - -s
+  - '[,;]'
+stdin: "a,b;c,"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ",;c,ba"
+  stderr: ""

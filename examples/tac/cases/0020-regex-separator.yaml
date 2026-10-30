@@ -1,0 +1,12 @@
+name: regex separator
+args:
+  - -r
+  - -s
+  - '[0-9]+'
+stdin: "a1b22c333"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "33c32b2a1"
+  stderr: ""

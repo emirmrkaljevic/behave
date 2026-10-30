@@ -1,0 +1,14 @@
+name: 'error: invalid regex'
+args:
+  - -r
+  - -s
+  - '['
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: Invalid regular expression

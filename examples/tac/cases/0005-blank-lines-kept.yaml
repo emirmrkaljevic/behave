@@ -1,0 +1,17 @@
+name: blank lines kept
+args: []
+stdin: |
+  a
+
+
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+
+
+    a
+  stderr: ""

@@ -1,0 +1,9 @@
+name: only newlines
+args: []
+stdin: "\n\n\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\n\n\n"
+  stderr: ""

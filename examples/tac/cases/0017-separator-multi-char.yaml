@@ -1,0 +1,11 @@
+name: separator multi char
+args:
+  - -s
+  - '::'
+stdin: "a::b::c::"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "c::b::a::"
+  stderr: ""

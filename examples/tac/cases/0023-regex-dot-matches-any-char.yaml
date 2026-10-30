@@ -1,0 +1,12 @@
+name: regex dot matches any char
+args:
+  - -r
+  - -s
+  - .
+stdin: "abc"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "cba"
+  stderr: ""

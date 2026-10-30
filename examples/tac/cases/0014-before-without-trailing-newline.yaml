@@ -1,0 +1,13 @@
+name: before without trailing newline
+args:
+  - -b
+stdin: |-
+  a
+  b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\nc\nba"
+  stderr: ""

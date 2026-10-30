@@ -1,0 +1,12 @@
+name: regex long option
+args:
+  - --regex
+  - -s
+  - x+
+stdin: "axbxxcxxx"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "xxcxxbxax"
+  stderr: ""

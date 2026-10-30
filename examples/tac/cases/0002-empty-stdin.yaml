@@ -1,0 +1,9 @@
+name: empty stdin
+args: []
+stdin: ""
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

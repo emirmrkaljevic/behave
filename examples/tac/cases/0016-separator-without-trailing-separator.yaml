@@ -1,0 +1,11 @@
+name: separator without trailing separator
+args:
+  - -s
+  - ','
+stdin: "a,b,c"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "cb,a,"
+  stderr: ""

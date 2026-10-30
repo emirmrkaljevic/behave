@@ -1,0 +1,21 @@
+name: two files reversed separately
+args:
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    1
+    2
+  b.txt: |
+    x
+    y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2
+    1
+    y
+    x
+  stderr: ""

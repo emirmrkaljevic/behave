@@ -1,0 +1,15 @@
+name: separator not found leaves input
+args:
+  - -s
+  - '#'
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+  stderr: ""

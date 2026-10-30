@@ -1,0 +1,11 @@
+name: nul bytes in lines
+args: []
+stdin:
+  base64: YQBiCmMAZAo=
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: YwBkCmEAYgo=
+  stderr: ""

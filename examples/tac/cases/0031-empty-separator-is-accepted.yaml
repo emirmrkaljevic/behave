@@ -1,0 +1,13 @@
+name: empty separator is accepted
+args:
+  - -s
+  - ""
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+  stderr: ""

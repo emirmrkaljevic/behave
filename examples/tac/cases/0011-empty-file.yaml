@@ -1,0 +1,11 @@
+name: empty file
+args:
+  - e.txt
+files:
+  e.txt: ""
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""
