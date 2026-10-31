@@ -5,7 +5,7 @@
 
 **Record how any CLI behaves. Prove your rewrite behaves the same.**
 
-Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) has so far led to 19 upstream bug reports and 26 fix PRs, 11 of them merged (as of Oct 29, 2026). See [what it found](#what-it-found-on-day-one).
+Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) has so far led to 22 upstream bug reports and 29 fix PRs, 12 of them merged (as of Oct 31, 2026). See [what it found](#what-it-found-on-day-one).
 
 `behave` treats a command-line tool as a black box. It reads `--help` (and the man page),
 generates hundreds of test cases (every flag, flag pairs, every value the help lists for a flag,
@@ -31,7 +31,7 @@ behave run behave-sort                 # make sure the recording is stable
 behave diff behave-sort --impl ./target/release/sort   # every place your port differs
 ```
 
-This is how it led to 17 bug reports and 24 fix PRs in uutils coreutils (11 merged so far).
+This is how it led to 22 bug reports and 29 fix PRs in uutils coreutils (12 merged so far).
 A second, ready to run pair: `behave diff examples/jq --impl gojq` passes 29 of 33 jq 1.7 cases,
 and the 4 differences are all error wording on stderr (see [examples/jq](examples/jq/)).
 
@@ -144,6 +144,9 @@ Still open: a few error messages that lose the file name, mostly caught by the "
 - `fmt d a.txt` stops at the directory with a bare `read error` and never formats `a.txt` (same for a missing file), where GNU says `error reading 'd': Is a directory` and goes on ([#15922](https://github.com/uutils/coreutils/issues/15922), fix in [#15923](https://github.com/uutils/coreutils/pull/15923))
 - `tr a '[:alpha:]'` prints the set2 class error on one line and says `set2`, where GNU splits it over two lines and says `string2` ([#15948](https://github.com/uutils/coreutils/issues/15948), fix in [#15949](https://github.com/uutils/coreutils/pull/15949))
 - `uniq -f x` says `Invalid argument for skip-fields: x`, where GNU says `x: invalid number of fields to skip` (same for `-s` and `-w`), caught by the new `examples/uniq` spec ([#15970](https://github.com/uutils/coreutils/issues/15970), fix in [#15971](https://github.com/uutils/coreutils/pull/15971))
+- `sort -t ab` and `sort -t ''` word the bad separator errors differently from GNU, and `sort -c a b` adds a usage hint GNU doesn't print, caught by `examples/sort` ([#15975](https://github.com/uutils/coreutils/issues/15975), fix in [#15976](https://github.com/uutils/coreutils/pull/15976))
+- `od -A q` and `od -t x3` word the invalid radix and type string errors differently from GNU, caught by `examples/od` ([#16071](https://github.com/uutils/coreutils/issues/16071), fix in [#16072](https://github.com/uutils/coreutils/pull/16072))
+- `od -t x0` (and `d0`, `u0`, `f0`) is silently treated as the default size, where GNU rejects a 0-byte type ([#16085](https://github.com/uutils/coreutils/issues/16085), fix in [#16086](https://github.com/uutils/coreutils/pull/16086))
 
 ## MCP server
 
