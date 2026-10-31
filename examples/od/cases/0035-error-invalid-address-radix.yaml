@@ -1,0 +1,11 @@
+name: 'error: invalid address radix'
+args:
+  - -A
+  - z
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid output address radix 'z'; it must be one character from [doxn]

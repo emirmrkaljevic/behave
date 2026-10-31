@@ -1,0 +1,14 @@
+name: decimal address radix
+args:
+  - -A
+  - d
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 062550 066154 026157 073440 071157 062154 000012
+    0000013
+  stderr: ""

@@ -1,0 +1,13 @@
+name: decimal words -d
+args:
+  - -d
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 25960 27756 11375 30496 29295 25708    10
+    0000015
+  stderr: ""

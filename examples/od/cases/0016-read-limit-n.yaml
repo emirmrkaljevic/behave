@@ -1,0 +1,15 @@
+name: read limit -N
+args:
+  - -N
+  - "5"
+  - -c
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000   h   e   l   l   o
+    0000005
+  stderr: ""

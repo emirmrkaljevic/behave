@@ -1,0 +1,10 @@
+name: 'error: missing file'
+args:
+  - nosuch.bin
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: nosuch.bin: No such file or directory

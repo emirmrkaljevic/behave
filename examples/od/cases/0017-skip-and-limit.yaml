@@ -1,0 +1,18 @@
+name: skip and limit
+args:
+  - -j
+  - "2"
+  - -N
+  - "3"
+  - -t
+  - x1
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000002 6c 6c 6f
+    0000005
+  stderr: ""

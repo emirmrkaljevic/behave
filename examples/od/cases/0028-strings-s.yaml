@@ -1,0 +1,14 @@
+name: strings -S
+args:
+  - -S
+  - "4"
+stdin:
+  base64: YWIAaGVsbG8AeHl6AHdvcmxkIQA=
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000003 hello
+    0000015 world!
+  stderr: ""

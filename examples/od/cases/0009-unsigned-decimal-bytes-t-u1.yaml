@@ -1,0 +1,14 @@
+name: unsigned decimal bytes -t u1
+args:
+  - -t
+  - u1
+stdin:
+  base64: gH8A/w==
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 128 127   0 255
+    0000004
+  stderr: ""

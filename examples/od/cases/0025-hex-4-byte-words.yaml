@@ -1,0 +1,14 @@
+name: hex 4-byte words
+args:
+  - -t
+  - x4
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 6c6c6568 77202c6f 646c726f 0000000a
+    0000015
+  stderr: ""

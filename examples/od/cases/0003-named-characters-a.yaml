@@ -1,0 +1,13 @@
+name: named characters -a
+args:
+  - -a
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000   h   e   l   l   o   ,  sp   w   o   r   l   d  nl
+    0000015
+  stderr: ""

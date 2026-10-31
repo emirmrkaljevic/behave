@@ -1,0 +1,15 @@
+name: endian big
+args:
+  - --endian=big
+  - -t
+  - x2
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 6865 6c6c 6f2c 2077 6f72 6c64 0a00
+    0000015
+  stderr: ""

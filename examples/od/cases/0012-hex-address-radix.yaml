@@ -1,0 +1,14 @@
+name: hex address radix
+args:
+  - -A
+  - x
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    000000 062550 066154 026157 073440 071157 062154 000012
+    00000d
+  stderr: ""

@@ -1,0 +1,18 @@
+name: width -w4
+args:
+  - -w4
+  - -t
+  - x1
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 68 65 6c 6c
+    0000004 6f 2c 20 77
+    0000010 6f 72 6c 64
+    0000014 0a
+    0000015
+  stderr: ""

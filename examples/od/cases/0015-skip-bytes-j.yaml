@@ -1,0 +1,15 @@
+name: skip bytes -j
+args:
+  - -j
+  - "7"
+  - -c
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000007   w   o   r   l   d  \n
+    0000015
+  stderr: ""

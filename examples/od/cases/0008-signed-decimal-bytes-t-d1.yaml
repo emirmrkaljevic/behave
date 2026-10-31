@@ -1,0 +1,14 @@
+name: signed decimal bytes -t d1
+args:
+  - -t
+  - d1
+stdin:
+  base64: gH8A/w==
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 -128  127    0   -1
+    0000004
+  stderr: ""

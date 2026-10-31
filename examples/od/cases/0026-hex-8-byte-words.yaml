@@ -1,0 +1,14 @@
+name: hex 8-byte words
+args:
+  - -t
+  - x8
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 77202c6f6c6c6568 0000000a646c726f
+    0000015
+  stderr: ""

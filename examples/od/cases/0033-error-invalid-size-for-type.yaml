@@ -1,0 +1,12 @@
+name: 'error: invalid size for type'
+args:
+  - -t
+  - x3
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid type string ‘x3’;
+    this system doesn't provide a 3-byte integral type

@@ -1,0 +1,11 @@
+name: 'error: invalid type'
+args:
+  - -t
+  - q
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid character 'q' in type string ‘q’

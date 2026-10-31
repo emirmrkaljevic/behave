@@ -1,0 +1,7 @@
+command: od
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: od (GNU coreutils) 9.12

@@ -1,0 +1,15 @@
+name: traditional offset +
+args:
+  - -c
+  - '-'
+  - "+5"
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000005   ,       w   o   r   l   d  \n
+    0000015
+  stderr: ""

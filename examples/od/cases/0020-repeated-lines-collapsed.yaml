@@ -1,0 +1,14 @@
+name: repeated lines collapsed
+args:
+  - -t
+  - x1
+stdin: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61
+    *
+    0000100
+  stderr: ""

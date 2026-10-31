@@ -416,6 +416,31 @@ behave diff examples/numfmt --impl ./uutils/numfmt
 # 32/41 (stderr 9, stdout 1, exit 1)
 ```
 
+## `od/`: 36 recorded cases for GNU `od`
+
+Octal, hex, decimal and named-character output (`-b`, `-c`, `-a`, `-x`, `-d`, `-t x1` up
+to `x8`, signed and unsigned bytes, `f4` floats), several types at once, the `z` printable
+column, the four address radixes, `-j` and `-N` (with a `b` suffix), `-w`, repeated-line
+collapsing with and without `-v`, `--endian`, `-S` strings, the traditional `+OFFSET`
+form, empty input, and the error paths (unknown option, bad type, unsupported size, bad
+radix, skip past end, missing file). Binary input is stored as base64 in the case file.
+Recorded with GNU coreutils 9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/od
+# od vs od: 36/36 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0, 32/36 match. Every dump matches byte for byte; the four
+differences are error wording on stderr (`Radix must be one of [o, d, x, n], got: z`
+where GNU says `invalid output address radix 'z'; it must be one character from [doxn]`,
+and similar for bad `-t` types):
+
+```sh
+behave diff examples/od --impl ./uutils/od
+# 32/36 (stderr 4)
+```
+
 ## Grow it
 
 ```sh

@@ -1,0 +1,15 @@
+name: width default to 32 with -w
+args:
+  - -w
+  - -t
+  - x1
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 68 65 6c 6c 6f 2c 20 77 6f 72 6c 64 0a
+    0000015
+  stderr: ""

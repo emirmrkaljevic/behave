@@ -1,0 +1,17 @@
+name: repeated lines kept with -v
+args:
+  - -v
+  - -t
+  - x1
+stdin: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61
+    0000020 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61
+    0000040 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61
+    0000060 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61
+    0000100
+  stderr: ""

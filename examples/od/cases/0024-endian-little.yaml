@@ -1,0 +1,15 @@
+name: endian little
+args:
+  - --endian=little
+  - -t
+  - x2
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000 6568 6c6c 2c6f 7720 726f 646c 000a
+    0000015
+  stderr: ""

@@ -1,0 +1,13 @@
+name: backslash characters -c
+args:
+  - -c
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0000000   h   e   l   l   o   ,       w   o   r   l   d  \n
+    0000015
+  stderr: ""

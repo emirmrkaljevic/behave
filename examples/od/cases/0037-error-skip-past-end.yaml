@@ -1,0 +1,13 @@
+name: 'error: skip past end'
+args:
+  - -j
+  - "100"
+stdin: |
+  hello, world
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: cannot skip past end of combined input
