@@ -1,0 +1,13 @@
+name: separator -s
+args:
+  - -s
+  - ','
+  - "1"
+  - "4"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1,2,3,4
+  stderr: ""

@@ -1,0 +1,14 @@
+name: format %e
+args:
+  - -f
+  - '%.2e'
+  - "1"
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.00e+00
+    2.00e+00
+  stderr: ""

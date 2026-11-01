@@ -1,0 +1,15 @@
+name: fraction width from first
+args:
+  - "0.10"
+  - "0.05"
+  - "0.25"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0.10
+    0.15
+    0.20
+    0.25
+  stderr: ""

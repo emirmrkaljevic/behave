@@ -1,0 +1,14 @@
+name: 'error: extra operand'
+args:
+  - "1"
+  - "2"
+  - "3"
+  - "4"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: extra operand ‘4’
+    Try '$CMD --help' for more information.

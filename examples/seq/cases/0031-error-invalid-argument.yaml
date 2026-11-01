@@ -1,0 +1,11 @@
+name: 'error: invalid argument'
+args:
+  - abc
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid floating point argument: ‘abc’
+    Try '$CMD --help' for more information.

@@ -1,0 +1,14 @@
+name: large step
+args:
+  - "1"
+  - "1000"
+  - "3000"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+    1001
+    2001
+  stderr: ""

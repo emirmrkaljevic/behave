@@ -1,0 +1,14 @@
+name: last only
+args:
+  - "5"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+    2
+    3
+    4
+    5
+  stderr: ""

@@ -1,0 +1,15 @@
+name: first and last
+args:
+  - "3"
+  - "7"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3
+    4
+    5
+    6
+    7
+  stderr: ""

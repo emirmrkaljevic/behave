@@ -1,0 +1,12 @@
+name: 'error: invalid float in last'
+args:
+  - "1"
+  - x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid floating point argument: ‘x’
+    Try '$CMD --help' for more information.

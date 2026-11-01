@@ -1,0 +1,14 @@
+name: format percent literal
+args:
+  - -f
+  - '%g%%'
+  - "1"
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1%
+    2%
+  stderr: ""

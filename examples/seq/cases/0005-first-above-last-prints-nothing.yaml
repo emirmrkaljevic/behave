@@ -1,0 +1,10 @@
+name: first above last prints nothing
+args:
+  - "5"
+  - "1"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

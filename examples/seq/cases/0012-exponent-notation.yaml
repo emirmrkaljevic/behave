@@ -1,0 +1,14 @@
+name: exponent notation
+args:
+  - "1e1"
+  - "1e1"
+  - "3e1"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    10
+    20
+    30
+  stderr: ""

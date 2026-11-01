@@ -1,0 +1,16 @@
+name: equal width negative
+args:
+  - -w
+  - --
+  - "-2"
+  - "1"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -2
+    -1
+    00
+    01
+  stderr: ""

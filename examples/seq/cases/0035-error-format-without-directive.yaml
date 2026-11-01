@@ -1,0 +1,13 @@
+name: 'error: format without directive'
+args:
+  - -f
+  - abc
+  - "1"
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: format ‘abc’ has no % directive

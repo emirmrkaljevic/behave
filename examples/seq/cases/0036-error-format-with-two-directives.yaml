@@ -1,0 +1,13 @@
+name: 'error: format with two directives'
+args:
+  - -f
+  - '%g %g'
+  - "1"
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: format ‘%g %g’ has too many % directives

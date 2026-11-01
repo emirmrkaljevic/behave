@@ -1,0 +1,11 @@
+name: 'error: nan argument'
+args:
+  - nan
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid ‘not-a-number’ argument: ‘nan’
+    Try '$CMD --help' for more information.

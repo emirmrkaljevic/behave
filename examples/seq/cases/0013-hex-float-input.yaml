@@ -1,0 +1,13 @@
+name: hex float input
+args:
+  - "0x10"
+  - "0x12"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    16
+    17
+    18
+  stderr: ""

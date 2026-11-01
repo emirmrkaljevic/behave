@@ -1,0 +1,16 @@
+name: format %f
+args:
+  - -f
+  - '%.3f'
+  - "1"
+  - "0.25"
+  - "1.5"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.000
+    1.250
+    1.500
+  stderr: ""

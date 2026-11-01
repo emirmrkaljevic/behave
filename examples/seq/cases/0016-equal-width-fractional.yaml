@@ -1,0 +1,16 @@
+name: equal width fractional
+args:
+  - -w
+  - "0.5"
+  - "0.5"
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0.5
+    1.0
+    1.5
+    2.0
+  stderr: ""

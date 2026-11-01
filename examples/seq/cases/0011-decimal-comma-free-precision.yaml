@@ -1,0 +1,12 @@
+name: decimal comma-free precision
+args:
+  - "1.000"
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.000
+    2.000
+  stderr: ""

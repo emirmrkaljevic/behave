@@ -1,0 +1,15 @@
+name: 'error: -w with -f'
+args:
+  - -w
+  - -f
+  - '%g'
+  - "1"
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: format string may not be specified when printing equal width strings
+    Try '$CMD --help' for more information.

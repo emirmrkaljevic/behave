@@ -467,6 +467,33 @@ behave diff examples/basenc --impl ./uutils/basenc
 # 26/32 (stderr 6)
 ```
 
+## `seq/`: 39 recorded cases for GNU `seq`
+
+One, two and three operands, negative and fractional steps, an empty range, decimal
+precision taken from the operands (`0.10 0.05 0.25`), exponent and hex float input, `-w`
+equal width (also with negatives and fractions), `-s` separators (empty and multi-char),
+`-f` formats (`%03g`, `%e`, `%f`, text around the directive, `%%`), and the error paths:
+zero increment, non-numeric operands, `nan`, missing and extra operands, a format with no
+or two directives, `-w` together with `-f`, and an unknown option. Recorded with GNU
+coreutils 9.12, and it also passes on 9.7. Huge start values are left out, since 9.12
+changed how they are rounded.
+
+```sh
+behave run examples/seq
+# seq vs seq: 39/39 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0, 31/39 match. Every number it prints matches; the eight
+differences are on stderr. Most are ASCII quotes where GNU uses `‘’` in a UTF-8 locale
+and clap's own `extra operand` message, but one is a real parsing difference: uutils lets
+`--no-such-flag` through as a number and reports `invalid floating point argument`, where
+GNU says `unrecognized option`.
+
+```sh
+behave diff examples/seq --impl ./uutils/seq
+# 31/39 (stderr 8)
+```
+
 ## Grow it
 
 ```sh

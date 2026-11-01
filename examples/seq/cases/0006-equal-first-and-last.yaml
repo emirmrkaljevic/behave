@@ -1,0 +1,11 @@
+name: equal first and last
+args:
+  - "4"
+  - "4"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    4
+  stderr: ""

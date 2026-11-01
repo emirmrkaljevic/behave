@@ -1,0 +1,14 @@
+name: format with text
+args:
+  - -f
+  - item %g done
+  - "1"
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    item 1 done
+    item 2 done
+  stderr: ""

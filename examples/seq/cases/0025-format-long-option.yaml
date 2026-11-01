@@ -1,0 +1,11 @@
+name: format long option
+args:
+  - --format=%5.1f
+  - "1"
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "  1.0\n  2.0\n"
+  stderr: ""

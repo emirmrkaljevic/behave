@@ -1,0 +1,13 @@
+name: 'error: zero increment'
+args:
+  - "1"
+  - "0"
+  - "3"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid Zero increment value: ‘0’
+    Try '$CMD --help' for more information.

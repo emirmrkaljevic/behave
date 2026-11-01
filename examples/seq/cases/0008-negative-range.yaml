@@ -1,0 +1,14 @@
+name: negative range
+args:
+  - --
+  - "-3"
+  - "-1"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -3
+    -2
+    -1
+  stderr: ""
