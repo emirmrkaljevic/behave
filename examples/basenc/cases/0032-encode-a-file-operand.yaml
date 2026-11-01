@@ -1,0 +1,13 @@
+name: encode a file operand
+args:
+  - --base32
+  - in.txt
+files:
+  in.txt: payload
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    OBQXS3DPMFSA====
+  stderr: ""

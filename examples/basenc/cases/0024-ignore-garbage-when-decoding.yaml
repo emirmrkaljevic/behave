@@ -1,0 +1,12 @@
+name: ignore garbage when decoding
+args:
+  - --base64
+  - -d
+  - -i
+stdin: "aG*Vs#bG8="
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "hello"
+  stderr: ""

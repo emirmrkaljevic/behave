@@ -1,0 +1,9 @@
+name: empty stdin encodes to nothing
+args:
+  - --base64
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

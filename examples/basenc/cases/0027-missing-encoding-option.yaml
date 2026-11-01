@@ -1,0 +1,11 @@
+name: missing encoding option
+args: []
+stdin: "x"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: missing encoding type
+    Try '$CMD --help' for more information.

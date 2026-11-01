@@ -1,0 +1,12 @@
+name: default wrap is 76 columns
+args:
+  - --base64
+stdin: "the quick brown fox jumps over the lazy dog and keeps running far away"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZyBhbmQga2VlcHMgcnVu
+    bmluZyBmYXIgYXdheQ==
+  stderr: ""

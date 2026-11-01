@@ -1,0 +1,11 @@
+name: base2lsbf encode
+args:
+  - --base2lsbf
+stdin: "A"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    10000010
+  stderr: ""

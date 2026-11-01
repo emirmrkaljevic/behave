@@ -1,0 +1,14 @@
+name: extra operand
+args:
+  - --base64
+  - a
+  - b
+stdin: "x"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: extra operand ‘b’
+    Try '$CMD --help' for more information.

@@ -1,0 +1,12 @@
+name: base64url decode
+args:
+  - --base64url
+  - --decode
+stdin: "-_-_"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: +/+/
+  stderr: ""

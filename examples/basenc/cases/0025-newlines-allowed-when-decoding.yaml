@@ -1,0 +1,13 @@
+name: newlines allowed when decoding
+args:
+  - --base64
+  - -d
+stdin: |
+  aGVs
+  bG8=
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "hello"
+  stderr: ""

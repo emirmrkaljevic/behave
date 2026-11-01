@@ -1,0 +1,12 @@
+name: wrap 0 disables wrapping
+args:
+  - --base64
+  - -w
+  - "0"
+stdin: "the quick brown fox jumps over the lazy dog, twice over"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "dGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZywgdHdpY2Ugb3Zlcg=="
+  stderr: ""

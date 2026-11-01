@@ -1,0 +1,11 @@
+name: base64 encode
+args:
+  - --base64
+stdin: "hello world"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    aGVsbG8gd29ybGQ=
+  stderr: ""

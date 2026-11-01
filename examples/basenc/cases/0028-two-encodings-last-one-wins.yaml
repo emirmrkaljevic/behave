@@ -1,0 +1,12 @@
+name: two encodings, last one wins
+args:
+  - --base64
+  - --base16
+stdin: "hi"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    6869
+  stderr: ""

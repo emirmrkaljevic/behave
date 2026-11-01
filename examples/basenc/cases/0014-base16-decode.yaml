@@ -1,0 +1,11 @@
+name: base16 decode
+args:
+  - --base16
+  - -d
+stdin: "48692021"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "Hi !"
+  stderr: ""

@@ -1,0 +1,11 @@
+name: base2msbf encode
+args:
+  - --base2msbf
+stdin: "A"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    01000001
+  stderr: ""

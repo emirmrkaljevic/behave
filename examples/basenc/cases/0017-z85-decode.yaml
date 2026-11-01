@@ -1,0 +1,12 @@
+name: z85 decode
+args:
+  - --z85
+  - -d
+stdin: "wrx.P"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: ZJFRQQ==
+  stderr: ""

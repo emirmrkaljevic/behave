@@ -1,0 +1,11 @@
+name: base16 encode is uppercase hex
+args:
+  - --base16
+stdin: "Hi!"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    486921
+  stderr: ""

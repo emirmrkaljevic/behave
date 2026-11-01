@@ -1,0 +1,11 @@
+name: z85 rejects length not a multiple of 4
+args:
+  - --z85
+stdin: "abc"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid input (length must be multiple of 4 characters)

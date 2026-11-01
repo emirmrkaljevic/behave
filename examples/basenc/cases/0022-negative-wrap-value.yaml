@@ -1,0 +1,13 @@
+name: negative wrap value
+args:
+  - --base64
+  - -w
+  - "-1"
+stdin: "x"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid wrap size: ‘-1’

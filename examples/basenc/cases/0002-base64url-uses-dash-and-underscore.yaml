@@ -1,0 +1,12 @@
+name: base64url uses dash and underscore
+args:
+  - --base64url
+stdin:
+  base64: +/+/
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -_-_
+  stderr: ""

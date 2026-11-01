@@ -1,0 +1,11 @@
+name: base32 encode
+args:
+  - --base32
+stdin: "hello"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    NBSWY3DP
+  stderr: ""

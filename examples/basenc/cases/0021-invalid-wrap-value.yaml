@@ -1,0 +1,13 @@
+name: invalid wrap value
+args:
+  - --base64
+  - -w
+  - abc
+stdin: "x"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid wrap size: ‘abc’

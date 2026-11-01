@@ -1,0 +1,11 @@
+name: z85 encode four bytes
+args:
+  - --z85
+stdin: "abcd"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    vpA.S
+  stderr: ""

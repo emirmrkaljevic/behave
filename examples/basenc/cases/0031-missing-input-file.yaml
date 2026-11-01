@@ -1,0 +1,11 @@
+name: missing input file
+args:
+  - --base64
+  - does-not-exist
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: does-not-exist: No such file or directory

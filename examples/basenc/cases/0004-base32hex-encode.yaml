@@ -1,0 +1,11 @@
+name: base32hex encode
+args:
+  - --base32hex
+stdin: "hello"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    D1IMOR3F
+  stderr: ""

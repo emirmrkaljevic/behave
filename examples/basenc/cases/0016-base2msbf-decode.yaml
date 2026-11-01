@@ -1,0 +1,11 @@
+name: base2msbf decode
+args:
+  - --base2msbf
+  - -d
+stdin: "0100000101000010"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "AB"
+  stderr: ""

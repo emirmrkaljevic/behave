@@ -1,0 +1,16 @@
+name: wrap at 8 columns
+args:
+  - --base64
+  - -w
+  - "8"
+stdin: "the quick brown fox"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    dGhlIHF1
+    aWNrIGJy
+    b3duIGZv
+    eA==
+  stderr: ""

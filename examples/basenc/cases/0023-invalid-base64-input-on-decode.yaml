@@ -1,0 +1,12 @@
+name: invalid base64 input on decode
+args:
+  - --base64
+  - -d
+stdin: "a*b="
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid input
