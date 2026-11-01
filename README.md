@@ -5,7 +5,7 @@
 
 **Record how any CLI behaves. Prove your rewrite behaves the same.**
 
-Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) has so far led to 22 upstream bug reports and 29 fix PRs, 12 of them merged (as of Oct 31, 2026). See [what it found](#what-it-found-on-day-one).
+Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) has so far led to 23 upstream bug reports and 30 fix PRs, 13 of them merged (as of Nov 1, 2026). See [what it found](#what-it-found-on-day-one).
 
 `behave` treats a command-line tool as a black box. It reads `--help` (and the man page),
 generates hundreds of test cases (every flag, flag pairs, every value the help lists for a flag,
@@ -31,7 +31,7 @@ behave run behave-sort                 # make sure the recording is stable
 behave diff behave-sort --impl ./target/release/sort   # every place your port differs
 ```
 
-This is how it led to 22 bug reports and 29 fix PRs in uutils coreutils (12 merged so far).
+This is how it led to 23 bug reports and 30 fix PRs in uutils coreutils (13 merged so far).
 A second, ready to run pair: `behave diff examples/jq --impl gojq` passes 29 of 33 jq 1.7 cases,
 and the 4 differences are all error wording on stderr (see [examples/jq](examples/jq/)).
 
@@ -128,6 +128,8 @@ Some were real bugs and are now fixed upstream:
 - uutils `tail 007` printed the missing file as `'7'` ([uutils/coreutils#15533](https://github.com/uutils/coreutils/issues/15533), fixed for tail in [#15534](https://github.com/uutils/coreutils/pull/15534); the same bug in other utilities is being fixed one by one: `tac` in [#15541](https://github.com/uutils/coreutils/pull/15541) (merged), `nl` in [#15544](https://github.com/uutils/coreutils/pull/15544) (merged), `md5sum`/`cksum` in [#15548](https://github.com/uutils/coreutils/pull/15548) (merged), `sort` in [#15565](https://github.com/uutils/coreutils/pull/15565) (merged), `shred` in [#15604](https://github.com/uutils/coreutils/pull/15604) (merged))
 - uutils bare `tail -c` and `tail +NUM` ignored `_POSIX2_VERSION` ([uutils/coreutils#15528](https://github.com/uutils/coreutils/issues/15528), fixed in [#15529](https://github.com/uutils/coreutils/pull/15529))
 - uutils `sort -c dir` exited 0 without a message instead of reporting the read error ([uutils/coreutils#15615](https://github.com/uutils/coreutils/issues/15615), fixed in [#15616](https://github.com/uutils/coreutils/pull/15616))
+- uutils `fmt d a.txt` stopped at the directory with a bare `read error` and never formatted `a.txt` ([uutils/coreutils#15922](https://github.com/uutils/coreutils/issues/15922), fixed in [#15923](https://github.com/uutils/coreutils/pull/15923))
+- uutils `od -t x0` (and `d0`, `u0`, `f0`) silently used the default size, where GNU rejects a 0-byte type, caught by `examples/od` ([uutils/coreutils#16085](https://github.com/uutils/coreutils/issues/16085), fixed in [#16086](https://github.com/uutils/coreutils/pull/16086))
 
 Still open: a few error messages that lose the file name, mostly caught by the "file with trailing slash" probe case added in v0.1.7:
 
@@ -141,12 +143,11 @@ Still open: a few error messages that lose the file name, mostly caught by the "
 - `mv -n z z` (and `--update=none`) fails with `'z' and 'z' are the same file`, where GNU skips the move and exits 0 ([#15824](https://github.com/uutils/coreutils/issues/15824), fix in [#15825](https://github.com/uutils/coreutils/pull/15825))
 - `chown 1000 f/` and `chgrp 1000 missing` say `cannot dereference 'f/'`, where GNU says `cannot access` and keeps `cannot dereference` for dangling symlinks ([#15867](https://github.com/uutils/coreutils/issues/15867), fix in [#15868](https://github.com/uutils/coreutils/pull/15868))
 - `chmod -v 644 missing` prints nothing on stdout, and for a dangling symlink a made-up `from 0000 (---------) to 1500 (r-x-----T)` line, where GNU prints `'missing' could not be accessed` ([#15883](https://github.com/uutils/coreutils/issues/15883), fix in [#15884](https://github.com/uutils/coreutils/pull/15884))
-- `fmt d a.txt` stops at the directory with a bare `read error` and never formats `a.txt` (same for a missing file), where GNU says `error reading 'd': Is a directory` and goes on ([#15922](https://github.com/uutils/coreutils/issues/15922), fix in [#15923](https://github.com/uutils/coreutils/pull/15923))
 - `tr a '[:alpha:]'` prints the set2 class error on one line and says `set2`, where GNU splits it over two lines and says `string2` ([#15948](https://github.com/uutils/coreutils/issues/15948), fix in [#15949](https://github.com/uutils/coreutils/pull/15949))
 - `uniq -f x` says `Invalid argument for skip-fields: x`, where GNU says `x: invalid number of fields to skip` (same for `-s` and `-w`), caught by the new `examples/uniq` spec ([#15970](https://github.com/uutils/coreutils/issues/15970), fix in [#15971](https://github.com/uutils/coreutils/pull/15971))
 - `sort -t ab` and `sort -t ''` word the bad separator errors differently from GNU, and `sort -c a b` adds a usage hint GNU doesn't print, caught by `examples/sort` ([#15975](https://github.com/uutils/coreutils/issues/15975), fix in [#15976](https://github.com/uutils/coreutils/pull/15976))
 - `od -A q` and `od -t x3` word the invalid radix and type string errors differently from GNU, caught by `examples/od` ([#16071](https://github.com/uutils/coreutils/issues/16071), fix in [#16072](https://github.com/uutils/coreutils/pull/16072))
-- `od -t x0` (and `d0`, `u0`, `f0`) is silently treated as the default size, where GNU rejects a 0-byte type ([#16085](https://github.com/uutils/coreutils/issues/16085), fix in [#16086](https://github.com/uutils/coreutils/pull/16086))
+- `seq --foo` says `invalid floating point argument` and `seq -inf 1` prints `-inf` forever, because option-like arguments before the first operand are read as numbers where GNU treats them as options, caught by `examples/seq` ([#16113](https://github.com/uutils/coreutils/issues/16113), fix in [#16114](https://github.com/uutils/coreutils/pull/16114))
 
 ## MCP server
 
