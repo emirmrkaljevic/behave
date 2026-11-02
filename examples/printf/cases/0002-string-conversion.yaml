@@ -1,0 +1,11 @@
+name: string conversion
+args:
+  - '%s\n'
+  - world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    world
+  stderr: ""

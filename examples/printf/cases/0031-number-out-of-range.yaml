@@ -1,0 +1,12 @@
+name: number out of range
+args:
+  - '%d\n'
+  - "99999999999999999999"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    9223372036854775807
+  stderr: |
+    $CMD: ‘99999999999999999999’: Numerical result out of range

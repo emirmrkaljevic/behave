@@ -1,0 +1,12 @@
+name: shortest float
+args:
+  - '%g %g\n'
+  - "0.0001"
+  - "1000000"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0.0001 1e+06
+  stderr: ""

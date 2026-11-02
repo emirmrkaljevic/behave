@@ -1,0 +1,12 @@
+name: integer from float rejected
+args:
+  - '%d\n'
+  - "1.5"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    1
+  stderr: |
+    $CMD: ‘1.5’: value not completely converted

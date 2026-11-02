@@ -1,0 +1,10 @@
+name: hex escape
+args:
+  - \x41\n
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A
+  stderr: ""

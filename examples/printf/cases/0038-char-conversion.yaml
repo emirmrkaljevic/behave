@@ -1,0 +1,12 @@
+name: char conversion
+args:
+  - '%c%c\n'
+  - hello
+  - world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hw
+  stderr: ""

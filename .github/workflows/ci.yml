@@ -38,5 +38,6 @@ jobs:
           ./behave run examples/basenc
           ./behave run examples/seq
           ./behave run examples/expr
+          ./behave run examples/printf
           ./behave run examples/jq
           PATH="$PWD:$PATH" ./behave run examples/behave

@@ -1,0 +1,12 @@
+name: alternate form
+args:
+  - '%#x %#o\n'
+  - "255"
+  - "8"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    0xff 010
+  stderr: ""

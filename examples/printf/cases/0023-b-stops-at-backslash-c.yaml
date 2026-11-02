@@ -1,0 +1,10 @@
+name: b stops at backslash c
+args:
+  - '%b|\n'
+  - one\ctwo
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "one"
+  stderr: ""

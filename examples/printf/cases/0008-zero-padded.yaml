@@ -1,0 +1,11 @@
+name: zero padded
+args:
+  - '%05d\n'
+  - "42"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    00042
+  stderr: ""

@@ -1,0 +1,10 @@
+name: b expands escapes
+args:
+  - '%b\n'
+  - a\tb
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\tb\n"
+  stderr: ""

@@ -1,0 +1,11 @@
+name: q shell quotes
+args:
+  - '%q\n'
+  - it's here
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    "it's here"
+  stderr: ""

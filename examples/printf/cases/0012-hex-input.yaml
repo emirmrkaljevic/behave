@@ -1,0 +1,11 @@
+name: hex input
+args:
+  - '%d\n'
+  - "0x1F"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    31
+  stderr: ""

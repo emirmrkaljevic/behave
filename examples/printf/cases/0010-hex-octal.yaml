@@ -1,0 +1,13 @@
+name: hex octal
+args:
+  - '%x %X %o\n'
+  - "255"
+  - "255"
+  - "8"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ff FF 10
+  stderr: ""

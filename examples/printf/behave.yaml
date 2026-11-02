@@ -1,0 +1,7 @@
+command: printf
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: printf (GNU coreutils) 9.12

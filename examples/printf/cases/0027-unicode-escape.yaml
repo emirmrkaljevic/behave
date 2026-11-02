@@ -1,0 +1,10 @@
+name: unicode escape
+args:
+  - \u00e9\n
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    é
+  stderr: ""

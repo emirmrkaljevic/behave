@@ -1,0 +1,10 @@
+name: invalid conversion
+args:
+  - '%z\n'
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: %z\: invalid conversion specification

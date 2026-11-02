@@ -1,0 +1,10 @@
+name: negative integer padded
+args:
+  - '%5d|\n'
+  - "-42"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "  -42|\n"
+  stderr: ""

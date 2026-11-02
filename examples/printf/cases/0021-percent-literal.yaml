@@ -1,0 +1,10 @@
+name: percent literal
+args:
+  - 100%%\n
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    100%
+  stderr: ""

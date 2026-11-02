@@ -1,0 +1,11 @@
+name: float default precision
+args:
+  - '%f\n'
+  - "3.14159"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3.141590
+  stderr: ""

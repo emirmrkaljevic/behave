@@ -1,0 +1,11 @@
+name: octal input
+args:
+  - '%d\n'
+  - "010"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    8
+  stderr: ""

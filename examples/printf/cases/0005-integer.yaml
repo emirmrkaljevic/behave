@@ -1,0 +1,11 @@
+name: integer
+args:
+  - '%d\n'
+  - "42"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    42
+  stderr: ""

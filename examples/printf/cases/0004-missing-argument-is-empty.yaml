@@ -1,0 +1,11 @@
+name: missing argument is empty
+args:
+  - '%s|%s|\n'
+  - only
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    only||
+  stderr: ""

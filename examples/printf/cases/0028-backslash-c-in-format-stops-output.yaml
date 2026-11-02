@@ -1,0 +1,9 @@
+name: backslash c in format stops output
+args:
+  - a\cb
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a"
+  stderr: ""

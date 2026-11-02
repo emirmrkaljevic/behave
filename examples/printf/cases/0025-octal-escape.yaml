@@ -1,0 +1,10 @@
+name: octal escape
+args:
+  - \101\102\n
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    AB
+  stderr: ""

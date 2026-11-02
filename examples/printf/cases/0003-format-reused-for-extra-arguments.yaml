@@ -1,0 +1,15 @@
+name: format reused for extra arguments
+args:
+  - '%s-\n'
+  - a
+  - b
+  - c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a-
+    b-
+    c-
+  stderr: ""

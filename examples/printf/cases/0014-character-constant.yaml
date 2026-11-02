@@ -1,0 +1,11 @@
+name: character constant
+args:
+  - '%d\n'
+  - '''A'
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    65
+  stderr: ""

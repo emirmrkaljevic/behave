@@ -1,0 +1,11 @@
+name: left aligned
+args:
+  - '%-5d|\n'
+  - "7"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    7    |
+  stderr: ""

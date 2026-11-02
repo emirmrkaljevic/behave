@@ -1,0 +1,12 @@
+name: plus sign
+args:
+  - '%+d %+d\n'
+  - "5"
+  - "-5"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    +5 -5
+  stderr: ""

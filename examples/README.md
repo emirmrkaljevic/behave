@@ -518,6 +518,32 @@ behave diff examples/expr --impl ./uutils/expr
 # 40/43 (stderr 3)
 ```
 
+## `printf/`: 38 recorded cases for GNU `printf`
+
+Escapes in the format (`\n`, octal, `\x41`, `\u00e9`, `\c` to stop output), the format
+reused for extra arguments and missing arguments read as empty, `%d` with width, `-`, `0`
+and `+` flags, `%*d`, hex, octal and character-constant input (`'A` is 65), `%x %X %o`
+with and without `#`, `%u` of -1, `%f %e %g` with precision, `%.3s`, `%c`, `%b` and `%q`,
+`%%`, and the errors: a non-numeric or half-numeric argument (printed as far as it parsed,
+exit 1), a value out of range, a missing format and an invalid conversion. Recorded with
+GNU coreutils 9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/printf
+# printf vs printf: 38/38 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0, 33/38 match. Four are ASCII quotes in error messages where
+GNU uses `‘’` in a UTF-8 locale. The fifth is `printf '%.2f' 2.675`: GNU parses the
+argument into a binary `long double` (2.67499999...) and prints `2.67`, while uutils keeps
+the exact decimal and prints `2.68`. uutils already tracks this as a known limitation (an
+ignored test that needs `long double` precision), so it was not filed.
+
+```sh
+behave diff examples/printf --impl ./uutils/printf
+# 33/38 (stderr 4, stdout 1)
+```
+
 ## Grow it
 
 ```sh

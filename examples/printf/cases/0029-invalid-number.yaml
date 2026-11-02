@@ -1,0 +1,12 @@
+name: invalid number
+args:
+  - '%d\n'
+  - abc
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    0
+  stderr: |
+    $CMD: ‘abc’: expected a numeric value

@@ -1,0 +1,12 @@
+name: trailing garbage in number
+args:
+  - '%d\n'
+  - 12abc
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    12
+  stderr: |
+    $CMD: ‘12abc’: value not completely converted

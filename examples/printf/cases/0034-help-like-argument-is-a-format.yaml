@@ -1,0 +1,11 @@
+name: help-like argument is a format
+args:
+  - --
+  - -x\n
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -x
+  stderr: ""

@@ -1,0 +1,11 @@
+name: string precision
+args:
+  - '%.3s\n'
+  - abcdef
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    abc
+  stderr: ""

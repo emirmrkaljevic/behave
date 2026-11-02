@@ -1,0 +1,11 @@
+name: unsigned of negative
+args:
+  - '%u\n'
+  - "-1"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    18446744073709551615
+  stderr: ""
