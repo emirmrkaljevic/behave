@@ -1,0 +1,12 @@
+name: match anchored count
+args:
+  - abcdef
+  - ':'
+  - abc
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3
+  stderr: ""

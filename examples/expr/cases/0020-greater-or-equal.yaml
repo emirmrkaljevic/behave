@@ -1,0 +1,12 @@
+name: greater or equal
+args:
+  - "10"
+  - '>='
+  - "9"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+  stderr: ""

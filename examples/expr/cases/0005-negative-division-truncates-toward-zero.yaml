@@ -1,0 +1,12 @@
+name: negative division truncates toward zero
+args:
+  - "-7"
+  - /
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -3
+  stderr: ""

@@ -1,0 +1,12 @@
+name: match group returns text
+args:
+  - foo.txt
+  - ':'
+  - \(.*\)\.txt
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    foo
+  stderr: ""

@@ -1,0 +1,12 @@
+name: or returns first non-empty
+args:
+  - ""
+  - '|'
+  - fallback
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    fallback
+  stderr: ""

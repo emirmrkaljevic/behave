@@ -1,0 +1,13 @@
+name: unbalanced parenthesis
+args:
+  - (
+  - "1"
+  - +
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: syntax error: expecting ')' after ‘2’

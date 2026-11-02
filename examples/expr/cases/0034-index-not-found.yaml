@@ -1,0 +1,12 @@
+name: index not found
+args:
+  - index
+  - hello
+  - z
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    0
+  stderr: ""

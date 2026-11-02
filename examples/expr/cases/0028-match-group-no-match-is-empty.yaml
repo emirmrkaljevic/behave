@@ -1,0 +1,11 @@
+name: match group no match is empty
+args:
+  - foo.md
+  - ':'
+  - \(.*\)\.txt
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "\n"
+  stderr: ""

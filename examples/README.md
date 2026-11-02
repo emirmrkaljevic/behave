@@ -494,6 +494,30 @@ behave diff examples/seq --impl ./uutils/seq
 # 31/39 (stderr 8)
 ```
 
+## `expr/`: 43 recorded cases for GNU `expr`
+
+Arithmetic with truncating division and a modulo that keeps the dividend's sign,
+operator precedence and parentheses, a sum past 64 bits, numeric versus string
+comparison (`2 < 10` is true, `2 < 10a` compares as text), `|` and `&` with empty and
+zero values, `:` and `match` (anchored at the start, a `\(...\)` group returns the text),
+`substr`, `index`, `length`, `+` to quote a keyword, and every exit status: 1 when the
+result is empty or zero, 2 for syntax errors, missing operands and a bad regex, and
+division by zero. Recorded with GNU coreutils 9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/expr
+# expr vs expr: 43/43 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0, 40/43 match. Every result and exit status is the same;
+the three differences are ASCII quotes in syntax errors where GNU uses `‘’` in a UTF-8
+locale.
+
+```sh
+behave diff examples/expr --impl ./uutils/expr
+# 40/43 (stderr 3)
+```
+
 ## Grow it
 
 ```sh

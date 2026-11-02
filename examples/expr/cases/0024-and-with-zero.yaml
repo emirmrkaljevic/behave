@@ -1,0 +1,12 @@
+name: and with zero
+args:
+  - "0"
+  - '&'
+  - right
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    0
+  stderr: ""

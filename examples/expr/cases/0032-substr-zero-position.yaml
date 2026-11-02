@@ -1,0 +1,12 @@
+name: substr zero position
+args:
+  - substr
+  - hello
+  - "0"
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "\n"
+  stderr: ""

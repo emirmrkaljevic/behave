@@ -1,0 +1,12 @@
+name: modulo by zero
+args:
+  - "1"
+  - '%'
+  - "0"
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: division by zero

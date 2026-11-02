@@ -1,0 +1,12 @@
+name: index
+args:
+  - index
+  - hello
+  - lo
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3
+  stderr: ""

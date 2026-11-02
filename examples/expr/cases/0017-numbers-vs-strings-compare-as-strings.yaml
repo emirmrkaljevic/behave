@@ -1,0 +1,12 @@
+name: numbers vs strings compare as strings
+args:
+  - "2"
+  - <
+  - 10a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    0
+  stderr: ""

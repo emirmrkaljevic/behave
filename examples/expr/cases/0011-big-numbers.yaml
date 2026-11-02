@@ -1,0 +1,12 @@
+name: big numbers
+args:
+  - "9223372036854775807"
+  - +
+  - "1"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    9223372036854775808
+  stderr: ""

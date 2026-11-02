@@ -1,0 +1,13 @@
+name: substr past end
+args:
+  - substr
+  - hello
+  - "4"
+  - "10"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    lo
+  stderr: ""

@@ -1,0 +1,11 @@
+name: plus quotes a keyword
+args:
+  - +
+  - length
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    length
+  stderr: ""

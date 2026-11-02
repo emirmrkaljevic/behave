@@ -1,0 +1,12 @@
+name: regex error
+args:
+  - a
+  - ':'
+  - \(
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: Unmatched ( or \(

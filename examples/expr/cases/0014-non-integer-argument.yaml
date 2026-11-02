@@ -1,0 +1,12 @@
+name: non-integer argument
+args:
+  - a
+  - +
+  - "1"
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: non-integer argument

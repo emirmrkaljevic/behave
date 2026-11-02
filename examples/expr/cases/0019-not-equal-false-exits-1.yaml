@@ -1,0 +1,12 @@
+name: not equal false exits 1
+args:
+  - abc
+  - '!='
+  - abc
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    0
+  stderr: ""

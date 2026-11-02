@@ -1,0 +1,12 @@
+name: modulo
+args:
+  - "7"
+  - '%'
+  - "3"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+  stderr: ""

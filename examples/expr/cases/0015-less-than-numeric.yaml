@@ -1,0 +1,12 @@
+name: less than numeric
+args:
+  - "2"
+  - <
+  - "10"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+  stderr: ""

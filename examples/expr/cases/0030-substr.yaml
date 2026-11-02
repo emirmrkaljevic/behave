@@ -1,0 +1,13 @@
+name: substr
+args:
+  - substr
+  - hello
+  - "2"
+  - "3"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ell
+  stderr: ""

@@ -1,0 +1,7 @@
+command: expr
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: expr (GNU coreutils) 9.12

@@ -1,0 +1,14 @@
+name: precedence multiply before add
+args:
+  - "2"
+  - +
+  - "3"
+  - '*'
+  - "4"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    14
+  stderr: ""

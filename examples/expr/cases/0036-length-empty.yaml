@@ -1,0 +1,11 @@
+name: length empty
+args:
+  - length
+  - ""
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    0
+  stderr: ""

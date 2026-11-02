@@ -1,0 +1,12 @@
+name: less than string compare
+args:
+  - a
+  - <
+  - b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+  stderr: ""

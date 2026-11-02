@@ -1,0 +1,12 @@
+name: subtract to negative
+args:
+  - "2"
+  - '-'
+  - "5"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -3
+  stderr: ""

@@ -1,0 +1,11 @@
+name: syntax error missing operand
+args:
+  - "1"
+  - +
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: syntax error: missing argument after ‘+’

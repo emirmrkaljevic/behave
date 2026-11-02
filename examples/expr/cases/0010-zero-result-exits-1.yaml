@@ -1,0 +1,12 @@
+name: zero result exits 1
+args:
+  - "3"
+  - '-'
+  - "3"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    0
+  stderr: ""
