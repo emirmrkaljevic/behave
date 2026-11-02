@@ -1,0 +1,10 @@
+name: repeated prime factor
+args:
+  - "1024"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1024: 2 2 2 2 2 2 2 2 2 2
+  stderr: ""

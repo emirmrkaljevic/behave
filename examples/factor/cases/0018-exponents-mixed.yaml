@@ -1,0 +1,15 @@
+name: exponents mixed
+args:
+  - -h
+  - "2"
+  - "12"
+  - "97"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2: 2
+    12: 2^2 3
+    97: 97
+  stderr: ""

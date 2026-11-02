@@ -1,0 +1,10 @@
+name: surrounding whitespace
+args:
+  - ' 30 '
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: ‘ 30 ’ is not a valid positive integer

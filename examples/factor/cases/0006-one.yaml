@@ -1,0 +1,10 @@
+name: one
+args:
+  - "1"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1:
+  stderr: ""

@@ -1,0 +1,10 @@
+name: decimal point
+args:
+  - "3.5"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: ‘3.5’ is not a valid positive integer

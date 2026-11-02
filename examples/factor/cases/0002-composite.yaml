@@ -1,0 +1,10 @@
+name: composite
+args:
+  - "12"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    12: 2 2 3
+  stderr: ""

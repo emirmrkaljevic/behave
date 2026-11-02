@@ -1,0 +1,10 @@
+name: leading zeros
+args:
+  - "0042"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    42: 2 3 7
+  stderr: ""

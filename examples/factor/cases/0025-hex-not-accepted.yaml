@@ -1,0 +1,10 @@
+name: hex not accepted
+args:
+  - "0x10"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: ‘0x10’ is not a valid positive integer

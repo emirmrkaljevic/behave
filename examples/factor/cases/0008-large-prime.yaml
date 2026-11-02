@@ -1,0 +1,10 @@
+name: large prime
+args:
+  - "2147483647"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2147483647: 2147483647
+  stderr: ""

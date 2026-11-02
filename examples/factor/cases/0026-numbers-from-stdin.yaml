@@ -1,0 +1,13 @@
+name: numbers from stdin
+args: []
+stdin: |
+  10
+  11
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    10: 2 5
+    11: 11
+  stderr: ""

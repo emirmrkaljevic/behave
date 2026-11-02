@@ -1,0 +1,13 @@
+name: stdin with a bad token
+args: []
+stdin: |
+  8 q 9
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    8: 2 2 2
+    9: 3 3
+  stderr: |
+    $CMD: ‘q’ is not a valid positive integer

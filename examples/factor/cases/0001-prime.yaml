@@ -1,0 +1,10 @@
+name: prime
+args:
+  - "13"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    13: 13
+  stderr: ""

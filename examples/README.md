@@ -544,6 +544,32 @@ behave diff examples/printf --impl ./uutils/printf
 # 33/38 (stderr 4, stdout 1)
 ```
 
+## `factor/`: 31 recorded cases for GNU `factor`
+
+Primes, composites, repeated factors, several arguments, 0, 1 and 2, `2^31-1`, the 64-bit
+maximum and numbers above it up to 128 bits, a product of two large primes, a leading `+`,
+leading zeros and spaces, `-h`/`--exponents`, numbers from stdin split on any whitespace,
+and the errors: negative numbers (with and without `--`), words, decimals, hex, an empty
+argument, a bad token in the middle (the rest still gets factored, exit 1) and an unknown
+option. Recorded with GNU coreutils 9.12, and it also passes on 9.7.
+
+```sh
+behave run examples/factor
+# factor vs factor: 31/31 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0, 21/31 match. Seven are ASCII quotes in error messages and
+two are clap's wording for an unknown option. The last one is a real difference:
+`factor ' 30 '` prints `30: 2 3 5` in uutils, while GNU skips only leading spaces and rejects
+the trailing one (exit 1). Reported in
+[uutils/coreutils#16142](https://github.com/uutils/coreutils/issues/16142), fix in
+[#16143](https://github.com/uutils/coreutils/pull/16143).
+
+```sh
+behave diff examples/factor --impl ./uutils/factor
+# 21/31 (stderr 10, stdout 1, exit 1)
+```
+
 ## Grow it
 
 ```sh

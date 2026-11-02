@@ -1,0 +1,10 @@
+name: product of two large primes
+args:
+  - "1000000016000000063"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1000000016000000063: 1000000007 1000000009
+  stderr: ""

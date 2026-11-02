@@ -1,0 +1,10 @@
+name: not a number
+args:
+  - abc
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: ‘abc’ is not a valid positive integer

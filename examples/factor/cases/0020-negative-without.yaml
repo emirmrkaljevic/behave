@@ -1,0 +1,11 @@
+name: negative without --
+args:
+  - "-5"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid option -- '5'
+    Try '$CMD --help' for more information.

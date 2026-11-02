@@ -1,0 +1,11 @@
+name: exponents flag
+args:
+  - -h
+  - "1024"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1024: 2^10
+  stderr: ""

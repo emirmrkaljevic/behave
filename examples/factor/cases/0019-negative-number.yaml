@@ -1,0 +1,11 @@
+name: negative number
+args:
+  - --
+  - "-5"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: ‘-5’ is not a valid positive integer

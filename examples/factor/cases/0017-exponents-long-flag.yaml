@@ -1,0 +1,11 @@
+name: exponents long flag
+args:
+  - --exponents
+  - "360"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    360: 2^3 3^2 5
+  stderr: ""

@@ -1,0 +1,10 @@
+name: 64-bit max
+args:
+  - "18446744073709551615"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    18446744073709551615: 3 5 17 257 641 65537 6700417
+  stderr: ""

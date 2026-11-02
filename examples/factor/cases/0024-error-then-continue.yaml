@@ -1,0 +1,14 @@
+name: error then continue
+args:
+  - "4"
+  - x
+  - "9"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    4: 2 2
+    9: 3 3
+  stderr: |
+    $CMD: ‘x’ is not a valid positive integer

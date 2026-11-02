@@ -1,0 +1,12 @@
+name: stdin exponents
+args:
+  - -h
+stdin: |
+  72
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    72: 2^3 3^2
+  stderr: ""

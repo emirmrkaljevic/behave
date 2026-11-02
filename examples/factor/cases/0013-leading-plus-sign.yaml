@@ -1,0 +1,10 @@
+name: leading plus sign
+args:
+  - "+15"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    15: 3 5
+  stderr: ""
