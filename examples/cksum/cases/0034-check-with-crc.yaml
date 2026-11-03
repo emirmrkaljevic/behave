@@ -1,0 +1,15 @@
+name: check with crc
+args:
+  - -a
+  - crc
+  - --check
+  - sums
+files:
+  sums: x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: --check is not supported with --algorithm={bsd,sysv,crc,crc32b}

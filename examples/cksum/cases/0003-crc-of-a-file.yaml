@@ -1,0 +1,13 @@
+name: crc of a file
+args:
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3015617425 6 a.txt
+  stderr: ""

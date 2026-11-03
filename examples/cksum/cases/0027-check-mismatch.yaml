@@ -1,0 +1,17 @@
+name: check mismatch
+args:
+  - --check
+  - sums
+files:
+  a.txt: |
+    hello
+  sums: |
+    MD5 (a.txt) = 00000000000000000000000000000000
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    a.txt: FAILED
+  stderr: |
+    $CMD: WARNING: 1 computed checksum did NOT match

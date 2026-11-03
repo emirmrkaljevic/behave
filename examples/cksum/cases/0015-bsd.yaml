@@ -1,0 +1,15 @@
+name: bsd
+args:
+  - -a
+  - bsd
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    36979     1 a.txt
+  stderr: ""

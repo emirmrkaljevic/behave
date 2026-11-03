@@ -570,6 +570,32 @@ behave diff examples/factor --impl ./uutils/factor
 # 21/31 (stderr 10, stdout 1, exit 1)
 ```
 
+## `cksum/`: 35 recorded cases for GNU `cksum`
+
+The default CRC, `bsd`, `sysv`, `crc32b`, `md5`, `sha1`, `sha256`, `sha384`, `sha512`,
+`blake2b` (default and `-l 256`) and `sm3`, tagged and `--untagged` output, `--base64`, `-z`,
+stdin with and without `-`, several files, and `--check` with good, mismatched, malformed and
+missing entries (`--quiet`, `--status`, `--strict`, `--ignore-missing`), plus the errors: a
+missing file, a directory, a bad algorithm, a bad `-l`, `-l` with sha256, `--check` with
+`-a crc` and an unknown option. Recorded with GNU coreutils 9.12. On 9.7, 33/35 pass: the list of
+valid algorithms and the `--length` error changed in between.
+
+```sh
+behave run examples/cksum
+# cksum vs cksum: 35/35 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils 0.12.0, 31/35 match. Three are error wording (clap's messages for a
+bad algorithm and an unknown option, ASCII quotes in the `-l` error). The fourth is real:
+`cksum -` prints `3015617425 6` in uutils, where GNU prints the name, `3015617425 6 -`. It was
+already reported in [uutils/coreutils#15984](https://github.com/uutils/coreutils/issues/15984)
+with a fix in review ([#16031](https://github.com/uutils/coreutils/pull/16031)).
+
+```sh
+behave diff examples/cksum --impl ./uutils/cksum
+# 31/35 (stderr 3, stdout 1)
+```
+
 ## Grow it
 
 ```sh

@@ -1,0 +1,16 @@
+name: base64 sha256
+args:
+  - -a
+  - sha256
+  - --base64
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    SHA256 (a.txt) = WJG1tSLV3whtD/CxEPvZ0hu0/HFjrzTQgoai6Eb2vgM=
+  stderr: ""

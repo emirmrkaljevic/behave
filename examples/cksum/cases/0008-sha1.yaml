@@ -1,0 +1,15 @@
+name: sha1
+args:
+  - -a
+  - sha1
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    SHA1 (a.txt) = f572d396fae9206628714fb2ce00f72e94f2258f
+  stderr: ""

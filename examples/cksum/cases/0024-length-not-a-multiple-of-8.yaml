@@ -1,0 +1,18 @@
+name: length not a multiple of 8
+args:
+  - -a
+  - blake2b
+  - -l
+  - "7"
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid length: ‘7’
+    $CMD: length is not a multiple of 8

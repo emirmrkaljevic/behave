@@ -1,0 +1,17 @@
+name: two files
+args:
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    hello
+  b.txt: |
+    world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3015617425 6 a.txt
+    1576634217 6 b.txt
+  stderr: ""

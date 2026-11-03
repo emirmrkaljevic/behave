@@ -1,0 +1,15 @@
+name: sysv
+args:
+  - -a
+  - sysv
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    542 1 a.txt
+  stderr: ""

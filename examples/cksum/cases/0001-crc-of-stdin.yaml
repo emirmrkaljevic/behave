@@ -1,0 +1,11 @@
+name: crc of stdin
+args: []
+stdin: |
+  hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    3015617425 6
+  stderr: ""

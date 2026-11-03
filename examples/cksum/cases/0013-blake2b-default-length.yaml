@@ -1,0 +1,15 @@
+name: blake2b default length
+args:
+  - -a
+  - blake2b
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    BLAKE2b (a.txt) = f60ce482e5cc1229f39d71313171a8d9f4ca3a87d066bf4b205effb528192a75f14f3271e2c1a90e1de53f275b4d4793eef2f5e31ea90d2ce29d2e481c36435f
+  stderr: ""

@@ -1,0 +1,16 @@
+name: check missing file
+args:
+  - --check
+  - sums
+files:
+  sums: |
+    MD5 (gone.txt) = b1946ac92492d2347c6235b4d2611184
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    gone.txt: FAILED open or read
+  stderr: |
+    $CMD: gone.txt: No such file or directory
+    $CMD: WARNING: 1 listed file could not be read

@@ -1,0 +1,16 @@
+name: check status on mismatch
+args:
+  - --check
+  - --status
+  - sums
+files:
+  a.txt: |
+    hello
+  sums: |
+    MD5 (a.txt) = 00000000000000000000000000000000
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

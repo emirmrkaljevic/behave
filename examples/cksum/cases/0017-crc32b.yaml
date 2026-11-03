@@ -1,0 +1,15 @@
+name: crc32b
+args:
+  - -a
+  - crc32b
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    909783072 6 a.txt
+  stderr: ""

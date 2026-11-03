@@ -1,0 +1,17 @@
+name: length with sha256
+args:
+  - -a
+  - sha256
+  - -l
+  - "256"
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: --length is only supported with --algorithm blake2b, sha2, or sha3

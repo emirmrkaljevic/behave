@@ -1,0 +1,15 @@
+name: sm3
+args:
+  - -a
+  - sm3
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    SM3 (a.txt) = f7a87a195b0cc0052b9d598482212ceb07e4ea60e8d139a5dfeff36c24abf2b3
+  stderr: ""

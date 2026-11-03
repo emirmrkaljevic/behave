@@ -1,0 +1,16 @@
+name: check good
+args:
+  - --check
+  - sums
+files:
+  a.txt: |
+    hello
+  sums: |
+    MD5 (a.txt) = b1946ac92492d2347c6235b4d2611184
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt: OK
+  stderr: ""

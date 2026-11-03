@@ -1,0 +1,27 @@
+name: bad algorithm
+args:
+  - -a
+  - nope
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid argument ‘nope’ for ‘--algorithm’
+    Valid arguments are:
+      - ‘bsd’
+      - ‘sysv’
+      - ‘crc’
+      - ‘crc32b’
+      - ‘md5’
+      - ‘sha1’
+      - ‘sha224’
+      - ‘sha256’
+      - ‘sha384’
+      - ‘sha512’
+      - ‘sha2’
+      - ‘sha3’
+      - ‘blake2b’
+      - ‘sm3’
+    Try '$CMD --help' for more information.
