@@ -1,0 +1,15 @@
+name: tag zero terminated
+args:
+  - --tag
+  - -z
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: TUQ1IChhLnR4dCkgPSBiMTk0NmFjOTI0OTJkMjM0N2M2MjM1YjRkMjYxMTE4NAA=
+  stderr: ""

@@ -1,0 +1,20 @@
+name: check malformed warn
+args:
+  - -c
+  - -w
+  - sums
+files:
+  a.txt: |
+    hello
+  sums: |
+    b1946ac92492d2347c6235b4d2611184  a.txt
+    garbage
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt: OK
+  stderr: |
+    $CMD: sums: 2: improperly formatted MD5 checksum line
+    $CMD: WARNING: 1 line is improperly formatted

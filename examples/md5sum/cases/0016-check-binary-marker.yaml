@@ -1,0 +1,16 @@
+name: check binary marker
+args:
+  - -c
+  - sums
+files:
+  a.txt: |
+    hello
+  sums: |
+    b1946ac92492d2347c6235b4d2611184 *a.txt
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt: OK
+  stderr: ""

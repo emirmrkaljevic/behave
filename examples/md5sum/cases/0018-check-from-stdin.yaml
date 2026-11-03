@@ -1,0 +1,15 @@
+name: check from stdin
+args:
+  - -c
+stdin: |
+  b1946ac92492d2347c6235b4d2611184  a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt: OK
+  stderr: ""

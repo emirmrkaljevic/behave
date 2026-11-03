@@ -1,0 +1,14 @@
+name: zero terminated
+args:
+  - -z
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: YjE5NDZhYzkyNDkyZDIzNDdjNjIzNWI0ZDI2MTExODQgIGEudHh0AA==
+  stderr: ""

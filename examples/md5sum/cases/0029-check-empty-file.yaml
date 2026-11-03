@@ -1,0 +1,13 @@
+name: check empty file
+args:
+  - -c
+  - sums
+files:
+  sums: ""
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: sums: no properly formatted checksum lines found

@@ -1,0 +1,19 @@
+name: check malformed strict
+args:
+  - -c
+  - --strict
+  - sums
+files:
+  a.txt: |
+    hello
+  sums: |
+    b1946ac92492d2347c6235b4d2611184  a.txt
+    garbage
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    a.txt: OK
+  stderr: |
+    $CMD: WARNING: 1 line is improperly formatted

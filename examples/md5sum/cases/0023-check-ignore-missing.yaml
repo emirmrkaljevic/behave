@@ -1,0 +1,18 @@
+name: check ignore missing
+args:
+  - -c
+  - --ignore-missing
+  - sums
+files:
+  b.txt: |
+    world
+  sums: |
+    b1946ac92492d2347c6235b4d2611184  a.txt
+    591785b794601e212b260e25925636fd  b.txt
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b.txt: OK
+  stderr: ""

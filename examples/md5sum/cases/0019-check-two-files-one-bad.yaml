@@ -1,0 +1,21 @@
+name: check two files one bad
+args:
+  - -c
+  - sums
+files:
+  a.txt: |
+    hello
+  b.txt: |
+    xxx
+  sums: |
+    b1946ac92492d2347c6235b4d2611184  a.txt
+    591785b794601e212b260e25925636fd  b.txt
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    a.txt: OK
+    b.txt: FAILED
+  stderr: |
+    $CMD: WARNING: 1 computed checksum did NOT match

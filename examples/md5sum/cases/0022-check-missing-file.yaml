@@ -1,0 +1,16 @@
+name: check missing file
+args:
+  - -c
+  - sums
+files:
+  sums: |
+    b1946ac92492d2347c6235b4d2611184  a.txt
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    a.txt: FAILED open or read
+  stderr: |
+    $CMD: a.txt: No such file or directory
+    $CMD: WARNING: 1 listed file could not be read

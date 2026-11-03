@@ -1,0 +1,15 @@
+name: quiet without check
+args:
+  - --quiet
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: the --quiet option is meaningful only when verifying checksums
+    Try '$CMD --help' for more information.

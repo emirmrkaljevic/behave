@@ -1,0 +1,14 @@
+name: backslash in name with zero
+args:
+  - -z
+  - a\b
+files:
+  a\b: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: YjE5NDZhYzkyNDkyZDIzNDdjNjIzNWI0ZDI2MTExODQgIGFcYgA=
+  stderr: ""

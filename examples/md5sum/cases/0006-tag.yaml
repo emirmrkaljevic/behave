@@ -1,0 +1,14 @@
+name: tag
+args:
+  - --tag
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    MD5 (a.txt) = b1946ac92492d2347c6235b4d2611184
+  stderr: ""

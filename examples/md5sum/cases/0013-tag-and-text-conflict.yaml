@@ -1,0 +1,16 @@
+name: tag and text conflict
+args:
+  - --tag
+  - -t
+  - a.txt
+files:
+  a.txt: |
+    hello
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: --tag does not support --text mode
+    Try '$CMD --help' for more information.

@@ -1,0 +1,16 @@
+name: check with tag
+args:
+  - -c
+  - --tag
+  - sums
+files:
+  sums: |
+    b1946ac92492d2347c6235b4d2611184  a.txt
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: the --tag option is meaningless when verifying checksums
+    Try '$CMD --help' for more information.

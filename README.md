@@ -5,7 +5,7 @@
 
 **Record how any CLI behaves. Prove your rewrite behaves the same.**
 
-Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) has so far led to 24 upstream bug reports and 31 fix PRs, 15 of them merged (as of Nov 3, 2026). See [what it found](#what-it-found-on-day-one).
+Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) has so far led to 25 upstream bug reports and 32 fix PRs, 15 of them merged (as of Nov 3, 2026). See [what it found](#what-it-found-on-day-one).
 
 `behave` treats a command-line tool as a black box. It reads `--help` (and the man page),
 generates hundreds of test cases (every flag, flag pairs, every value the help lists for a flag,
@@ -31,7 +31,7 @@ behave run behave-sort                 # make sure the recording is stable
 behave diff behave-sort --impl ./target/release/sort   # every place your port differs
 ```
 
-This is how it led to 24 bug reports and 31 fix PRs in uutils coreutils (15 merged so far).
+This is how it led to 25 bug reports and 32 fix PRs in uutils coreutils (15 merged so far).
 A second, ready to run pair: `behave diff examples/jq --impl gojq` passes 29 of 33 jq 1.7 cases,
 and the 4 differences are all error wording on stderr (see [examples/jq](examples/jq/)).
 
@@ -56,7 +56,7 @@ behave diff behave-sort --impl ./target/release/sort --skip-tag meta
 ```
 
 Or try the committed examples first: `behave run examples/cut` (27 GNU `cut` cases),
-`behave run examples/paste` (18 GNU `paste` cases), `behave run examples/join` (26 GNU `join` cases), `behave run examples/nl` (26 GNU `nl` cases), `behave run examples/fold` (28 GNU `fold` cases), `behave run examples/head` (24 GNU `head` cases), `behave run examples/expand` (21 GNU `expand` cases), `behave run examples/unexpand` (26 GNU `unexpand` cases), `behave run examples/tr` (29 GNU `tr` cases), `behave run examples/comm` (30 GNU `comm` cases), `behave run examples/uniq` (31 GNU `uniq` cases), `behave run examples/sort` (35 GNU `sort` cases), `behave run examples/cat` (39 GNU `cat` cases), `behave run examples/wc` (38 GNU `wc` cases), `behave run examples/tac` (33 GNU `tac` cases), `behave run examples/numfmt` (41 GNU `numfmt` cases), `behave run examples/od` (36 GNU `od` cases), `behave run examples/basenc` (32 GNU `basenc` cases), `behave run examples/seq` (39 GNU `seq` cases), `behave run examples/expr` (43 GNU `expr` cases), `behave run examples/printf` (38 GNU `printf` cases), `behave run examples/factor` (31 GNU `factor` cases), `behave run examples/cksum` (35 GNU 9.12 `cksum` cases), or `behave run examples/jq` (33 jq 1.7 cases); see [examples/](examples/).
+`behave run examples/paste` (18 GNU `paste` cases), `behave run examples/join` (26 GNU `join` cases), `behave run examples/nl` (26 GNU `nl` cases), `behave run examples/fold` (28 GNU `fold` cases), `behave run examples/head` (24 GNU `head` cases), `behave run examples/expand` (21 GNU `expand` cases), `behave run examples/unexpand` (26 GNU `unexpand` cases), `behave run examples/tr` (29 GNU `tr` cases), `behave run examples/comm` (30 GNU `comm` cases), `behave run examples/uniq` (31 GNU `uniq` cases), `behave run examples/sort` (35 GNU `sort` cases), `behave run examples/cat` (39 GNU `cat` cases), `behave run examples/wc` (38 GNU `wc` cases), `behave run examples/tac` (33 GNU `tac` cases), `behave run examples/numfmt` (41 GNU `numfmt` cases), `behave run examples/od` (36 GNU `od` cases), `behave run examples/basenc` (32 GNU `basenc` cases), `behave run examples/seq` (39 GNU `seq` cases), `behave run examples/expr` (43 GNU `expr` cases), `behave run examples/printf` (38 GNU `printf` cases), `behave run examples/factor` (31 GNU `factor` cases), `behave run examples/cksum` (35 GNU 9.12 `cksum` cases), `behave run examples/md5sum` (37 GNU 9.12 `md5sum` cases), or `behave run examples/jq` (33 jq 1.7 cases); see [examples/](examples/).
 
 For tools that need a positional argument (a filter, a pattern, a field list), give samples:
 
@@ -149,6 +149,7 @@ Still open: a few error messages that lose the file name, mostly caught by the "
 - `od -A q` and `od -t x3` word the invalid radix and type string errors differently from GNU, caught by `examples/od` ([#16071](https://github.com/uutils/coreutils/issues/16071), fix in [#16072](https://github.com/uutils/coreutils/pull/16072))
 - `seq --foo` says `invalid floating point argument` and `seq -inf 1` prints `-inf` forever, because option-like arguments before the first operand are read as numbers where GNU treats them as options, caught by `examples/seq` ([#16113](https://github.com/uutils/coreutils/issues/16113), fix in [#16114](https://github.com/uutils/coreutils/pull/16114))
 - `factor '30 '` and `factor $'\t30'` print factors where GNU rejects the argument, because every argument is trimmed while GNU skips only leading spaces, caught by `examples/factor` ([#16142](https://github.com/uutils/coreutils/issues/16142), fixed in [#16143](https://github.com/uutils/coreutils/pull/16143))
+- `md5sum -c` rejects the lines md5sum itself writes for names with a backslash or a newline (they start with `\`), and unescapes names on lines without that marker, caught by `examples/md5sum` ([#16166](https://github.com/uutils/coreutils/issues/16166), fixed in [#16167](https://github.com/uutils/coreutils/pull/16167))
 
 ## MCP server
 

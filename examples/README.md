@@ -596,6 +596,34 @@ behave diff examples/cksum --impl ./uutils/cksum
 # 31/35 (stderr 3, stdout 1)
 ```
 
+## `md5sum/`: 37 recorded cases for GNU `md5sum`
+
+Digests of stdin (with and without `-`), one and two files, `--tag`, `-b`, `-t`, `-z` (also with
+`--tag`), and the escaping of a name with a backslash. `--check` with good, mismatched, binary
+(`*`), tagged and escaped lines, from stdin, with a missing or malformed entry, `--quiet`,
+`--status`, `-w`, `--strict` and `--ignore-missing`, plus an empty or garbage checksum file. The
+errors: a missing file, a directory, `--tag` with `--text`, `--quiet` or `--tag` where they make
+no sense, and an unknown option. Recorded with GNU coreutils 9.12. On 9.7, 36/37 pass: 9.7
+prints an escaped name as `\a\\b: OK` where 9.12 quotes it, `'a\b': OK`.
+
+```sh
+behave run examples/md5sum
+# md5sum vs md5sum: 37/37 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils (0.12.0 and main), 32/37 match. Four are error wording (clap's message
+for an unknown option, no `Try --help` line after three usage errors). The fifth is real:
+`md5sum -c` rejects the line md5sum writes for a name with a backslash or a newline
+(`\b1946...  a\\b`), because only the tagged parser skips the leading `\`, and it unescapes
+names on lines without it. Reported in
+[uutils/coreutils#16166](https://github.com/uutils/coreutils/issues/16166), fix in
+[#16167](https://github.com/uutils/coreutils/pull/16167).
+
+```sh
+behave diff examples/md5sum --impl ./uutils/md5sum
+# 32/37 (stderr 5, stdout 1, exit 1)
+```
+
 ## Grow it
 
 ```sh

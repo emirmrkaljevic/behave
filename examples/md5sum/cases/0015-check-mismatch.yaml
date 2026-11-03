@@ -1,0 +1,17 @@
+name: check mismatch
+args:
+  - -c
+  - sums
+files:
+  a.txt: |
+    hullo
+  sums: |
+    b1946ac92492d2347c6235b4d2611184  a.txt
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    a.txt: FAILED
+  stderr: |
+    $CMD: WARNING: 1 computed checksum did NOT match

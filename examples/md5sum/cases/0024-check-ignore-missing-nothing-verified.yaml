@@ -1,0 +1,15 @@
+name: check ignore missing nothing verified
+args:
+  - -c
+  - --ignore-missing
+  - sums
+files:
+  sums: |
+    b1946ac92492d2347c6235b4d2611184  a.txt
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: sums: no file was verified

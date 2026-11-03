@@ -1,0 +1,10 @@
+name: directory
+args:
+  - .
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: .: Is a directory

@@ -1,0 +1,14 @@
+name: check no valid lines
+args:
+  - -c
+  - sums
+files:
+  sums: |
+    garbage
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: sums: no properly formatted checksum lines found
