@@ -1,0 +1,10 @@
+name: 'error: directory'
+args:
+  - .
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: error reading '.': Is a directory

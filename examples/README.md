@@ -624,6 +624,32 @@ behave diff examples/md5sum --impl ./uutils/md5sum
 # 32/37 (stderr 5, stdout 1, exit 1)
 ```
 
+## `tail/`: 33 recorded cases for GNU `tail`
+
+`-n` and `-c` counts from the end and from a `+N` start (including `0`, `+0`, the `b`
+multiplier, and more lines than the input has), obsolete `-2`, `+11` and `-3c`, `-z`, a
+missing trailing newline, a multibyte character cut by `-c`, headers with several files,
+`-q`/`-v`, `-` for stdin, empty files, the warning for `--pid` without `-f`, and error paths
+(missing file, directory, bad counts, bad `-s` and `--pid` values, unknown options). The cases
+never follow a file, so they finish instantly. Recorded with GNU coreutils 9.12. On 9.7, 32/33
+pass: 9.7 prints the stdin header as `==> standard input <==` where 9.12 quotes it.
+
+```sh
+behave run examples/tail
+# tail vs tail: 33/33 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils built from main (0.13.0), output and exit codes all match; the seven
+failures are error wording only (ASCII instead of curly quotes, clap usage errors, and an extra
+`invalid digit found in string` after a bad `--pid`):
+
+```sh
+behave diff examples/tail --impl ./coreutils-main/tail
+# 26/33, all stderr
+behave diff examples/tail --impl ./coreutils-main/tail --ignore-stderr
+# 33/33
+```
+
 ## Grow it
 
 ```sh

@@ -1,0 +1,12 @@
+name: 'bytes: obsolete -3c'
+args:
+  - -3c
+stdin: |
+  hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    lo
+  stderr: ""

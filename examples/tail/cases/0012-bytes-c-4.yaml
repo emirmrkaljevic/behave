@@ -1,0 +1,13 @@
+name: 'bytes: -c 4'
+args:
+  - -c
+  - "4"
+stdin: |
+  hello world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    rld
+  stderr: ""

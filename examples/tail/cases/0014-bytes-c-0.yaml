@@ -1,0 +1,12 @@
+name: 'bytes: -c 0'
+args:
+  - -c
+  - "0"
+stdin: |
+  hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

@@ -1,0 +1,19 @@
+name: 'warning: --pid without -f is ignored'
+args:
+  - --pid=1
+  - -s
+  - "0.01"
+  - -n
+  - "1"
+  - a.txt
+files:
+  a.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    x
+  stderr: |
+    $CMD: warning: PID ignored; --pid=PID is useful only when following

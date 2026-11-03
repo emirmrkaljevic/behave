@@ -1,0 +1,13 @@
+name: 'error: -r is not an option'
+args:
+  - -r
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid option -- 'r'
+    Try '$CMD --help' for more information.

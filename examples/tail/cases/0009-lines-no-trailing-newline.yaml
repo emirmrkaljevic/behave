@@ -1,0 +1,16 @@
+name: 'lines: no trailing newline'
+args:
+  - -n
+  - "2"
+stdin: |-
+  a
+  b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |-
+    b
+    c
+  stderr: ""

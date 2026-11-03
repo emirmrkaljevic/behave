@@ -1,0 +1,16 @@
+name: 'error: missing file continues'
+args:
+  - nope.txt
+  - a.txt
+files:
+  a.txt: |
+    ok
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    ==> a.txt <==
+    ok
+  stderr: |
+    $CMD: cannot open 'nope.txt' for reading: No such file or directory

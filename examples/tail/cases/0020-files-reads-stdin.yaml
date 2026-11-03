@@ -1,0 +1,20 @@
+name: 'files: - reads stdin'
+args:
+  - a.txt
+  - '-'
+stdin: |
+  in
+files:
+  a.txt: |
+    file
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ==> a.txt <==
+    file
+
+    ==> 'standard input' <==
+    in
+  stderr: ""

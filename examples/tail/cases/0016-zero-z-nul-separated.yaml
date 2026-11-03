@@ -1,0 +1,14 @@
+name: 'zero: -z NUL separated'
+args:
+  - -z
+  - -n
+  - "2"
+stdin:
+  base64: YQBiAGMA
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: YgBjAA==
+  stderr: ""

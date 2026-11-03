@@ -1,0 +1,13 @@
+name: 'error: invalid sleep interval'
+args:
+  - -s
+  - abc
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid number of seconds: ‘abc’

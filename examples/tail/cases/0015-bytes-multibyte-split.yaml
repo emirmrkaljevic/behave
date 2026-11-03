@@ -1,0 +1,13 @@
+name: 'bytes: multibyte split'
+args:
+  - -c
+  - "3"
+stdin: |
+  čćž
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ž
+  stderr: ""

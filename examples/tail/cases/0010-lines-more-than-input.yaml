@@ -1,0 +1,15 @@
+name: 'lines: more than input'
+args:
+  - -n
+  - "50"
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+  stderr: ""
