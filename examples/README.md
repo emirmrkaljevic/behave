@@ -724,3 +724,27 @@ behave diff examples/basename --impl ./uutils/basename
 behave diff examples/dirname --impl ./uutils/dirname
 ```
 
+
+## `fmt/`: 36 recorded cases for GNU `fmt`
+
+Line filling at the default width and with `-w`, `-WIDTH` and `--width`, `-g` goal width,
+`-s` split only, `-u` uniform spacing, `-c` crown and `-t` tagged paragraphs, `-p` prefix,
+paragraph breaks on blank lines and indentation changes, long words, empty input, a missing
+final newline, and the error paths (bad, huge and missing widths, a goal above the width,
+a missing file, unknown options). Recorded with GNU coreutils 9.12. Not in CI: GNU 9.7
+fills two cases differently (multibyte words and `-w 20 -g 20`).
+
+```sh
+behave run examples/fmt
+# fmt vs fmt: 36/36 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils main, 27/36, and 33/36 with `--ignore-stderr`. Two of the three
+output differences are the known `--goal` difference ([uutils/coreutils#5162](https://github.com/uutils/coreutils/issues/5162)).
+The third was a real bug: an indented paragraph could get a line longer than `-w`
+(`    at a narrow width` at `-w 20`), reported in [uutils/coreutils#16190](https://github.com/uutils/coreutils/issues/16190)
+with a fix in [#16191](https://github.com/uutils/coreutils/pull/16191).
+
+```sh
+behave diff examples/fmt --impl ./uutils/fmt --ignore-stderr
+```

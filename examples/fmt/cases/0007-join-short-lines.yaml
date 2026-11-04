@@ -1,0 +1,14 @@
+name: join-short-lines
+args: []
+stdin: |
+  one
+  two
+  three
+  four
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    one two three four
+  stderr: ""

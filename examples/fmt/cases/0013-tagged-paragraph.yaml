@@ -1,0 +1,12 @@
+name: tagged-paragraph
+args:
+  - -t
+  - -w
+  - "30"
+stdin: "  first line indented\nsecond line not indented and quite long so it wraps around\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "  first line indented second\nline not indented and quite\nlong so it wraps around\n"
+  stderr: ""

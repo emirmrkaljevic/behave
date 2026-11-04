@@ -1,0 +1,11 @@
+name: invalid-option
+args:
+  - -j
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid option -- 'j'
+    Try '$CMD --help' for more information.

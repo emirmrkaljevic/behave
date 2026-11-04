@@ -1,0 +1,11 @@
+name: width-missing-argument
+args:
+  - -w
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: option requires an argument -- 'w'
+    Try '$CMD --help' for more information.

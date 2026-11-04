@@ -1,0 +1,16 @@
+name: prefix-mismatch
+args:
+  - -p
+  - //
+stdin: |
+  // a
+  // b
+  plain text
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    // a b
+    plain text
+  stderr: ""

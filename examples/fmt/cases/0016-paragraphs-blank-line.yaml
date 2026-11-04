@@ -1,0 +1,17 @@
+name: paragraphs-blank-line
+args: []
+stdin: |
+  para one
+  line
+
+  para two
+  line
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    para one line
+
+    para two line
+  stderr: ""

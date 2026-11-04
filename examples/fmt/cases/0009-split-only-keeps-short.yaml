@@ -1,0 +1,14 @@
+name: split-only-keeps-short
+args:
+  - -s
+stdin: |
+  one
+  two
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    one
+    two
+  stderr: ""

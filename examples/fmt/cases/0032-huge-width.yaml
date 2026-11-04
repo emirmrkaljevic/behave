@@ -1,0 +1,13 @@
+name: huge-width
+args:
+  - -w
+  - "99999999999"
+stdin: |
+  The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog again and again until the line is long enough to wrap.
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid width: ‘99999999999’: Numerical result out of range

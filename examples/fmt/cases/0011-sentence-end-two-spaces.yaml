@@ -1,0 +1,14 @@
+name: sentence-end-two-spaces
+args:
+  - -w
+  - "20"
+stdin: |
+  First one. Second one.  Third one.
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    First one. Second
+    one.  Third one.
+  stderr: ""

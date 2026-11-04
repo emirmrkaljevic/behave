@@ -1,0 +1,15 @@
+name: utf8-words
+args:
+  - -w
+  - "15"
+stdin: |
+  čćž đšš ćevapi burek pita sir kajmak
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    čćž đšš
+    ćevapi burek
+    pita sir kajmak
+  stderr: ""

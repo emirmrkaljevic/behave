@@ -1,0 +1,12 @@
+name: uniform-spacing
+args:
+  - -u
+stdin: |
+  a  b   c.  Next    sentence.
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a b c.  Next sentence.
+  stderr: ""

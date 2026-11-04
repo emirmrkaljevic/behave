@@ -1,0 +1,11 @@
+name: leading-indent-kept
+args:
+  - -w
+  - "20"
+stdin: "    indented text that is long enough to wrap at a narrow width\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "    indented text\n    that is long\n    enough to wrap\n    at a narrow\n    width\n"
+  stderr: ""

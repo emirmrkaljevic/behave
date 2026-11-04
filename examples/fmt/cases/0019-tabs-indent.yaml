@@ -1,0 +1,9 @@
+name: tabs-indent
+args: []
+stdin: "\tline one\n\tline two\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\tline one line two\n"
+  stderr: ""

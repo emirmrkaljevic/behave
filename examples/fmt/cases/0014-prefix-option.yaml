@@ -1,0 +1,19 @@
+name: prefix-option
+args:
+  - -p
+  - '# '
+  - -w
+  - "25"
+stdin: |
+  # comment one
+  # comment two that is longer
+  code line
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    # comment one comment
+    # two that is longer
+    code line
+  stderr: ""

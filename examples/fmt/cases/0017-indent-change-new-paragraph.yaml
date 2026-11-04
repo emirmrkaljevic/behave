@@ -1,0 +1,14 @@
+name: indent-change-new-paragraph
+args: []
+stdin: |
+  para one
+      indented
+      more
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    para one
+        indented more
+  stderr: ""

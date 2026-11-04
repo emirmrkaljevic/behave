@@ -1,0 +1,14 @@
+name: long-word
+args:
+  - -w
+  - "10"
+stdin: |
+  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    b
+  stderr: ""

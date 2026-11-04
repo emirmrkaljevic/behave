@@ -1,0 +1,12 @@
+name: default-width-75
+args: []
+stdin: |
+  The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog again and again until the line is long enough to wrap.
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    The quick brown fox jumps over the lazy dog. The quick brown fox jumps
+    over the lazy dog again and again until the line is long enough to wrap.
+  stderr: ""

@@ -1,0 +1,14 @@
+name: width-1
+args:
+  - -w
+  - "1"
+stdin: "a b c"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+    c
+  stderr: ""
