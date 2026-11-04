@@ -1,0 +1,11 @@
+name: suffix-not-matching
+args:
+  - file.txt
+  - .h
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    file.txt
+  stderr: ""

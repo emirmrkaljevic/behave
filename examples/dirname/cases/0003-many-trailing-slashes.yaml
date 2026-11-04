@@ -1,0 +1,10 @@
+name: many-trailing-slashes
+args:
+  - a/b///
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+  stderr: ""

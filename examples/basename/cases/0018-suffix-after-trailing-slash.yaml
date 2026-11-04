@@ -1,0 +1,11 @@
+name: suffix-after-trailing-slash
+args:
+  - foo/bar.txt/
+  - .txt
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    bar
+  stderr: ""

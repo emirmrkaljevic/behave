@@ -1,0 +1,11 @@
+name: zero-long
+args:
+  - --zero
+  - /a/b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: L2EA
+  stderr: ""

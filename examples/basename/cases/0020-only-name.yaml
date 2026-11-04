@@ -1,0 +1,10 @@
+name: only-name
+args:
+  - file
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    file
+  stderr: ""

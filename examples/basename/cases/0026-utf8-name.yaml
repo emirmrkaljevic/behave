@@ -1,0 +1,11 @@
+name: utf8-name
+args:
+  - /tmp/café.txt
+  - .txt
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    café
+  stderr: ""

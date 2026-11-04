@@ -1,0 +1,12 @@
+name: invalid-option
+args:
+  - -x
+  - foo
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid option -- 'x'
+    Try '$CMD --help' for more information.

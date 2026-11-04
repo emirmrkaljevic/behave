@@ -1,0 +1,10 @@
+name: trailing-slash
+args:
+  - /usr/bin/
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /usr
+  stderr: ""

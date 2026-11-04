@@ -1,0 +1,10 @@
+name: root
+args:
+  - /
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /
+  stderr: ""

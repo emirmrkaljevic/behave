@@ -1,0 +1,10 @@
+name: repeated-slashes-inside
+args:
+  - a//b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+  stderr: ""

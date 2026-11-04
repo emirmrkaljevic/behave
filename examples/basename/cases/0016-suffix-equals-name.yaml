@@ -1,0 +1,11 @@
+name: suffix-equals-name
+args:
+  - .h
+  - .h
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    .h
+  stderr: ""

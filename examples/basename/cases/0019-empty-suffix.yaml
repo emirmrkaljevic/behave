@@ -1,0 +1,12 @@
+name: empty-suffix
+args:
+  - -s
+  - ""
+  - a/b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+  stderr: ""

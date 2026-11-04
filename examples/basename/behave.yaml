@@ -1,0 +1,7 @@
+command: basename
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: basename (GNU coreutils) 9.12

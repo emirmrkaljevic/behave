@@ -1,0 +1,11 @@
+name: suffix-missing-argument
+args:
+  - -s
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: option requires an argument -- 's'
+    Try '$CMD --help' for more information.

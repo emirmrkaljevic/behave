@@ -1,0 +1,11 @@
+name: zero-terminated
+args:
+  - -z
+  - /usr/bin/sort
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: c29ydAA=
+  stderr: ""

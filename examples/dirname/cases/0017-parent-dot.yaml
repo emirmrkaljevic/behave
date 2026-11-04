@@ -1,0 +1,10 @@
+name: parent-dot
+args:
+  - a/.
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+  stderr: ""

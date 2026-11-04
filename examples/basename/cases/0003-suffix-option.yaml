@@ -1,0 +1,12 @@
+name: suffix-option
+args:
+  - -s
+  - .h
+  - include/stdio.h
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    stdio
+  stderr: ""

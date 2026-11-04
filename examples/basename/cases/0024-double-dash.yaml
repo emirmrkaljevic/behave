@@ -1,0 +1,11 @@
+name: double-dash
+args:
+  - --
+  - /x/-foo
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -foo
+  stderr: ""

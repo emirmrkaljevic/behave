@@ -1,0 +1,10 @@
+name: strip-last-component
+args:
+  - /usr/bin/sort
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /usr/bin
+  stderr: ""

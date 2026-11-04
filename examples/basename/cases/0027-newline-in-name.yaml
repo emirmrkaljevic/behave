@@ -1,0 +1,13 @@
+name: newline-in-name
+args:
+  - |-
+    dir/a
+    b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+  stderr: ""

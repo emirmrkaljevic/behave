@@ -1,0 +1,14 @@
+name: suffix-implies-multiple
+args:
+  - -s
+  - .c
+  - a/x.c
+  - b/y.c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    x
+    y
+  stderr: ""

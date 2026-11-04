@@ -1,0 +1,11 @@
+name: dash-name
+args:
+  - --
+  - -foo
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    .
+  stderr: ""

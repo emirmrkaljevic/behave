@@ -1,0 +1,11 @@
+name: strip-suffix
+args:
+  - include/stdio.h
+  - .h
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    stdio
+  stderr: ""

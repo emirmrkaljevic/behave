@@ -1,0 +1,11 @@
+name: suffix-is-whole-tail
+args:
+  - a/b.tar.gz
+  - .tar.gz
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+  stderr: ""

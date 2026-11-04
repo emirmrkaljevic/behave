@@ -1,0 +1,7 @@
+command: dirname
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: dirname (GNU coreutils) 9.12

@@ -1,0 +1,12 @@
+name: zero-with-multiple
+args:
+  - -az
+  - a/b
+  - c/d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: YgBkAA==
+  stderr: ""

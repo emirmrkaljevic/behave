@@ -1,0 +1,13 @@
+name: multiple
+args:
+  - -a
+  - any/str1
+  - any/str2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    str1
+    str2
+  stderr: ""

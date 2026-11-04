@@ -1,0 +1,10 @@
+name: no-slash
+args:
+  - stdio.h
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    .
+  stderr: ""

@@ -1,0 +1,11 @@
+name: suffix-partial-word
+args:
+  - a/foobar
+  - bar
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    foo
+  stderr: ""

@@ -1,0 +1,10 @@
+name: dir-dot
+args:
+  - dir/.
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    .
+  stderr: ""

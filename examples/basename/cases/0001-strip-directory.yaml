@@ -1,0 +1,10 @@
+name: strip-directory
+args:
+  - /usr/bin/sort
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    sort
+  stderr: ""

@@ -1,0 +1,11 @@
+name: suffix-long-option
+args:
+  - --suffix=.h
+  - include/stdio.h
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    stdio
+  stderr: ""

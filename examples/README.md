@@ -699,3 +699,28 @@ so a change to messages or exit codes shows up as a diff.
 behave run examples/behave
 # behave vs behave: 7/7 passed, 0 failed, 0 skipped
 ```
+
+## `basename/` and `dirname/`: 35 + 26 recorded cases for GNU `basename` and `dirname`
+Path edge cases that are easy to get wrong in a rewrite: trailing and repeated slashes,
+`/`, `//` and `///`, the empty string, `.` and `..`, suffix removal (`-s`, a suffix equal
+to the whole name is kept, suffix after a trailing slash), `-a`/`--multiple`, `-z`, names
+with a leading dash, UTF-8 and a newline inside a name, plus the error paths (missing and
+extra operand, missing `-s` argument, unknown options). Recorded with GNU coreutils 9.12,
+and both also pass on 9.7, so they run in CI.
+
+```sh
+behave run examples/basename
+# basename vs basename: 35/35 passed, 0 failed, 0 skipped
+behave run examples/dirname
+# dirname vs dirname: 26/26 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils main, every path result matches (basename 31/35, dirname 24/26);
+the differences are only error wording on stderr (ASCII quotes and clap's messages for
+unknown options and a missing `-s` value).
+
+```sh
+behave diff examples/basename --impl ./uutils/basename
+behave diff examples/dirname --impl ./uutils/dirname
+```
+

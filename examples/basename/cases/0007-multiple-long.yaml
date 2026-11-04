@@ -1,0 +1,13 @@
+name: multiple-long
+args:
+  - --multiple
+  - /a/b
+  - /c/d/
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+    d
+  stderr: ""

@@ -1,0 +1,11 @@
+name: multiple-no-operand
+args:
+  - -a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: missing operand
+    Try '$CMD --help' for more information.

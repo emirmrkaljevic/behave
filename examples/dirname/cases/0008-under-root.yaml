@@ -1,0 +1,10 @@
+name: under-root
+args:
+  - /usr
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /
+  stderr: ""
