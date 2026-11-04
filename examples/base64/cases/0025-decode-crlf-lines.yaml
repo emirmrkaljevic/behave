@@ -1,0 +1,11 @@
+name: decode-crlf-lines
+args:
+  - -d
+stdin: "aGVs\r\nbG8K\r"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "hel"
+  stderr: |
+    $CMD: invalid input

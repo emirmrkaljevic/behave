@@ -1,0 +1,12 @@
+name: encode-a-file
+args:
+  - in.txt
+files:
+  in.txt: hello world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    aGVsbG8gd29ybGQ=
+  stderr: ""

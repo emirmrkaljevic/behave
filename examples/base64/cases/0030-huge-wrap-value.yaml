@@ -1,0 +1,11 @@
+name: huge-wrap-value
+args:
+  - -w
+  - "99999999999999999999"
+stdin: "abc"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "YWJj"
+  stderr: ""

@@ -1,0 +1,11 @@
+name: encode-dash-reads-stdin
+args:
+  - '-'
+stdin: "abc"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    YWJj
+  stderr: ""

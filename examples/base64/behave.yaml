@@ -1,0 +1,7 @@
+command: base64
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: base64 (GNU coreutils) 9.12

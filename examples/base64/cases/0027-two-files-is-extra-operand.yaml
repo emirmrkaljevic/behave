@@ -1,0 +1,15 @@
+name: two-files-is-extra-operand
+args:
+  - a
+  - b
+files:
+  a: "1"
+  b: "2"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: extra operand ‘b’
+    Try '$CMD --help' for more information.

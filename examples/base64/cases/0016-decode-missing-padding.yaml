@@ -1,0 +1,10 @@
+name: decode-missing-padding
+args:
+  - -d
+stdin: "YWJj"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "abc"
+  stderr: ""

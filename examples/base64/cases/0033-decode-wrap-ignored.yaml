@@ -1,0 +1,13 @@
+name: decode-wrap-ignored
+args:
+  - -d
+  - -w
+  - "4"
+stdin: "aGVsbG8K"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hello
+  stderr: ""

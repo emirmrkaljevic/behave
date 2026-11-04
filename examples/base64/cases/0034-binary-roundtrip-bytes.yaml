@@ -1,0 +1,12 @@
+name: binary-roundtrip-bytes
+args:
+  - bin.dat
+files:
+  bin.dat: !!binary eAEC/w==
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    eAEC/w==
+  stderr: ""

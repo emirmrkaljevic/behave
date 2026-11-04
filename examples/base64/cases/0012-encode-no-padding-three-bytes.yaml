@@ -1,0 +1,12 @@
+name: encode-no-padding-three-bytes
+args:
+  - three
+files:
+  three: abc
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    YWJj
+  stderr: ""

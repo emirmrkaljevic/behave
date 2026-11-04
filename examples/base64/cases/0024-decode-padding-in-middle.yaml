@@ -1,0 +1,10 @@
+name: decode-padding-in-middle
+args:
+  - -d
+stdin: "YQ==YQ=="
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "aa"
+  stderr: ""

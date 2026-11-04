@@ -1,0 +1,28 @@
+name: encode-wrap-long-option
+args:
+  - --wrap=10
+stdin: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. "
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    VGhlIHF1aW
+    NrIGJyb3du
+    IGZveCBqdW
+    1wcyBvdmVy
+    IHRoZSBsYX
+    p5IGRvZy4g
+    VGhlIHF1aW
+    NrIGJyb3du
+    IGZveCBqdW
+    1wcyBvdmVy
+    IHRoZSBsYX
+    p5IGRvZy4g
+    VGhlIHF1aW
+    NrIGJyb3du
+    IGZveCBqdW
+    1wcyBvdmVy
+    IHRoZSBsYX
+    p5IGRvZy4g
+  stderr: ""

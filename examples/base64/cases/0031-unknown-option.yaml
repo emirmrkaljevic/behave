@@ -1,0 +1,11 @@
+name: unknown-option
+args:
+  - --frobnicate
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: unrecognized option '--frobnicate'
+    Try '$CMD --help' for more information.

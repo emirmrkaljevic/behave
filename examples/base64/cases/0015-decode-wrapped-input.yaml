@@ -1,0 +1,19 @@
+name: decode-wrapped-input
+args:
+  - -d
+stdin: |-
+  VGhlIHF1aWNrIGJyb3du
+  IGZveCBqdW1wcyBvdmVy
+  IHRoZSBsYXp5IGRvZy4g
+  VGhlIHF1aWNrIGJyb3du
+  IGZveCBqdW1wcyBvdmVy
+  IHRoZSBsYXp5IGRvZy4g
+  VGhlIHF1aWNrIGJyb3du
+  IGZveCBqdW1wcyBvdmVy
+  IHRoZSBsYXp5IGRvZy4g
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. "
+  stderr: ""

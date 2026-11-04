@@ -1,0 +1,12 @@
+name: decode-ignore-garbage-long
+args:
+  - --decode
+  - --ignore-garbage
+stdin: "aG!Vs bG8K"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hello
+  stderr: ""

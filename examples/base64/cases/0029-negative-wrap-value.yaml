@@ -1,0 +1,12 @@
+name: negative-wrap-value
+args:
+  - -w
+  - "-5"
+stdin: "x"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid wrap size: ‘-5’

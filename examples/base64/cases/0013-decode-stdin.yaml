@@ -1,0 +1,11 @@
+name: decode-stdin
+args:
+  - -d
+stdin: "aGVsbG8K"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hello
+  stderr: ""

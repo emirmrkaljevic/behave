@@ -1,0 +1,11 @@
+name: decode-invalid-character
+args:
+  - -d
+stdin: "aGVs*bG8K"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "hel"
+  stderr: |
+    $CMD: invalid input

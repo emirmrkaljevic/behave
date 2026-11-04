@@ -1,0 +1,12 @@
+name: encode-wraps-at-76
+args: []
+stdin: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. "
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4gVGhlIHF1aWNrIGJy
+    b3duIGZveCBqdW1wcyBvdmVyIHRoZSBsYXp5IGRvZy4gVGhlIHF1aWNrIGJyb3duIGZveCBqdW1w
+    cyBvdmVyIHRoZSBsYXp5IGRvZy4g
+  stderr: ""

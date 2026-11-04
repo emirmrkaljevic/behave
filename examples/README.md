@@ -650,6 +650,32 @@ behave diff examples/tail --impl ./coreutils-main/tail --ignore-stderr
 # 33/33
 ```
 
+## `base64/`: 34 recorded cases for GNU `base64`
+
+Encoding from stdin, a file and `-`, padding for one, two and three bytes, binary input,
+wrapping (default 76, `-w 0`, `-w 1`, `-w 20`, `--wrap=10`, and a size too large to
+represent, which GNU treats as no wrapping), decoding wrapped input, missing and misplaced
+padding, truncated input, spaces and CRLF line ends, `-i` with garbage, and error paths
+(invalid characters, bad and negative `-w` values, missing file, directory, extra operand,
+unknown option). Recorded with GNU coreutils 9.12; 9.7 passes all 34.
+
+```sh
+behave run examples/base64
+# base64 vs base64: 34/34 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils built from main (0.13.0), 26/34 pass. Besides error wording, three
+behaviour differences: a too-large `-w` is rejected instead of turning wrapping off (reported
+in [#16180](https://github.com/uutils/coreutils/issues/16180), fix in
+[#16181](https://github.com/uutils/coreutils/pull/16181)), `\r` before a newline is accepted
+when decoding where GNU stops with `invalid input`, and on invalid input GNU writes the bytes
+decoded so far while uutils writes nothing:
+
+```sh
+behave diff examples/base64 --impl ./coreutils-main/base64
+# 26/34
+```
+
 ## Grow it
 
 ```sh

@@ -1,0 +1,12 @@
+name: encode-padding-two-bytes
+args:
+  - two
+files:
+  two: ab
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    YWI=
+  stderr: ""
