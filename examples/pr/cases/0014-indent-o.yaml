@@ -1,0 +1,14 @@
+name: indent-o
+args:
+  - -t
+  - -o
+  - "4"
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "    a\n    b\n"
+  stderr: ""

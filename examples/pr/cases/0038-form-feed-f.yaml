@@ -1,0 +1,19 @@
+name: form-feed-f
+args:
+  - -f
+  - -h
+  - HDR
+  - -D
+  - DATE
+  - -l
+  - "20"
+stdin: |
+  a
+  b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\n\nDATE                             HDR                              Page 1\n\n\na\nb\nc\n\f"
+  stderr: ""

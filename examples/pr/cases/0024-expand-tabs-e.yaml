@@ -1,0 +1,12 @@
+name: expand-tabs-e
+args:
+  - -t
+  - -e
+stdin: "a\tb\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a       b
+  stderr: ""

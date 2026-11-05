@@ -1,0 +1,12 @@
+name: show-nonprinting-v
+args:
+  - -t
+  - -v
+stdin: "a\x01b\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a\001b
+  stderr: ""

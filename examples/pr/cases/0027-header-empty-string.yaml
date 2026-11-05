@@ -1,0 +1,16 @@
+name: header-empty-string
+args:
+  - -h
+  - ""
+  - -D
+  - DATE
+  - -l
+  - "12"
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\n\nDATE                                                              Page 1\n\n\na\n\n\n\n\n\n\n"
+  stderr: ""

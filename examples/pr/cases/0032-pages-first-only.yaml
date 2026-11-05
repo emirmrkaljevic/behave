@@ -1,0 +1,38 @@
+name: pages-first-only
+args:
+  - -h
+  - HDR
+  - -D
+  - DATE
+  - -l
+  - "16"
+  - "+2"
+stdin: |-
+  a
+  b
+  c
+  d
+  e
+  f
+  g
+  h
+  i
+  j
+  k
+  l
+  m
+  n
+  o
+  p
+  q
+  r
+  s
+  t
+  u
+  v
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\n\nDATE                             HDR                              Page 2\n\n\ng\nh\ni\nj\nk\nl\n\n\n\n\n\n\n\nDATE                             HDR                              Page 3\n\n\nm\nn\no\np\nq\nr\n\n\n\n\n\n\n\nDATE                             HDR                              Page 4\n\n\ns\nt\nu\nv\n\n\n\n\n\n\n\n"
+  stderr: ""

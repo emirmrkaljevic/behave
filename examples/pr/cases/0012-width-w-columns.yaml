@@ -1,0 +1,16 @@
+name: width-w-columns
+args:
+  - -t
+  - "-2"
+  - -w
+  - "20"
+stdin: |
+  abcdefghij
+  klmnopqrst
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    abcdefghi klmnopqrs
+  stderr: ""

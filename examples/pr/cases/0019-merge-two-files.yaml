@@ -1,0 +1,19 @@
+name: merge-two-files
+args:
+  - -t
+  - -m
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    a1
+    a2
+  b.txt: |
+    b1
+    b2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a1\t\t\t\t    b1\na2\t\t\t\t    b2\n"
+  stderr: ""

@@ -1,0 +1,14 @@
+name: number-lines-digits
+args:
+  - -t
+  - -n:3
+stdin: |
+  a
+  b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "  1:a\n  2:b\n  3:c\n"
+  stderr: ""

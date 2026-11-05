@@ -1,0 +1,11 @@
+name: missing-file
+args:
+  - -t
+  - nonexistent.txt
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: nonexistent.txt: No such file or directory

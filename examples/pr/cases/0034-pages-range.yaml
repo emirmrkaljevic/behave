@@ -1,0 +1,38 @@
+name: pages-range
+args:
+  - -h
+  - HDR
+  - -D
+  - DATE
+  - -l
+  - "16"
+  - "+1:1"
+stdin: |-
+  a
+  b
+  c
+  d
+  e
+  f
+  g
+  h
+  i
+  j
+  k
+  l
+  m
+  n
+  o
+  p
+  q
+  r
+  s
+  t
+  u
+  v
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\n\nDATE                             HDR                              Page 1\n\n\na\nb\nc\nd\ne\nf\n\n\n\n\n\n"
+  stderr: ""

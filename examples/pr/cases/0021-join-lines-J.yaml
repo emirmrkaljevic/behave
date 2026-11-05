@@ -1,0 +1,18 @@
+name: join-lines-J
+args:
+  - -t
+  - -m
+  - -J
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    left-long-line
+  b.txt: |
+    right
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "left-long-line\tright\n"
+  stderr: ""

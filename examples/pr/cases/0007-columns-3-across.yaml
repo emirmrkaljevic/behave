@@ -1,0 +1,18 @@
+name: columns-3-across
+args:
+  - -t
+  - -a
+  - "-3"
+stdin: |
+  one
+  two
+  three
+  four
+  five
+  six
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "one\t\t\ttwo\t\t\tthree\nfour\t\t\tfive\t\t\tsix\n"
+  stderr: ""

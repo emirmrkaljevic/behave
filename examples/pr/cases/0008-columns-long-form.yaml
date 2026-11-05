@@ -1,0 +1,15 @@
+name: columns-long-form
+args:
+  - -t
+  - --columns=2
+stdin: |
+  a
+  b
+  c
+  d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\t\t\t\t    c\nb\t\t\t\t    d\n"
+  stderr: ""

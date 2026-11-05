@@ -1,0 +1,18 @@
+name: stdin-with-header-and-indent
+args:
+  - -h
+  - TITLE
+  - -D
+  - STAMP
+  - -l
+  - "12"
+  - -o
+  - "2"
+stdin: |
+  line
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "  \n\n  STAMP                            TITLE                            Page 1\n\n\n  line\n\n\n\n\n\n\n"
+  stderr: ""

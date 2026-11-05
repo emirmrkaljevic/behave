@@ -1,0 +1,16 @@
+name: sep-string-S
+args:
+  - -t
+  - "-2"
+  - '-S :: '
+stdin: |
+  a
+  b
+  c
+  d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\t\t\t\t   :: c\nb\t\t\t\t   :: d\n"
+  stderr: ""

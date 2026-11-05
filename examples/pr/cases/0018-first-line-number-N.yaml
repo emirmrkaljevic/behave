@@ -1,0 +1,16 @@
+name: first-line-number-N
+args:
+  - -t
+  - -n
+  - -N
+  - "10"
+stdin: |
+  a
+  b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "   10\ta\n   11\tb\n   12\tc\n"
+  stderr: ""

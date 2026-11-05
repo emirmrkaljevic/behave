@@ -1,0 +1,14 @@
+name: page-width-W
+args:
+  - -t
+  - -W
+  - "10"
+stdin: |
+  abcdefghijklmnopqrstuvwxyz
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    abcdefghij
+  stderr: ""

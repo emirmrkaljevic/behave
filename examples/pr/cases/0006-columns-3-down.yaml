@@ -1,0 +1,17 @@
+name: columns-3-down
+args:
+  - -t
+  - "-3"
+stdin: |
+  one
+  two
+  three
+  four
+  five
+  six
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "one\t\t\tthree\t\t\tfive\ntwo\t\t\tfour\t\t\tsix\n"
+  stderr: ""

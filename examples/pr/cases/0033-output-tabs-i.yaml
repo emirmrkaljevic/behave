@@ -1,0 +1,12 @@
+name: output-tabs-i
+args:
+  - -t
+  - -i
+stdin: |
+  a        b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\t b\n"
+  stderr: ""

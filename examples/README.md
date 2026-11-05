@@ -761,3 +761,29 @@ normalized, so the spec replays anywhere. Recorded with GNU coreutils 9.12 (9.7 
 behave run examples/realpath
 # realpath vs realpath: 38/38 passed, 0 failed, 0 skipped
 ```
+
+
+## `pr/`: 40 recorded cases for GNU `pr`
+
+Columns (`-COLS` / `--columns`, `-a` across), `-d` double-space, `-t` / `-T` omit headers,
+pinned `-h` / `-D` headers, `-l` length (including length that implies `-t`), `-o` indent,
+`-n` / `-N` line numbers, `-m` merge, `-s` / `-S` separators, `-w` / `-W` width, `-f` / `-F`
+form feeds, `+FIRST_PAGE` page ranges, `-J` join, `-c` / `-v` / `-e` / `-i`, multiple files,
+stdin with `-`, empty input, `--`, and the error paths. Header dates are pinned with `-D` so
+the cases stay deterministic. Recorded with GNU coreutils 9.12 (9.7 passes too).
+
+```sh
+behave run examples/pr
+# pr vs pr: 40/40 passed, 0 failed, 0 skipped
+```
+
+Against uutils coreutils main, 25/40, and 27/40 with `--ignore-stderr`. Most
+remaining misses are column separator/alignment (see
+[uutils/coreutils#12313](https://github.com/uutils/coreutils/issues/12313)) and
+unimplemented `-c`/`-v`/`-i`. One real bug was `-o` skipping the page header
+([uutils/coreutils#16211](https://github.com/uutils/coreutils/issues/16211),
+fix in [#16212](https://github.com/uutils/coreutils/pull/16212)).
+
+```sh
+behave diff examples/pr --impl ./uutils/pr --ignore-stderr
+```

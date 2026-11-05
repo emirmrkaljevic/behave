@@ -1,0 +1,15 @@
+name: columns-2-four-lines
+args:
+  - -t
+  - "-2"
+stdin: |
+  1
+  2
+  3
+  4
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "1\t\t\t\t    3\n2\t\t\t\t    4\n"
+  stderr: ""

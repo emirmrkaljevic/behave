@@ -1,0 +1,15 @@
+name: end-of-options-double-dash
+args:
+  - -t
+  - --
+  - --weird
+files:
+  --weird: |
+    x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    x
+  stderr: ""

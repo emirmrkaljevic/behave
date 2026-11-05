@@ -1,0 +1,9 @@
+name: omit-header-empty-stdin
+args:
+  - -t
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

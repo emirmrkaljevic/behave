@@ -1,0 +1,11 @@
+name: no-file-warnings-r
+args:
+  - -t
+  - -r
+  - nonexistent.txt
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

@@ -1,0 +1,18 @@
+name: columns-balance-short-page
+args:
+  - -t
+  - "-3"
+  - -l
+  - "10"
+stdin: |
+  1
+  2
+  3
+  4
+  5
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "1\t\t\t3\t\t\t5\n2\t\t\t4\n"
+  stderr: ""
