@@ -1,0 +1,13 @@
+name: dotdot-component
+args:
+  - d/../a.txt
+files:
+  a.txt: y
+  d/b.txt: x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt
+  stderr: ""

@@ -1,0 +1,10 @@
+name: triple-slash
+args:
+  - ///usr
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /usr
+  stderr: ""

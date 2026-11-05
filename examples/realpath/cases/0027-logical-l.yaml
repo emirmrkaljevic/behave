@@ -1,0 +1,12 @@
+name: logical-L
+args:
+  - -L
+  - -m
+  - x/../y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    y
+  stderr: ""

@@ -1,0 +1,11 @@
+name: no-symlinks-long
+args:
+  - --no-symlinks
+  - /usr/./bin/..
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /usr
+  stderr: ""

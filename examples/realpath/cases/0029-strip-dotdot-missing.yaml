@@ -1,0 +1,12 @@
+name: strip-dotdot-missing
+args:
+  - -s
+  - -m
+  - x/../y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    y
+  stderr: ""

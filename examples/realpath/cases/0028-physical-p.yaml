@@ -1,0 +1,12 @@
+name: physical-P
+args:
+  - -P
+  - -m
+  - x/../y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    y
+  stderr: ""

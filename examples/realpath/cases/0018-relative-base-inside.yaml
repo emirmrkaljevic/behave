@@ -1,0 +1,13 @@
+name: relative-base-inside
+args:
+  - --relative-base=.
+  - d/b.txt
+files:
+  d/b.txt: x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    d/b.txt
+  stderr: ""

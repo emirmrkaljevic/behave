@@ -1,0 +1,13 @@
+name: existing-e
+args:
+  - -e
+  - a.txt
+files:
+  a.txt: x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt
+  stderr: ""

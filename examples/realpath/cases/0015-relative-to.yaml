@@ -1,0 +1,13 @@
+name: relative-to
+args:
+  - --relative-to=d
+  - d/b.txt
+files:
+  d/b.txt: x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b.txt
+  stderr: ""

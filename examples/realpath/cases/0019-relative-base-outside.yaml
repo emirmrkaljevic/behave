@@ -1,0 +1,11 @@
+name: relative-base-outside
+args:
+  - --relative-base=.
+  - /usr/bin
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /usr/bin
+  stderr: ""

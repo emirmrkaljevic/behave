@@ -1,0 +1,11 @@
+name: quiet-missing
+args:
+  - -q
+  - nope
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    nope
+  stderr: ""

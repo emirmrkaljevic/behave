@@ -1,0 +1,16 @@
+name: multiple-one-missing-dir
+args:
+  - a.txt
+  - nope/x
+  - a.txt
+files:
+  a.txt: x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    a.txt
+    a.txt
+  stderr: |
+    $CMD: nope/x: No such file or directory

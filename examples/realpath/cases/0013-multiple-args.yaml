@@ -1,0 +1,15 @@
+name: multiple-args
+args:
+  - a.txt
+  - b.txt
+files:
+  a.txt: x
+  b.txt: y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt
+    b.txt
+  stderr: ""

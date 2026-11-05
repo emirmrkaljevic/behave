@@ -1,0 +1,13 @@
+name: double-dash
+args:
+  - --
+  - -dash.txt
+files:
+  ./-dash.txt: x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -dash.txt
+  stderr: ""

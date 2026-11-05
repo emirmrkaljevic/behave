@@ -1,0 +1,12 @@
+name: file-in-workdir
+args:
+  - a.txt
+files:
+  a.txt: x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt
+  stderr: ""

@@ -748,3 +748,16 @@ with a fix in [#16191](https://github.com/uutils/coreutils/pull/16191).
 ```sh
 behave diff examples/fmt --impl ./uutils/fmt --ignore-stderr
 ```
+
+## `realpath/`: 38 recorded cases for GNU `realpath`
+
+Files in nested directories, `.` and `..` components, missing files with the default mode,
+`-e` and `-m`, `-q`, `-z`, `-s`/`--no-symlinks`, `-L` and `-P`, `--relative-to` and
+`--relative-base` (alone and together), root and double-slash paths, a trailing slash on a
+file, an empty operand, `--`, and the error paths. Paths inside the case's temp directory are
+normalized, so the spec replays anywhere. Recorded with GNU coreutils 9.12 (9.7 passes too).
+
+```sh
+behave run examples/realpath
+# realpath vs realpath: 38/38 passed, 0 failed, 0 skipped
+```

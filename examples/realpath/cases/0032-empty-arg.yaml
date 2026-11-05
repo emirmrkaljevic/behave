@@ -1,0 +1,10 @@
+name: empty-arg
+args:
+  - ""
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: '': No such file or directory

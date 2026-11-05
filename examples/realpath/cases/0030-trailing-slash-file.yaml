@@ -1,0 +1,12 @@
+name: trailing-slash-file
+args:
+  - a.txt/
+files:
+  a.txt: x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: a.txt/: Not a directory

@@ -1,0 +1,11 @@
+name: relative-to-missing-arg
+args:
+  - --relative-to
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: option '--relative-to' requires an argument
+    Try '$CMD --help' for more information.

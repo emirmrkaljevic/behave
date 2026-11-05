@@ -42,5 +42,6 @@ jobs:
           ./behave run examples/factor
           ./behave run examples/basename
           ./behave run examples/dirname
+          ./behave run examples/realpath
           ./behave run examples/jq
           PATH="$PWD:$PATH" ./behave run examples/behave

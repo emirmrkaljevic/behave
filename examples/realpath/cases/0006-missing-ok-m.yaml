@@ -1,0 +1,11 @@
+name: missing-ok-m
+args:
+  - -m
+  - nope/deeper/x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    nope/deeper/x
+  stderr: ""

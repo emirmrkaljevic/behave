@@ -1,0 +1,15 @@
+name: zero-terminated
+args:
+  - -z
+  - a.txt
+  - b.txt
+files:
+  a.txt: x
+  b.txt: y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: YS50eHQAYi50eHQA
+  stderr: ""

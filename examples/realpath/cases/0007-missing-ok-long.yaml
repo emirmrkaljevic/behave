@@ -1,0 +1,11 @@
+name: missing-ok-long
+args:
+  - --canonicalize-missing
+  - nope/x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    nope/x
+  stderr: ""

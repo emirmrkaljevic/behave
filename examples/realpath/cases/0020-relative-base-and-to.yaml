@@ -1,0 +1,14 @@
+name: relative-base-and-to
+args:
+  - --relative-base=.
+  - --relative-to=d
+  - d/b.txt
+files:
+  d/b.txt: x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b.txt
+  stderr: ""
