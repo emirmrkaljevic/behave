@@ -31,7 +31,7 @@ behave run behave-sort                 # make sure the recording is stable
 behave diff behave-sort --impl ./target/release/sort   # every place your port differs
 ```
 
-This is how it led to 30 bug reports and 37 fix PRs in uutils coreutils (21 merged so far).
+This is how it led to 30 bug reports and 37 fix PRs in uutils coreutils (24 merged so far).
 A second, ready to run pair: `behave diff examples/jq --impl gojq` passes 29 of 33 jq 1.7 cases,
 and the 4 differences are all error wording on stderr (see [examples/jq](examples/jq/)).
 
@@ -150,7 +150,7 @@ Still open: a few error messages that lose the file name, mostly caught by the "
 - `seq --foo` says `invalid floating point argument` and `seq -inf 1` prints `-inf` forever, because option-like arguments before the first operand are read as numbers where GNU treats them as options, caught by `examples/seq` ([#16113](https://github.com/uutils/coreutils/issues/16113), fixed in [#16114](https://github.com/uutils/coreutils/pull/16114))
 - `factor '30 '` and `factor $'\t30'` print factors where GNU rejects the argument, because every argument is trimmed while GNU skips only leading spaces, caught by `examples/factor` ([#16142](https://github.com/uutils/coreutils/issues/16142), fixed in [#16143](https://github.com/uutils/coreutils/pull/16143))
 - `md5sum -c` rejects the lines md5sum itself writes for names with a backslash or a newline (they start with `\`), and unescapes names on lines without that marker, caught by `examples/md5sum` ([#16166](https://github.com/uutils/coreutils/issues/16166), fixed in [#16167](https://github.com/uutils/coreutils/pull/16167))
-- `base64 -w 99999999999999999999` fails with `invalid wrap size` where GNU turns wrapping off for a size too large to represent, caught by `examples/base64` ([#16180](https://github.com/uutils/coreutils/issues/16180), fix in [#16181](https://github.com/uutils/coreutils/pull/16181))
+- `base64 -w 99999999999999999999` fails with `invalid wrap size` where GNU turns wrapping off for a size too large to represent, caught by `examples/base64` ([#16180](https://github.com/uutils/coreutils/issues/16180), fixed in [#16181](https://github.com/uutils/coreutils/pull/16181))
 - `base32 -d` (and `base64`/`basenc`) accepts a carriage return in encoded input where GNU rejects it unless `-i`, caught by `examples/base32` ([#16223](https://github.com/uutils/coreutils/issues/16223), fix in [#16224](https://github.com/uutils/coreutils/pull/16224))
 - `fmt -w 20` could print a line longer than 20 columns (e.g. `    at a narrow width`), because it sometimes broke a line too late, caught by `examples/fmt` ([#16190](https://github.com/uutils/coreutils/issues/16190), fix in [#16191](https://github.com/uutils/coreutils/pull/16191))
 - `realpath '' /usr` stopped with `error: error: invalid value for one of the arguments` and never printed `/usr`, while GNU reports `''` as a missing file and resolves the rest, caught by `examples/realpath` ([#16206](https://github.com/uutils/coreutils/issues/16206), fix in [#16207](https://github.com/uutils/coreutils/pull/16207))
