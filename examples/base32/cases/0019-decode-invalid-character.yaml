@@ -1,0 +1,11 @@
+name: decode-invalid-character
+args:
+  - -d
+stdin: "NB*SWY3DP "
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "h"
+  stderr: |
+    $CMD: invalid input

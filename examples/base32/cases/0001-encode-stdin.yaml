@@ -1,0 +1,10 @@
+name: encode-stdin
+args: []
+stdin: "hello"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    NBSWY3DP
+  stderr: ""

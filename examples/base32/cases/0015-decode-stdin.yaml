@@ -1,0 +1,11 @@
+name: decode-stdin
+args:
+  - -d
+stdin: "NBSWY3DP "
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "hello"
+  stderr: |
+    $CMD: invalid input

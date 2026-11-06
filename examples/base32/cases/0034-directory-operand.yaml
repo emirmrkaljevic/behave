@@ -1,0 +1,11 @@
+name: directory-operand
+args:
+  - somedir
+files:
+  somedir/: ""
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

@@ -1,0 +1,11 @@
+name: decode-spaces-inside
+args:
+  - -d
+stdin: "NBSW Y3DP "
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "he"
+  stderr: |
+    $CMD: invalid input

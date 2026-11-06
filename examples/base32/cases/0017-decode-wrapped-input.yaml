@@ -1,0 +1,10 @@
+name: decode-wrapped-input
+args:
+  - -d
+stdin: "NBSWY3DPEB3W64TMMQ======"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "hello world"
+  stderr: ""

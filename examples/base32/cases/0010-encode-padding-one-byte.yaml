@@ -1,0 +1,12 @@
+name: encode-padding-one-byte
+args:
+  - one
+files:
+  one: a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ME======
+  stderr: ""

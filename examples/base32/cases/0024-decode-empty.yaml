@@ -1,0 +1,9 @@
+name: decode-empty
+args:
+  - -d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

@@ -1,0 +1,11 @@
+name: decode-ignore-garbage
+args:
+  - -d
+  - -i
+stdin: "NB*SWY3DP "
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "hello"
+  stderr: ""

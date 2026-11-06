@@ -1,0 +1,11 @@
+name: decode-long-option
+args:
+  - --decode
+stdin: "NBSWY3DP "
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "hello"
+  stderr: |
+    $CMD: invalid input

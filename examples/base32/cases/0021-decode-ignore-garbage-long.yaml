@@ -1,0 +1,11 @@
+name: decode-ignore-garbage-long
+args:
+  - --decode
+  - --ignore-garbage
+stdin: "NB!SW Y3DP "
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "hello"
+  stderr: ""

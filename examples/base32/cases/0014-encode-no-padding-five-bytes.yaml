@@ -1,0 +1,12 @@
+name: encode-no-padding-five-bytes
+args:
+  - five
+files:
+  five: abcde
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    MFRGGZDF
+  stderr: ""

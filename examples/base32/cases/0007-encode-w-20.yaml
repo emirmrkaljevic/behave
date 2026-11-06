@@ -1,0 +1,22 @@
+name: encode-w-20
+args:
+  - -w
+  - "20"
+stdin: "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. "
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    KRUGKIDROVUWG2ZAMJZG
+    653OEBTG66BANJ2W24DT
+    EBXXMZLSEB2GQZJANRQX
+    U6JAMRXWOLRAKRUGKIDR
+    OVUWG2ZAMJZG653OEBTG
+    66BANJ2W24DTEBXXMZLS
+    EB2GQZJANRQXU6JAMRXW
+    OLRAKRUGKIDROVUWG2ZA
+    MJZG653OEBTG66BANJ2W
+    24DTEBXXMZLSEB2GQZJA
+    NRQXU6JAMRXWOLRA
+  stderr: ""

@@ -1,0 +1,11 @@
+name: binary-roundtrip-bytes
+args: []
+stdin:
+  base64: AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    AAAQEAYEAUDAOCAJBIFQYDIOB4IBCEQTCQKRMFYYDENBWHA5DYPQ====
+  stderr: ""

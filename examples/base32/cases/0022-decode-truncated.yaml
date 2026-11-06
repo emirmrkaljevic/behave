@@ -1,0 +1,11 @@
+name: decode-truncated
+args:
+  - -d
+stdin: "NBSWY3D"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "hell"
+  stderr: |
+    $CMD: invalid input

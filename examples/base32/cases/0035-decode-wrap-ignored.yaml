@@ -1,0 +1,13 @@
+name: decode-wrap-ignored
+args:
+  - -d
+  - -w
+  - "10"
+stdin: "NBSWY3DP "
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "hello"
+  stderr: |
+    $CMD: invalid input

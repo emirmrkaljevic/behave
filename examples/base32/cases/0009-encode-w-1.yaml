@@ -1,0 +1,19 @@
+name: encode-w-1
+args:
+  - -w
+  - "1"
+stdin: "abc"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    M
+    F
+    R
+    G
+    G
+    =
+    =
+    =
+  stderr: ""

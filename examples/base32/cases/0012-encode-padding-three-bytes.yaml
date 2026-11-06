@@ -1,0 +1,12 @@
+name: encode-padding-three-bytes
+args:
+  - three
+files:
+  three: abc
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    MFRGG===
+  stderr: ""

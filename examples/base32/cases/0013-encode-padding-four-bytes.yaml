@@ -1,0 +1,12 @@
+name: encode-padding-four-bytes
+args:
+  - four
+files:
+  four: abcd
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    MFRGGZA=
+  stderr: ""
