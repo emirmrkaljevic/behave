@@ -1,0 +1,13 @@
+name: missing parent directory
+args:
+  - nosuchdir/out.txt
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    hi
+  stderr: |
+    $CMD: nosuchdir/out.txt: No such file or directory

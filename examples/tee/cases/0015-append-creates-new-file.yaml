@@ -1,0 +1,13 @@
+name: append creates new file
+args:
+  - -a
+  - new.txt
+stdin: |
+  fresh
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    fresh
+  stderr: ""

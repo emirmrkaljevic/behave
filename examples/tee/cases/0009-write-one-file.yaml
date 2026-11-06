@@ -1,0 +1,12 @@
+name: write one file
+args:
+  - out.txt
+stdin: |
+  hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hello
+  stderr: ""

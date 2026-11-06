@@ -1,0 +1,16 @@
+name: file with trailing slash
+args:
+  - out.txt/
+stdin: |
+  hi
+files:
+  out.txt: |
+    old
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    hi
+  stderr: |
+    $CMD: out.txt/: Is a directory

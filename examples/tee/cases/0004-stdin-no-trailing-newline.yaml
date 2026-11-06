@@ -1,0 +1,13 @@
+name: stdin no trailing newline
+args: []
+stdin: |-
+  alpha
+  beta
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |-
+    alpha
+    beta
+  stderr: ""

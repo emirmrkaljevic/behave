@@ -1,0 +1,15 @@
+name: all short flags with file
+args:
+  - -a
+  - -i
+  - -p
+  - out.txt
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""

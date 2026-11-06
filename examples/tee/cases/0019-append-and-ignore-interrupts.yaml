@@ -1,0 +1,14 @@
+name: append and ignore interrupts
+args:
+  - -a
+  - -i
+  - out.txt
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""

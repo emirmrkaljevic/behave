@@ -1,0 +1,13 @@
+name: write two files
+args:
+  - a.txt
+  - b.txt
+stdin: |
+  data
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    data
+  stderr: ""

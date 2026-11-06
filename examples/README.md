@@ -787,3 +787,18 @@ fix in [#16212](https://github.com/uutils/coreutils/pull/16212)).
 ```sh
 behave diff examples/pr --impl ./uutils/pr --ignore-stderr
 ```
+
+## `tee/`: 38 recorded cases for GNU `tee`
+
+Stdin copy to stdout, one/multiple output files, overwrite vs `-a`/`--append`,
+`-i`/`--ignore-interrupts`, `-p`, `--output-error` modes (`warn`, `warn-nopipe`,
+`exit`, `exit-nopipe`) plus invalid values, flag combinations, empty and large
+stdin, CRLF and unicode, `--`, and the error paths (directory operand, missing
+parent directory, trailing slash on a file, unknown options). Recorded with GNU
+coreutils 9.12 (9.7 passes too).
+
+```sh
+behave run examples/tee
+# tee vs tee: 38/38 passed, 0 failed, 0 skipped
+```
+

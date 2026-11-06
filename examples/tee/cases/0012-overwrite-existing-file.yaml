@@ -1,0 +1,15 @@
+name: overwrite existing file
+args:
+  - out.txt
+stdin: |
+  new
+files:
+  out.txt: |
+    old
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    new
+  stderr: ""

@@ -1,0 +1,12 @@
+name: pipe mode -p
+args:
+  - -p
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""

@@ -1,0 +1,12 @@
+name: ignore interrupts long
+args:
+  - --ignore-interrupts
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""

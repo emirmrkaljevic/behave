@@ -1,0 +1,12 @@
+name: ignore interrupts short
+args:
+  - -i
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""

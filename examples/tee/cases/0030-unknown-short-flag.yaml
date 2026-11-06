@@ -1,0 +1,13 @@
+name: unknown short flag
+args:
+  - -z
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid option -- 'z'
+    Try '$CMD --help' for more information.

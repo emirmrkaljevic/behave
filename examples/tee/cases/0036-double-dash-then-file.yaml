@@ -1,0 +1,13 @@
+name: double dash then file
+args:
+  - --
+  - out.txt
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""

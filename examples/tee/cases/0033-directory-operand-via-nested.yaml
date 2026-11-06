@@ -1,0 +1,16 @@
+name: directory operand via nested
+args:
+  - d
+stdin: |
+  hi
+files:
+  d/x: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    hi
+  stderr: |
+    $CMD: d: Is a directory

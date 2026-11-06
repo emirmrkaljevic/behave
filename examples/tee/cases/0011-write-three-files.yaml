@@ -1,0 +1,14 @@
+name: write three files
+args:
+  - a.txt
+  - b.txt
+  - c.txt
+stdin: |
+  xyz
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    xyz
+  stderr: ""

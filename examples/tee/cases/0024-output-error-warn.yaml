@@ -1,0 +1,13 @@
+name: output-error warn
+args:
+  - --output-error=warn
+  - out.txt
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""

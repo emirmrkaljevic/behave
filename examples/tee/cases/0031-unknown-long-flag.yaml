@@ -1,0 +1,13 @@
+name: unknown long flag
+args:
+  - --not-a-real-flag
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: unrecognized option '--not-a-real-flag'
+    Try '$CMD --help' for more information.

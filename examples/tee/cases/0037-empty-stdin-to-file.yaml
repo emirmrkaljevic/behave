@@ -1,0 +1,9 @@
+name: empty stdin to file
+args:
+  - out.txt
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

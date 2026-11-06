@@ -1,0 +1,16 @@
+name: append to existing file
+args:
+  - -a
+  - out.txt
+stdin: |
+  second
+files:
+  out.txt: |
+    first
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    second
+  stderr: ""

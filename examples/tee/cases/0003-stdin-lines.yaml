@@ -1,0 +1,15 @@
+name: stdin lines
+args: []
+stdin: |
+  banana
+  apple
+  cherry
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    banana
+    apple
+    cherry
+  stderr: ""

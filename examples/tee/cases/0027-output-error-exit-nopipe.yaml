@@ -1,0 +1,13 @@
+name: output-error exit-nopipe
+args:
+  - --output-error=exit-nopipe
+  - out.txt
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""

@@ -1,0 +1,13 @@
+name: ignore interrupts and pipe mode
+args:
+  - -i
+  - -p
+stdin: |
+  hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""
