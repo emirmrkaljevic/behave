@@ -1,0 +1,18 @@
+name: number chunk 2 of 3
+args:
+  - -n
+  - 2/3
+stdin: |
+  a
+  b
+  c
+  d
+  e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |-
+    c
+    d
+  stderr: ""

@@ -1,0 +1,19 @@
+name: numeric suffixes from 5
+args:
+  - --numeric-suffixes=5
+  - -l
+  - "1"
+  - --verbose
+stdin: |
+  a
+  b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'x05'
+    creating file 'x06'
+    creating file 'x07'
+  stderr: ""

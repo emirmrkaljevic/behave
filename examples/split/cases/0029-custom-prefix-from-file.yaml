@@ -1,0 +1,21 @@
+name: custom prefix from file
+args:
+  - -l
+  - "1"
+  - --verbose
+  - data.txt
+  - out
+files:
+  data.txt: |
+    one
+    two
+    three
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'outaa'
+    creating file 'outab'
+    creating file 'outac'
+  stderr: ""

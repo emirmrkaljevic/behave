@@ -1,0 +1,11 @@
+name: error invalid bytes size
+args:
+  - -b
+  - xyz
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid number of bytes: ‘xyz’

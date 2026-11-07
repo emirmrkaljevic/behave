@@ -1,0 +1,12 @@
+name: filter cat bytes
+args:
+  - --filter=cat
+  - -b
+  - "5"
+stdin: "abcdefghij"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "abcdefghij"
+  stderr: ""

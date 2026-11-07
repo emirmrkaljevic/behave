@@ -1,0 +1,19 @@
+name: numeric suffixes verbose
+args:
+  - -d
+  - -l
+  - "1"
+  - --verbose
+stdin: |
+  a
+  b
+  c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'x00'
+    creating file 'x01'
+    creating file 'x02'
+  stderr: ""

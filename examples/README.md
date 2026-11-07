@@ -802,3 +802,17 @@ behave run examples/tee
 # tee vs tee: 38/38 passed, 0 failed, 0 skipped
 ```
 
+
+## `split/`: 40 recorded cases for GNU `split`
+
+Line/byte/`-C` splits, `-n` chunk modes that write to stdout (`K/N`, `l/K/N`,
+`r/K/N`) and to files, numeric/hex/`--additional-suffix`/`-a` suffixes,
+custom prefix, `--filter=cat`, record separators (`-t`, NUL), `--verbose`
+diagnostics, `-e` elide-empty, file and stdin/`-` inputs, `--`, and the common
+error paths (zero/invalid sizes, missing file, bad chunk number, unknown
+options). Recorded with GNU coreutils 9.12 (9.7 passes too).
+
+```sh
+behave run examples/split
+# split vs split: 40/40 passed, 0 failed, 0 skipped
+```

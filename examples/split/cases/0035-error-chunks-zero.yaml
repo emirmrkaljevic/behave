@@ -1,0 +1,11 @@
+name: error chunks zero
+args:
+  - -n
+  - "0"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid number of chunks: ‘0’

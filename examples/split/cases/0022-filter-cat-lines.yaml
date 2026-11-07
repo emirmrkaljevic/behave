@@ -1,0 +1,22 @@
+name: filter cat lines
+args:
+  - --filter=cat
+  - -l
+  - "2"
+stdin: |
+  a
+  b
+  c
+  d
+  e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+    c
+    d
+    e
+  stderr: ""

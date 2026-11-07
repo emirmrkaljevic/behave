@@ -1,0 +1,14 @@
+name: stdin several lines
+args: []
+stdin: |
+  a
+  b
+  c
+  d
+  e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

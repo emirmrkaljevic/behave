@@ -1,0 +1,11 @@
+name: error bytes zero
+args:
+  - -b
+  - "0"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid number of bytes: ‘0’

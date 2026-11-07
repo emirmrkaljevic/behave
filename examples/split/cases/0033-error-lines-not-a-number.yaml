@@ -1,0 +1,10 @@
+name: error lines not a number
+args:
+  - --lines=abc
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid number of lines: ‘abc’

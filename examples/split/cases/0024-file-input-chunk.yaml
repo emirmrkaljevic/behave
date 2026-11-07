@@ -1,0 +1,20 @@
+name: file input chunk
+args:
+  - -n
+  - 2/3
+  - in.txt
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |-
+    c
+    d
+  stderr: ""

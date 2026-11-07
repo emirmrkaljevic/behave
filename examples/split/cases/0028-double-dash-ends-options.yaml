@@ -1,0 +1,21 @@
+name: double dash ends options
+args:
+  - -l
+  - "1"
+  - --verbose
+  - --
+  - in.txt
+files:
+  in.txt: |
+    a
+    b
+    c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'xaa'
+    creating file 'xab'
+    creating file 'xac'
+  stderr: ""

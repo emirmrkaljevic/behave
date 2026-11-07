@@ -1,0 +1,18 @@
+name: suffix length 3 verbose
+args:
+  - -a
+  - "3"
+  - -l
+  - "1"
+  - --verbose
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'xaaa'
+    creating file 'xaab'
+  stderr: ""

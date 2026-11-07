@@ -1,0 +1,17 @@
+name: additional suffix
+args:
+  - --additional-suffix=.txt
+  - -l
+  - "1"
+  - --verbose
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'xaa.txt'
+    creating file 'xab.txt'
+  stderr: ""

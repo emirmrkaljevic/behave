@@ -1,0 +1,11 @@
+name: error invalid chunk number
+args:
+  - -n
+  - 5/3
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid chunk number: ‘5’

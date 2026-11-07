@@ -1,0 +1,16 @@
+name: line-bytes four
+args:
+  - -C
+  - "4"
+  - --verbose
+stdin: |
+  abcdefghi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'xaa'
+    creating file 'xab'
+    creating file 'xac'
+  stderr: ""

@@ -1,0 +1,21 @@
+name: number three files verbose
+args:
+  - -n
+  - "3"
+  - --verbose
+stdin: |
+  a
+  b
+  c
+  d
+  e
+  f
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'xaa'
+    creating file 'xab'
+    creating file 'xac'
+  stderr: ""

@@ -1,0 +1,13 @@
+name: error suffix length invalid
+args:
+  - -a
+  - xyz
+  - -l
+  - "1"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid suffix length: ‘xyz’

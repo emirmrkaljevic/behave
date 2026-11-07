@@ -1,0 +1,16 @@
+name: bytes with verbose
+args:
+  - -b
+  - "3"
+  - --verbose
+stdin: "abcdefghij"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'xaa'
+    creating file 'xab'
+    creating file 'xac'
+    creating file 'xad'
+  stderr: ""

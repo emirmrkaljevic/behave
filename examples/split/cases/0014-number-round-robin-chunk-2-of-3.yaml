@@ -1,0 +1,18 @@
+name: number round-robin chunk 2 of 3
+args:
+  - -n
+  - r/2/3
+stdin: |
+  a
+  b
+  c
+  d
+  e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    b
+    e
+  stderr: ""

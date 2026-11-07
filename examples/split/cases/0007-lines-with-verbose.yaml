@@ -1,0 +1,20 @@
+name: lines with verbose
+args:
+  - -l
+  - "2"
+  - --verbose
+stdin: |
+  a
+  b
+  c
+  d
+  e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'xaa'
+    creating file 'xab'
+    creating file 'xac'
+  stderr: ""

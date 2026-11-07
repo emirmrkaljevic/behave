@@ -1,0 +1,11 @@
+name: stdin unicode
+args: []
+stdin: |
+  čćž
+  šđ
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

@@ -1,0 +1,17 @@
+name: separator nul
+args:
+  - -t
+  - \0
+  - -l
+  - "2"
+  - --verbose
+stdin:
+  base64: YQBiAGMAZA==
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    creating file 'xaa'
+    creating file 'xab'
+  stderr: ""

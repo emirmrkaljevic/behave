@@ -1,0 +1,12 @@
+name: elide empty files
+args:
+  - -n
+  - "3"
+  - -e
+  - --verbose
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""
