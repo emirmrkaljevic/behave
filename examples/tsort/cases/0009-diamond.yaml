@@ -1,0 +1,17 @@
+name: diamond
+args: []
+stdin: |
+  a b
+  a c
+  b d
+  c d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    c
+    b
+    d
+  stderr: ""

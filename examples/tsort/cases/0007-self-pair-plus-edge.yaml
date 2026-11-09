@@ -1,0 +1,13 @@
+name: self pair plus edge
+args: []
+stdin: |
+  a a
+  a b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+  stderr: ""

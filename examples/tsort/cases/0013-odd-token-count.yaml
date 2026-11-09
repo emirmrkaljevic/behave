@@ -1,0 +1,11 @@
+name: odd token count
+args: []
+stdin: |
+  a b c
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: -: input contains an odd number of tokens

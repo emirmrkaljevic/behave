@@ -1,0 +1,16 @@
+name: file operand
+args:
+  - deps
+files:
+  deps: |
+    a b
+    b c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+    c
+  stderr: ""

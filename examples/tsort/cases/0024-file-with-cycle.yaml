@@ -1,0 +1,18 @@
+name: file with cycle
+args:
+  - deps
+files:
+  deps: |
+    a b
+    b a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    a
+    b
+  stderr: |
+    $CMD: deps: input contains a loop:
+    $CMD: a
+    $CMD: b

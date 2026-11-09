@@ -1,0 +1,23 @@
+name: two cycles
+args: []
+stdin: |
+  a b
+  b a
+  c d
+  d c
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    a
+    b
+    c
+    d
+  stderr: |
+    $CMD: -: input contains a loop:
+    $CMD: a
+    $CMD: b
+    $CMD: -: input contains a loop:
+    $CMD: c
+    $CMD: d

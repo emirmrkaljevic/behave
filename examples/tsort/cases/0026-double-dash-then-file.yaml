@@ -1,0 +1,15 @@
+name: double dash then file
+args:
+  - --
+  - deps
+files:
+  deps: |
+    a b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+  stderr: ""

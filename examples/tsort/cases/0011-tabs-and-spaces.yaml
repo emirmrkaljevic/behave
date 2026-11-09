@@ -1,0 +1,12 @@
+name: tabs and spaces
+args: []
+stdin: "a\tb\n  b   c\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+    c
+  stderr: ""

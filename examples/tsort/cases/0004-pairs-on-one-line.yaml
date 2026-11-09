@@ -1,0 +1,14 @@
+name: pairs on one line
+args: []
+stdin: |
+  a b b c c d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+    c
+    d
+  stderr: ""

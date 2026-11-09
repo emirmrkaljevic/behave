@@ -1,0 +1,20 @@
+name: cycle with tail
+args: []
+stdin: |
+  x a
+  a b
+  b a
+  b y
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    x
+    a
+    b
+    y
+  stderr: |
+    $CMD: -: input contains a loop:
+    $CMD: a
+    $CMD: b

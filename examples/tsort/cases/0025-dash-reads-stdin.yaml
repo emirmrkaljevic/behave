@@ -1,0 +1,13 @@
+name: dash reads stdin
+args:
+  - '-'
+stdin: |
+  a b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+  stderr: ""

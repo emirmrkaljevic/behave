@@ -1,0 +1,11 @@
+name: self pair
+args: []
+stdin: |
+  a a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+  stderr: ""

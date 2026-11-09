@@ -1,0 +1,16 @@
+name: numeric tokens
+args: []
+stdin: |
+  3 2
+  2 1
+  10 3
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    10
+    3
+    2
+    1
+  stderr: ""

@@ -1,0 +1,15 @@
+name: duplicate edges
+args: []
+stdin: |
+  a b
+  a b
+  b c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+    c
+  stderr: ""

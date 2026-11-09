@@ -1,0 +1,11 @@
+name: empty lines
+args: []
+stdin: "\n\na b\n\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+  stderr: ""

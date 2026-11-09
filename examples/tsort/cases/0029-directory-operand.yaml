@@ -1,0 +1,10 @@
+name: directory operand
+args:
+  - .
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: .: read error: Is a directory

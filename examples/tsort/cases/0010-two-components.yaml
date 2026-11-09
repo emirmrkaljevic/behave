@@ -1,0 +1,15 @@
+name: two components
+args: []
+stdin: |
+  a b
+  x y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    x
+    b
+    y
+  stderr: ""

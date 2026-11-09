@@ -1,0 +1,16 @@
+name: simple cycle
+args: []
+stdin: |
+  a b
+  b a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    a
+    b
+  stderr: |
+    $CMD: -: input contains a loop:
+    $CMD: a
+    $CMD: b

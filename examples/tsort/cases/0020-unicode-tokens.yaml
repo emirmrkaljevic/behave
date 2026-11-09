@@ -1,0 +1,14 @@
+name: unicode tokens
+args: []
+stdin: |
+  č ć
+  ć đ
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    č
+    ć
+    đ
+  stderr: ""

@@ -816,3 +816,22 @@ options). Recorded with GNU coreutils 9.12 (9.7 passes too).
 behave run examples/split
 # split vs split: 40/40 passed, 0 failed, 0 skipped
 ```
+
+
+## `tsort/`: 33 recorded cases for GNU `tsort`
+
+Topological sort of pairs from stdin, a file operand and `-`: chains, diamonds,
+disconnected components, duplicate and self edges, pairs spread over lines or
+packed on one line, tabs/CRLF/empty lines, numeric and UTF-8 tokens, a long
+token, a 31-node chain, and the cycle paths (two-node, three-node, cycle with
+a tail, two separate cycles) where GNU prints `input contains a loop` on stderr,
+still emits every node and exits 1. Error paths: odd token count, missing file,
+directory operand, extra operand, unknown options. `--help`, `--version` and
+`-w` are left out on purpose: `-w` is accepted (and ignored) only since GNU
+9.12, so older coreutils in CI would reject it. Recorded with GNU coreutils 9.12
+(9.7 passes too).
+
+```sh
+behave run examples/tsort
+# tsort vs tsort: 33/33 passed, 0 failed, 0 skipped
+```

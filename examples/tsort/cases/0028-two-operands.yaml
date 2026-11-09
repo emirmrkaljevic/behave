@@ -1,0 +1,17 @@
+name: two operands
+args:
+  - a
+  - b
+files:
+  a: |
+    x y
+  b: |
+    y z
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: extra operand ‘b’
+    Try '$CMD --help' for more information.

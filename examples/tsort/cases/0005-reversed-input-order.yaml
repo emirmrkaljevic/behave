@@ -1,0 +1,16 @@
+name: reversed input order
+args: []
+stdin: |
+  c d
+  b c
+  a b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+    b
+    c
+    d
+  stderr: ""

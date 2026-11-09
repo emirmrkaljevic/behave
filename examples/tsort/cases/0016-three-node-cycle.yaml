@@ -1,0 +1,19 @@
+name: three node cycle
+args: []
+stdin: |
+  a b
+  b c
+  c a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    a
+    b
+    c
+  stderr: |
+    $CMD: -: input contains a loop:
+    $CMD: a
+    $CMD: b
+    $CMD: c
