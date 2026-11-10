@@ -1,0 +1,15 @@
+name: eof then l still uses lines
+args:
+  - --eof
+  - -l
+stdin: |
+  one
+  two
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    one
+    two
+  stderr: ""

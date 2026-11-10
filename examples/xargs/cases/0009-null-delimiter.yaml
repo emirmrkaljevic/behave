@@ -1,0 +1,12 @@
+name: null delimiter
+args:
+  - "-0"
+stdin:
+  base64: YQBiAGMA
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a b c
+  stderr: ""

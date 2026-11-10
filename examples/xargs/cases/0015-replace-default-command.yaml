@@ -1,0 +1,13 @@
+name: replace with the default command
+args:
+  - -I
+  - '{}'
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\n\n"
+  stderr: ""

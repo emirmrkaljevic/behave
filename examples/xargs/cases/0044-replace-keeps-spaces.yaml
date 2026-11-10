@@ -1,0 +1,15 @@
+name: replace keeps spaces
+args:
+  - -I
+  - '{}'
+  - echo
+  - '[{}]'
+stdin: |
+  a b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    [a b]
+  stderr: ""

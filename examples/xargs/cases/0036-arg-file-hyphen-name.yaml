@@ -1,0 +1,14 @@
+name: arg file with a hyphen name
+args:
+  - -a
+  - -foo
+files:
+  -foo: |
+    hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""

@@ -1,0 +1,7 @@
+command: xargs
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: xargs (GNU findutils) 4.10.0

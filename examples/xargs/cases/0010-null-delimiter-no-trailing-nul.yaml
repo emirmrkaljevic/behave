@@ -1,0 +1,12 @@
+name: null delimiter, no trailing NUL
+args:
+  - "-0"
+stdin:
+  base64: YQBi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a b
+  stderr: ""

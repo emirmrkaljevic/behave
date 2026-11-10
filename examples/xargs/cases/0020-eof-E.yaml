@@ -1,0 +1,15 @@
+name: eof E
+args:
+  - -E
+  - END
+stdin: |
+  a
+  END
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+  stderr: ""

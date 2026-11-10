@@ -1,0 +1,11 @@
+name: missing arg file
+args:
+  - -a
+  - nosuchfile
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: Cannot open input file ‘nosuchfile’: No such file or directory

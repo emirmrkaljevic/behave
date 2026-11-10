@@ -1,0 +1,12 @@
+name: command not found
+args:
+  - nosuchcmd-behave
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 127
+  stdout: ""
+  stderr: |
+    $CMD: nosuchcmd-behave: No such file or directory

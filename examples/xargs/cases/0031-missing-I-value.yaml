@@ -1,0 +1,13 @@
+name: missing I value
+args:
+  - -I
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: option requires an argument -- 'I'
+    Try '$CMD --help' for more information.

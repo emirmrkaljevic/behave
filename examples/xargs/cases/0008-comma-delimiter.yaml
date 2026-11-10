@@ -1,0 +1,12 @@
+name: comma delimiter
+args:
+  - -d
+  - ','
+stdin: "a,b,c"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a b c
+  stderr: ""

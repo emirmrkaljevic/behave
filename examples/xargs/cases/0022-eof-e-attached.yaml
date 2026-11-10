@@ -1,0 +1,14 @@
+name: eof e attached
+args:
+  - -eEND
+stdin: |
+  a
+  END
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+  stderr: ""

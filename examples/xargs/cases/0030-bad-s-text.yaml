@@ -1,0 +1,14 @@
+name: bad s text
+args:
+  - -s
+  - foo
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid number "foo" for -s option
+    Try '$CMD --help' for more information.

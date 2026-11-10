@@ -1,0 +1,14 @@
+name: bad n text
+args:
+  - -n
+  - foo
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid number "foo" for -n option
+    Try '$CMD --help' for more information.

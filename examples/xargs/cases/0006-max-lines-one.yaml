@@ -1,0 +1,15 @@
+name: max lines one
+args:
+  - -L
+  - "1"
+stdin: |
+  a b
+  c d
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a b
+    c d
+  stderr: ""

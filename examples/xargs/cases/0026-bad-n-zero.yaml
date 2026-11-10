@@ -1,0 +1,14 @@
+name: bad n zero
+args:
+  - -n
+  - "0"
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: value 0 for -n option should be >= 1
+    Try '$CMD --help' for more information.

@@ -1,0 +1,17 @@
+name: replace I
+args:
+  - -I
+  - '{}'
+  - echo
+  - X{}Y
+stdin: |
+  a
+  b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    XaY
+    XbY
+  stderr: ""

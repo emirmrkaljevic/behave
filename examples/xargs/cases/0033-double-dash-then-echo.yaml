@@ -1,0 +1,13 @@
+name: double dash then echo
+args:
+  - --
+  - echo
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a
+  stderr: ""

@@ -1,0 +1,12 @@
+name: empty delimiter rejected
+args:
+  - -d
+  - ""
+stdin: "abc"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: Invalid input delimiter specification : the delimiter must be either a single character or an escape sequence starting with \.

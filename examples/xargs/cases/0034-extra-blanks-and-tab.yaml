@@ -1,0 +1,10 @@
+name: extra blanks and tab
+args: []
+stdin: "  a   b\t c  \n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a b c
+  stderr: ""

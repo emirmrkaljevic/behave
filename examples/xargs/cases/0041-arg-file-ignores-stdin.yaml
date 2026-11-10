@@ -1,0 +1,16 @@
+name: arg file ignores stdin
+args:
+  - -a
+  - items
+stdin: |
+  fromstdin
+files:
+  items: |
+    fromfile
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    fromfile
+  stderr: ""

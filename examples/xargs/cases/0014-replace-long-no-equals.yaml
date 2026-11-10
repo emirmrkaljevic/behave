@@ -1,0 +1,14 @@
+name: replace long, no equals
+args:
+  - --replace
+  - echo
+  - X{}Y
+stdin: |
+  a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    XaY
+  stderr: ""

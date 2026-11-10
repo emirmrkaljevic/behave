@@ -1,0 +1,11 @@
+name: quoted args
+args: []
+stdin: |
+  "a b" c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a b c
+  stderr: ""

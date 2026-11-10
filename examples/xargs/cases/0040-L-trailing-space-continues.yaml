@@ -1,0 +1,12 @@
+name: L trailing space continues the line
+args:
+  - -L
+  - "1"
+stdin: "a \nb\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a b
+  stderr: ""

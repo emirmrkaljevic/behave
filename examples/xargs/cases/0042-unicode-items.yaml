@@ -1,0 +1,12 @@
+name: unicode items
+args: []
+stdin: |
+  ä
+  本
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ä 本
+  stderr: ""

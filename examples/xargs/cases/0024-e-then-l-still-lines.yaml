@@ -1,0 +1,15 @@
+name: e then l still uses lines
+args:
+  - -e
+  - -l
+stdin: |
+  one
+  two
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    one
+    two
+  stderr: ""
