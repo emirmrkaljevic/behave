@@ -659,6 +659,11 @@ padding, truncated input, spaces and CRLF line ends, `-i` with garbage, and erro
 (invalid characters, bad and negative `-w` values, missing file, directory, extra operand,
 unknown option). Recorded with GNU coreutils 9.12; 9.7 passes all 34.
 
+Unpadded input decodes since GNU coreutils 9.5; older releases stop with `invalid input`. The
+cases that depend on it (`decode-truncated` here, `decode-missing-padding` and
+`decode-truncated` in `base32/`) are tagged `gnu-9.5`, and CI, which runs on 9.4, skips them
+with `--skip-tag gnu-9.5`.
+
 ```sh
 behave run examples/base64
 # base64 vs base64: 34/34 passed, 0 failed, 0 skipped

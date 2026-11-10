@@ -4,6 +4,7 @@ args:
 stdin: "aGVsbG8"
 tags:
   - manual
+  - gnu-9.5
 expect:
   exit: 0
   stdout: "hello"

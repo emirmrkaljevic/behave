@@ -4,6 +4,7 @@ args:
 stdin: "NBSWY3D"
 tags:
   - manual
+  - gnu-9.5
 expect:
   exit: 1
   stdout: "hell"
