@@ -441,26 +441,31 @@ behave diff examples/od --impl ./uutils/od
 # 32/36 (stderr 4)
 ```
 
-## `basenc/`: 32 recorded cases for GNU `basenc`
+## `basenc/`: 35 recorded cases for GNU `basenc`
 
 Encoding and decoding with every alphabet that exists since coreutils 9.4: `--base64`,
 `--base64url`, `--base32`, `--base32hex`, `--base16`, `--base2msbf`, `--base2lsbf` and
 `--z85` (including its multiple-of-4 rule), `-w` wrapping (default 76, `-w 0`, `-w 8`),
 `-i` to skip garbage, newlines inside encoded input, file and `-` operands, and the error
 paths (no encoding given, bad and negative `-w`, invalid input, unknown option, extra
-operand, missing file). Recorded with GNU coreutils 9.12, and it also passes on 9.7.
+operand, missing file), plus three decodes that hit a bad byte after valid input: GNU
+still writes the complete groups it decoded before the error. Recorded with GNU coreutils 9.12, and it also passes on 9.7.
 `--base58` (new in 9.8) and lowercase `--base16 -d` (accepted since 9.5) are left out so
 the spec also replays on the older GNU in CI.
 
 ```sh
 behave run examples/basenc
-# basenc vs basenc: 32/32 passed, 0 failed, 0 skipped
+# basenc vs basenc: 35/35 passed, 0 failed, 0 skipped
 ```
 
 Against uutils coreutils 0.12.0, 26/32 match. All encoded and decoded output matches; the
 six differences are on stderr: ASCII quotes where GNU uses `‘’` in a UTF-8 locale, an
 extra `error: ` before `invalid input`, and clap rejecting `-w -1` and `--bogus` with its
 own message. The `error: ` prefix and `-w -1` are already fixed on uutils main.
+On uutils main (0.13.0) the three partial-decode cases fail too: `--z85`, `--base16` and
+`--base64` print nothing before `invalid input`, while GNU keeps the decoded prefix
+(tracked upstream in [#6008](https://github.com/uutils/coreutils/issues/6008) and
+[#12923](https://github.com/uutils/coreutils/issues/12923)).
 
 ```sh
 behave diff examples/basenc --impl ./uutils/basenc

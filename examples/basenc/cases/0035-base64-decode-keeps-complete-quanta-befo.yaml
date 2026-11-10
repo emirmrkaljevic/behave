@@ -1,0 +1,12 @@
+name: base64 decode keeps complete quanta before invalid input
+args:
+  - --base64
+  - -d
+stdin: "YWJjZGVm!"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "abcdef"
+  stderr: |
+    $CMD: invalid input
