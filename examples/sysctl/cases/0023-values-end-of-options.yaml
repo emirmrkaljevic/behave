@@ -1,0 +1,11 @@
+name: values end of options
+args:
+  - -n
+  - --
+  - kernel.ostype
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "Linux\n"
+  stderr: ""

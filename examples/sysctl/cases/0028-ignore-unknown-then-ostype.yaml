@@ -1,0 +1,11 @@
+name: ignore unknown then ostype
+args:
+  - -e
+  - no.such.var
+  - kernel.ostype
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "kernel.ostype = Linux\n"
+  stderr: ""

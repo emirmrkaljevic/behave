@@ -1,0 +1,9 @@
+name: get overflowgid
+args:
+  - fs.overflowgid
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "fs.overflowgid = 65534\n"
+  stderr: ""

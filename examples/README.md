@@ -864,3 +864,31 @@ Recorded with GNU findutils 4.10.0. This suite is what found [uutils/findutils#9
 behave run examples/xargs
 # xargs vs xargs: 44/44 passed, 0 failed, 0 skipped
 ```
+
+
+## `sysctl/`: 31 recorded cases for procps-ng `sysctl`
+
+Read-only lookups of stable keys (`kernel.ostype`, `fs.overflowuid`, `fs.overflowgid`,
+`kernel.overflowuid`): default `name = value` output, `-n`/`--values`, `-N`/`--names`
+(including `-n -N` and `-nN`), slash keys such as `kernel/ostype`, `--`, and `-q` on a
+read. Also the BSD no-op flags `-o` and `-x` (they must not consume the next key),
+`-e`/`--ignore` with missing keys, a missing key that still prints later keys, and an
+absolute `/proc/sys/...` path that GNU rejects. `--help`, `--version`, `-a`/`-A`/`-X`,
+`-w`, `-p`/`--load`, `--pattern`, and `-b` are left out so the suite stays deterministic
+and CI-safe (no host-specific values, no writes, no full dumps). Recorded with
+procps-ng 4.0.4. This suite is what found [uutils/procps#835](https://github.com/uutils/procps/issues/835)
+(`-o`/`-x` swallowing the next operand). CI puts `/usr/sbin` on `PATH` because `sysctl`
+often lives there.
+
+```sh
+PATH="/usr/sbin:$PATH" behave run examples/sysctl
+# sysctl vs sysctl: 31/31 passed, 0 failed, 0 skipped
+```
+
+Against uutils procps main (before #837): 24/31. Four of the misses are the `-o`/`-x`
+bugs; the other three are error wording on a missing key and GNU rejecting an absolute
+`/proc/sys` path.
+
+```sh
+PATH="/usr/sbin:$PATH" behave diff examples/sysctl --impl ./uutils/sysctl
+```

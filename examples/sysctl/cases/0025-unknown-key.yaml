@@ -1,0 +1,10 @@
+name: unknown key
+args:
+  - no.such.var
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: cannot stat /proc/sys/no/such/var: No such file or directory

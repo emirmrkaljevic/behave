@@ -1,0 +1,11 @@
+name: unknown key then ostype
+args:
+  - no.such.var
+  - kernel.ostype
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: "kernel.ostype = Linux\n"
+  stderr: |
+    $CMD: cannot stat /proc/sys/no/such/var: No such file or directory

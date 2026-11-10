@@ -1,0 +1,13 @@
+name: names two keys
+args:
+  - -N
+  - kernel.ostype
+  - fs.overflowuid
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    kernel.ostype
+    fs.overflowuid
+  stderr: ""

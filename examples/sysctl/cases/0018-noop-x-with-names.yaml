@@ -1,0 +1,11 @@
+name: noop x with names
+args:
+  - -x
+  - -N
+  - kernel.ostype
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "kernel.ostype\n"
+  stderr: ""

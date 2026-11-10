@@ -1,0 +1,9 @@
+name: get kernel overflowuid
+args:
+  - kernel.overflowuid
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "kernel.overflowuid = 65534\n"
+  stderr: ""

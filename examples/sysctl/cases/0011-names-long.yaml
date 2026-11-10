@@ -1,0 +1,10 @@
+name: names long
+args:
+  - --names
+  - kernel.ostype
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "kernel.ostype\n"
+  stderr: ""

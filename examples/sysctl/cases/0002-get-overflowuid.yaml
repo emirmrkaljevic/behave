@@ -1,0 +1,9 @@
+name: get overflowuid
+args:
+  - fs.overflowuid
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "fs.overflowuid = 65534\n"
+  stderr: ""

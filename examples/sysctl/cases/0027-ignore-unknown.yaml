@@ -1,0 +1,10 @@
+name: ignore unknown
+args:
+  - -e
+  - no.such.var
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

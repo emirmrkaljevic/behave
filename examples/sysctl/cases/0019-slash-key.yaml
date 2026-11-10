@@ -1,0 +1,9 @@
+name: slash key
+args:
+  - kernel/ostype
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "kernel.ostype = Linux\n"
+  stderr: ""

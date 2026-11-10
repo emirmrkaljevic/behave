@@ -1,0 +1,11 @@
+name: names and values flags
+args:
+  - -n
+  - -N
+  - kernel.ostype
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "kernel.ostype\n"
+  stderr: ""
