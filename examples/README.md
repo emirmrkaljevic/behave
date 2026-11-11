@@ -846,7 +846,7 @@ behave run examples/tsort
 # tsort vs tsort: 33/33 passed, 0 failed, 0 skipped
 ```
 
-## `csplit/`: 34 recorded cases for GNU `csplit`
+## `csplit/`: 37 recorded cases for GNU `csplit`
 
 Context splitting by line numbers and regexes: `/re/` with `+N`/`-N` offsets,
 `%re%` skips, `{N}` and `{*}` repeats, `-s`, `-z`, `-k`, `-f`, `-n` and `-b`
@@ -857,7 +857,7 @@ of each piece) and stderr are compared, not the files csplit writes.
 
 ```sh
 behave run examples/csplit
-# csplit vs csplit: 34/34 passed, 0 failed, 0 skipped
+# csplit vs csplit: 37/37 passed, 0 failed, 0 skipped
 ```
 
 ## `xargs/`: 44 recorded cases for GNU `xargs`
