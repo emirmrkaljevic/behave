@@ -1,0 +1,18 @@
+name: stdin dash
+args:
+  - '-'
+  - "3"
+stdin: |
+  a
+  b
+  c
+  d
+  e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    4
+    6
+  stderr: ""

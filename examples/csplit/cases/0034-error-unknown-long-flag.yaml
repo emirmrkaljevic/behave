@@ -1,0 +1,20 @@
+name: error unknown long flag
+args:
+  - --nope
+  - in.txt
+  - "2"
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: unrecognized option '--nope'
+    Try '$CMD --help' for more information.

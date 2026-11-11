@@ -1,0 +1,20 @@
+name: error unknown short flag
+args:
+  - -Q
+  - in.txt
+  - "2"
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid option -- 'Q'
+    Try '$CMD --help' for more information.

@@ -1,0 +1,21 @@
+name: line number repeat
+args:
+  - in.txt
+  - "2"
+  - '{1}'
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2
+    4
+    4
+  stderr: ""

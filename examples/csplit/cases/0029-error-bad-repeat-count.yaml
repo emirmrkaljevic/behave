@@ -1,0 +1,19 @@
+name: error bad repeat count
+args:
+  - in.txt
+  - "2"
+  - '{x}'
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: ‘{x’}: integer required between '{' and '}'

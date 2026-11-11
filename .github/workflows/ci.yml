@@ -51,6 +51,7 @@ jobs:
           ./behave run examples/tee
           ./behave run examples/split
           ./behave run examples/tsort
+          ./behave run examples/csplit
           ./behave run examples/xargs
           PATH="/usr/sbin:/sbin:$PATH" ./behave run examples/sysctl
           ./behave run examples/jq

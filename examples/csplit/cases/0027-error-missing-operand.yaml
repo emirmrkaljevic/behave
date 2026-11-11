@@ -1,0 +1,18 @@
+name: error missing operand
+args:
+  - in.txt
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: missing operand after ‘in.txt’
+    Try '$CMD --help' for more information.

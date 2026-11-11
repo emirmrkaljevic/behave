@@ -1,0 +1,19 @@
+name: line number 3
+args:
+  - in.txt
+  - "3"
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    4
+    6
+  stderr: ""

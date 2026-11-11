@@ -1,0 +1,19 @@
+name: error line out of range
+args:
+  - in.txt
+  - "99"
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    10
+  stderr: |
+    $CMD: ‘99’: line number out of range

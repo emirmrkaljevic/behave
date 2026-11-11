@@ -1,0 +1,18 @@
+name: error unmatched bracket regex
+args:
+  - in.txt
+  - /[a/
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: ‘/[a/’: invalid regular expression: Unmatched [, [^, [:, [., or [=

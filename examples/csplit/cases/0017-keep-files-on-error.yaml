@@ -1,0 +1,22 @@
+name: keep files on error
+args:
+  - -k
+  - in.txt
+  - "3"
+  - "99"
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    4
+    6
+  stderr: |
+    $CMD: ‘99’: line number out of range

@@ -846,6 +846,20 @@ behave run examples/tsort
 # tsort vs tsort: 33/33 passed, 0 failed, 0 skipped
 ```
 
+## `csplit/`: 34 recorded cases for GNU `csplit`
+
+Context splitting by line numbers and regexes: `/re/` with `+N`/`-N` offsets,
+`%re%` skips, `{N}` and `{*}` repeats, `-s`, `-z`, `-k`, `-f`, `-n` and `-b`
+naming options, stdin via `-`, input without a final newline, and the error
+paths (no match, line out of range or not increasing, bad repeat count, bad
+regex, bad suffix format, missing file or operand). Only stdout (the byte count
+of each piece) and stderr are compared, not the files csplit writes.
+
+```sh
+behave run examples/csplit
+# csplit vs csplit: 34/34 passed, 0 failed, 0 skipped
+```
+
 ## `xargs/`: 44 recorded cases for GNU `xargs`
 
 Argument building from stdin or `-a`/`--arg-file`: default `echo`, `-n`/`-L`/`-l` batching,

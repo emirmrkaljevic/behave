@@ -1,0 +1,21 @@
+name: two line numbers
+args:
+  - in.txt
+  - "2"
+  - "4"
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2
+    4
+    4
+  stderr: ""

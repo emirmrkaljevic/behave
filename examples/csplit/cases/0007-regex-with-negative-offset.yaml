@@ -1,0 +1,21 @@
+name: regex with negative offset
+args:
+  - in.txt
+  - /foo/-1
+files:
+  in.txt: |
+    one
+    two
+    foo
+    three
+    foo
+    four
+    five
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    4
+    28
+  stderr: ""

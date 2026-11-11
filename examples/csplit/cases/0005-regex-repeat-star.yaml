@@ -1,0 +1,23 @@
+name: regex repeat star
+args:
+  - in.txt
+  - /foo/
+  - '{*}'
+files:
+  in.txt: |
+    one
+    two
+    foo
+    three
+    foo
+    four
+    five
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    8
+    10
+    14
+  stderr: ""

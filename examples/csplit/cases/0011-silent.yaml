@@ -1,0 +1,18 @@
+name: silent
+args:
+  - -s
+  - in.txt
+  - "3"
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

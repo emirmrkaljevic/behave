@@ -1,0 +1,19 @@
+name: error lines not increasing
+args:
+  - in.txt
+  - "4"
+  - "2"
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: line number ‘2’ is smaller than preceding line number, 4

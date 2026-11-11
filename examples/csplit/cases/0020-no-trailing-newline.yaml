@@ -1,0 +1,17 @@
+name: no trailing newline
+args:
+  - in.txt
+  - "2"
+files:
+  in.txt: |-
+    a
+    b
+    c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2
+    3
+  stderr: ""

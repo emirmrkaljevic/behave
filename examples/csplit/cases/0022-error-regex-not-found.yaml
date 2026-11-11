@@ -1,0 +1,19 @@
+name: error regex not found
+args:
+  - in.txt
+  - /zzz/
+files:
+  in.txt: |
+    a
+    b
+    c
+    d
+    e
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    10
+  stderr: |
+    $CMD: ‘/zzz/’: match not found

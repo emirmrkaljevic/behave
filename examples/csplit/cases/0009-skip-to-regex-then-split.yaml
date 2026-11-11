@@ -1,0 +1,22 @@
+name: skip to regex then split
+args:
+  - in.txt
+  - '%two%'
+  - /foo/
+files:
+  in.txt: |
+    one
+    two
+    foo
+    three
+    foo
+    four
+    five
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    4
+    24
+  stderr: ""
