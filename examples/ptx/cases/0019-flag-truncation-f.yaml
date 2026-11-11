@@ -1,0 +1,15 @@
+name: flag truncation -F
+args:
+  - -w
+  - "30"
+  - -F
+  - '...'
+stdin: |
+  the quick brown fox
+  jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "       ...quick   brown fox...\n           lazy   dog      ...the\n       ...brown   fox jumps...\n         ...fox   jumps...\n         ...the   lazy dog\n       ...jumps   over the...\n            the   quick...\n                  the quick...\n        ...over   the lazy...\n"
+  stderr: ""

@@ -1,0 +1,18 @@
+name: only and ignore together
+args:
+  - -o
+  - o.txt
+  - -i
+  - o.txt
+stdin: |
+  apple banana cherry
+  banana cherry date
+files:
+  o.txt: |
+    banana
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

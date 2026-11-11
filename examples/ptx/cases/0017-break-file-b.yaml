@@ -1,0 +1,14 @@
+name: break file -b
+args:
+  - -b
+  - brk.txt
+stdin: |
+  a-b c-d
+files:
+  brk.txt: " -\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "                                       a-b c-d\n                                  a-   b c-d\n                                 a-b   c-d\n                              a-b c-   d\n"
+  stderr: ""

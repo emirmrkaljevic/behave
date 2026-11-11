@@ -1,0 +1,23 @@
+name: auto references -A
+args:
+  - -A
+  - in.txt
+files:
+  in.txt: |
+    the quick brown fox
+    jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    in.txt:1:  lazy dog          the quick   brown fox jumps over the
+    in.txt:2:      fox jumps over the lazy   dog                     /brown
+    in.txt:1:              the quick brown   fox jumps over the lazy dog
+    in.txt:2:          the quick brown fox   jumps over the lazy dog
+    in.txt:2:     brown fox jumps over the   lazy dog             the quick
+    in.txt:2:    the quick brown fox jumps   over the lazy dog
+    in.txt:1:  the lazy dog            the   quick brown fox jumps over
+    in.txt:1:  over the lazy dog             the quick brown fox jumps
+    in.txt:2:         brown fox jumps over   the lazy dog         the quick
+  stderr: ""

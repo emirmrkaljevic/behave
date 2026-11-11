@@ -1,0 +1,20 @@
+name: two files
+args:
+  - -A
+  - a.txt
+  - b.txt
+files:
+  a.txt: |
+    alpha beta
+  b.txt: |
+    gamma delta
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt:1:                                 alpha beta
+    a.txt:1:                         alpha   beta
+    b.txt:1:                         gamma   delta
+    b.txt:1:                                 gamma delta
+  stderr: ""

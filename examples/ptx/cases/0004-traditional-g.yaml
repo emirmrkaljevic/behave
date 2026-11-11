@@ -1,0 +1,21 @@
+name: traditional -G
+args:
+  - -G
+stdin: |
+  the quick brown fox
+  jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    .xx "" "the quick" "brown fox" ""
+    .xx "" "jumps over the lazy" "dog" ""
+    .xx "" "the quick brown" "fox" ""
+    .xx "" "" "jumps over the lazy dog" ""
+    .xx "" "jumps over the" "lazy dog" ""
+    .xx "" "jumps" "over the lazy dog" ""
+    .xx "" "the" "quick brown fox" ""
+    .xx "" "" "the quick brown fox" ""
+    .xx "" "jumps over" "the lazy dog" ""
+  stderr: ""

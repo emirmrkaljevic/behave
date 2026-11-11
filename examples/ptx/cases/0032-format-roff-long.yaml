@@ -1,0 +1,21 @@
+name: format roff long
+args:
+  - --format=roff
+stdin: |
+  the quick brown fox
+  jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    .xx "" "the quick" "brown fox jumps over the lazy dog" ""
+    .xx "" "brown fox jumps over the lazy" "dog" "the quick"
+    .xx "" "the quick brown" "fox jumps over the lazy dog" ""
+    .xx "" "the quick brown fox" "jumps over the lazy dog" ""
+    .xx "" "quick brown fox jumps over the" "lazy dog" "the"
+    .xx "" "the quick brown fox jumps" "over the lazy dog" ""
+    .xx "lazy dog" "the" "quick brown fox jumps over the" ""
+    .xx "lazy dog" "" "the quick brown fox jumps over the" ""
+    .xx "" "the quick brown fox jumps over" "the lazy dog" ""
+  stderr: ""

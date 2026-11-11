@@ -1,0 +1,14 @@
+name: missing ignore file
+args:
+  - -i
+  - none.txt
+stdin: |
+  apple banana cherry
+  banana cherry date
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: none.txt: No such file or directory

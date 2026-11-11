@@ -1,0 +1,23 @@
+name: macro name -M
+args:
+  - -O
+  - -M
+  - IX
+stdin: |
+  the quick brown fox
+  jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    .IX "" "the quick" "brown fox jumps over the lazy dog" ""
+    .IX "" "brown fox jumps over the lazy" "dog" "the quick"
+    .IX "" "the quick brown" "fox jumps over the lazy dog" ""
+    .IX "" "the quick brown fox" "jumps over the lazy dog" ""
+    .IX "" "quick brown fox jumps over the" "lazy dog" "the"
+    .IX "" "the quick brown fox jumps" "over the lazy dog" ""
+    .IX "lazy dog" "the" "quick brown fox jumps over the" ""
+    .IX "lazy dog" "" "the quick brown fox jumps over the" ""
+    .IX "" "the quick brown fox jumps over" "the lazy dog" ""
+  stderr: ""

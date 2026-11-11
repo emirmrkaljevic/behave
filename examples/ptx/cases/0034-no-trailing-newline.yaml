@@ -1,0 +1,9 @@
+name: no trailing newline
+args: []
+stdin: "last line no newline"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "                                       last line no newline\n                                last   line no newline\n                        last line no   newline\n                           last line   no newline\n"
+  stderr: ""

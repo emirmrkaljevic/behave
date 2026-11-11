@@ -1,0 +1,15 @@
+name: right side refs -R
+args:
+  - -A
+  - -R
+  - in.txt
+files:
+  in.txt: |
+    the quick brown fox
+    jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "                        the quick   brown fox jumps over the lazy dog      in.txt:1\n    brown fox jumps over the lazy   dog                        the quick   in.txt:2\n                  the quick brown   fox jumps over the lazy dog            in.txt:1\n              the quick brown fox   jumps over the lazy dog                in.txt:2\n   quick brown fox jumps over the   lazy dog                         the   in.txt:2\n        the quick brown fox jumps   over the lazy dog                      in.txt:2\nlazy dog                      the   quick brown fox jumps over the         in.txt:1\nlazy dog                            the quick brown fox jumps over the     in.txt:1\n   the quick brown fox jumps over   the lazy dog                           in.txt:2\n"
+  stderr: ""

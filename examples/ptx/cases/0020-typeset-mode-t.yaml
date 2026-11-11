@@ -1,0 +1,13 @@
+name: typeset mode -t
+args:
+  - -t
+stdin: |
+  the quick brown fox
+  jumps over the lazy dog
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: "                                         the quick   brown fox jumps over the lazy dog\n           the quick brown fox jumps over the lazy   dog\n                                   the quick brown   fox jumps over the lazy dog\n                               the quick brown fox   jumps over the lazy dog\n                the quick brown fox jumps over the   lazy dog\n                         the quick brown fox jumps   over the lazy dog\n                                               the   quick brown fox jumps over the lazy dog\n                                                     the quick brown fox jumps over the lazy dog\n                    the quick brown fox jumps over   the lazy dog\n"
+  stderr: ""

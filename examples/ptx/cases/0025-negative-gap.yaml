@@ -1,0 +1,14 @@
+name: negative gap
+args:
+  - -g
+  - "-1"
+stdin: |
+  the quick brown fox
+  jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid gap width: ‘-1’

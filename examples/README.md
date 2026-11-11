@@ -860,6 +860,21 @@ behave run examples/csplit
 # csplit vs csplit: 37/37 passed, 0 failed, 0 skipped
 ```
 
+## `ptx/`: 36 recorded cases for GNU `ptx`
+
+Permuted indexes from stdin and files: the default GNU mode (contexts run across
+line ends), `-G` traditional mode with an output file operand, `-A` and `-r`
+references, `-R`, `-w` and `-g` layout, `-f`, `-o`/`-i` word files, `-W`, `-b`
+and `-S` regexes, `-F` truncation flags, `-O`/`--format=roff`/`-M` and `-T`
+output, `-t`, plus the error paths (missing input or word file, bad width or
+gap, unknown option, bad regex, bad `--format`, extra operands). The `-t` case
+changed after GNU 9.7, so it is tagged `gnu-9.12` and skipped in CI.
+
+```sh
+behave run examples/ptx
+# ptx vs ptx: 36/36 passed, 0 failed, 0 skipped
+```
+
 ## `xargs/`: 44 recorded cases for GNU `xargs`
 
 Argument building from stdin or `-a`/`--arg-file`: default `echo`, `-n`/`-L`/`-l` batching,

@@ -1,0 +1,13 @@
+name: word regexp -W
+args:
+  - -W
+  - '[a-c][a-z]*'
+stdin: |
+  apple banana cherry
+  banana cherry date
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "   date                                apple banana cherry banana cherry\n       banana cherry banana cherry d   ate                            apple\n                               apple   banana cherry banana cherry date\n                 apple banana cherry   banana cherry date\n                        apple banana   cherry banana cherry date\n          apple banana cherry banana   cherry date\n"
+  stderr: ""

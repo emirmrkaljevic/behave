@@ -1,0 +1,17 @@
+name: format bad
+args:
+  - --format=html
+stdin: |
+  the quick brown fox
+  jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid argument ‘html’ for ‘--format’
+    Valid arguments are:
+      - ‘roff’
+      - ‘tex’
+    Try '$CMD --help' for more information.

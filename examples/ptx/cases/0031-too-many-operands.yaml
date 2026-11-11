@@ -1,0 +1,15 @@
+name: too many operands
+args:
+  - a
+  - b
+  - c
+files:
+  a: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: b: No such file or directory

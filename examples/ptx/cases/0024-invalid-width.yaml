@@ -1,0 +1,14 @@
+name: invalid width
+args:
+  - -w
+  - abc
+stdin: |
+  the quick brown fox
+  jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid line width: ‘abc’

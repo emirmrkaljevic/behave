@@ -1,0 +1,12 @@
+name: ignore case -f
+args:
+  - -f
+stdin: |
+  Banana apple
+  banana Cherry
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "                              Banana   apple banana Cherry\n                                       Banana apple banana Cherry\n                        Banana apple   banana Cherry\n                 Banana apple banana   Cherry\n"
+  stderr: ""

@@ -1,0 +1,13 @@
+name: file default
+args:
+  - in.txt
+files:
+  in.txt: |
+    the quick brown fox
+    jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "                           the quick   brown fox jumps over the lazy dog\n       brown fox jumps over the lazy   dog                        the quick\n                     the quick brown   fox jumps over the lazy dog\n                 the quick brown fox   jumps over the lazy dog\n      quick brown fox jumps over the   lazy dog                         the\n           the quick brown fox jumps   over the lazy dog\n   lazy dog                      the   quick brown fox jumps over the\n   lazy dog                            the quick brown fox jumps over the\n      the quick brown fox jumps over   the lazy dog\n"
+  stderr: ""

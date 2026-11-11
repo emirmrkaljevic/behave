@@ -1,0 +1,11 @@
+name: dash stdin
+args:
+  - '-'
+stdin: |
+  x y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "                                       x y\n                                   x   y\n"
+  stderr: ""

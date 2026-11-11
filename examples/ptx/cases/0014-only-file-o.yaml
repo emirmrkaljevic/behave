@@ -1,0 +1,17 @@
+name: only file -o
+args:
+  - -o
+  - only.txt
+stdin: |
+  apple banana cherry
+  banana cherry date
+files:
+  only.txt: |
+    banana
+    date
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "                               apple   banana cherry banana cherry date\n                 apple banana cherry   banana cherry date\n         banana cherry banana cherry   date                           apple\n"
+  stderr: ""

@@ -1,0 +1,15 @@
+name: output file arg
+args:
+  - -G
+  - in.txt
+  - out.txt
+files:
+  in.txt: |
+    the quick brown fox
+    jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

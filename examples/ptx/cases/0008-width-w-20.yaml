@@ -1,0 +1,13 @@
+name: width -w 20
+args:
+  - -w
+  - "20"
+stdin: |
+  the quick brown fox
+  jumps over the lazy dog
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "    /quick   brown/\n     /lazy   dog\n    /brown   fox/\n      /fox   jumps/\n      /the   lazy dog\n    /jumps   over the/\n       the   quick/\n             the/\n     /over   the lazy/\n"
+  stderr: ""

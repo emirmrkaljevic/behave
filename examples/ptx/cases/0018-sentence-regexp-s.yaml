@@ -1,0 +1,12 @@
+name: sentence regexp -S
+args:
+  - -S
+  - \.
+stdin: |
+  One two. Three four.
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "                                       One two.\n                                        Three four.\n                               Three   four.\n                                 One   two.\n"
+  stderr: ""

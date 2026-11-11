@@ -1,0 +1,16 @@
+name: ignore file -i
+args:
+  - -i
+  - ign.txt
+stdin: |
+  apple banana cherry
+  banana cherry date
+files:
+  ign.txt: |
+    banana
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "   date                                apple banana cherry banana cherry\n                        apple banana   cherry banana cherry date\n          apple banana cherry banana   cherry date\n         banana cherry banana cherry   date                           apple\n"
+  stderr: ""

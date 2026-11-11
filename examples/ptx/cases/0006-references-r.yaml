@@ -1,0 +1,16 @@
+name: references -r
+args:
+  - -r
+stdin: |
+  r1 hello world
+  r2 goodbye world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    r2                                    goodbye world
+    r1                                    hello world
+    r1                            hello   world
+    r2                          goodbye   world
+  stderr: ""

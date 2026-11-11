@@ -1,0 +1,10 @@
+name: punctuation words
+args: []
+stdin: |
+  hello, world! foo-bar baz.
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "                  hello, world! foo-   bar baz.\n               hello, world! foo-bar   baz.\n                       hello, world!   foo-bar baz.\n                                       hello, world! foo-bar baz.\n                              hello,   world! foo-bar baz.\n"
+  stderr: ""
