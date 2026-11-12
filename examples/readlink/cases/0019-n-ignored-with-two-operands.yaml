@@ -1,0 +1,14 @@
+name: n ignored with two operands
+args:
+  - -n
+  - /proc/self/root
+  - /proc/self/root
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /
+    /
+  stderr: |
+    $CMD: ignoring --no-newline with multiple arguments

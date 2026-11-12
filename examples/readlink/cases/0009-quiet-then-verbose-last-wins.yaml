@@ -1,0 +1,15 @@
+name: quiet then verbose last wins
+args:
+  - -q
+  - -v
+  - a.txt
+files:
+  a.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: a.txt: Invalid argument

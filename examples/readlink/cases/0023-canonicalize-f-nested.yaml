@@ -1,0 +1,16 @@
+name: canonicalize f nested
+args:
+  - -f
+  - d/b.txt
+files:
+  a.txt: |
+    x
+  d/b.txt: |
+    y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    d/b.txt
+  stderr: ""

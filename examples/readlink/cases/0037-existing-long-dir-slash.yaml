@@ -1,0 +1,16 @@
+name: existing long dir slash
+args:
+  - --canonicalize-existing
+  - d/
+files:
+  a.txt: |
+    x
+  d/b.txt: |
+    y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    d
+  stderr: ""

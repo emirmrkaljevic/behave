@@ -1,0 +1,9 @@
+name: empty operand
+args:
+  - ""
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

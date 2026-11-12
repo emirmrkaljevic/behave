@@ -1,0 +1,15 @@
+name: unknown option
+args:
+  - -x
+  - a.txt
+files:
+  a.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: invalid option -- 'x'
+    Try '$CMD --help' for more information.

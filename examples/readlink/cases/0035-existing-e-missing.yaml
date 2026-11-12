@@ -1,0 +1,10 @@
+name: existing e missing
+args:
+  - -e
+  - nope
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

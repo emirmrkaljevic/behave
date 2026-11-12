@@ -1,0 +1,11 @@
+name: missing m deep path
+args:
+  - -m
+  - nope/x/y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    nope/x/y
+  stderr: ""

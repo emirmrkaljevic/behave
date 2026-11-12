@@ -1,0 +1,16 @@
+name: canonicalize f dot and dotdot
+args:
+  - -f
+  - ./d/../a.txt
+files:
+  a.txt: |
+    x
+  d/b.txt: |
+    y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt
+  stderr: ""

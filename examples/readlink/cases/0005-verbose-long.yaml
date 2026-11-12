@@ -1,0 +1,14 @@
+name: verbose long
+args:
+  - --verbose
+  - a.txt
+files:
+  a.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: a.txt: Invalid argument

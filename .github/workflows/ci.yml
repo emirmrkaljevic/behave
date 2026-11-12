@@ -55,6 +55,7 @@ jobs:
           # ptx -t output changed after GNU 9.7; that case is tagged gnu-9.12
           ./behave run examples/ptx --skip-tag gnu-9.12
           ./behave run examples/echo
+          ./behave run examples/readlink
           ./behave run examples/xargs
           PATH="/usr/sbin:/sbin:$PATH" ./behave run examples/sysctl
           ./behave run examples/jq

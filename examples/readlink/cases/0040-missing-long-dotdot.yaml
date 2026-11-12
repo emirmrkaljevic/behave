@@ -1,0 +1,14 @@
+name: missing long dotdot
+args:
+  - --canonicalize-missing
+  - nope/../a.txt
+files:
+  a.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt
+  stderr: ""

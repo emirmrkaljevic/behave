@@ -1,0 +1,10 @@
+name: proc self root link
+args:
+  - /proc/self/root
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /
+  stderr: ""

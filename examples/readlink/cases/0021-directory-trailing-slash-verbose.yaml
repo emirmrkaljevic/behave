@@ -1,0 +1,11 @@
+name: directory trailing slash verbose
+args:
+  - -v
+  - /proc/self/cwd/
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: /proc/self/cwd/: Invalid argument

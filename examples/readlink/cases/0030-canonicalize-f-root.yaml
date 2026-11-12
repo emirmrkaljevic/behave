@@ -1,0 +1,11 @@
+name: canonicalize f root
+args:
+  - -f
+  - /
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /
+  stderr: ""

@@ -1,0 +1,11 @@
+name: verbose empty operand
+args:
+  - -v
+  - ""
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: '': No such file or directory

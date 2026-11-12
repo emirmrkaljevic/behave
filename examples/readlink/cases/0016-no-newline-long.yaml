@@ -1,0 +1,10 @@
+name: no newline long
+args:
+  - --no-newline
+  - /proc/self/cwd
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "$WORKDIR"
+  stderr: ""

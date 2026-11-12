@@ -893,6 +893,24 @@ behave run examples/echo
 # echo vs echo: 44/44 passed, 0 failed, 0 skipped
 ```
 
+## `readlink/`: 45 recorded cases for GNU `readlink`
+
+Plain `readlink` on a regular file, a missing file and an empty operand (silent
+by default, messages with `-v`/`--verbose`, `-q`/`-s` and `-v` where the last
+one wins), real links read through `/proc/self/root` and `/proc/self/cwd`,
+`-n` (and the warning when it is ignored with several operands), `-z`, a mix of
+links and non-links, `-f`/`-e`/`-m` and their long forms on files, directories,
+`.` and `..` components, missing last or middle components, a file used as a
+directory, root and `//`, an empty operand, `--` before a name starting with a
+dash, and the option errors. Paths inside the case's temp directory are
+normalized, so the spec replays anywhere on Linux. Recorded with GNU coreutils
+9.12 (9.7 passes too).
+
+```sh
+behave run examples/readlink
+# readlink vs readlink: 45/45 passed, 0 failed, 0 skipped
+```
+
 ## `xargs/`: 44 recorded cases for GNU `xargs`
 
 Argument building from stdin or `-a`/`--arg-file`: default `echo`, `-n`/`-L`/`-l` batching,

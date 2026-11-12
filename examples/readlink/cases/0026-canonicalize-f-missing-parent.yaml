@@ -1,0 +1,10 @@
+name: canonicalize f missing parent
+args:
+  - -f
+  - nope/x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

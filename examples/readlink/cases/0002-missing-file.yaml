@@ -1,0 +1,9 @@
+name: missing file
+args:
+  - nope
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

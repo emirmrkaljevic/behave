@@ -1,0 +1,14 @@
+name: canonicalize f file
+args:
+  - -f
+  - a.txt
+files:
+  a.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt
+  stderr: ""

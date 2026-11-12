@@ -1,0 +1,14 @@
+name: link then regular file
+args:
+  - /proc/self/root
+  - a.txt
+files:
+  a.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    /
+  stderr: ""

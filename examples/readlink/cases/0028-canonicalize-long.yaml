@@ -1,0 +1,16 @@
+name: canonicalize long
+args:
+  - --canonicalize
+  - d
+files:
+  a.txt: |
+    x
+  d/b.txt: |
+    y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    d
+  stderr: ""

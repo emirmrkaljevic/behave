@@ -1,0 +1,11 @@
+name: zero z
+args:
+  - -z
+  - /proc/self/root
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: LwA=
+  stderr: ""

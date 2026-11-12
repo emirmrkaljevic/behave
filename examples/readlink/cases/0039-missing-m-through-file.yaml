@@ -1,0 +1,14 @@
+name: missing m through file
+args:
+  - -m
+  - a.txt/x
+files:
+  a.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt/x
+  stderr: ""

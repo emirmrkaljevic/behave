@@ -1,0 +1,12 @@
+name: existing e missing verbose
+args:
+  - -e
+  - -v
+  - nope
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: nope: No such file or directory

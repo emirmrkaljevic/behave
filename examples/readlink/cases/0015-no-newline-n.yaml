@@ -1,0 +1,10 @@
+name: no newline n
+args:
+  - -n
+  - /proc/self/root
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "/"
+  stderr: ""

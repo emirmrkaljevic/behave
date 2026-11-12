@@ -1,0 +1,10 @@
+name: silent long
+args:
+  - --silent
+  - nope
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

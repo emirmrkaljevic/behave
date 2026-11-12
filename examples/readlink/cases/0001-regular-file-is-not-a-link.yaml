@@ -1,0 +1,12 @@
+name: regular file is not a link
+args:
+  - a.txt
+files:
+  a.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

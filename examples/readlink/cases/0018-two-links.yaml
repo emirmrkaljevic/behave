@@ -1,0 +1,12 @@
+name: two links
+args:
+  - /proc/self/root
+  - /proc/self/cwd
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    /
+    $WORKDIR
+  stderr: ""

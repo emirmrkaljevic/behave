@@ -1,0 +1,16 @@
+name: canonicalize f through proc link
+args:
+  - -f
+  - /proc/self/cwd/d/../a.txt
+files:
+  a.txt: |
+    x
+  d/b.txt: |
+    y
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a.txt
+  stderr: ""

@@ -1,0 +1,11 @@
+name: canonicalize f last component missing
+args:
+  - -f
+  - nope
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    nope
+  stderr: ""

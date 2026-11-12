@@ -1,0 +1,10 @@
+name: proc self cwd link
+args:
+  - /proc/self/cwd
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    $WORKDIR
+  stderr: ""
