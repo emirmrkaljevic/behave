@@ -1,0 +1,10 @@
+name: single word
+args:
+  - hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hello
+  stderr: ""

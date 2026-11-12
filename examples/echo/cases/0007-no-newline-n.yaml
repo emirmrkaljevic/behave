@@ -1,0 +1,10 @@
+name: no newline n
+args:
+  - -n
+  - hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "hello"
+  stderr: ""

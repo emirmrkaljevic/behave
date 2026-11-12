@@ -1,0 +1,11 @@
+name: e hex
+args:
+  - -e
+  - \x41\x4a\x7e
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    AJ~
+  stderr: ""

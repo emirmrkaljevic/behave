@@ -1,0 +1,11 @@
+name: e octal wraps past 255
+args:
+  - -e
+  - \0400
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: AAo=
+  stderr: ""

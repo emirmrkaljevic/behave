@@ -1,0 +1,11 @@
+name: e unknown escape kept
+args:
+  - -e
+  - \q\z
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    \q\z
+  stderr: ""

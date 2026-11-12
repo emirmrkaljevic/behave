@@ -1,0 +1,11 @@
+name: unknown option printed
+args:
+  - -x
+  - hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -x hello
+  stderr: ""

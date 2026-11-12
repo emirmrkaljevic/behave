@@ -1,0 +1,12 @@
+name: empty arguments between words
+args:
+  - a
+  - ""
+  - b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a  b
+  stderr: ""

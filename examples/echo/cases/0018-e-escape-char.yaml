@@ -1,0 +1,10 @@
+name: e escape char
+args:
+  - -e
+  - \e[1m
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\n"
+  stderr: ""

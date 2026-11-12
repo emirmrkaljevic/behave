@@ -1,0 +1,11 @@
+name: repeated n
+args:
+  - -n
+  - -n
+  - x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "x"
+  stderr: ""

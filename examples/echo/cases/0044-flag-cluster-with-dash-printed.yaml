@@ -1,0 +1,11 @@
+name: flag cluster with dash printed
+args:
+  - -n-
+  - x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -n- x
+  stderr: ""

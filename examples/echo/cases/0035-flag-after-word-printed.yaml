@@ -1,0 +1,11 @@
+name: flag after word printed
+args:
+  - hello
+  - -n
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hello -n
+  stderr: ""

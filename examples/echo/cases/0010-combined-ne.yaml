@@ -1,0 +1,10 @@
+name: combined ne
+args:
+  - -ne
+  - a\tb
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\tb"
+  stderr: ""

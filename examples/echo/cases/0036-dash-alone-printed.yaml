@@ -1,0 +1,10 @@
+name: dash alone printed
+args:
+  - '-'
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -
+  stderr: ""

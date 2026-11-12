@@ -1,0 +1,12 @@
+name: e newline
+args:
+  - -e
+  - one\ntwo
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    one
+    two
+  stderr: ""

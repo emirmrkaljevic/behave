@@ -1,0 +1,11 @@
+name: double dash printed
+args:
+  - --
+  - hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -- hello
+  stderr: ""

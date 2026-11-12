@@ -1,0 +1,10 @@
+name: e alert backspace
+args:
+  - -e
+  - x\a\by
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "x\a\by\n"
+  stderr: ""

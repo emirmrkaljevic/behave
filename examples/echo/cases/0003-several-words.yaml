@@ -1,0 +1,12 @@
+name: several words
+args:
+  - hello
+  - big
+  - world
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hello big world
+  stderr: ""

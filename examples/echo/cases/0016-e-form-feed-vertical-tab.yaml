@@ -1,0 +1,10 @@
+name: e form feed vertical tab
+args:
+  - -e
+  - p\fq\vr
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "p\fq\vr\n"
+  stderr: ""

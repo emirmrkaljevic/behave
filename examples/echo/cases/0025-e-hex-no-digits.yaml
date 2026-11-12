@@ -1,0 +1,11 @@
+name: e hex no digits
+args:
+  - -e
+  - \xg
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    \xg
+  stderr: ""

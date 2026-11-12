@@ -1,0 +1,10 @@
+name: escapes off by default
+args:
+  - a\tb
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    a\tb
+  stderr: ""

@@ -1,0 +1,11 @@
+name: e bare zero
+args:
+  - -e
+  - a\0b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout:
+    base64: YQBiCg==
+  stderr: ""

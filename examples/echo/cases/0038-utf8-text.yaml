@@ -1,0 +1,10 @@
+name: utf8 text
+args:
+  - héllo wörld ✓
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    héllo wörld ✓
+  stderr: ""

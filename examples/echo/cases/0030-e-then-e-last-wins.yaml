@@ -1,0 +1,11 @@
+name: E then e last wins
+args:
+  - -E
+  - -e
+  - a\tb
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\tb\n"
+  stderr: ""

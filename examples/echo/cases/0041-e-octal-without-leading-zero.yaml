@@ -1,0 +1,11 @@
+name: e octal without leading zero
+args:
+  - -e
+  - \101
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A
+  stderr: ""

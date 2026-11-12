@@ -1,0 +1,10 @@
+name: e hex takes two digits max
+args:
+  - -e
+  - \x100
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\x100\n"
+  stderr: ""

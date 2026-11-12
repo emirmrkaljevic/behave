@@ -1,0 +1,11 @@
+name: e octal max digits
+args:
+  - -e
+  - \01011
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A1
+  stderr: ""

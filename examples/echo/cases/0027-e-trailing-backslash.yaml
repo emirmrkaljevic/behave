@@ -1,0 +1,11 @@
+name: e trailing backslash
+args:
+  - -e
+  - end\
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    end\
+  stderr: ""

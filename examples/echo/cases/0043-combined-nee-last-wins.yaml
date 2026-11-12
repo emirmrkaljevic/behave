@@ -1,0 +1,10 @@
+name: combined neE last wins
+args:
+  - -neE
+  - a\tb
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\\tb"
+  stderr: ""

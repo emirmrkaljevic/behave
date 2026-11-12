@@ -875,6 +875,24 @@ behave run examples/ptx
 # ptx vs ptx: 36/36 passed, 0 failed, 0 skipped
 ```
 
+## `echo/`: 44 recorded cases for GNU `echo`
+
+The standalone `echo` binary (not the shell builtin): plain words, empty
+arguments, `-n`, and every `-e` escape (`\a \b \c \e \f \n \r \t \v \\`,
+`\0NNN` and `\NNN` octal including the wrap past 255, `\xHH` with one, two or
+no hex digits), unknown escapes kept as is, a trailing backslash, `-e`/`-E`
+where the last one wins, and the option rules that trip up rewrites: an unknown
+flag or a cluster like `-nx` or `-n-` is printed as text, `--` is printed, a
+flag after the first word is printed, and `--help` with other arguments is just
+text. `--help` and `--version` alone are left out because their text changes
+between releases. Recorded with GNU coreutils 9.12 (9.7 and uutils 0.12.0 pass
+too).
+
+```sh
+behave run examples/echo
+# echo vs echo: 44/44 passed, 0 failed, 0 skipped
+```
+
 ## `xargs/`: 44 recorded cases for GNU `xargs`
 
 Argument building from stdin or `-a`/`--arg-file`: default `echo`, `-n`/`-L`/`-l` batching,

@@ -1,0 +1,11 @@
+name: long help not option with other args
+args:
+  - --help
+  - x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    --help x
+  stderr: ""

@@ -1,0 +1,11 @@
+name: e stop output c
+args:
+  - -e
+  - before\cafter
+  - more
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "before"
+  stderr: ""

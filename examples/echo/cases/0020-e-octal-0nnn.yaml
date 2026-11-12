@@ -1,0 +1,11 @@
+name: e octal 0nnn
+args:
+  - -e
+  - \0101\0102
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    AB
+  stderr: ""

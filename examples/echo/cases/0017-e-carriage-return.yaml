@@ -1,0 +1,10 @@
+name: e carriage return
+args:
+  - -e
+  - abc\rX
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "abc\rX\n"
+  stderr: ""

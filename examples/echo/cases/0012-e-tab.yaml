@@ -1,0 +1,10 @@
+name: e tab
+args:
+  - -e
+  - a\tb
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "a\tb\n"
+  stderr: ""

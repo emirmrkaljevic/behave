@@ -1,0 +1,10 @@
+name: e hex one digit
+args:
+  - -e
+  - \x9z
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "\tz\n"
+  stderr: ""

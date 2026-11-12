@@ -1,0 +1,11 @@
+name: mixed valid invalid flags printed
+args:
+  - -nx
+  - hello
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -nx hello
+  stderr: ""

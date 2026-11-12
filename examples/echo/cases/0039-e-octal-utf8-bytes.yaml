@@ -1,0 +1,11 @@
+name: e octal utf8 bytes
+args:
+  - -e
+  - \0303\0251
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    é
+  stderr: ""
