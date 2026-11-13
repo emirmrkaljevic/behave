@@ -57,6 +57,7 @@ Per-tool notes, including what each suite covers and how uutils or gojq compared
 | [ptx](https://github.com/emirmrkaljevic/behave/tree/main/examples/ptx) | 36 | GNU coreutils 9.12 |
 | [echo](https://github.com/emirmrkaljevic/behave/tree/main/examples/echo) | 44 | GNU coreutils 9.12 |
 | [readlink](https://github.com/emirmrkaljevic/behave/tree/main/examples/readlink) | 45 | GNU coreutils 9.12 |
+| [env](https://github.com/emirmrkaljevic/behave/tree/main/examples/env) | 55 | GNU coreutils 9.12 |
 | [xargs](https://github.com/emirmrkaljevic/behave/tree/main/examples/xargs) | 48 | GNU findutils 4.10 |
 | [sysctl](https://github.com/emirmrkaljevic/behave/tree/main/examples/sysctl) | 31 | procps-ng 4.0.4 |
 | [jq](https://github.com/emirmrkaljevic/behave/tree/main/examples/jq) | 33 | jq 1.7 (hand-written) |

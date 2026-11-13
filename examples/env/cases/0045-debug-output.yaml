@@ -1,0 +1,15 @@
+name: debug output
+args:
+  - -v
+  - -i
+  - A=1
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: |
+    A=1
+  stderr: |
+    clearing environment
+    setting:   ‘A=1’

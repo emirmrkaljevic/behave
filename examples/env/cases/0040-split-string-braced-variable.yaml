@@ -1,0 +1,14 @@
+name: split string braced variable
+args:
+  - -i
+  - -S
+  - A=${X}
+env:
+  X: val
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A=val
+  stderr: ""

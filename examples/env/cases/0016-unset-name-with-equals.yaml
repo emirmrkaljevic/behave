@@ -1,0 +1,12 @@
+name: unset name with equals
+args:
+  - -u
+  - A=B
+  - /bin/true
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: cannot unset ‘A=B’: Invalid argument

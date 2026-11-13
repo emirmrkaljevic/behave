@@ -1,0 +1,14 @@
+name: command is a directory
+args:
+  - -i
+  - ./d
+files:
+  d/f: |
+    x
+tags:
+  - manual
+expect:
+  exit: 126
+  stdout: ""
+  stderr: |
+    $CMD: ‘./d’: Permission denied

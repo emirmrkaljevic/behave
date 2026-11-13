@@ -1,0 +1,19 @@
+name: unset two variables
+args:
+  - -u
+  - PATH
+  - -u
+  - HOME
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    TMPDIR=$WORKDIR
+    LANG=C.UTF-8
+    LC_ALL=C.UTF-8
+    TZ=UTC
+    NO_COLOR=1
+    TERM=dumb
+    COLUMNS=80
+  stderr: ""

@@ -1,0 +1,12 @@
+name: assignment without a name
+args:
+  - -i
+  - =x
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: |
+    ''=x
+  stderr: ""

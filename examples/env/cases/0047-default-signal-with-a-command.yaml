@@ -1,0 +1,11 @@
+name: default signal with a command
+args:
+  - -i
+  - --default-signal=TERM
+  - /bin/true
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

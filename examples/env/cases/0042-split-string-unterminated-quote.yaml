@@ -1,0 +1,12 @@
+name: split string unterminated quote
+args:
+  - -i
+  - -S
+  - A='x
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: no terminating quote in -S string

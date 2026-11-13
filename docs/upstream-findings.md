@@ -5,7 +5,7 @@ description: Bug reports and fix PRs found by recording GNU tools with behave an
 
 # Upstream findings
 
-Running behave against Rust rewrites of GNU tools has led to 40 bug reports and 47 fix PRs, 33 of them merged, as of 13 Nov 2026. Each issue and PR notes that it was found with behave, and each fix includes a test.
+Running behave against Rust rewrites of GNU tools has led to 41 bug reports and 48 fix PRs, 33 of them merged, as of 13 Nov 2026. Each issue and PR notes that it was found with behave, and each fix includes a test.
 
 | project | reports | fix PRs | merged |
 |---|---:|---:|---:|
@@ -78,6 +78,7 @@ Open (each has a fix PR):
 - `base32 -d` (and `base64`/`basenc`) accepts a carriage return in encoded input where GNU rejects it unless `-i` ([#16223](https://github.com/uutils/coreutils/issues/16223), [#16224](https://github.com/uutils/coreutils/pull/16224))
 - `csplit --suffix-format` errors differ from GNU, and `%x` with a quote flag is accepted ([#16350](https://github.com/uutils/coreutils/issues/16350), [#16351](https://github.com/uutils/coreutils/pull/16351))
 - `readlink -f/-e/-m ''` resolves to the current directory and exits 0 ([#16418](https://github.com/uutils/coreutils/issues/16418), [#16419](https://github.com/uutils/coreutils/pull/16419))
+- `env` suggests `-S` for shebang lines after every missing program or option error, where GNU only does when the name contains whitespace ([#16423](https://github.com/uutils/coreutils/issues/16423), [#16424](https://github.com/uutils/coreutils/pull/16424))
 
 ## uutils findutils (`xargs`, GNU findutils 4.10)
 

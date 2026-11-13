@@ -1,0 +1,14 @@
+name: quoting style literal
+args:
+  - -i
+  - A=x y
+env:
+  QUOTING_STYLE: literal
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: |
+    A=x y
+  stderr: ""

@@ -1,0 +1,12 @@
+name: command exit status passes through
+args:
+  - -i
+  - /bin/sh
+  - -c
+  - exit 3
+tags:
+  - manual
+expect:
+  exit: 3
+  stdout: ""
+  stderr: ""

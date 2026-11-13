@@ -1,0 +1,12 @@
+name: long split string
+args:
+  - -i
+  - --split-string=A=1 B=2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A=1
+    B=2
+  stderr: ""

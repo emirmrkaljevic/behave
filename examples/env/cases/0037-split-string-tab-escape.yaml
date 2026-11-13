@@ -1,0 +1,13 @@
+name: split string tab escape
+args:
+  - -i
+  - -S
+  - A=a\tb
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: |
+    A='a'$'\t''b'
+  stderr: ""

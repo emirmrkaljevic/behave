@@ -1,0 +1,11 @@
+name: unset missing argument
+args:
+  - -u
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: option requires an argument -- 'u'
+    Try '$CMD --help' for more information.

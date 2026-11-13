@@ -1,0 +1,14 @@
+name: command sees the new variable
+args:
+  - -i
+  - A=1
+  - /bin/sh
+  - -c
+  - echo $A
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1
+  stderr: ""

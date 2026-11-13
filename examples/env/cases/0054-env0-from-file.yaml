@@ -1,0 +1,15 @@
+name: env0 from file
+args:
+  - -i
+  - --env0-from=e0
+files:
+  e0: "A=1\0B=x y\0"
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: |
+    A=1
+    B='x y'
+  stderr: ""

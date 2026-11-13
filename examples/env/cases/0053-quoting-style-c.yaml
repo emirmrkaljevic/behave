@@ -1,0 +1,16 @@
+name: quoting style c
+args:
+  - -i
+  - A=x y
+  - "B=a\tb"
+env:
+  QUOTING_STYLE: c
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: |
+    "A"="x y"
+    "B"="a\tb"
+  stderr: ""

@@ -1,0 +1,16 @@
+name: chdir without a command
+args:
+  - -i
+  - -C
+  - d
+files:
+  d/f: |
+    x
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: must specify command with --chdir (-C)
+    Try '$CMD --help' for more information.

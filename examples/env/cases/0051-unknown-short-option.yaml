@@ -1,0 +1,11 @@
+name: unknown short option
+args:
+  - -x
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: invalid option -- 'x'
+    Try '$CMD --help' for more information.

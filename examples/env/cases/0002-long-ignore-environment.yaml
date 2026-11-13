@@ -1,0 +1,9 @@
+name: long ignore environment
+args:
+  - --ignore-environment
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

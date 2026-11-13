@@ -1,0 +1,12 @@
+name: double dash before assignments
+args:
+  - -i
+  - --
+  - A=1
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A=1
+  stderr: ""

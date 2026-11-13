@@ -911,6 +911,23 @@ behave run examples/readlink
 # readlink vs readlink: 45/45 passed, 0 failed, 0 skipped
 ```
 
+## `env/`: 55 recorded cases for GNU `env`
+
+`-i`/`--ignore-environment` and a lone `-`, assignments (empty value, repeated
+name, `=` and spaces in the value, no name), `-u`/`--unset` with its errors, the
+case's own environment passed through, `-0` (and its error with a command), `--`,
+running a command (exit status, missing, not executable, a directory),
+`-C`/`--chdir`, `-S`/`--split-string` (quotes, escapes, `\c`, comments,
+`${VAR}` and its errors), `-v`, the signal options, `-a`/`--argv0` and the option
+errors. Recorded with GNU coreutils 9.12, which shell-quotes printed values
+(honoring `QUOTING_STYLE`) and adds `--env0-from`; those cases and the changed
+`-v` wording are tagged `gnu-9.12`, and `-a` is tagged `gnu-9.5`.
+
+```sh
+behave run examples/env
+# env vs env: 55/55 passed, 0 failed, 0 skipped
+```
+
 ## `xargs/`: 48 recorded cases for GNU `xargs`
 
 Argument building from stdin or `-a`/`--arg-file`: default `echo`, `-n`/`-L`/`-l` batching,

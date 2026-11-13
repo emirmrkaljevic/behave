@@ -1,0 +1,12 @@
+name: same name twice last wins
+args:
+  - -i
+  - A=1
+  - A=2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A=2
+  stderr: ""

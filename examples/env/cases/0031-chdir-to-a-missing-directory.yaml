@@ -1,0 +1,13 @@
+name: chdir to a missing directory
+args:
+  - -i
+  - -C
+  - missing
+  - /bin/true
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: cannot change directory to 'missing': No such file or directory

@@ -1,0 +1,16 @@
+name: chdir runs the command there
+args:
+  - -i
+  - -C
+  - d
+  - /bin/pwd
+files:
+  d/f: |
+    x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    d
+  stderr: ""

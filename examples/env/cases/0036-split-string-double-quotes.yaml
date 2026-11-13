@@ -1,0 +1,13 @@
+name: split string double quotes
+args:
+  - -i
+  - -S
+  - A="x y"
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: |
+    A='x y'
+  stderr: ""

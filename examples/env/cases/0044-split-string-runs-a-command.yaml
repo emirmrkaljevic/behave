@@ -1,0 +1,12 @@
+name: split string runs a command
+args:
+  - -i
+  - -S
+  - /bin/sh -c 'echo hi'
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    hi
+  stderr: ""

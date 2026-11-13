@@ -1,0 +1,15 @@
+name: long chdir
+args:
+  - -i
+  - --chdir=d
+  - /bin/pwd
+files:
+  d/f: |
+    x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    d
+  stderr: ""

@@ -1,0 +1,29 @@
+name: case env is passed through
+args:
+  - -u
+  - PATH
+  - -u
+  - HOME
+  - -u
+  - TMPDIR
+  - -u
+  - LANG
+  - -u
+  - LC_ALL
+  - -u
+  - TZ
+  - -u
+  - NO_COLOR
+  - -u
+  - TERM
+  - -u
+  - COLUMNS
+env:
+  X: val
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    X=val
+  stderr: ""

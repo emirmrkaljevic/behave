@@ -1,0 +1,12 @@
+name: value with equals signs
+args:
+  - -i
+  - A==b=c
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: |
+    A='=b=c'
+  stderr: ""

@@ -1,0 +1,14 @@
+name: split string unbraced variable
+args:
+  - -i
+  - -S
+  - A=$X
+env:
+  X: val
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: only ${VARNAME} expansion is supported, error at: $X

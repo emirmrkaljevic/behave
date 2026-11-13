@@ -1,0 +1,11 @@
+name: ignore signal with a command
+args:
+  - -i
+  - --ignore-signal=INT
+  - /bin/true
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

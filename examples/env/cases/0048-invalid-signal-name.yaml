@@ -1,0 +1,13 @@
+name: invalid signal name
+args:
+  - -i
+  - --default-signal=BOGUS
+  - /bin/true
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: ‘BOGUS’: invalid signal
+    Try '$CMD --help' for more information.

@@ -1,0 +1,13 @@
+name: null with a command
+args:
+  - -i
+  - "-0"
+  - /bin/true
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: cannot specify --null (-0) with command
+    Try '$CMD --help' for more information.

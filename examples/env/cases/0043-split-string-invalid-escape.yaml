@@ -1,0 +1,12 @@
+name: split string invalid escape
+args:
+  - -i
+  - -S
+  - A=\q
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: invalid sequence '\q' in -S

@@ -1,0 +1,12 @@
+name: env0 from missing file
+args:
+  - -i
+  - --env0-from=missing
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: cannot read 'missing': No such file or directory

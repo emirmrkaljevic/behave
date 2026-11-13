@@ -1,0 +1,12 @@
+name: unset empty name
+args:
+  - -u
+  - ""
+  - /bin/true
+tags:
+  - manual
+expect:
+  exit: 125
+  stdout: ""
+  stderr: |
+    $CMD: cannot unset ‘’: Invalid argument

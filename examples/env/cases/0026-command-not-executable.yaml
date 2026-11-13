@@ -1,0 +1,14 @@
+name: command not executable
+args:
+  - -i
+  - ./a.txt
+files:
+  a.txt: |
+    x
+tags:
+  - manual
+expect:
+  exit: 126
+  stdout: ""
+  stderr: |
+    $CMD: ‘./a.txt’: Permission denied

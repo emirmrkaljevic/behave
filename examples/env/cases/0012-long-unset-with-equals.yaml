@@ -1,0 +1,17 @@
+name: long unset with equals
+args:
+  - --unset=PATH
+  - --unset=TERM
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    HOME=$WORKDIR
+    TMPDIR=$WORKDIR
+    LANG=C.UTF-8
+    LC_ALL=C.UTF-8
+    TZ=UTC
+    NO_COLOR=1
+    COLUMNS=80
+  stderr: ""

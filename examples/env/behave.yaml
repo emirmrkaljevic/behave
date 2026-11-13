@@ -1,0 +1,7 @@
+command: env
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: env (GNU coreutils) 9.12

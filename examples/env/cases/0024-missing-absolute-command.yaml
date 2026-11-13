@@ -1,0 +1,11 @@
+name: missing absolute command
+args:
+  - -i
+  - /nonexistent/cmd
+tags:
+  - manual
+expect:
+  exit: 127
+  stdout: ""
+  stderr: |
+    $CMD: ‘/nonexistent/cmd’: No such file or directory

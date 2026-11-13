@@ -1,0 +1,12 @@
+name: split string stops at backslash c
+args:
+  - -i
+  - -S
+  - A=1\c B=2
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A=1
+  stderr: ""

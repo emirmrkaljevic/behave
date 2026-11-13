@@ -1,0 +1,16 @@
+name: argv0 for the command
+args:
+  - -i
+  - -a
+  - myname
+  - /bin/sh
+  - -c
+  - echo $0
+tags:
+  - manual
+  - gnu-9.5
+expect:
+  exit: 0
+  stdout: |
+    myname
+  stderr: ""

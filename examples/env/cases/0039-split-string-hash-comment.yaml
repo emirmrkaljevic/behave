@@ -1,0 +1,12 @@
+name: split string hash comment
+args:
+  - -i
+  - -S
+  - 'A=1 #B=2'
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A=1
+  stderr: ""

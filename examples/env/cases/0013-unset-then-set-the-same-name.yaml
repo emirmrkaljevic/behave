@@ -1,0 +1,13 @@
+name: unset then set the same name
+args:
+  - -i
+  - -u
+  - A
+  - A=1
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    A=1
+  stderr: ""

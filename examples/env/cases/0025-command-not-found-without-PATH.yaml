@@ -1,0 +1,11 @@
+name: command not found without PATH
+args:
+  - -i
+  - nosuchcmd
+tags:
+  - manual
+expect:
+  exit: 127
+  stdout: ""
+  stderr: |
+    $CMD: ‘nosuchcmd’: No such file or directory
