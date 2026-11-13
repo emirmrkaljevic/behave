@@ -9,11 +9,11 @@ Running behave against Rust rewrites of GNU tools has led to 41 bug reports and 
 
 | project | reports | fix PRs | merged |
 |---|---:|---:|---:|
-| [uutils/coreutils](https://github.com/uutils/coreutils) | 33 | 40 | 29 |
+| [uutils/coreutils](https://github.com/uutils/coreutils) | 34 | 41 | 29 |
 | [uutils/findutils](https://github.com/uutils/findutils) | 3 | 3 | 1 |
 | [uutils/sed](https://github.com/uutils/sed) | 2 | 2 | 1 |
 | [uutils/procps](https://github.com/uutils/procps) | 2 | 2 | 2 |
-| total | 40 | 47 | 33 |
+| total | 41 | 48 | 33 |
 
 The extra coreutils PRs are follow-up fixes in other utilities for the same class of bug, for example numeric-looking file names after [tail #15533](https://github.com/uutils/coreutils/issues/15533).
 
@@ -79,6 +79,7 @@ Open (each has a fix PR):
 - `csplit --suffix-format` errors differ from GNU, and `%x` with a quote flag is accepted ([#16350](https://github.com/uutils/coreutils/issues/16350), [#16351](https://github.com/uutils/coreutils/pull/16351))
 - `readlink -f/-e/-m ''` resolves to the current directory and exits 0 ([#16418](https://github.com/uutils/coreutils/issues/16418), [#16419](https://github.com/uutils/coreutils/pull/16419))
 - `env` suggests `-S` for shebang lines after every missing program or option error, where GNU only does when the name contains whitespace ([#16423](https://github.com/uutils/coreutils/issues/16423), [#16424](https://github.com/uutils/coreutils/pull/16424))
+- `env -C` appends Rust's `(os error 2)` to the error when the directory can't be entered ([#16432](https://github.com/uutils/coreutils/issues/16432), [#16433](https://github.com/uutils/coreutils/pull/16433))
 
 ## uutils findutils (`xargs`, GNU findutils 4.10)
 

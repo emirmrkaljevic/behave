@@ -9,7 +9,7 @@ It treats the tool as a black box. It reads `--help` and the man page, generates
 
 ![behave recording jq and checking gojq against it](docs/demo.gif)
 
-I have used it on the Rust rewrites of GNU coreutils, findutils, sed and procps. So far that has led to 40 upstream bug reports and 47 fix PRs, 33 of them merged (as of 13 Nov 2026). The full list is in [upstream findings](docs/upstream-findings.md).
+I have used it on the Rust rewrites of GNU coreutils, findutils, sed and procps. So far that has led to 41 upstream bug reports and 48 fix PRs, 33 of them merged (as of 13 Nov 2026). The full list is in [upstream findings](docs/upstream-findings.md).
 
 ## Install
 
