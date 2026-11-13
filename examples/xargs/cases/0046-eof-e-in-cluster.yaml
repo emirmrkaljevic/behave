@@ -1,0 +1,12 @@
+name: eof e attached inside a short option cluster
+args:
+  - -recd
+stdin: |
+  ab cd ef
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ab
+  stderr: ""

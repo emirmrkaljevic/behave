@@ -911,14 +911,16 @@ behave run examples/readlink
 # readlink vs readlink: 45/45 passed, 0 failed, 0 skipped
 ```
 
-## `xargs/`: 44 recorded cases for GNU `xargs`
+## `xargs/`: 48 recorded cases for GNU `xargs`
 
 Argument building from stdin or `-a`/`--arg-file`: default `echo`, `-n`/`-L`/`-l` batching,
 `-d` and `-0` delimiters, `-I`/`-i`/`--replace` (including with the default command, which
 prints a blank line per item), shell-like quoting and backslash escapes, `-E`/`-e`/`--eof`
 (including `--eof -l` and `-e -l`, which still enable line mode because the optional EOF
-value is not taken from the next option), `--`, a custom `printf` command, Unicode and CRLF
-input, and a hyphen-leading arg-file name. Error paths: unknown options, bad `-n`/`-L`/`-s`
+value is not taken from the next option), `-e=cd` keeping the `=` in the EOF string, `-e`
+attached inside a cluster (`-recd`), a command argument that looks like `-e` left alone,
+`-d -` splitting on dashes, `--`, a custom `printf` command, Unicode and CRLF input, and a
+hyphen-leading arg-file name. Error paths: unknown options, bad `-n`/`-L`/`-s`
 values, a missing `-I` value, an empty `-d`, a missing arg file, and a missing command.
 `--help`, `--version`, `--show-limits`, `-t`, `-p`, `-o`, `-P` greater than 1, and `-s` size
 limits that depend on ARG_MAX are left out so the suite stays deterministic and CI-safe.
@@ -927,7 +929,7 @@ Recorded with GNU findutils 4.10.0. This suite is what found [uutils/findutils#9
 
 ```sh
 behave run examples/xargs
-# xargs vs xargs: 44/44 passed, 0 failed, 0 skipped
+# xargs vs xargs: 48/48 passed, 0 failed, 0 skipped
 ```
 
 

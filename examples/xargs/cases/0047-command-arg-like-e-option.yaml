@@ -1,0 +1,13 @@
+name: command argument that looks like -e is passed through
+args:
+  - echo
+  - -ecd
+stdin: |
+  a b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    -ecd a b
+  stderr: ""

@@ -1,0 +1,12 @@
+name: eof e attached value keeps the equals sign
+args:
+  - -e=cd
+stdin: |
+  ab =cd ef
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    ab
+  stderr: ""
