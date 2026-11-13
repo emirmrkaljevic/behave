@@ -1,13 +1,13 @@
 ---
 title: "Case study: compatibility bugs found in uutils coreutils"
-description: Black-box testing of uutils coreutils (Rust) against GNU coreutils 9.12 with behave led to 17 bug reports and 24 fix PRs.
+description: Black-box testing of uutils coreutils (Rust) against GNU coreutils 9.12 with behave led to 33 bug reports and 29 merged fix PRs, plus findings in findutils, sed and procps.
 ---
 
 # Case study: uutils coreutils vs GNU coreutils
 
 [uutils coreutils](https://github.com/uutils/coreutils) is a Rust rewrite of GNU coreutils that aims to be a drop in replacement. behave recorded GNU coreutils 9.12 and replayed the cases against uutils built from main.
 
-As of Oct 27, 2026 this led to **17 bug reports and 24 fix PRs upstream, 11 of them merged**. Every issue and PR says it was found with behave and each fix comes with a test.
+As of 13 Nov 2026 this led to **33 bug reports and 40 fix PRs in uutils coreutils, 29 of them merged**, plus further reports in findutils, sed and procps. The [full list](upstream-findings.html) has current counts. Every issue and PR says it was found with behave, and each fix comes with a test.
 
 ## Examples of what it found
 

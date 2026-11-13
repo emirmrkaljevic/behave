@@ -3,81 +3,36 @@
 <p align="center"><a href="https://skintoscan.com/#packages"><img src=".github/assets/skintoscan-support.svg" width="684" alt="Support my open-source work: get a SkinToScan pack"></a><br><sub>If you find this useful, you can support me by getting a SkinToScan pack, my other project. It's a one-time purchase that directly funds my open-source work.</sub></p>
 <p align="center"><a href="https://skintoscan.com/checkout/?add-to-cart=138"><img src=".github/assets/skintoscan-pack-1.svg" width="220" alt="Buy Single Picture Check, €4.49"></a> <a href="https://skintoscan.com/checkout/?add-to-cart=139"><img src=".github/assets/skintoscan-pack-5.svg" width="220" alt="Buy 5 Picture Pack, €19.99 (popular)"></a> <a href="https://skintoscan.com/checkout/?add-to-cart=140"><img src=".github/assets/skintoscan-pack-15.svg" width="220" alt="Buy 15 Picture Pack, €54.99"></a></p>
 
-**Record how any CLI behaves. Prove your rewrite behaves the same.**
+behave records how a command-line tool actually behaves, then replays those cases against another implementation. I built it for CLI compatibility testing: checking a Rust or Go port against the original, or catching a refactor that changed visible behaviour.
 
-Proof: running it against [uutils coreutils](https://github.com/uutils/coreutils) (the Rust rewrite of GNU coreutils) has so far led to 30 upstream bug reports and 37 fix PRs, 21 of them merged (as of Nov 6, 2026). See [what it found](#what-it-found-on-day-one). The same process on [uutils findutils](https://github.com/uutils/findutils) found two `xargs` bugs against GNU findutils 4.10 ([#984](https://github.com/uutils/findutils/issues/984), [#985](https://github.com/uutils/findutils/issues/985)), and on [uutils procps](https://github.com/uutils/procps) found `sysctl -o`/`-x` swallowing the next key ([#835](https://github.com/uutils/procps/issues/835)) and `pmap -XX` being rejected as a repeated `-X` ([#836](https://github.com/uutils/procps/issues/836)).
-
-`behave` treats a command-line tool as a black box. It reads `--help` (and the man page),
-generates hundreds of test cases (every flag, flag pairs, every value the help lists for a flag,
-edge-case stdin, file arguments, bad values, missing files), records what the tool actually does (stdout, stderr, exit code),
-and replays those cases against another implementation.
+It treats the tool as a black box. It reads `--help` and the man page, generates cases (flags, flag pairs, listed values, odd stdin, missing files, bad values), records stdout, stderr and the exit code, and diffs a second binary against that recording.
 
 ![behave recording jq and checking gojq against it](docs/demo.gif)
 
-Use it when you are:
+I have used it on the Rust rewrites of GNU coreutils, findutils, sed and procps. So far that has led to 40 upstream bug reports and 47 fix PRs, 33 of them merged (as of 13 Nov 2026). The full list is in [upstream findings](docs/upstream-findings.md).
 
-- porting a tool to Rust or Go and want proof that the port is compatible,
-- refactoring or upgrading a CLI and want a regression net in a few seconds,
-- comparing two implementations of the same tool.
+## Install
 
-## Porting a CLI?
-
-If you are rewriting an existing command-line tool in Rust or Go, behave gives you a compatibility
-suite without reading the original source. Three commands:
-
-```sh
-behave probe sort                      # record what the original does, case by case
-behave run behave-sort                 # make sure the recording is stable
-behave diff behave-sort --impl ./target/release/sort   # every place your port differs
-```
-
-This is how it led to 30 bug reports and 37 fix PRs in uutils coreutils (24 merged so far).
-A second, ready to run pair: `behave diff examples/jq --impl gojq` passes 29 of 33 jq 1.7 cases,
-and the 4 differences are all error wording on stderr (see [examples/jq](examples/jq/)).
-
-> Status: early (v0.1). CLI and MCP server work; feedback welcome.
-
-## Quick start
-
-Install with Homebrew (macOS and Linux), download a binary from [Releases](https://github.com/emirmrkaljevic/behave/releases), or use `go install`:
+Homebrew (macOS and Linux), a binary from [Releases](https://github.com/emirmrkaljevic/behave/releases), or `go install`:
 
 ```sh
 brew install emirmrkaljevic/tap/behave
 # or: go install github.com/emirmrkaljevic/behave/cmd/behave@latest
+```
 
-# 1. record how GNU sort behaves (writes ./behave-sort/)
+## Example
+
+Record GNU `sort`, check that the recording is stable, then compare a rewrite:
+
+```sh
 behave probe sort
-
-# 2. check that the recording is stable
 behave run behave-sort
-
-# 3. compare another implementation against it
 behave diff behave-sort --impl ./target/release/sort --skip-tag meta
 ```
 
-Or try the committed examples first: `behave run examples/cut` (27 GNU `cut` cases),
-`behave run examples/paste` (18 GNU `paste` cases), `behave run examples/join` (26 GNU `join` cases), `behave run examples/nl` (26 GNU `nl` cases), `behave run examples/fold` (28 GNU `fold` cases), `behave run examples/head` (24 GNU `head` cases), `behave run examples/expand` (21 GNU `expand` cases), `behave run examples/unexpand` (26 GNU `unexpand` cases), `behave run examples/tr` (29 GNU `tr` cases), `behave run examples/comm` (30 GNU `comm` cases), `behave run examples/uniq` (31 GNU `uniq` cases), `behave run examples/sort` (35 GNU `sort` cases), `behave run examples/cat` (39 GNU `cat` cases), `behave run examples/wc` (38 GNU `wc` cases), `behave run examples/tac` (33 GNU `tac` cases), `behave run examples/numfmt` (41 GNU `numfmt` cases), `behave run examples/od` (36 GNU `od` cases), `behave run examples/basenc` (35 GNU `basenc` cases), `behave run examples/seq` (39 GNU `seq` cases), `behave run examples/expr` (43 GNU `expr` cases), `behave run examples/printf` (38 GNU `printf` cases), `behave run examples/factor` (31 GNU `factor` cases), `behave run examples/cksum` (35 GNU 9.12 `cksum` cases), `behave run examples/md5sum` (37 GNU 9.12 `md5sum` cases), `behave run examples/tail` (33 GNU 9.12 `tail` cases), `behave run examples/base64` (34 GNU 9.12 `base64` cases), `behave run examples/base32` (36 GNU 9.12 `base32` cases), `behave run examples/basename` (35 GNU `basename` cases), `behave run examples/dirname` (26 GNU `dirname` cases), `behave run examples/fmt` (36 GNU 9.12 `fmt` cases), `behave run examples/realpath` (38 GNU 9.12 `realpath` cases), `behave run examples/pr` (40 GNU 9.12 `pr` cases), `behave run examples/tee` (38 GNU 9.12 `tee` cases), `behave run examples/split` (40 GNU 9.12 `split` cases), `behave run examples/tsort` (33 GNU 9.12 `tsort` cases), `behave run examples/csplit` (37 GNU 9.12 `csplit` cases), `behave run examples/ptx` (36 GNU 9.12 `ptx` cases), `behave run examples/echo` (44 GNU 9.12 `echo` cases), `behave run examples/readlink` (45 GNU 9.12 `readlink` cases), `behave run examples/xargs` (48 GNU findutils 4.10 `xargs` cases), `behave run examples/sysctl` (31 procps-ng 4.0.4 `sysctl` cases), or `behave run examples/jq` (33 jq 1.7 cases); see [examples/](examples/).
+`--skip-tag meta` drops `--help` and `--version`, which a rewrite is allowed to word differently.
 
-For tools that need a positional argument (a filter, a pattern, a field list), give samples:
-
-```sh
-behave probe jq --arg . --arg '.a' --arg '.[]' --arg 'map(.+1)' --arg keys
-behave diff behave-jq --impl gojq --ignore-stderr
-```
-
-When the help text lists the values a flag accepts, `probe` adds one case per value next to the
-invalid-value cases. It understands GNU style (`WHEN can be: auto, always, never`,
-`--sort=WORD ... to WORD: none (-U), size (-S), ...`, `The WHEN argument defaults to 'always' and can
-also be 'auto' or 'never'.`), clap's `[possible values: ...]`, argparse's `{json,yaml}` and
-`<fast|safe>`. It only keeps plain lowercase lists it can tie to that flag. `--dry-run` shows what it found:
-
-```
-$ behave probe ls --dry-run
-       --color                      WHEN  {always,auto,never}
-       --sort                       WORD  {none,size,time,version,extension,name,width}
-```
-
-Example output (abridged):
+A failing case looks like this (abridged):
 
 ```
 ✗ flag --output-delimiter, value -1, arg -f1  0135-flag-output-delimiter-value-1-arg-f1.yaml
@@ -94,183 +49,37 @@ flags fully compatible: 9 of 10
 cut vs ./uu/cut: 172/175 passed, 3 failed, 0 skipped  (differs in: exit 2, stdout 3)  [0.1s]
 ```
 
-## What it found on day one
+The repo also ships ready-made specs under [examples/](examples/). `behave run examples/cut` is a small GNU `cut` suite; `behave diff examples/jq --impl gojq` checks gojq against jq 1.7. The full list, with case counts, is in [docs/examples.md](docs/examples.md).
 
-Run on this machine against real tools, generated cases only, `--help`/`--version` excluded:
+For tools that need a positional argument, pass samples with `--arg`:
 
-| original | candidate | cases | pass | notable differences |
-|---|---|---|---|---|
-| GNU wc 9.7 | uutils wc 0.12.0 | 63 | 63 | none |
-| GNU head | uutils head | 51 | 51 | none |
-| GNU uniq | uutils uniq | 100 | 100 | none |
-| GNU tr | uutils tr | 63 | 63 | none |
-| GNU tac 9.12 | uutils tac (main) | 36 | 35 | `-s -1` rejected (value starting with `-`, [#15497](https://github.com/uutils/coreutils/issues/15497), now fixed) |
-| GNU tail 9.12 | uutils tail (main) | 60 | 58 | `-c` with no count accepted ([#15528](https://github.com/uutils/coreutils/issues/15528), now fixed); file names like `007` printed as `7` ([#15533](https://github.com/uutils/coreutils/issues/15533), now fixed in tail); a hand-added `-cf FILE` case is rejected ([#15517](https://github.com/uutils/coreutils/issues/15517)) |
-| GNU cut | uutils cut | 175 | 172 | `--output-delimiter -1` rejected (value starting with `-`) |
-| GNU base64 | uutils base64 | 36 | 31 | `-d` on invalid input: GNU prints the bytes decoded so far, uutils prints nothing |
-| GNU sort | uutils sort | 290 | ~260† | usage errors exit 1 instead of 2; `--debug` underline width; `--check --merge` |
-| jq 1.7 | gojq 0.12.19 | 596 | 331* | unsupported flags (`--seq`, `--ascii-output`, …), key order, big-number formatting |
-
-\* with `--ignore-stderr`; error message wording differs almost everywhere.
-† varies by one or two: some `--random-sort` cases are only sometimes detected as flaky with tiny inputs.
-
-Many of these are deliberate design choices, not bugs. behave just makes them visible.
-Record from the release the rewrite actually targets. uutils follows the newest GNU release, and
-GNU 9.12 prints `==> 'standard input' <==` in `tail -v` headers where 9.7 prints no quotes, so a
-spec recorded from an older GNU reports differences that are really GNU changes. `behave.yaml`
-keeps the `--version` line of the recorded tool, and `run`/`diff` print it next to the version
-being replayed.
-Some were real bugs and are now fixed upstream:
-
-- uutils `cut --output-delimiter -x` ([uutils/coreutils#15341](https://github.com/uutils/coreutils/issues/15341), fixed in #15345)
-- uutils `sort --check --merge` ignored the check ([uutils/coreutils#15380](https://github.com/uutils/coreutils/issues/15380), fixed in [#15381](https://github.com/uutils/coreutils/pull/15381))
-- uutils `tac -s -1` rejected a separator starting with `-` ([uutils/coreutils#15497](https://github.com/uutils/coreutils/issues/15497), fixed in [#15498](https://github.com/uutils/coreutils/pull/15498))
-- uutils `tail 007` printed the missing file as `'7'` ([uutils/coreutils#15533](https://github.com/uutils/coreutils/issues/15533), fixed for tail in [#15534](https://github.com/uutils/coreutils/pull/15534); the same bug in other utilities is being fixed one by one: `tac` in [#15541](https://github.com/uutils/coreutils/pull/15541) (merged), `nl` in [#15544](https://github.com/uutils/coreutils/pull/15544) (merged), `md5sum`/`cksum` in [#15548](https://github.com/uutils/coreutils/pull/15548) (merged), `sort` in [#15565](https://github.com/uutils/coreutils/pull/15565) (merged), `shred` in [#15604](https://github.com/uutils/coreutils/pull/15604) (merged))
-- uutils bare `tail -c` and `tail +NUM` ignored `_POSIX2_VERSION` ([uutils/coreutils#15528](https://github.com/uutils/coreutils/issues/15528), fixed in [#15529](https://github.com/uutils/coreutils/pull/15529))
-- uutils `sort -c dir` exited 0 without a message instead of reporting the read error ([uutils/coreutils#15615](https://github.com/uutils/coreutils/issues/15615), fixed in [#15616](https://github.com/uutils/coreutils/pull/15616))
-- uutils `fmt d a.txt` stopped at the directory with a bare `read error` and never formatted `a.txt` ([uutils/coreutils#15922](https://github.com/uutils/coreutils/issues/15922), fixed in [#15923](https://github.com/uutils/coreutils/pull/15923))
-- uutils `od -t x0` (and `d0`, `u0`, `f0`) silently used the default size, where GNU rejects a 0-byte type, caught by `examples/od` ([uutils/coreutils#16085](https://github.com/uutils/coreutils/issues/16085), fixed in [#16086](https://github.com/uutils/coreutils/pull/16086))
-
-Still open: a few error messages that lose the file name, mostly caught by the "file with trailing slash" probe case added in v0.1.7:
-
-- `cp f/ dest` prints `Not a directory (os error 20)` instead of `cannot stat 'f/': Not a directory` ([#15691](https://github.com/uutils/coreutils/issues/15691), fix in [#15692](https://github.com/uutils/coreutils/pull/15692))
-- `paste` open and read errors without the file name ([#15254](https://github.com/uutils/coreutils/issues/15254), fix in [#15642](https://github.com/uutils/coreutils/pull/15642))
-- `shred dir` says `Not a file` instead of `failed to open for writing: Is a directory` ([#15630](https://github.com/uutils/coreutils/issues/15630), fix in [#15631](https://github.com/uutils/coreutils/pull/15631))
-- `mv missing/ g` says `Not a directory` and `mv d/f g` with an unsearchable `d` says `No such file or directory`, where GNU gives the real reason ([#15704](https://github.com/uutils/coreutils/issues/15704), fix in [#15705](https://github.com/uutils/coreutils/pull/15705))
-- `ln f/ link` and `ln missing link` say `failed to create hard link 'link' => ...` instead of naming the source with `failed to access 'f/'` ([#15713](https://github.com/uutils/coreutils/issues/15713), fix in [#15714](https://github.com/uutils/coreutils/pull/15714))
-- `mv a missing/b` and `mv a ro/b` print only `No such file or directory (os error 2)` or `Permission denied (os error 13)`, where GNU says `cannot move 'a' to 'missing/b': ...` ([#15721](https://github.com/uutils/coreutils/issues/15721), fix in [#15722](https://github.com/uutils/coreutils/pull/15722))
-- `mv -T f d` (file onto an existing directory) prints `cannot overwrite directory 'd' with non-directory` without the source, where GNU adds `'f'` ([#15724](https://github.com/uutils/coreutils/issues/15724), fix in [#15725](https://github.com/uutils/coreutils/pull/15725))
-- `mv -n z z` (and `--update=none`) fails with `'z' and 'z' are the same file`, where GNU skips the move and exits 0 ([#15824](https://github.com/uutils/coreutils/issues/15824), fixed in [#15825](https://github.com/uutils/coreutils/pull/15825))
-- `chown 1000 f/` and `chgrp 1000 missing` say `cannot dereference 'f/'`, where GNU says `cannot access` and keeps `cannot dereference` for dangling symlinks ([#15867](https://github.com/uutils/coreutils/issues/15867), fix in [#15868](https://github.com/uutils/coreutils/pull/15868))
-- `chmod -v 644 missing` prints nothing on stdout, and for a dangling symlink a made-up `from 0000 (---------) to 1500 (r-x-----T)` line, where GNU prints `'missing' could not be accessed` ([#15883](https://github.com/uutils/coreutils/issues/15883), fix in [#15884](https://github.com/uutils/coreutils/pull/15884))
-- `tr a '[:alpha:]'` prints the set2 class error on one line and says `set2`, where GNU splits it over two lines and says `string2` ([#15948](https://github.com/uutils/coreutils/issues/15948), fix in [#15949](https://github.com/uutils/coreutils/pull/15949))
-- `uniq -f x` says `Invalid argument for skip-fields: x`, where GNU says `x: invalid number of fields to skip` (same for `-s` and `-w`), caught by the new `examples/uniq` spec ([#15970](https://github.com/uutils/coreutils/issues/15970), fix in [#15971](https://github.com/uutils/coreutils/pull/15971))
-- `sort -t ab` and `sort -t ''` word the bad separator errors differently from GNU, and `sort -c a b` adds a usage hint GNU doesn't print, caught by `examples/sort` ([#15975](https://github.com/uutils/coreutils/issues/15975), fix in [#15976](https://github.com/uutils/coreutils/pull/15976))
-- `od -A q` and `od -t x3` word the invalid radix and type string errors differently from GNU, caught by `examples/od` ([#16071](https://github.com/uutils/coreutils/issues/16071), fix in [#16072](https://github.com/uutils/coreutils/pull/16072))
-- `seq --foo` says `invalid floating point argument` and `seq -inf 1` prints `-inf` forever, because option-like arguments before the first operand are read as numbers where GNU treats them as options, caught by `examples/seq` ([#16113](https://github.com/uutils/coreutils/issues/16113), fixed in [#16114](https://github.com/uutils/coreutils/pull/16114))
-- `factor '30 '` and `factor $'\t30'` print factors where GNU rejects the argument, because every argument is trimmed while GNU skips only leading spaces, caught by `examples/factor` ([#16142](https://github.com/uutils/coreutils/issues/16142), fixed in [#16143](https://github.com/uutils/coreutils/pull/16143))
-- `md5sum -c` rejects the lines md5sum itself writes for names with a backslash or a newline (they start with `\`), and unescapes names on lines without that marker, caught by `examples/md5sum` ([#16166](https://github.com/uutils/coreutils/issues/16166), fixed in [#16167](https://github.com/uutils/coreutils/pull/16167))
-- `base64 -w 99999999999999999999` fails with `invalid wrap size` where GNU turns wrapping off for a size too large to represent, caught by `examples/base64` ([#16180](https://github.com/uutils/coreutils/issues/16180), fixed in [#16181](https://github.com/uutils/coreutils/pull/16181))
-- `base32 -d` (and `base64`/`basenc`) accepts a carriage return in encoded input where GNU rejects it unless `-i`, caught by `examples/base32` ([#16223](https://github.com/uutils/coreutils/issues/16223), fix in [#16224](https://github.com/uutils/coreutils/pull/16224))
-- `fmt -w 20` could print a line longer than 20 columns (e.g. `    at a narrow width`), because it sometimes broke a line too late, caught by `examples/fmt` ([#16190](https://github.com/uutils/coreutils/issues/16190), fix in [#16191](https://github.com/uutils/coreutils/pull/16191))
-- `realpath '' /usr` stopped with `error: error: invalid value for one of the arguments` and never printed `/usr`, while GNU reports `''` as a missing file and resolves the rest, caught by `examples/realpath` ([#16206](https://github.com/uutils/coreutils/issues/16206), fix in [#16207](https://github.com/uutils/coreutils/pull/16207))
-- `pr -o` indented body lines but not the page header (GNU pads the first blank separator line and the header text), caught by `examples/pr` ([#16211](https://github.com/uutils/coreutils/issues/16211), fix in [#16212](https://github.com/uutils/coreutils/pull/16212))
-
-The same approach on [uutils findutils](https://github.com/uutils/findutils) (`xargs`, GNU findutils 4.10) found:
-
-- `xargs -I`/`-i`/`--replace` with the default command printed the input items, where GNU prints a blank line per item, caught by `examples/xargs` ([#984](https://github.com/uutils/findutils/issues/984), fix in [#986](https://github.com/uutils/findutils/pull/986))
-- `xargs -a -foo` (and `-n`/`-s`/`-L`/`-d`/`-P` with a value starting with a dash) rejected the hyphen-leading value, caught by `examples/xargs` ([#985](https://github.com/uutils/findutils/issues/985), fix in [#987](https://github.com/uutils/findutils/pull/987))
-
-The same approach on [uutils procps](https://github.com/uutils/procps) (`sysctl` and `pmap`, procps-ng 4.0.4) found:
-
-- `sysctl -o kernel.ostype` and `sysctl -x kernel.ostype` treated the key as a value of the BSD no-op flags and printed help, where GNU prints the key, caught by `examples/sysctl` ([#835](https://github.com/uutils/procps/issues/835), fix in [#837](https://github.com/uutils/procps/pull/837))
-- `pmap -XX` was rejected as a repeated `-X`, where GNU uses `-XX` for the most detailed maps format ([#836](https://github.com/uutils/procps/issues/836), fix in [#838](https://github.com/uutils/procps/pull/838))
-
-## MCP server
-
-`behave mcp` serves the same features over stdio, so a coding assistant can explore the
-original tool, grow the spec while it works, and check its port after every change.
-
-```json
-{
-  "mcpServers": {
-    "behave": { "command": "behave", "args": ["mcp"] }
-  }
-}
+```sh
+behave probe jq --arg . --arg '.a' --arg keys
 ```
 
-| tool | what it does |
-|---|---|
-| `behave_exec` | run a command once in a temp dir, return exit/stdout/stderr (exploration) |
-| `behave_probe` | generate and record a spec from `--help` |
-| `behave_add_case` | add a case and record the original's behavior |
-| `behave_list_cases` | list cases, optionally by tag (`flag:--sort`, `manual`) |
-| `behave_diff` | replay against an implementation, return failing cases with diffs |
+Add a hand-written case with `behave add behave-cut --stdin 'a,b' -- -d, -f2`. The [commands and spec format](docs/usage.md) page covers the rest of the CLI, including `coverage` and JUnit output for CI.
 
-## Spec format
+## MCP (optional)
 
-A spec is a directory you can commit and review:
+`behave mcp` exposes the same probe, record and diff flow over stdio, if you want to drive it from an editor. Setup and tools are in [docs/mcp.md](docs/mcp.md).
 
-```
-behave-cut/
-  behave.yaml           # command, timeout, normalizers, recorded_from (--version line)
-  cases/
-    0001-help.yaml
-    0135-flag-output-delimiter-value-1-arg-f1.yaml
-    ...
-```
+## Limitations
 
-```yaml
-name: flag --output-delimiter, value -1, arg -f1
-args: [--output-delimiter, "-1", -f1]
-stdin: |
-  hello
-tags: [flag-value, "flag:--output-delimiter"]
-expect:
-  exit: 0
-  stdout: |
-    hello
-  stderr: ""
-```
+behave only runs the binaries you point it at, in a fresh temp directory. Do not probe tools that change things outside their working directory (package managers, `rm -rf` style tools) without `--skip-flag` and a sandbox.
 
-Cases can also set `env`, `files` (created in a fresh temp dir), and `timeout_ms`.
-Add your own with `behave add behave-cut --stdin 'a,b' -- -d, -f2`.
+Recordings are only as good as the original you pointed at. Record from the release the rewrite actually targets. GNU coreutils 9.12 and 9.7 already disagree on some `tail -v` headers. Cases that change between runs, such as `sort --random-sort`, are marked flaky and skipped. Some differences are deliberate design choices, not bugs.
 
-## How it stays deterministic
+Status: early (v0.1). The CLI works; feedback is welcome.
 
-- every case runs in a new temp directory with a fixed environment
-  (`LC_ALL=C.UTF-8`, `TZ=UTC`, `NO_COLOR=1`, `HOME`=temp dir)
-- input files get fixed modification times, and tools that read the current directory
-  (`ls`, `du`, `rg`; help text mentions "current directory" or recursion) get a small sample
-  tree (`--sample-files auto|on|off`) whose names, sizes and extensions sort differently,
-  so `ls --sort=size`, `ls -t`, `du --time` and `du -S` produce output worth comparing
-- each case is recorded 3 times; anything that changes between runs is marked `flaky`
-  and skipped (e.g. `sort --random-sort`)
-- normalizers remove noise before comparing: `ansi`, `workdir`, `cmd` (`jq:` vs `gojq:`),
-  `timestamp`, `hexaddr`, `duration`, `pid`, plus your own regex rules in `behave.yaml`
-- timeouts kill the whole process group
+## Docs
 
-## Commands
+- [Examples](docs/examples.md)
+- [What it found upstream](docs/upstream-findings.md)
+- [Commands, spec format and CI notes](docs/usage.md)
+- [MCP server](docs/mcp.md)
+- Guides: [testing a rewrite](https://emirmrkaljevic.github.io/behave/rewrite-compatibility.html), [golden tests](https://emirmrkaljevic.github.io/behave/golden-tests-cli.html)
 
-| command | what it does |
-|---|---|
-| `behave probe <cmd>` | discover flags, generate and record cases (`--arg`, `--inputs text\|json\|both`, `--max`, `--skip-flag`, `--sample-files`, `--dry-run`) |
-| `behave record <spec>` | re-record expectations from the original |
-| `behave add <spec> -- ARGS` | add one hand-written case |
-| `behave run <spec>` | replay against the original |
-| `behave diff <spec> --impl <bin>` | replay against another implementation (`--ignore-stderr`, `--ignore-exit`, `--tag`, `--skip-tag`, `--json`, `--junit file`, `-v`) |
-| `behave coverage <spec>` | which documented flags (from `--help`/man) the cases exercise (`--min PCT`, `--all`, `--json`) |
-| `behave normalizers` | list built-in normalizers |
-
-`run` and `diff` exit with 1 when any case fails, so they drop straight into CI. Pass `--junit report.xml` to write a JUnit XML report for CI dashboards (GitHub Actions, Jenkins, etc.).
-
-`coverage` tells you what a spec doesn't test yet. On the hand-picked `cut` example:
-
-```
-$ behave coverage examples/cut
-cut: 27 cases exercise 7 of 12 documented flags (58%)
-not exercised (5): -n --zero-terminated --help --version -M
-used but not in help: --no-such-flag
-```
-
-It reads flags the same way `probe` does, understands `--long=value`, unambiguous long prefixes and clustered short flags (`-sf1`), and exits 1 with `--min 80` when coverage drops below 80%.
-
-The repo ships a multi-stage `Dockerfile` that builds the binary and starts `behave mcp` on stdio (for Glama and other MCP registries that build from a Dockerfile).
-
-## Roadmap
-
-- more committed example specs (`head`, `tail`, `wc`, a `grep` subset vs ripgrep)
-- Homebrew tap
-
-## Safety
-
-behave only runs the binaries you point it at, in a temp directory. Don't probe tools that
-change things outside their working directory (package managers, `rm -rf`-style tools)
-without `--skip-flag` and a sandbox.
-
-## Links
-
-- MCP Registry name: `io.github.emirmrkaljevic/behave`
+MCP Registry name: `io.github.emirmrkaljevic/behave`
 
 ## License
 

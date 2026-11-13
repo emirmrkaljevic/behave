@@ -39,6 +39,6 @@ The recorded case directory is ordinary text. Commit it and run `behave run` or 
 
 ## Does this find real bugs?
 
-Run against uutils coreutils (the Rust rewrite of GNU coreutils), it led to 17 upstream bug reports and 24 fix PRs, 11 merged so far. See the [uutils case study](uutils-case-study.html).
+Run against the Rust rewrites of GNU coreutils, findutils, sed and procps, it has led to 40 upstream bug reports and 47 fix PRs, 33 of them merged as of 13 Nov 2026. See the [full list](upstream-findings.html) and the [uutils case study](uutils-case-study.html).
 
 [Back to behave](./) · [Source on GitHub](https://github.com/emirmrkaljevic/behave)
