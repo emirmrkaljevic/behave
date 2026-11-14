@@ -938,7 +938,8 @@ values with quotes and colons. Error paths: an unknown keyword (with `file:line`
 keyword without a value, a missing file, a directory, extra operands, `-p` with `-b`, and
 option errors. With `TERM=dumb` the default database matches no terminal, so the output
 is empty. Recorded with GNU coreutils 9.12; cases that print the built-in database are
-tagged `gnu-9.12` because its contents change between releases.
+tagged `gnu-9.12` because its contents change between releases. This suite found
+[uutils/coreutils#16462](https://github.com/uutils/coreutils/issues/16462) (unknown keyword error without `file:line`).
 
 ```sh
 behave run examples/dircolors
