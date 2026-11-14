@@ -5,15 +5,15 @@ description: Bug reports and fix PRs found by recording GNU tools with behave an
 
 # Upstream findings
 
-Running behave against Rust rewrites of GNU tools has led to 41 bug reports and 48 fix PRs, 33 of them merged, as of 13 Nov 2026. Each issue and PR notes that it was found with behave, and each fix includes a test.
+Running behave against Rust rewrites of GNU tools has led to 41 bug reports and 48 fix PRs, 34 of them merged, as of 14 Nov 2026. Each issue and PR notes that it was found with behave, and each fix includes a test.
 
 | project | reports | fix PRs | merged |
 |---|---:|---:|---:|
-| [uutils/coreutils](https://github.com/uutils/coreutils) | 34 | 41 | 29 |
+| [uutils/coreutils](https://github.com/uutils/coreutils) | 34 | 41 | 30 |
 | [uutils/findutils](https://github.com/uutils/findutils) | 3 | 3 | 1 |
 | [uutils/sed](https://github.com/uutils/sed) | 2 | 2 | 1 |
 | [uutils/procps](https://github.com/uutils/procps) | 2 | 2 | 2 |
-| total | 41 | 48 | 33 |
+| total | 41 | 48 | 34 |
 
 The extra coreutils PRs are follow-up fixes in other utilities for the same class of bug, for example numeric-looking file names after [tail #15533](https://github.com/uutils/coreutils/issues/15533).
 
@@ -65,6 +65,7 @@ Fixed:
 - `base64 -w 99999999999999999999` failed with `invalid wrap size` where GNU turns wrapping off ([#16180](https://github.com/uutils/coreutils/issues/16180), fixed in [#16181](https://github.com/uutils/coreutils/pull/16181))
 - `fmt -w 20` could print a line longer than 20 columns ([#16190](https://github.com/uutils/coreutils/issues/16190), fixed in [#16191](https://github.com/uutils/coreutils/pull/16191))
 - `ptx` input and output file errors quoted names that GNU leaves bare ([#16362](https://github.com/uutils/coreutils/issues/16362), fixed in [#16363](https://github.com/uutils/coreutils/pull/16363))
+- `readlink -f/-e/-m ''` resolves to the current directory and exits 0 ([#16418](https://github.com/uutils/coreutils/issues/16418), fixed in [#16419](https://github.com/uutils/coreutils/pull/16419))
 
 Open (each has a fix PR):
 
@@ -77,7 +78,6 @@ Open (each has a fix PR):
 - `pr -o` indented body lines but not the page header ([#16211](https://github.com/uutils/coreutils/issues/16211), [#16212](https://github.com/uutils/coreutils/pull/16212))
 - `base32 -d` (and `base64`/`basenc`) accepts a carriage return in encoded input where GNU rejects it unless `-i` ([#16223](https://github.com/uutils/coreutils/issues/16223), [#16224](https://github.com/uutils/coreutils/pull/16224))
 - `csplit --suffix-format` errors differ from GNU, and `%x` with a quote flag is accepted ([#16350](https://github.com/uutils/coreutils/issues/16350), [#16351](https://github.com/uutils/coreutils/pull/16351))
-- `readlink -f/-e/-m ''` resolves to the current directory and exits 0 ([#16418](https://github.com/uutils/coreutils/issues/16418), [#16419](https://github.com/uutils/coreutils/pull/16419))
 - `env` suggests `-S` for shebang lines after every missing program or option error, where GNU only does when the name contains whitespace ([#16423](https://github.com/uutils/coreutils/issues/16423), [#16424](https://github.com/uutils/coreutils/pull/16424))
 - `env -C` appends Rust's `(os error 2)` to the error when the directory can't be entered ([#16432](https://github.com/uutils/coreutils/issues/16432), [#16433](https://github.com/uutils/coreutils/pull/16433))
 

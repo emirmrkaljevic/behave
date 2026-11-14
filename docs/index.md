@@ -1,6 +1,6 @@
 ---
 title: behave, compatibility tests for CLI tools
-description: Record how any command-line tool behaves and check a rewrite or new version against it. Found 41 bugs in uutils rewrites, 33 fix PRs merged.
+description: Record how any command-line tool behaves and check a rewrite or new version against it. Found 41 bugs in uutils rewrites, 34 fix PRs merged.
 ---
 
 # Record how a CLI behaves, then check a rewrite against it
