@@ -58,6 +58,8 @@ jobs:
           ./behave run examples/readlink
           # env shell-quotes values since GNU 9.12 and has -a since 9.5
           ./behave run examples/env --skip-tag gnu-9.12 --skip-tag gnu-9.5
+          # the built-in dircolors database changes between releases
+          ./behave run examples/dircolors --skip-tag gnu-9.12
           ./behave run examples/xargs
           PATH="/usr/sbin:/sbin:$PATH" ./behave run examples/sysctl
           ./behave run examples/jq

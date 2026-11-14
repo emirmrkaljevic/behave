@@ -1,0 +1,21 @@
+name: database OPTIONS and COLOR keywords ignored
+args:
+  - -b
+  - db
+env:
+  TERM: xterm
+files:
+  db: |
+    TERM xterm
+    COLOR tty
+    OPTIONS -F -T 0
+    EIGHTBIT 1
+    DIR 01;34
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='di=01;34:';
+    export LS_COLORS
+  stderr: ""

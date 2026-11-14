@@ -1,0 +1,16 @@
+name: database comments and blank lines
+args:
+  - -b
+  - db
+env:
+  TERM: xterm
+files:
+  db: "# comment\n\nTERM xterm # trailing\nDIR 01;34 # dirs\n   \n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='di=01;34:';
+    export LS_COLORS
+  stderr: ""

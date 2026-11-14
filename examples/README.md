@@ -928,6 +928,23 @@ behave run examples/env
 # env vs env: 55/55 passed, 0 failed, 0 skipped
 ```
 
+## `dircolors/`: 46 recorded cases for GNU `dircolors`
+
+`-b`/`-c` and their long forms, the shell guessed from `SHELL` (bash, csh, tcsh, fish,
+unset), `-p` and `--print-ls-colors`, and custom databases from a file or stdin: `TERM`
+and `COLORTERM` filters with globs, comments and blank lines, every file-type keyword,
+case-insensitive keywords, ignored `COLOR`/`OPTIONS`/`EIGHTBIT`, extension entries,
+values with quotes and colons. Error paths: an unknown keyword (with `file:line`), a
+keyword without a value, a missing file, a directory, extra operands, `-p` with `-b`, and
+option errors. With `TERM=dumb` the default database matches no terminal, so the output
+is empty. Recorded with GNU coreutils 9.12; cases that print the built-in database are
+tagged `gnu-9.12` because its contents change between releases.
+
+```sh
+behave run examples/dircolors
+# dircolors vs dircolors: 46/46 passed, 0 failed, 0 skipped
+```
+
 ## `xargs/`: 48 recorded cases for GNU `xargs`
 
 Argument building from stdin or `-a`/`--arg-file`: default `echo`, `-n`/`-L`/`-l` batching,

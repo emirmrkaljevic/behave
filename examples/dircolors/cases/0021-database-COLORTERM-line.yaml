@@ -1,0 +1,19 @@
+name: database COLORTERM line
+args:
+  - -b
+  - db
+env:
+  COLORTERM: truecolor
+  TERM: dumb
+files:
+  db: |
+    COLORTERM ?*
+    DIR 01;34
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='di=01;34:';
+    export LS_COLORS
+  stderr: ""

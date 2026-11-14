@@ -1,0 +1,18 @@
+name: custom database csh
+args:
+  - -c
+  - db
+env:
+  TERM: xterm
+files:
+  db: |
+    TERM xterm
+    DIR 01;34
+    *.tar 01;31
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    setenv LS_COLORS 'di=01;34:*.tar=01;31:'
+  stderr: ""

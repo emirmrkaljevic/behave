@@ -1,0 +1,18 @@
+name: database without TERM lines applies to all
+args:
+  - -b
+  - db
+env:
+  TERM: xterm
+files:
+  db: |
+    DIR 01;34
+    FILE 00
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='di=01;34:fi=00:';
+    export LS_COLORS
+  stderr: ""

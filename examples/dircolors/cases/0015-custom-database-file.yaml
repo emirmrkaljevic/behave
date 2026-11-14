@@ -1,0 +1,21 @@
+name: custom database file
+args:
+  - -b
+  - db
+env:
+  TERM: xterm
+files:
+  db: |
+    TERM xterm
+    DIR 01;34
+    LINK 01;36
+    *.tar 01;31
+    .gz 01;31
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='di=01;34:ln=01;36:*.tar=01;31:*.gz=01;31:';
+    export LS_COLORS
+  stderr: ""

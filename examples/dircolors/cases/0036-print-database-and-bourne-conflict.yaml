@@ -1,0 +1,13 @@
+name: print database and bourne conflict
+args:
+  - -p
+  - -b
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: the options to output non shell syntax,
+    and to select a shell syntax are mutually exclusive
+    Try '$CMD --help' for more information.

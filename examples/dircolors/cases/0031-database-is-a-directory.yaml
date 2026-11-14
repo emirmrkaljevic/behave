@@ -1,0 +1,16 @@
+name: database is a directory
+args:
+  - -b
+  - d/
+env:
+  TERM: xterm
+files:
+  d/x: |
+    x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: d/: read error: Is a directory

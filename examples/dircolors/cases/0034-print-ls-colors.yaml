@@ -1,0 +1,12 @@
+name: print ls colors
+args:
+  - --print-ls-colors
+env:
+  TERM: xterm
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: "rs\t0\ndi\t01;34\nln\t01;36\nmh\t00\npi\t40;33\nso\t01;35\ndo\t01;35\nbd\t40;33;01\ncd\t40;33;01\nor\t40;31;01\nmi\t00\nsu\t37;41\nsg\t30;43\nca\t00\ntw\t30;42\now\t34;42\nst\t37;44\nex\t01;32\n*.7z\t01;31\n*.ace\t01;31\n*.alz\t01;31\n*.apk\t01;31\n*.arc\t01;31\n*.arj\t01;31\n*.bz\t01;31\n*.bz2\t01;31\n*.cab\t01;31\n*.cpio\t01;31\n*.crate\t01;31\n*.deb\t01;31\n*.drpm\t01;31\n*.dwm\t01;31\n*.dz\t01;31\n*.ear\t01;31\n*.egg\t01;31\n*.esd\t01;31\n*.gz\t01;31\n*.jar\t01;31\n*.lha\t01;31\n*.lrz\t01;31\n*.lz\t01;31\n*.lz4\t01;31\n*.lzh\t01;31\n*.lzma\t01;31\n*.lzo\t01;31\n*.pyz\t01;31\n*.rar\t01;31\n*.rpm\t01;31\n*.rz\t01;31\n*.sar\t01;31\n*.swm\t01;31\n*.t7z\t01;31\n*.tar\t01;31\n*.taz\t01;31\n*.tbz\t01;31\n*.tbz2\t01;31\n*.tgz\t01;31\n*.tlz\t01;31\n*.txz\t01;31\n*.tz\t01;31\n*.tzo\t01;31\n*.tzst\t01;31\n*.udeb\t01;31\n*.war\t01;31\n*.whl\t01;31\n*.wim\t01;31\n*.xz\t01;31\n*.z\t01;31\n*.zip\t01;31\n*.zoo\t01;31\n*.zst\t01;31\n*.avif\t01;35\n*.jpg\t01;35\n*.jpeg\t01;35\n*.jxl\t01;35\n*.mjpg\t01;35\n*.mjpeg\t01;35\n*.gif\t01;35\n*.bmp\t01;35\n*.pbm\t01;35\n*.pgm\t01;35\n*.ppm\t01;35\n*.tga\t01;35\n*.xbm\t01;35\n*.xpm\t01;35\n*.tif\t01;35\n*.tiff\t01;35\n*.png\t01;35\n*.svg\t01;35\n*.svgz\t01;35\n*.mng\t01;35\n*.pcx\t01;35\n*.mov\t01;35\n*.mpg\t01;35\n*.mpeg\t01;35\n*.m2v\t01;35\n*.mkv\t01;35\n*.webm\t01;35\n*.webp\t01;35\n*.ogm\t01;35\n*.mp4\t01;35\n*.m4v\t01;35\n*.mp4v\t01;35\n*.vob\t01;35\n*.qt\t01;35\n*.nuv\t01;35\n*.wmv\t01;35\n*.asf\t01;35\n*.rm\t01;35\n*.rmvb\t01;35\n*.flc\t01;35\n*.avi\t01;35\n*.fli\t01;35\n*.flv\t01;35\n*.gl\t01;35\n*.dl\t01;35\n*.xcf\t01;35\n*.xwd\t01;35\n*.yuv\t01;35\n*.cgm\t01;35\n*.emf\t01;35\n*.ogv\t01;35\n*.ogx\t01;35\n*.aac\t00;36\n*.au\t00;36\n*.flac\t00;36\n*.m4a\t00;36\n*.mid\t00;36\n*.midi\t00;36\n*.mka\t00;36\n*.mp3\t00;36\n*.mpc\t00;36\n*.ogg\t00;36\n*.ra\t00;36\n*.wav\t00;36\n*.oga\t00;36\n*.opus\t00;36\n*.spx\t00;36\n*.xspf\t00;36\n*~\t00;90\n*#\t00;90\n*.bak\t00;90\n*.crdownload\t00;90\n*.dpkg-dist\t00;90\n*.dpkg-new\t00;90\n*.dpkg-old\t00;90\n*.dpkg-tmp\t00;90\n*.old\t00;90\n*.orig\t00;90\n*.part\t00;90\n*.rej\t00;90\n*.rpmnew\t00;90\n*.rpmorig\t00;90\n*.rpmsave\t00;90\n*.swp\t00;90\n*.tmp\t00;90\n*.ucf-dist\t00;90\n*.ucf-new\t00;90\n*.ucf-old\t00;90\n"
+  stderr: ""

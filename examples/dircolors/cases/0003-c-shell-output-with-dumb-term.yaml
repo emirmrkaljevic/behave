@@ -1,0 +1,10 @@
+name: c shell output with dumb term
+args:
+  - -c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    setenv LS_COLORS ''
+  stderr: ""

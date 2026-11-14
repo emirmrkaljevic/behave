@@ -1,0 +1,11 @@
+name: bourne shell output with dumb term
+args:
+  - -b
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='';
+    export LS_COLORS
+  stderr: ""

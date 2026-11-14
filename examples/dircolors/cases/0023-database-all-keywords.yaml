@@ -1,0 +1,37 @@
+name: database all keywords
+args:
+  - -b
+  - db
+env:
+  TERM: xterm
+files:
+  db: |
+    TERM xterm
+    NORMAL 00
+    RESET 0
+    FILE 00
+    DIR 01;34
+    LINK 01;36
+    MULTIHARDLINK 00
+    FIFO 40;33
+    SOCK 01;35
+    DOOR 01;35
+    BLK 40;33;01
+    CHR 40;33;01
+    ORPHAN 40;31;01
+    MISSING 00
+    SETUID 37;41
+    SETGID 30;43
+    CAPABILITY 00
+    STICKY_OTHER_WRITABLE 30;42
+    OTHER_WRITABLE 34;42
+    STICKY 37;44
+    EXEC 01;32
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='no=00:rs=0:fi=00:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
+    export LS_COLORS
+  stderr: ""

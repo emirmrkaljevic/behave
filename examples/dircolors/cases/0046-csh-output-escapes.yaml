@@ -1,0 +1,17 @@
+name: csh output escapes
+args:
+  - -c
+  - db
+env:
+  TERM: xterm
+files:
+  db: |
+    TERM xterm
+    *.it's 01
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    setenv LS_COLORS '*.it'\''s=01:'
+  stderr: ""

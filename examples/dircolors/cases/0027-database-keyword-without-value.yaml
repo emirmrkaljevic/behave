@@ -1,0 +1,17 @@
+name: database keyword without value
+args:
+  - -b
+  - db
+env:
+  TERM: xterm
+files:
+  db: |
+    TERM xterm
+    DIR
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: db:2: invalid line;  missing second token

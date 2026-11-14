@@ -1,0 +1,17 @@
+name: database from stdin
+args:
+  - -b
+  - '-'
+stdin: |
+  TERM xterm
+  DIR 01;34
+env:
+  TERM: xterm
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='di=01;34:';
+    export LS_COLORS
+  stderr: ""

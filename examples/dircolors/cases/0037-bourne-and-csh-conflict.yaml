@@ -1,0 +1,11 @@
+name: bourne and csh conflict
+args:
+  - -b
+  - -c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    setenv LS_COLORS ''
+  stderr: ""

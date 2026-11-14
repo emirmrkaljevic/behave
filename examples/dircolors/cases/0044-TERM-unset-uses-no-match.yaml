@@ -1,0 +1,18 @@
+name: TERM unset uses no match
+args:
+  - -b
+  - db
+env:
+  TERM: ""
+files:
+  db: |
+    TERM xterm
+    DIR 01
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='';
+    export LS_COLORS
+  stderr: ""

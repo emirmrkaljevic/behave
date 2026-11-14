@@ -1,0 +1,19 @@
+name: database keywords are case insensitive
+args:
+  - -b
+  - db
+env:
+  TERM: xterm
+files:
+  db: |
+    TERM xterm
+    dir 01;34
+    Link 01;36
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='di=01;34:ln=01;36:';
+    export LS_COLORS
+  stderr: ""

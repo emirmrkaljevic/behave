@@ -1,0 +1,19 @@
+name: extension entries without star
+args:
+  - -b
+  - db
+env:
+  TERM: xterm
+files:
+  db: |
+    TERM xterm
+    .c 01;33
+    .H 01
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='*.c=01;33:*.H=01:';
+    export LS_COLORS
+  stderr: ""

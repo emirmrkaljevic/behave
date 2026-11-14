@@ -1,0 +1,16 @@
+name: print database with operand
+args:
+  - -p
+  - db
+files:
+  db: |
+    DIR 01
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: extra operand ‘db’
+    file operands cannot be combined with --print-database (-p)
+    Try '$CMD --help' for more information.

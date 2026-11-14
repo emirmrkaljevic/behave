@@ -1,0 +1,10 @@
+name: ambiguous long option prefix
+args:
+  - --c
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    setenv LS_COLORS ''
+  stderr: ""

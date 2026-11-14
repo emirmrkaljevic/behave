@@ -1,0 +1,12 @@
+name: no SHELL and no option
+args: []
+env:
+  SHELL: ""
+  TERM: xterm
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    $CMD: no SHELL environment variable, and no shell type option given

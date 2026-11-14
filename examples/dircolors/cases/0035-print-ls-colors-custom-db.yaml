@@ -1,0 +1,17 @@
+name: print ls colors custom db
+args:
+  - --print-ls-colors
+  - db
+env:
+  TERM: xterm
+files:
+  db: |
+    TERM xterm
+    DIR 01;34
+    *.tar 01;31
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "di\t01;34\n*.tar\t01;31\n"
+  stderr: ""

@@ -1,0 +1,18 @@
+name: database term glob
+args:
+  - -b
+  - db
+env:
+  TERM: xterm-256color
+files:
+  db: |
+    TERM xterm*
+    DIR 01;34
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    LS_COLORS='di=01;34:';
+    export LS_COLORS
+  stderr: ""

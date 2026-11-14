@@ -1,0 +1,7 @@
+command: dircolors
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: dircolors (GNU coreutils) 9.12
