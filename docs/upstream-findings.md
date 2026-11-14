@@ -5,15 +5,15 @@ description: Bug reports and fix PRs found by recording GNU tools with behave an
 
 # Upstream findings
 
-Running behave against Rust rewrites of GNU tools has led to 42 bug reports and 49 fix PRs, 34 of them merged, as of 14 Nov 2026. Each issue and PR notes that it was found with behave, and each fix includes a test.
+Running behave against Rust rewrites of GNU tools has led to 43 bug reports and 50 fix PRs, 34 of them merged, as of 14 Nov 2026. Each issue and PR notes that it was found with behave, and each fix includes a test.
 
 | project | reports | fix PRs | merged |
 |---|---:|---:|---:|
-| [uutils/coreutils](https://github.com/uutils/coreutils) | 35 | 42 | 30 |
+| [uutils/coreutils](https://github.com/uutils/coreutils) | 36 | 43 | 30 |
 | [uutils/findutils](https://github.com/uutils/findutils) | 3 | 3 | 1 |
 | [uutils/sed](https://github.com/uutils/sed) | 2 | 2 | 1 |
 | [uutils/procps](https://github.com/uutils/procps) | 2 | 2 | 2 |
-| total | 42 | 49 | 34 |
+| total | 43 | 50 | 34 |
 
 The extra coreutils PRs are follow-up fixes in other utilities for the same class of bug, for example numeric-looking file names after [tail #15533](https://github.com/uutils/coreutils/issues/15533).
 
@@ -81,6 +81,7 @@ Open (each has a fix PR):
 - `env` suggests `-S` for shebang lines after every missing program or option error, where GNU only does when the name contains whitespace ([#16423](https://github.com/uutils/coreutils/issues/16423), [#16424](https://github.com/uutils/coreutils/pull/16424))
 - `env -C` appends Rust's `(os error 2)` to the error when the directory can't be entered ([#16432](https://github.com/uutils/coreutils/issues/16432), [#16433](https://github.com/uutils/coreutils/pull/16433))
 - `dircolors` reports an unknown database keyword without the `file:line` prefix GNU prints ([#16462](https://github.com/uutils/coreutils/issues/16462), [#16463](https://github.com/uutils/coreutils/pull/16463))
+- `dircolors` rejects a directory operand with its own message and exit 2, GNU prints `read error: Is a directory` and exits 1 ([#16470](https://github.com/uutils/coreutils/issues/16470), [#16471](https://github.com/uutils/coreutils/pull/16471))
 
 ## uutils findutils (`xargs`, GNU findutils 4.10)
 

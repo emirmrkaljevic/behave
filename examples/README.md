@@ -939,7 +939,8 @@ keyword without a value, a missing file, a directory, extra operands, `-p` with 
 option errors. With `TERM=dumb` the default database matches no terminal, so the output
 is empty. Recorded with GNU coreutils 9.12; cases that print the built-in database are
 tagged `gnu-9.12` because its contents change between releases. This suite found
-[uutils/coreutils#16462](https://github.com/uutils/coreutils/issues/16462) (unknown keyword error without `file:line`).
+[uutils/coreutils#16462](https://github.com/uutils/coreutils/issues/16462) (unknown keyword error without `file:line`)
+and [#16470](https://github.com/uutils/coreutils/issues/16470) (directory operand exit status).
 
 ```sh
 behave run examples/dircolors
