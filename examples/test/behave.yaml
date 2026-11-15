@@ -1,0 +1,7 @@
+command: test
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+  - cmd
+recorded_from: test (GNU coreutils) 9.12

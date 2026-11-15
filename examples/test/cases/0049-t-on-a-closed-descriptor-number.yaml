@@ -1,0 +1,10 @@
+name: -t on a closed descriptor number
+args:
+  - -t
+  - "9"
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

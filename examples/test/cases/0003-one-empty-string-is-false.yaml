@@ -1,0 +1,9 @@
+name: one empty string is false
+args:
+  - ""
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

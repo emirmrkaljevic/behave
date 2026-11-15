@@ -1,0 +1,11 @@
+name: -lt negative numbers
+args:
+  - "-5"
+  - -lt
+  - "-3"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

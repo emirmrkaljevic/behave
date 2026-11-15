@@ -1,0 +1,11 @@
+name: -eq equal integers
+args:
+  - "10"
+  - -eq
+  - "10"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

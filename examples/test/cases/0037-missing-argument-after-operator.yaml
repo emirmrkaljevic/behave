@@ -1,0 +1,11 @@
+name: missing argument after operator
+args:
+  - x
+  - -a
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: missing argument after ‘-a’

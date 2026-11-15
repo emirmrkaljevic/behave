@@ -1,0 +1,13 @@
+name: -nt with missing file
+args:
+  - f
+  - -nt
+  - missing
+files:
+  f: x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

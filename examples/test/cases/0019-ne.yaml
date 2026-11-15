@@ -1,0 +1,11 @@
+name: -ne
+args:
+  - "1"
+  - -ne
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

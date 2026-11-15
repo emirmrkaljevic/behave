@@ -1,0 +1,12 @@
+name: three arguments with ! first
+args:
+  - '!'
+  - ""
+  - ""
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: missing argument after ‘’

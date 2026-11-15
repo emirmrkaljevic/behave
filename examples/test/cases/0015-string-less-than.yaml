@@ -1,0 +1,11 @@
+name: string less than
+args:
+  - abc
+  - <
+  - abd
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

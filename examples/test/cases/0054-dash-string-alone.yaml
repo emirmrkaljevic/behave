@@ -1,0 +1,9 @@
+name: dash string alone
+args:
+  - '-'
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

@@ -947,6 +947,21 @@ behave run examples/dircolors
 # dircolors vs dircolors: 46/46 passed, 0 failed, 0 skipped
 ```
 
+## `test/`: 54 recorded cases for GNU `test`
+
+Zero, one, two, three and four argument forms, `!`, string tests (`-n`, `-z`, `=`, `==`,
+`!=`, `<`, `>`), integer comparisons with leading zeros, signs, blanks and values past
+64 bits, `-l STRING` as an integer operand, `-a`/`-o` precedence, parentheses, file tests
+(`-e`, `-f`, `-d`, `-s`, `-r`, `-ef`, `-nt`, `-ot`) and `-t`. A lone `--help` or
+`--version` is just a non-empty string for `test`. Error paths: invalid integers, an
+unbalanced parenthesis, unknown unary and binary operators, an extra argument and a
+missing operand. Recorded with GNU coreutils 9.12.
+
+```sh
+behave run examples/test
+# test vs test: 54/54 passed, 0 failed, 0 skipped
+```
+
 ## `xargs/`: 48 recorded cases for GNU `xargs`
 
 Argument building from stdin or `-a`/`--arg-file`: default `echo`, `-n`/`-L`/`-l` batching,

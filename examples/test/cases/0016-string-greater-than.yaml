@@ -1,0 +1,11 @@
+name: string greater than
+args:
+  - b
+  - '>'
+  - a
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

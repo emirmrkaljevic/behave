@@ -1,0 +1,12 @@
+name: empty integer
+args:
+  - ""
+  - -eq
+  - "0"
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: invalid integer ‘’

@@ -1,0 +1,11 @@
+name: -ge
+args:
+  - "3"
+  - -ge
+  - "3"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

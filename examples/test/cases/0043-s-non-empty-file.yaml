@@ -1,0 +1,12 @@
+name: -s non-empty file
+args:
+  - -s
+  - f
+files:
+  f: hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

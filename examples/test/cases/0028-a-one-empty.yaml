@@ -1,0 +1,11 @@
+name: -a one empty
+args:
+  - x
+  - -a
+  - ""
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

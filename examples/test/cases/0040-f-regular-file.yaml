@@ -1,0 +1,12 @@
+name: -f regular file
+args:
+  - -f
+  - f
+files:
+  f: hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

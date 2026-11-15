@@ -1,0 +1,12 @@
+name: binary operator expected
+args:
+  - a
+  - b
+  - c
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: ‘b’: binary operator expected

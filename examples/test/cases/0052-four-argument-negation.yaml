@@ -1,0 +1,12 @@
+name: four argument negation
+args:
+  - '!'
+  - x
+  - =
+  - "y"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

@@ -1,0 +1,11 @@
+name: -t invalid fd
+args:
+  - -t
+  - abc
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: invalid integer ‘abc’

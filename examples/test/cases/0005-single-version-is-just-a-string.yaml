@@ -1,0 +1,9 @@
+name: single --version is just a string
+args:
+  - --version
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

@@ -1,0 +1,11 @@
+name: string not equals
+args:
+  - abc
+  - '!='
+  - abd
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

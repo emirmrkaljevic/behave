@@ -1,0 +1,11 @@
+name: unary operator expected
+args:
+  - -bogus
+  - x
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: missing argument after ‘x’

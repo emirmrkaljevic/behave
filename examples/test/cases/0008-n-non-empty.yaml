@@ -1,0 +1,10 @@
+name: -n non-empty
+args:
+  - -n
+  - abc
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

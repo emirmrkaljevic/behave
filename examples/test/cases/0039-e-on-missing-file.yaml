@@ -1,0 +1,10 @@
+name: -e on missing file
+args:
+  - -e
+  - missing
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

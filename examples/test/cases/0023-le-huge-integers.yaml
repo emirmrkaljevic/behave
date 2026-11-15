@@ -1,0 +1,11 @@
+name: -le huge integers
+args:
+  - "99999999999999999999"
+  - -le
+  - "100000000000000000000"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

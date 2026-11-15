@@ -1,0 +1,13 @@
+name: -ef same file
+args:
+  - f
+  - -ef
+  - f
+files:
+  f: x
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

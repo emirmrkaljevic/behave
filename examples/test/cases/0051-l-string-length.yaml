@@ -1,0 +1,12 @@
+name: -l string length
+args:
+  - -l
+  - abc
+  - -eq
+  - "3"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

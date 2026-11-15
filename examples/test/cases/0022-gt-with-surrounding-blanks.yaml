@@ -1,0 +1,11 @@
+name: -gt with surrounding blanks
+args:
+  - ' 4 '
+  - -gt
+  - "3"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

@@ -1,0 +1,12 @@
+name: -e on existing file
+args:
+  - -e
+  - f
+files:
+  f: hi
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

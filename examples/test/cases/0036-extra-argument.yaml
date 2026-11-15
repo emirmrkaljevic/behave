@@ -1,0 +1,13 @@
+name: extra argument
+args:
+  - a
+  - =
+  - b
+  - c
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: extra argument ‘c’

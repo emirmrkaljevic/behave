@@ -1,0 +1,13 @@
+name: missing closing paren with operator
+args:
+  - (
+  - x
+  - =
+  - x
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: ‘)’ expected

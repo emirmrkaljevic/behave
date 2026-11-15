@@ -1,0 +1,15 @@
+name: parentheses
+args:
+  - (
+  - ""
+  - -o
+  - x
+  - )
+  - -a
+  - "y"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

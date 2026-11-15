@@ -1,0 +1,13 @@
+name: -a binds tighter than -o
+args:
+  - x
+  - -o
+  - ""
+  - -a
+  - ""
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

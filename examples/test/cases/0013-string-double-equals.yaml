@@ -1,0 +1,11 @@
+name: string double equals
+args:
+  - abc
+  - ==
+  - abc
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

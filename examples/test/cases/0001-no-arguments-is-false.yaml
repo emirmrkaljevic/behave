@@ -1,0 +1,8 @@
+name: no arguments is false
+args: []
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

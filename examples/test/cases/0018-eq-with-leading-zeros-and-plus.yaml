@@ -1,0 +1,11 @@
+name: -eq with leading zeros and plus
+args:
+  - "007"
+  - -eq
+  - "+7"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

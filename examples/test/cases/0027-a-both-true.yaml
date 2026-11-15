@@ -1,0 +1,11 @@
+name: -a both true
+args:
+  - x
+  - -a
+  - "y"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

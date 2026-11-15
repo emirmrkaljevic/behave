@@ -1,0 +1,10 @@
+name: negated non-empty string
+args:
+  - '!'
+  - x
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: ""

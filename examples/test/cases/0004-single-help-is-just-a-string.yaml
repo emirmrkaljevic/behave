@@ -1,0 +1,9 @@
+name: single --help is just a string
+args:
+  - --help
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: ""
+  stderr: ""

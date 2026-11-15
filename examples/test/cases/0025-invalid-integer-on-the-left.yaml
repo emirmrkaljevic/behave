@@ -1,0 +1,12 @@
+name: invalid integer on the left
+args:
+  - "1.5"
+  - -lt
+  - "2"
+tags:
+  - manual
+expect:
+  exit: 2
+  stdout: ""
+  stderr: |
+    $CMD: invalid integer ‘1.5’
