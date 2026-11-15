@@ -955,7 +955,8 @@ Zero, one, two, three and four argument forms, `!`, string tests (`-n`, `-z`, `=
 (`-e`, `-f`, `-d`, `-s`, `-r`, `-ef`, `-nt`, `-ot`) and `-t`. A lone `--help` or
 `--version` is just a non-empty string for `test`. Error paths: invalid integers, an
 unbalanced parenthesis, unknown unary and binary operators, an extra argument and a
-missing operand. Recorded with GNU coreutils 9.12.
+missing operand. Recorded with GNU coreutils 9.12; the `<` and `>` cases are tagged
+`gnu-9.6`, the release that added those operators.
 
 ```sh
 behave run examples/test

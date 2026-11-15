@@ -5,6 +5,7 @@ args:
   - a
 tags:
   - manual
+  - gnu-9.6
 expect:
   exit: 0
   stdout: ""

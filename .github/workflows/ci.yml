@@ -60,7 +60,8 @@ jobs:
           ./behave run examples/env --skip-tag gnu-9.12 --skip-tag gnu-9.5
           # the built-in dircolors database changes between releases
           ./behave run examples/dircolors --skip-tag gnu-9.12
-          ./behave run examples/test
+          # test has the POSIX:2024 < and > string operators since GNU 9.6
+          ./behave run examples/test --skip-tag gnu-9.6
           ./behave run examples/xargs
           PATH="/usr/sbin:/sbin:$PATH" ./behave run examples/sysctl
           ./behave run examples/jq
