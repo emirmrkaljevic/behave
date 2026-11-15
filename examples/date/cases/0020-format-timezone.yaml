@@ -1,0 +1,15 @@
+name: format timezone
+args:
+  - -d
+  - "2024-03-05"
+  - +%z %:z %::z %:::z %Z
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    +0000 +00:00 +00:00:00 +00 UTC
+  stderr: ""

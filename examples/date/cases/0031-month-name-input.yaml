@@ -1,0 +1,15 @@
+name: month name input
+args:
+  - -d
+  - 5 Mar 2024
+  - +%F
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2024-03-05
+  stderr: ""

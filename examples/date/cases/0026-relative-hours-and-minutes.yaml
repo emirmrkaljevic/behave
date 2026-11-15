@@ -1,0 +1,15 @@
+name: relative hours and minutes
+args:
+  - -d
+  - 2024-03-05 23:30 +90 minutes
+  - +%F %T
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    date: invalid date '2024-03-05 23:30 +90 minutes'

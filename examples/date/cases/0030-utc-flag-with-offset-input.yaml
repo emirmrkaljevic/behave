@@ -1,0 +1,16 @@
+name: utc flag with offset input
+args:
+  - -u
+  - -d
+  - "2024-03-05T12:00:00+05:30"
+  - +%F %T %Z
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2024-03-05 06:30:00 UTC
+  stderr: ""

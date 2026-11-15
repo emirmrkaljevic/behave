@@ -1,0 +1,20 @@
+name: invalid format option value
+args:
+  - --iso-8601=weeks
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    date: invalid argument 'weeks' for '--iso-8601'
+    Valid arguments are:
+      - 'hours'
+      - 'minutes'
+      - 'date'
+      - 'seconds'
+      - 'ns'
+    Try 'date --help' for more information.

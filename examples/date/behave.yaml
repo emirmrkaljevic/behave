@@ -1,0 +1,6 @@
+command: date
+timeout_ms: 5000
+normalize:
+  - ansi
+  - workdir
+recorded_from: date (GNU coreutils) 9.12

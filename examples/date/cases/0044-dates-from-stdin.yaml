@@ -1,0 +1,19 @@
+name: dates from stdin
+args:
+  - -f
+  - '-'
+  - +%a %F
+stdin: |
+  2024-03-05
+  2024-03-06
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    Tue 2024-03-05
+    Wed 2024-03-06
+  stderr: ""

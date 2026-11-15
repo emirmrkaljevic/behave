@@ -1,0 +1,17 @@
+name: extra operand
+args:
+  - -d
+  - '@0'
+  - +%s
+  - extra
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    date: extra operand 'extra'
+    Try 'date --help' for more information.

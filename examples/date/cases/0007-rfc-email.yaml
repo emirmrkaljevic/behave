@@ -1,0 +1,15 @@
+name: rfc-email
+args:
+  - -d
+  - "2024-02-29 13:45:10"
+  - -R
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    Thu, 29 Feb 2024 13:45:10 +0000
+  stderr: ""

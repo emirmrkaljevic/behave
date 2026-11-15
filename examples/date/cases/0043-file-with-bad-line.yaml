@@ -1,0 +1,22 @@
+name: file with bad line
+args:
+  - -f
+  - dates.txt
+  - +%F
+env:
+  LC_ALL: C
+  TZ: UTC
+files:
+  dates.txt: |
+    2024-01-01
+    bogus
+    2024-01-03
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    2024-01-01
+    2024-01-03
+  stderr: |
+    date: invalid date 'bogus'

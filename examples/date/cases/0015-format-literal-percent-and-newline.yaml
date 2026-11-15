@@ -1,0 +1,14 @@
+name: format literal percent and newline
+args:
+  - -d
+  - "2024-03-05"
+  - +100%% done%nnext%tline
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "100% done\nnext\tline\n"
+  stderr: ""

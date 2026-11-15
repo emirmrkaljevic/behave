@@ -1,0 +1,14 @@
+name: unknown option
+args:
+  - --no-such-flag
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    date: unrecognized option '--no-such-flag'
+    Try 'date --help' for more information.

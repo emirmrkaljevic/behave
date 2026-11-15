@@ -1,0 +1,14 @@
+name: reference file missing
+args:
+  - -r
+  - no-such-file
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    date: no-such-file: No such file or directory

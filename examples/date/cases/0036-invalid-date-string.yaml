@@ -1,0 +1,14 @@
+name: invalid date string
+args:
+  - -d
+  - not a date
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: ""
+  stderr: |
+    date: invalid date 'not a date'

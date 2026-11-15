@@ -1,0 +1,15 @@
+name: epoch utc
+args:
+  - -u
+  - -d
+  - '@0'
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    Thu Jan  1 00:00:00 UTC 1970
+  stderr: ""

@@ -1,0 +1,15 @@
+name: format 12-hour clock
+args:
+  - -d
+  - 2024-03-05 00:30
+  - +%I %l %p %P %r
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    12 12 AM am 12:30:00 AM
+  stderr: ""

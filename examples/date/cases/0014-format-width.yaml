@@ -1,0 +1,14 @@
+name: format width
+args:
+  - -d
+  - "2024-03-05"
+  - +%10A|%-10B|%010d
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "   Tuesday|March|0000000005\n"
+  stderr: ""

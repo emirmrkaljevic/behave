@@ -1,0 +1,15 @@
+name: format seconds since epoch
+args:
+  - -d
+  - "2001-09-09 01:46:40"
+  - +%s
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1000000000
+  stderr: ""

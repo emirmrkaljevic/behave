@@ -1,0 +1,15 @@
+name: format nanoseconds precision
+args:
+  - -d
+  - "2024-03-05 10:00:00.987654321"
+  - +%N %3N %6N %-N
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    987654321 987 987654 987654321
+  stderr: ""

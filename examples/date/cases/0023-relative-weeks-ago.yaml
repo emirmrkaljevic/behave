@@ -1,0 +1,15 @@
+name: relative weeks ago
+args:
+  - -d
+  - 2024-03-05 2 weeks ago
+  - +%F
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2024-02-20
+  stderr: ""

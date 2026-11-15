@@ -1,0 +1,15 @@
+name: format day of year and week
+args:
+  - -d
+  - "2024-12-30"
+  - +%j %U %W %V %G %u %w
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    365 52 53 01 2025 1 1
+  stderr: ""

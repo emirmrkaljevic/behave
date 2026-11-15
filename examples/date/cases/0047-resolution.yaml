@@ -1,0 +1,14 @@
+name: resolution
+args:
+  - --resolution
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+  - gnu-9.6
+expect:
+  exit: 0
+  stdout: |
+    0.000000001
+  stderr: ""

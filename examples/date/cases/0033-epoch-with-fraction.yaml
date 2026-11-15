@@ -1,0 +1,15 @@
+name: epoch with fraction
+args:
+  - -d
+  - '@1.5'
+  - +%s.%N
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1.500000000
+  stderr: ""

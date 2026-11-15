@@ -1,0 +1,15 @@
+name: relative tomorrow
+args:
+  - -d
+  - 2024-01-31 12:00 + 1 day
+  - +%F
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2024-02-01
+  stderr: ""

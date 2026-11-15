@@ -1,0 +1,15 @@
+name: rfc-3339 seconds
+args:
+  - -d
+  - "2024-02-29 13:45:10"
+  - --rfc-3339=seconds
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2024-02-29 13:45:10+00:00
+  stderr: ""

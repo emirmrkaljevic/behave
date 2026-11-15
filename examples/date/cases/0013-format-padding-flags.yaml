@@ -1,0 +1,15 @@
+name: format padding flags
+args:
+  - -d
+  - "2024-03-05 07:08:09"
+  - +%-d %_d %0e %-H %_m %^a %#b
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    5  5 05 7  3 TUE MAR
+  stderr: ""

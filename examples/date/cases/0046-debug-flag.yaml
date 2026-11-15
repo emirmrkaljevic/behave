@@ -1,0 +1,28 @@
+name: debug flag
+args:
+  - --debug
+  - -d
+  - 2024-03-05 12:00
+  - +%F
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: |
+    2024-03-05
+  stderr: |
+    date: parsed date part: (Y-M-D) 2024-03-05
+    date: parsed time part: 12:00:00
+    date: input timezone: TZ="UTC" environment value
+    date: using specified time as starting value: '12:00:00'
+    date: starting date/time: '(Y-M-D) 2024-03-05 12:00:00'
+    date: '(Y-M-D) 2024-03-05 12:00:00' = 1709640000 epoch-seconds
+    date: timezone: TZ="UTC" environment value
+    date: final: 1709640000.000000000 (epoch-seconds)
+    date: final: (Y-M-D) 2024-03-05 12:00:00 (UTC)
+    date: final: (Y-M-D) 2024-03-05 12:00:00 (UTC+00)
+    date: output format: '%F'

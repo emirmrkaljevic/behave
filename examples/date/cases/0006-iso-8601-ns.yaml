@@ -1,0 +1,15 @@
+name: iso-8601 ns
+args:
+  - -d
+  - "2024-02-29 13:45:10.123456789"
+  - --iso-8601=ns
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2024-02-29T13:45:10,123456789+00:00
+  stderr: ""

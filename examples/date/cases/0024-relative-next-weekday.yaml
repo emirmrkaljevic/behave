@@ -1,0 +1,15 @@
+name: relative next weekday
+args:
+  - -d
+  - 2024-03-05 next friday
+  - +%F %a
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2024-03-05 Tue
+  stderr: ""

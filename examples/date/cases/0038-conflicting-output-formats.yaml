@@ -1,0 +1,17 @@
+name: conflicting output formats
+args:
+  - -R
+  - -I
+  - -d
+  - '@0'
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+  - gnu-9.12
+expect:
+  exit: 0
+  stdout: |
+    1970-01-01
+  stderr: ""

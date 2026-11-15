@@ -1,0 +1,22 @@
+name: file of dates
+args:
+  - -f
+  - dates.txt
+  - +%F
+env:
+  LC_ALL: C
+  TZ: UTC
+files:
+  dates.txt: |
+    2024-01-01
+    2024-12-31 + 1 day
+    @0
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2024-01-01
+    2025-01-01
+    1970-01-01
+  stderr: ""

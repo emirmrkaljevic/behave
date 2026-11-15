@@ -1,0 +1,15 @@
+name: relative month overflow
+args:
+  - -d
+  - 2024-01-31 + 1 month
+  - +%F
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    2024-03-02
+  stderr: ""
