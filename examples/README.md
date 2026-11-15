@@ -963,13 +963,14 @@ behave run examples/test
 # test vs test: 54/54 passed, 0 failed, 0 skipped
 ```
 
-## `date/`: 49 recorded cases for GNU `date`
+## `date/`: 50 recorded cases for GNU `date`
 
 Fixed dates with `TZ=UTC` and `LC_ALL=C`: `@epoch` input (fractions, negative), ISO 8601,
 RFC 5322 and RFC 3339 output at every precision, format conversions with padding flags
 and widths, `%N` precisions, the `%z` variants, composite formats, relative dates (days,
 months past the end of a month, weeks ago, next weekday, last year), offsets and `TZ="..."`
-in the input, `-f` files and stdin, and an unknown conversion such as `%Q`, which GNU
+in the input, `-f` files and stdin, the `E` and `O` modifiers (which fall back to the plain
+conversion in the C locale), and an unknown conversion such as `%Q`, which GNU
 prints unchanged. Error paths: an invalid date, a bad `--iso-8601` value, an extra operand,
 a format without `+`, a missing `-r` file. Recorded with GNU coreutils 9.12; the
 "multiple output formats" and `--debug` cases are tagged `gnu-9.12` and `--resolution` is
@@ -978,7 +979,7 @@ tagged `gnu-9.6`. This suite found [uutils/coreutils#16519](https://github.com/u
 
 ```sh
 behave run examples/date
-# date vs date: 49/49 passed, 0 failed, 0 skipped
+# date vs date: 50/50 passed, 0 failed, 0 skipped
 ```
 
 ## `xargs/`: 48 recorded cases for GNU `xargs`

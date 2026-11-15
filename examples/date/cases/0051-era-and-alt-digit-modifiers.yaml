@@ -1,0 +1,15 @@
+name: era and alternative digit modifiers
+args:
+  - -d
+  - '@0'
+  - +%EY %EC %Ey|%Ec|%Ex %EX|%Oy %OH %Od|%Ej %E
+env:
+  LC_ALL: C
+  TZ: UTC
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: |
+    1970 19 70|Thu Jan  1 00:00:00 1970|01/01/70 00:00:00|70 00 01|%Ej %E
+  stderr: ""
