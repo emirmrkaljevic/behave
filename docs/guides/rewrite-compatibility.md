@@ -8,7 +8,7 @@ redirect_from:
 
 # Test a Rust (or Go) rewrite of a CLI against the original
 
-[behave](../../README.md) records how an original command-line tool behaves, then diffs a Rust or Go port against that recording. Rewriting a well known CLI is mostly about the long tail: the exact error message, the exit code for a missing file, how a flag that takes a value starting with `-` is parsed. Users and scripts depend on all of it, and most of it is not written down anywhere.
+[behave](https://github.com/emirmrkaljevic/behave/blob/main/README.md) records how an original command-line tool behaves, then diffs a Rust or Go port against that recording. Rewriting a well known CLI is mostly about the long tail: the exact error message, the exit code for a missing file, how a flag that takes a value starting with `-` is parsed. Users and scripts depend on all of it, and most of it is not written down anywhere.
 
 behave builds that specification for you by observing the original tool.
 

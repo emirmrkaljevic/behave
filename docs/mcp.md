@@ -5,7 +5,7 @@ description: Run behave probe, record and diff over stdio from an MCP client.
 
 # MCP server
 
-[behave](../README.md) can also run over stdio as an MCP server. `behave mcp` serves the same features as the CLI, for editor or MCP-client integrations that want to grow a spec while a port is being written, then check it after a change.
+[behave](https://github.com/emirmrkaljevic/behave/blob/main/README.md) can also run over stdio as an MCP server. `behave mcp` serves the same features as the CLI, for editor or MCP-client integrations that want to grow a spec while a port is being written, then check it after a change.
 
 ```json
 {

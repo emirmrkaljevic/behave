@@ -5,7 +5,7 @@ description: Command reference, the YAML spec layout, how recordings stay determ
 
 # Commands, spec format and CI notes
 
-This page is the CLI reference for [behave](../README.md): every command, the YAML spec layout, how recordings stay deterministic, and notes on the example CI jobs.
+This page is the CLI reference for [behave](https://github.com/emirmrkaljevic/behave/blob/main/README.md): every command, the YAML spec layout, how recordings stay deterministic, and notes on the example CI jobs.
 
 ## Commands
 
@@ -77,9 +77,9 @@ Cases can also set `env`, `files` (created in a fresh temp dir), and `timeout_ms
 
 ## CI notes
 
-GitHub Actions runs `go vet`, `go test -race`, a smoke `probe`/`run` on `wc`, then most of the committed example specs.
+GitHub Actions runs `go vet`, `go test -race`, a smoke `probe`/`run` on `wc`, then most of the committed example specs. On runners where the default tools are uutils, the workflow puts GNU coreutils first on PATH so those examples replay against GNU.
 
-A few cases depend on a newer GNU than the runner ships (currently 9.4):
+A few cases depend on a newer GNU than the runner's GNU coreutils:
 
 - since GNU coreutils 9.5, `base32`/`base64` `-d` accepts input without padding. Those cases are tagged `gnu-9.5` and skipped in CI: `behave run examples/base32 --skip-tag gnu-9.5` (same for `base64`)
 - `ptx -t` output changed after GNU 9.7, so that case is tagged `gnu-9.12` and skipped in CI

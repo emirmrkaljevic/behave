@@ -13,8 +13,30 @@ jobs:
           go-version-file: go.mod
       - run: go vet ./...
       - run: go test -race ./...
+      - name: put GNU coreutils first on PATH
+        run: |
+          # ubuntu-latest (26.04) defaults to uutils; GNU remains as /usr/bin/gnucut etc.
+          # The example specs were recorded from GNU, so replay must use GNU.
+          if compgen -G /usr/bin/gnu* >/dev/null; then
+            gnu_bin="${RUNNER_TEMP}/gnu-bin"
+            mkdir -p "$gnu_bin"
+            for src in /usr/bin/gnu*; do
+              name="${src##*/}"
+              name="${name#gnu}"
+              ln -s "$src" "$gnu_bin/$name"
+            done
+            echo "$gnu_bin" >> "$GITHUB_PATH"
+            echo "Using GNU coreutils from $gnu_bin"
+          else
+            echo "No gnu-prefixed coreutils; assuming the default cut is GNU"
+          fi
       - name: smoke test against coreutils
         run: |
+          cut --version | head -1
+          if ! cut --version | head -1 | grep -q GNU; then
+            echo "examples were recorded from GNU coreutils; cut on PATH is not GNU" >&2
+            exit 1
+          fi
           go build -o behave ./cmd/behave
           ./behave probe wc --out /tmp/spec-wc
           ./behave run /tmp/spec-wc

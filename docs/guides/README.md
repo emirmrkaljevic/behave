@@ -1,11 +1,14 @@
 ---
 title: Guides
 description: Walk-throughs for testing a rewrite, generating golden tests, and the uutils case study.
+permalink: /guides/
+redirect_from:
+  - /guides/README.html
 ---
 
 # Guides
 
-Walk-throughs for [behave](../../README.md): how to test a rewrite, how to generate golden tests, and a case study of what it found in uutils coreutils.
+Walk-throughs for [behave](https://github.com/emirmrkaljevic/behave/blob/main/README.md): how to test a rewrite, how to generate golden tests, and a case study of what it found in uutils coreutils.
 
 ## [Test a Rust or Go rewrite of a CLI against the original](rewrite-compatibility.md)
 

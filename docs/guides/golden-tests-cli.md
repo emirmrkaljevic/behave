@@ -8,7 +8,7 @@ redirect_from:
 
 # Golden tests for CLI tools, generated from --help
 
-[behave](../../README.md) generates golden (snapshot) tests for a command-line tool by recording stdout, stderr and the exit code for each invocation. Writing them by hand is slow, so most tools only cover the happy path.
+[behave](https://github.com/emirmrkaljevic/behave/blob/main/README.md) generates golden (snapshot) tests for a command-line tool by recording stdout, stderr and the exit code for each invocation. Writing them by hand is slow, so most tools only cover the happy path.
 
 behave generates them:
 

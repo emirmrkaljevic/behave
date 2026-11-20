@@ -5,7 +5,7 @@ description: Record how any command-line tool behaves and check a rewrite or new
 
 # Record how a CLI behaves, then check a rewrite against it
 
-[behave](../README.md) treats a command-line tool as a black box. It reads `--help` and the man page, generates cases (every flag, flag pairs, listed values, edge case stdin, missing files, bad values), records stdout, stderr and the exit code, and replays the cases against another implementation.
+[behave](https://github.com/emirmrkaljevic/behave/blob/main/README.md) treats a command-line tool as a black box. It reads `--help` and the man page, generates cases (every flag, flag pairs, listed values, edge case stdin, missing files, bad values), records stdout, stderr and the exit code, and replays the cases against another implementation.
 
 ![behave recording jq and checking gojq against it](demo.gif)
 

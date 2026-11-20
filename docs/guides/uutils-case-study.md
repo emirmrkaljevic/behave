@@ -8,7 +8,7 @@ redirect_from:
 
 # Case study: uutils coreutils vs GNU coreutils
 
-[uutils coreutils](https://github.com/uutils/coreutils) is a Rust rewrite of GNU coreutils that aims to be a drop in replacement. This page is a short case study of what [behave](../../README.md) found when it recorded GNU coreutils 9.12 and replayed the cases against uutils built from main.
+[uutils coreutils](https://github.com/uutils/coreutils) is a Rust rewrite of GNU coreutils that aims to be a drop in replacement. This page is a short case study of what [behave](https://github.com/emirmrkaljevic/behave/blob/main/README.md) found when it recorded GNU coreutils 9.12 and replayed the cases against uutils built from main.
 
 As of 15 Nov 2026 this led to **37 bug reports and 44 fix PRs in uutils coreutils, 30 of them merged**, plus further reports in findutils, sed and procps. The [full list](../upstream-findings.md) has current counts. Every issue and PR says it was found with behave, and each fix comes with a test.
 
