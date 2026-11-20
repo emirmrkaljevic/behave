@@ -88,5 +88,18 @@ jobs:
           ./behave run examples/date --skip-tag gnu-9.12 --skip-tag gnu-9.6
           ./behave run examples/xargs
           PATH="/usr/sbin:/sbin:$PATH" ./behave run examples/sysctl
-          ./behave run examples/jq
+          # examples/jq was recorded from jq 1.7; ubuntu-latest now ships a
+          # newer jq that words two error messages differently
+          jq17="${RUNNER_TEMP}/jq-1.7"
+          mkdir -p "$jq17"
+          case "$(uname -m)" in
+            x86_64) jq_asset=jq-linux-amd64; jq_sha=2f312b9587b1c1eddf3a53f9a0b7d276b9b7b94576c85bda22808ca950569716 ;;
+            aarch64) jq_asset=jq-linux-arm64; jq_sha=ab57ee39075db4a23f899d396ecef3c6e58f6aada35bfee472468210bd126940 ;;
+            *) echo "unsupported arch $(uname -m)" >&2; exit 1 ;;
+          esac
+          curl -sSL -o "$jq17/jq" "https://github.com/jqlang/jq/releases/download/jq-1.7/${jq_asset}"
+          echo "$jq_sha  $jq17/jq" | sha256sum -c -
+          chmod +x "$jq17/jq"
+          PATH="$jq17:$PATH" jq --version
+          PATH="$jq17:$PATH" ./behave run examples/jq
           PATH="$PWD:$PATH" ./behave run examples/behave
