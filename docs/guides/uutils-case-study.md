@@ -1,13 +1,16 @@
 ---
 title: "Case study: compatibility bugs found in uutils coreutils"
-description: Black-box testing of uutils coreutils (Rust) against GNU coreutils 9.12 with behave led to 34 bug reports and 30 merged fix PRs, plus findings in findutils, sed and procps.
+description: Black-box testing of uutils coreutils (Rust) against GNU coreutils 9.12 with behave led to 37 bug reports and 44 fix PRs, 30 of them merged, plus findings in findutils, sed and procps.
+redirect_from:
+  - /uutils-case-study.html
+  - /uutils-case-study
 ---
 
 # Case study: uutils coreutils vs GNU coreutils
 
-[uutils coreutils](https://github.com/uutils/coreutils) is a Rust rewrite of GNU coreutils that aims to be a drop in replacement. behave recorded GNU coreutils 9.12 and replayed the cases against uutils built from main.
+[uutils coreutils](https://github.com/uutils/coreutils) is a Rust rewrite of GNU coreutils that aims to be a drop in replacement. This page is a short case study of what [behave](../../README.md) found when it recorded GNU coreutils 9.12 and replayed the cases against uutils built from main.
 
-As of 14 Nov 2026 this led to **36 bug reports and 43 fix PRs in uutils coreutils, 30 of them merged**, plus further reports in findutils, sed and procps. The [full list](upstream-findings.html) has current counts. Every issue and PR says it was found with behave, and each fix comes with a test.
+As of 15 Nov 2026 this led to **37 bug reports and 44 fix PRs in uutils coreutils, 30 of them merged**, plus further reports in findutils, sed and procps. The [full list](../upstream-findings.md) has current counts. Every issue and PR says it was found with behave, and each fix comes with a test.
 
 ## Examples of what it found
 
@@ -25,6 +28,6 @@ Mostly the long tail: argument parsing of values that look like flags, error wor
 
 ## Try it on your own port
 
-See [Test a Rust rewrite of a CLI against the original](rewrite-compatibility.html).
+See [Test a Rust rewrite of a CLI against the original](rewrite-compatibility.md).
 
-[Back to behave](./) · [Source on GitHub](https://github.com/emirmrkaljevic/behave)
+[Guides](./) · [Back to behave](../) · [Source on GitHub](https://github.com/emirmrkaljevic/behave)

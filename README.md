@@ -9,7 +9,7 @@ It treats the tool as a black box. It reads `--help` and the man page, generates
 
 ![behave recording jq and checking gojq against it](docs/demo.gif)
 
-I have used it on the Rust rewrites of GNU coreutils, findutils, sed and procps. So far that has led to 43 upstream bug reports and 50 fix PRs, 34 of them merged (as of 14 Nov 2026). The full list is in [upstream findings](docs/upstream-findings.md).
+I have used it on the Rust rewrites of GNU coreutils, findutils, sed and procps. So far that has led to 44 upstream bug reports and 51 fix PRs, 34 of them merged (as of 15 Nov 2026). The full list is in [upstream findings](docs/upstream-findings.md).
 
 ## Install
 
@@ -49,7 +49,9 @@ flags fully compatible: 9 of 10
 cut vs ./uu/cut: 172/175 passed, 3 failed, 0 skipped  (differs in: exit 2, stdout 3)  [0.1s]
 ```
 
-The repo also ships ready-made specs under [examples/](examples/). `behave run examples/cut` is a small GNU `cut` suite; `behave diff examples/jq --impl gojq` checks gojq against jq 1.7. The full list, with case counts, is in [docs/examples.md](docs/examples.md).
+The recording is a directory of YAML files you can read and commit. `behave.yaml` stores the version of the tool you recorded, and `run` / `diff` print it next to the version being replayed.
+
+The repo also ships ready-made specs under [examples/](examples/). `behave run examples/cut` is a small GNU `cut` suite; `behave diff examples/jq --impl gojq` checks gojq against jq 1.7. The full list, with case counts, is in [examples](docs/examples.md).
 
 For tools that need a positional argument, pass samples with `--arg`:
 
@@ -57,11 +59,15 @@ For tools that need a positional argument, pass samples with `--arg`:
 behave probe jq --arg . --arg '.a' --arg keys
 ```
 
-Add a hand-written case with `behave add behave-cut --stdin 'a,b' -- -d, -f2`. The [commands and spec format](docs/usage.md) page covers the rest of the CLI, including `coverage` and JUnit output for CI.
+Add a hand-written case with `behave add behave-cut --stdin 'a,b' -- -d, -f2`. `behave coverage` shows which documented flags the spec does not exercise yet. `behave probe --dry-run` lists the flags and values it would cover, without running the tool; `--skip-flag` and `--max` cut the set down when a tool is large or unsafe to probe in full. The [commands and spec format](docs/usage.md) page covers the rest of the CLI, including JUnit output for CI.
+
+Each case runs in a fresh temp directory with a fixed environment (`LC_ALL=C.UTF-8`, `TZ=UTC`). Anything that changes between runs is marked flaky and skipped.
+
+A longer walk-through of this flow, including how to keep the recording in CI, is in [Test a rewrite against the original](docs/guides/rewrite-compatibility.md). If you want snapshot tests for a tool you already own, rather than a comparison against a second binary, the same recording is enough: see [Golden tests from --help](docs/guides/golden-tests-cli.md).
 
 ## MCP (optional)
 
-`behave mcp` exposes the same probe, record and diff flow over stdio, if you want to drive it from an editor. Setup and tools are in [docs/mcp.md](docs/mcp.md).
+`behave mcp` exposes the same probe, record and diff flow over stdio, if you want to drive it from an editor. Setup and tools are in [MCP server](docs/mcp.md).
 
 ## Limitations
 
@@ -73,11 +79,16 @@ Status: early (v0.1). The CLI works; feedback is welcome.
 
 ## Docs
 
-- [Examples](docs/examples.md)
-- [What it found upstream](docs/upstream-findings.md)
-- [Commands, spec format and CI notes](docs/usage.md)
-- [MCP server](docs/mcp.md)
-- Guides: [testing a rewrite](https://emirmrkaljevic.github.io/behave/rewrite-compatibility.html), [golden tests](https://emirmrkaljevic.github.io/behave/golden-tests-cli.html)
+A browsable copy of these pages is at [emirmrkaljevic.github.io/behave](https://emirmrkaljevic.github.io/behave/).
+
+- [Examples](docs/examples.md): ready-made recordings for GNU coreutils, findutils, procps-ng and jq
+- [Commands, spec format and CI notes](docs/usage.md): CLI reference, the YAML layout, and how to run the specs in CI
+- [MCP server](docs/mcp.md): the same probe, record and diff flow over stdio
+- [What it found upstream](docs/upstream-findings.md): bug reports and fix PRs in uutils coreutils, findutils, sed and procps
+- [Guides](docs/guides/): testing a rewrite, generating golden tests, and a uutils case study
+  - [Test a rewrite against the original](docs/guides/rewrite-compatibility.md): record the original CLI and diff a Rust or Go port
+  - [Golden tests from --help](docs/guides/golden-tests-cli.md): generate snapshot tests for stdout, stderr and exit codes
+  - [Case study: uutils coreutils](docs/guides/uutils-case-study.md): what behave found when comparing the Rust rewrite to GNU
 
 MCP Registry name: `io.github.emirmrkaljevic/behave`
 

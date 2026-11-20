@@ -1,11 +1,14 @@
 ---
 title: Test a Rust rewrite of a CLI against the original
 description: How to check that a Rust or Go port of a command-line tool matches the original's output, errors and exit codes, using recorded black-box cases.
+redirect_from:
+  - /rewrite-compatibility.html
+  - /rewrite-compatibility
 ---
 
 # Test a Rust (or Go) rewrite of a CLI against the original
 
-Rewriting a well known command-line tool is mostly about the long tail: the exact error message, the exit code for a missing file, how a flag that takes a value starting with `-` is parsed. Users and scripts depend on all of it, and most of it is not written down anywhere.
+[behave](../../README.md) records how an original command-line tool behaves, then diffs a Rust or Go port against that recording. Rewriting a well known CLI is mostly about the long tail: the exact error message, the exit code for a missing file, how a flag that takes a value starting with `-` is parsed. Users and scripts depend on all of it, and most of it is not written down anywhere.
 
 behave builds that specification for you by observing the original tool.
 
@@ -39,6 +42,6 @@ The recorded case directory is ordinary text. Commit it and run `behave run` or 
 
 ## Does this find real bugs?
 
-Run against the Rust rewrites of GNU coreutils, findutils, sed and procps, it has led to 43 upstream bug reports and 50 fix PRs, 34 of them merged as of 14 Nov 2026. See the [full list](upstream-findings.html) and the [uutils case study](uutils-case-study.html).
+Run against the Rust rewrites of GNU coreutils, findutils, sed and procps, it has led to 44 upstream bug reports and 51 fix PRs, 34 of them merged as of 15 Nov 2026. See the [full list](../upstream-findings.md) and the [uutils case study](uutils-case-study.md).
 
-[Back to behave](./) · [Source on GitHub](https://github.com/emirmrkaljevic/behave)
+[Guides](./) · [Back to behave](../) · [Source on GitHub](https://github.com/emirmrkaljevic/behave)

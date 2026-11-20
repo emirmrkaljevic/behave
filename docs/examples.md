@@ -5,7 +5,7 @@ description: Ready-made behave recordings for GNU coreutils, findutils, procps-n
 
 # Example specs
 
-The [examples/](https://github.com/emirmrkaljevic/behave/tree/main/examples) directory holds committed recordings you can run without probing anything first. Most were recorded against GNU coreutils 9.12. A few early ones (`cut`, `paste`, `join`, `nl`, `fold`, `jq`) were recorded by hand against 9.7 or jq 1.7. `xargs` is GNU findutils 4.10, and `sysctl` is procps-ng 4.0.4.
+This page lists the example specs shipped with [behave](../README.md). The [examples/](https://github.com/emirmrkaljevic/behave/tree/main/examples) directory holds committed recordings you can run without probing anything first. Most were recorded against GNU coreutils 9.12. A few early ones (`cut`, `paste`, `join`, `nl`, `fold`, `jq`) were recorded by hand against 9.7 or jq 1.7. `xargs` is GNU findutils 4.10, and `sysctl` is procps-ng 4.0.4.
 
 ```sh
 behave run examples/cut

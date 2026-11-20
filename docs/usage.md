@@ -5,6 +5,8 @@ description: Command reference, the YAML spec layout, how recordings stay determ
 
 # Commands, spec format and CI notes
 
+This page is the CLI reference for [behave](../README.md): every command, the YAML spec layout, how recordings stay deterministic, and notes on the example CI jobs.
+
 ## Commands
 
 | command | what it does |

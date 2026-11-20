@@ -1,11 +1,14 @@
 ---
 title: Golden tests for CLI tools, generated from --help
 description: Generate golden (snapshot) tests for any command-line tool by recording stdout, stderr and exit codes for hundreds of generated cases.
+redirect_from:
+  - /golden-tests-cli.html
+  - /golden-tests-cli
 ---
 
 # Golden tests for CLI tools, generated from --help
 
-Golden tests (snapshot tests) compare a program's output with a stored known good output. For a CLI that means stdout, stderr and the exit code for each invocation. Writing them by hand is slow, so most tools only cover the happy path.
+[behave](../../README.md) generates golden (snapshot) tests for a command-line tool by recording stdout, stderr and the exit code for each invocation. Writing them by hand is slow, so most tools only cover the happy path.
 
 behave generates them:
 
@@ -30,4 +33,4 @@ After a refactor, a dependency bump or a new argument parser, `behave run` tells
 
 The same recording can be replayed against a different binary with `behave diff --impl`. That is how the repo's [jq example](https://github.com/emirmrkaljevic/behave/tree/main/examples/jq) checks gojq against jq 1.7: 29 of 33 cases match and the 4 differences are error wording on stderr.
 
-[Back to behave](./) · [Source on GitHub](https://github.com/emirmrkaljevic/behave)
+[Guides](./) · [Back to behave](../) · [Source on GitHub](https://github.com/emirmrkaljevic/behave)

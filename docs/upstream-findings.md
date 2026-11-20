@@ -5,7 +5,7 @@ description: Bug reports and fix PRs found by recording GNU tools with behave an
 
 # Upstream findings
 
-Running behave against Rust rewrites of GNU tools has led to 44 bug reports and 51 fix PRs, 34 of them merged, as of 15 Nov 2026. Each issue and PR notes that it was found with behave, and each fix includes a test.
+This is the list of upstream bug reports found with [behave](../README.md). Running it against Rust rewrites of GNU tools has led to 44 bug reports and 51 fix PRs, 34 of them merged, as of 15 Nov 2026. Each issue and PR notes that it was found with behave, and each fix includes a test.
 
 | project | reports | fix PRs | merged |
 |---|---:|---:|---:|

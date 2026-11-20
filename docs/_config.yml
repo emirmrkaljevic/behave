@@ -4,3 +4,9 @@ theme: jekyll-theme-cayman
 url: https://emirmrkaljevic.github.io
 baseurl: /behave
 exclude: [demo.tape]
+plugins:
+  - jekyll-relative-links
+  - jekyll-redirect-from
+relative_links:
+  enabled: true
+  collections: true
