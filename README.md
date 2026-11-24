@@ -69,6 +69,8 @@ A longer walk-through of this flow, including how to keep the recording in CI, i
 
 `behave mcp` exposes the same probe, record and diff flow over stdio, if you want to drive it from an editor. Setup and tools are in [MCP server](docs/mcp.md).
 
+[![emirmrkaljevic/behave MCP server](https://glama.ai/mcp/servers/emirmrkaljevic/behave/badges/score.svg)](https://glama.ai/mcp/servers/emirmrkaljevic/behave)
+
 ## Limitations
 
 behave only runs the binaries you point it at, in a fresh temp directory. Do not probe tools that change things outside their working directory (package managers, `rm -rf` style tools) without `--skip-flag` and a sandbox.
