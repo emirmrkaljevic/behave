@@ -1,0 +1,16 @@
+name: missing-file-then-good-file
+args:
+  - nope.txt
+  - a.txt
+files:
+  a.txt: |
+    still
+    formatted
+tags:
+  - manual
+expect:
+  exit: 1
+  stdout: |
+    still formatted
+  stderr: |
+    $CMD: cannot open 'nope.txt' for reading: No such file or directory

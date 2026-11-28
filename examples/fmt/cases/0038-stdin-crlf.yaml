@@ -1,0 +1,9 @@
+name: stdin-crlf
+args: []
+stdin: "one\r\ntwo\r\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "one\r two\r\n"
+  stderr: ""

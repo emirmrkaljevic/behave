@@ -47,7 +47,7 @@ Per-tool notes, including what each suite covers and how uutils or gojq compared
 | [base32](https://github.com/emirmrkaljevic/behave/tree/main/examples/base32) | 36 | GNU coreutils 9.12 |
 | [basename](https://github.com/emirmrkaljevic/behave/tree/main/examples/basename) | 35 | GNU coreutils 9.12 |
 | [dirname](https://github.com/emirmrkaljevic/behave/tree/main/examples/dirname) | 26 | GNU coreutils 9.12 |
-| [fmt](https://github.com/emirmrkaljevic/behave/tree/main/examples/fmt) | 36 | GNU coreutils 9.12 |
+| [fmt](https://github.com/emirmrkaljevic/behave/tree/main/examples/fmt) | 39 | GNU coreutils 9.12 |
 | [realpath](https://github.com/emirmrkaljevic/behave/tree/main/examples/realpath) | 38 | GNU coreutils 9.12 |
 | [pr](https://github.com/emirmrkaljevic/behave/tree/main/examples/pr) | 40 | GNU coreutils 9.12 |
 | [tee](https://github.com/emirmrkaljevic/behave/tree/main/examples/tee) | 38 | GNU coreutils 9.12 |

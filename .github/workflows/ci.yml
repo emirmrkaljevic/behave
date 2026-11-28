@@ -68,6 +68,8 @@ jobs:
           ./behave run examples/factor
           ./behave run examples/basename
           ./behave run examples/dirname
+          # fmt fills multibyte words and -w 20 -g 20 differently after GNU 9.7
+          ./behave run examples/fmt --skip-tag gnu-9.12
           ./behave run examples/realpath
           ./behave run examples/pr
           ./behave run examples/tee

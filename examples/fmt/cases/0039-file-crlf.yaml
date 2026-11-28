@@ -1,0 +1,11 @@
+name: file-crlf
+args:
+  - input.txt
+files:
+  input.txt: "one\r\ntwo\r\n"
+tags:
+  - manual
+expect:
+  exit: 0
+  stdout: "one\r two\r\n"
+  stderr: ""

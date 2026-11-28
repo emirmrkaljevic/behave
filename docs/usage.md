@@ -84,9 +84,10 @@ A few cases depend on a newer GNU than the runner's GNU coreutils:
 - since GNU coreutils 9.5, `base32`/`base64` `-d` accepts input without padding. Those cases are tagged `gnu-9.5` and skipped in CI: `behave run examples/base32 --skip-tag gnu-9.5` (same for `base64`)
 - `ptx -t` output changed after GNU 9.7, so that case is tagged `gnu-9.12` and skipped in CI
 - `env` shell-quotes printed values since GNU 9.12 and gained `-a` in 9.5, so those cases are tagged `gnu-9.12` or `gnu-9.5` and skipped in CI
+- `fmt` fills multibyte words and `-w 20 -g 20` differently after GNU 9.7, so those two cases are tagged `gnu-9.12` and skipped in CI
 
 `examples/sysctl` needs the sbin directories on `PATH`. There is also a small self-check: `behave run examples/behave`.
 
-The `fmt`, `cksum`, `md5sum` and `tail` example specs are in the repo but are not part of the CI workflow yet.
+The `cksum`, `md5sum` and `tail` example specs are in the repo but are not part of the CI workflow yet.
 
 [Back to behave](./) · [Source on GitHub](https://github.com/emirmrkaljevic/behave)
