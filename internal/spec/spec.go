@@ -168,10 +168,27 @@ func (s *Spec) SaveCase(c *Case) error {
 		return err
 	}
 	if c.File == "" {
-		c.File = filepath.Join(s.Dir, "cases", fmt.Sprintf("%04d-%s.yaml", len(s.Cases)+1, Slug(c.Name)))
+		c.File = filepath.Join(s.Dir, "cases", fmt.Sprintf("%04d-%s.yaml", s.nextNumber(), Slug(c.Name)))
 		s.Cases = append(s.Cases, c)
 	}
 	return writeYAML(c.File, c)
+}
+
+// nextNumber returns one past the highest case number in use. Counting the
+// cases instead would reuse a number once a case in the middle is removed.
+func (s *Spec) nextNumber() int {
+	n := 0
+	for _, c := range s.Cases {
+		base := filepath.Base(c.File)
+		v, i := 0, 0
+		for ; i < len(base) && base[i] >= '0' && base[i] <= '9'; i++ {
+			v = v*10 + int(base[i]-'0')
+		}
+		if i > 0 && v > n {
+			n = v
+		}
+	}
+	return max(n, len(s.Cases)) + 1
 }
 
 func writeYAML(path string, v any) error {

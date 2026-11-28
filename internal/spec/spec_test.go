@@ -85,6 +85,33 @@ func TestSaveCaseCreatesCasesDir(t *testing.T) {
 	}
 }
 
+func TestSaveCaseSkipsUsedNumbers(t *testing.T) {
+	dir := t.TempDir()
+	if err := os.MkdirAll(filepath.Join(dir, "cases"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(dir, "behave.yaml"), []byte("command: cat\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	// two cases with a gap, as after deleting 0002
+	for _, f := range []string{"0001-a.yaml", "0003-c.yaml"} {
+		if err := os.WriteFile(filepath.Join(dir, "cases", f), []byte("name: x\nargs: []\n"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	s, err := Load(dir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	c := &Case{Name: "new one"}
+	if err := s.SaveCase(c); err != nil {
+		t.Fatal(err)
+	}
+	if got := filepath.Base(c.File); got != "0004-new-one.yaml" {
+		t.Fatalf("file name = %s, want 0004-new-one.yaml", got)
+	}
+}
+
 func TestFileContentsRoundTrip(t *testing.T) {
 	dir := t.TempDir()
 	s := &Spec{Dir: dir, Meta: Meta{Command: "x"}}
